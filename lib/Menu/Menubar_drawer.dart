@@ -1,8 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/Menu/menu_item.dart';
 import 'package:flutter_app_newocean/Menu/menu_item_widget.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 
 class MenuBarDrawer extends StatefulWidget {
   @override
@@ -57,14 +63,33 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
             ),
           ),
           Expanded(
-              child: ListView.builder(
-            itemCount: menuItemList.length,
-            itemBuilder: (context, counter) {
-              return MenuItemWidget(
-                  title: menuItemList[counter].title,
-                  iconData: menuItemList[counter].icon);
-            },
+              child: Column(
+            children: [
+              menuItem(
+                  icon: Icons.home, text: 'Home', naviagationPath: HomeRoute),
+              menuItem(
+                  icon: Icons.info,
+                  text: 'About Us',
+                  naviagationPath: AboutRoute),
+              menuItem(
+                  icon: Icons.miscellaneous_services_rounded,
+                  text: 'Services',
+                  naviagationPath: ServiceRoute),
+              menuItem(
+                  icon: Icons.contact_page_outlined,
+                  text: 'Contact Us',
+                  naviagationPath: ContactUsRoute),
+            ],
           )),
+          // Expanded(
+          //     child: ListView.builder(
+          //   itemCount: menuItemList.length,
+          //   itemBuilder: (context, counter) {
+          //     return MenuItemWidget(
+          //         title: menuItemList[counter].title,
+          //         iconData: menuItemList[counter].icon);
+          //   },
+          // )),
           Container(
             margin: EdgeInsets.symmetric(vertical: 50),
             child: IconButton(
@@ -74,8 +99,8 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
                 scaffoldKey.currentState.openEndDrawer();
               },
             ),
-          )
-          // menuItem(text: "Home"),
+          ),
+
           // menuItem(text: "About Us"),
           // menuItem(text: "Service"),
           // menuItem(text: "Contact Us"),
@@ -84,26 +109,65 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
     );
   }
 
-  GestureDetector menuItem({text, Widget widget}) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          menu.updateAll((key, value) => menu[key] = false);
-          menu[text] = true;
-        });
-      },
-      child: Text(
-        text,
-        style: TextStyle(
-          color: menu[text] == true ? Colors.blue : Color(0xFF155575),
-          //color: Colors.red,
-          fontSize: 15.0,
-          fontWeight: FontWeight.bold,
-          //fontFamily: kfontname
+  MouseRegion menuItem({IconData icon, text, widget, naviagationPath}) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                color:
+                    NavbarRouting.menu[text] ? Colors.blue : Colors.grey[500],
+              ),
+              SizedBox(width: 10),
+              Text(
+                text,
+                style: TextStyle(
+                  color:
+                      NavbarRouting.menu[text] ? Colors.blue : Colors.grey[500],
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
         ),
+        onTap: () {
+          setState(() {
+            NavbarRouting.menu
+                .updateAll((key, value) => NavbarRouting.menu[key] = false);
+            NavbarRouting.menu[text] = true;
+          });
+          locator<NavigationService>().navigateTo(naviagationPath);
+
+          ///todo named parameter routing
+          print(text);
+          scaffoldKey.currentState.openEndDrawer();
+        },
       ),
     );
   }
-}
 
-class context {}
+  // GestureDetector menuItem({text, Widget widget}) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       setState(() {
+  //         menu.updateAll((key, value) => menu[key] = false);
+  //         menu[text] = true;
+  //       });
+  //     },
+  //     child: Text(
+  //       text,
+  //       style: TextStyle(
+  //         color: menu[text] == true ? Colors.blue : Color(0xFF155575),
+  //         //color: Colors.red,
+  //         fontSize: 15.0,
+  //         fontWeight: FontWeight.bold,
+  //         //fontFamily: kfontname
+  //       ),
+  //     ),
+  //   );
+  // }
+}

@@ -99,6 +99,8 @@ class _NavbarRoutingState extends State<NavbarRouting> {
 
   @override
   Widget build(BuildContext context) {
+    print('hhhhhhhhhhhhhhhhhhhhhhh');
+    // print(settings.name);
     return Container(
       color: Color(0xFFECF5FF),
       child: Padding(

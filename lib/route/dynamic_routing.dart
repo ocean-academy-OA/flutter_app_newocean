@@ -4,6 +4,7 @@ import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:flutter_app_newocean/404/error_page.dart';
 
 Route<dynamic> generateRoute(
   RouteSettings settings,
@@ -39,7 +40,7 @@ Route<dynamic> generateRoute(
       );
     default:
       return _getPageRoute(
-        ResponsiveHome(),
+        ErrorPage(),
         settings,
       );
   }
