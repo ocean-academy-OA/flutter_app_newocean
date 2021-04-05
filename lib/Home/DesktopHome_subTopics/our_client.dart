@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_app_newocean/Home/main_title_widget.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widget.dart';
 import 'package:flutter_app_newocean/common/comments.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
@@ -16,7 +16,7 @@ class OurClient extends StatelessWidget {
         children: [
           Column(
             children: [
-              MainTitleWidget(
+              MainTitleWidgetHome(
                 title: "Our Clients",
               ),
               SizedBox(

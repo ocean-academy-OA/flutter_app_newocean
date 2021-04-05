@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app_newocean/Home/main_title_widget.dart';
+
 import 'package:flutter_app_newocean/common/comments.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widget.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
@@ -19,7 +20,7 @@ class HowItWorks extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MainTitleWidget(
+                  MainTitleWidgetHome(
                     title: 'How It Works',
                   ),
                 ],

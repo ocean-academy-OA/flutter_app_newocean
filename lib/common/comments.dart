@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/common/constants.dart';
+import 'package:flutter_app_newocean/common/mobile_constents.dart';
 
 class TextWidget extends StatelessWidget {
   final String title;
@@ -8,11 +8,13 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 200.0),
+        width: MediaQuery.of(context).size.width -
+            MediaQuery.of(context).size.width / 10,
         child: Text(
           title,
-          style: contentTextStyle,
-          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontFamily: kfontname, color: kcontentcolor, height: 1.5),
+          textAlign: TextAlign.justify,
         ),
       ),
     );

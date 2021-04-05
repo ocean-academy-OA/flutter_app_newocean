@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/layout_builder.dart';
 import 'package:flutter_app_newocean/route/Provider/provider_routing.dart';
 import 'package:flutter_app_newocean/route/dynamic_routing.dart';

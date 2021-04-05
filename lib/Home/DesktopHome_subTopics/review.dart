@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Home/google_review.dart';
-import 'package:flutter_app_newocean/Home/justdial.dart';
-import 'package:flutter_app_newocean/Home/trust_piolet.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/google_review.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/justdial.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/trust_piolet.dart';
 
 class ReView extends StatefulWidget {
   @override

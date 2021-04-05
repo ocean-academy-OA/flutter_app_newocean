@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/badge_widget.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widget.dart';
+
 import 'package:flutter_app_newocean/common/comments.dart';
 import 'package:flutter_app_newocean/common/text.dart';
-import 'badge_widget.dart';
-import 'main_title_widget.dart';
 
 class MainBadgeWidget extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class MainBadgeWidget extends StatelessWidget {
           SizedBox(
             height: 30.0,
           ),
-          MainTitleWidget(
+          MainTitleWidgetHome(
             title: "Our journey through the years",
           ),
           SizedBox(

@@ -1,18 +1,16 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_app_newocean/Home/main_title_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Home/MobileHome_subTopics/main_title_widget.dart';
 import 'package:flutter_app_newocean/common/comments.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
 class PlacementCompany extends StatelessWidget {
   final _firestore = FirebaseFirestore.instance;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,23 +20,18 @@ class PlacementCompany extends StatelessWidget {
               MainTitleWidget(
                 title: "Our student got placement",
               ),
-              SizedBox(
-                height: 40.0,
-              ),
               TextWidget(
                 title: placementcontent,
               ),
             ],
           ),
           SizedBox(
-            height: 100.0,
+            height: 30.0,
           ),
           Wrap(
-            spacing: 60.0,
-            runSpacing: 100.0,
             children: [
               StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('Company').snapshots(),
+                stream: _firestore.collection('placement').snapshots(),
                 // ignore: missing_return
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
@@ -48,7 +41,7 @@ class PlacementCompany extends StatelessWidget {
                     List<CompanyLogo> companyLogo = [];
 
                     for (var message in messages) {
-                      final logoImage = message.data()['Company'];
+                      final logoImage = message.data()['img'];
                       final logos = CompanyLogo(
                         companyLogoImage: logoImage,
                       );
@@ -57,7 +50,8 @@ class PlacementCompany extends StatelessWidget {
                     }
                     return Wrap(
                       alignment: WrapAlignment.center,
-                      spacing: 50.0,
+                      spacing: 30.0,
+                      //runSpacing: 0.0,
                       children: companyLogo,
                     );
                   }
@@ -66,7 +60,7 @@ class PlacementCompany extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 50.0,
+            height: 30.0,
           ),
         ],
       ),
@@ -82,7 +76,7 @@ class CompanyLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image(
       image: NetworkImage("$companyLogoImage,"),
-      width: 200.0,
+      width: 100.0,
     );
   }
 }

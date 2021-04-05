@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Home/main_title_widget.dart';
-import 'package:flutter_app_newocean/Home/review.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widget.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/review.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:readmore/readmore.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -58,7 +55,7 @@ class _ReviewsSectionState extends State<ReviewsSection> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MainTitleWidget(
+                  MainTitleWidgetHome(
                     title: "Reviews",
                   ),
                 ],
@@ -115,7 +112,7 @@ class _ReviewsSectionState extends State<ReviewsSection> {
               SizedBox(
                 height: 80.0,
               ),
-              ReView(),
+              ReView()
             ],
           ),
         ],

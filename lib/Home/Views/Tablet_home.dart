@@ -1,16 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Alert/alert_msg.dart';
-import 'package:flutter_app_newocean/Home/how_it_works.dart';
-import 'package:flutter_app_newocean/Home/main_badget_widget.dart';
-import 'package:flutter_app_newocean/Home/our_client.dart';
-import 'package:flutter_app_newocean/Home/placement_company.dart';
-import 'package:flutter_app_newocean/Home/reviews.dart';
-import 'package:flutter_app_newocean/Home/slider_widget.dart';
-import 'package:flutter_app_newocean/Home/upcoming_course_widget.dart';
-import 'package:flutter_app_newocean/Home/what_is_new.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_badget_widget.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/our_client.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/placement_company.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/reviews.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/slider_widget.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
+import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/what_is_new.dart';
 
 class TabletHome extends StatefulWidget {
   @override

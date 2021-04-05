@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 
-class MainTitleWidget extends StatelessWidget {
+class MainTitleWidgetHome extends StatelessWidget {
   final String title;
-  MainTitleWidget({this.title});
+  MainTitleWidgetHome({this.title});
 
   @override
   Widget build(BuildContext context) {
