@@ -173,10 +173,8 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                           ),
                         ],
                       ),
-
                       menuItem(
-                        text: 'Contact Us',
-                      ),
+                          text: 'Contact Us', naviagationPath: ContactUsRoute),
 
                       menuItem(
                         text: 'Career',

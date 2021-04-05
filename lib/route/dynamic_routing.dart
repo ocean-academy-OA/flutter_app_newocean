@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
+import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
@@ -29,6 +30,11 @@ Route<dynamic> generateRoute(
     case ServiceRoute:
       return _getPageRoute(
         ResponsiveService(),
+        settings,
+      );
+    case ContactUsRoute:
+      return _getPageRoute(
+        ResponsiveContactUs(),
         settings,
       );
     default:
