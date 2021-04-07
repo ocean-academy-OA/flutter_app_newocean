@@ -18,3 +18,12 @@ class UpcomingModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class ClassMenu extends ChangeNotifier {
+  bool isLogin = false;
+
+  void updateMenu(bool isLogin) {
+    this.isLogin = isLogin;
+    notifyListeners();
+  }
+}

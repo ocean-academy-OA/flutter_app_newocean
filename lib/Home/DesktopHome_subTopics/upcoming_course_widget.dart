@@ -8,6 +8,8 @@ import 'package:flutter_app_newocean/common/text.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../route/Provider/provider_routing.dart';
+
 class UpcomingCourse extends StatefulWidget {
   @override
   _UpcomingCourseState createState() => _UpcomingCourseState();
@@ -37,7 +39,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
     for (var courses in message.docs) {
       //print(courses.data()['img']);
       String a = courses.data()['upcomingcourse'];
-      //Provider.of<UpcomingModel>(context, listen: false).updateFlags(1);
+      Provider.of<UpcomingModel>(context, listen: false).updateFlags(1);
       Widget coursIMG = Container(
         margin: EdgeInsets.symmetric(horizontal: 20.0),
         child: ClipRRect(
@@ -86,11 +88,12 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
       alignment: Alignment.center,
       children: [
         Container(
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               image: DecorationImage(image: AssetImage('images/oa_bg.png'))),
           padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
                 child: MainTitleWidgetHome(
@@ -106,68 +109,68 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
               SizedBox(
                 height: 40.0,
               ),
-              // Container(
-              //   alignment: Alignment.center,
-              //   child: Stack(
-              //     alignment: Alignment.center,
-              //     children: [
-              //       SingleChildScrollView(
-              //         scrollDirection: Axis.horizontal,
-              //         child: Consumer<UpcomingModel>(
-              //             builder: (context, cart, child) {
-              //           return Row(
-              //             children: bubbles,
-              //           );
-              //         }),
-              //       ),
-              //       Row(
-              //         children: [
-              //           GestureDetector(
-              //             onTap: () {
-              //               setState(() {
-              //                 left();
-              //               });
-              //             },
-              //             child: Container(
-              //               margin: EdgeInsets.all(15.0),
-              //               alignment: Alignment.center,
-              //               width: 60.0,
-              //               height: 60.0,
-              //               decoration: BoxDecoration(
-              //                   color: Colors.white,
-              //                   borderRadius: BorderRadius.circular(500.0)),
-              //               child: Icon(
-              //                 Icons.chevron_left,
-              //                 size: 50.0,
-              //               ),
-              //             ),
-              //           ),
-              //           Spacer(),
-              //           GestureDetector(
-              //             onTap: () {
-              //               setState(() {
-              //                 right();
-              //               });
-              //             },
-              //             child: Container(
-              //               margin: EdgeInsets.all(15.0),
-              //               alignment: Alignment.center,
-              //               width: 60.0,
-              //               height: 60.0,
-              //               decoration: BoxDecoration(
-              //                   color: Colors.white,
-              //                   borderRadius: BorderRadius.circular(500.0)),
-              //               child: Icon(
-              //                 Icons.chevron_right,
-              //                 size: 50.0,
-              //               ),
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              Container(
+                alignment: Alignment.center,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Consumer<UpcomingModel>(
+                          builder: (context, cart, child) {
+                        return Row(
+                          children: bubbles,
+                        );
+                      }),
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              left();
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(15.0),
+                            alignment: Alignment.center,
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(500.0)),
+                            child: Icon(
+                              Icons.chevron_left,
+                              size: 50.0,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              right();
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(15.0),
+                            alignment: Alignment.center,
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(500.0)),
+                            child: Icon(
+                              Icons.chevron_right,
+                              size: 50.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

@@ -100,7 +100,7 @@ class _MenuBarTabletState extends State<MenuBarTablet> {
                     text: "Services", naviagationPath: ServiceRoute),
                 buildMouseRegion(
                     text: 'Contact Us', naviagationPath: ContactUsRoute),
-                buildMouseRegion(text: "Career"),
+                buildMouseRegion(text: "Career", naviagationPath: CareerRoute),
               ],
             ),
           ),

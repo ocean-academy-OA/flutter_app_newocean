@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
+import 'package:flutter_app_newocean/ClassRoom/classroom_menu/classroom_menu.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_badget_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/our_client.dart';
@@ -8,6 +10,9 @@ import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/what_is_new.dart';
+import 'package:flutter_app_newocean/alert/alert_msg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app_newocean/Home/Views/Tablet_home.dart';
 
 class DesktopHome extends StatefulWidget {
   @override
@@ -20,61 +25,64 @@ class _DesktopHomeState extends State<DesktopHome> {
   String phoneNumberAlert;
   String emailAlert;
   bool flag = true;
-  Timer _timer;
 
   void initState() {
     // TODO: implement initState
     super.initState();
     //Navbar.visiblity = true;
-    // Future.delayed(Duration.zero, () => showDialogIfFirstLoaded(context));
-    // _timer = Timer(Duration(seconds: 0), () {
-    //   showDialogIfFirstLoaded(context);
-    // });
+    Future.delayed(
+        Duration(milliseconds: 3000), () => showDialogIfFirstLoaded(context));
   }
 
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    // _timer.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SliderWidget(),
-            MainBadgeWidget(),
-            UpcomingCourse(),
-            PlacementCompany(),
-            ReviewsSection(),
-            OurClient(),
-            WhatIsNew(),
-            HowItWorks(),
-            //Footer(),
-          ],
-        ),
-      ),
-    );
+    return LayoutBuilder(builder: (context, constrains) {
+      if (constrains.maxWidth < 1240) {
+        return TabletHome();
+      } else {
+        return Container(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SliderWidget(),
+
+                MainBadgeWidget(),
+                UpcomingCourse(),
+                PlacementCompany(),
+                ReviewsSection(),
+                OurClient(),
+                WhatIsNew(),
+                HowItWorks(),
+                //Footer(),
+              ],
+            ),
+          ),
+        );
+      }
+    });
   }
 
-// Future showDialogIfFirstLoaded(BuildContext context) async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//   bool isFirstLoaded = prefs.getBool(keyIsFirstLoaded);
-//
-//   //TODO make as isFirstLoaded == null
-//   if (isFirstLoaded == true) {
-//     showDialog(
-//       context: context,
-//       builder: (BuildContext context) {
-//         // return object of type Dialog
-//         return AlertEnquiry(
-//           keyIsFirstLoaded: keyIsFirstLoaded,
-//         );
-//       },
-//     );
-//   }
-// }
+  Future showDialogIfFirstLoaded(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstLoaded = prefs.getBool(keyIsFirstLoaded);
+
+    //TODO make as isFirstLoaded == null
+    if (isFirstLoaded == true) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          return AlertEnquiry(
+            keyIsFirstLoaded: keyIsFirstLoaded,
+          );
+        },
+      );
+    }
+  }
 }

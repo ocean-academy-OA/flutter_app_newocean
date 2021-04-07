@@ -14,6 +14,8 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:progress_indicator_button/progress_button.dart';
 import 'package:random_string/random_string.dart';
 
+import 'tablet_contactus.dart';
+
 final _firestore = FirebaseFirestore.instance;
 
 class DesktopContactUs extends StatefulWidget {
@@ -238,468 +240,480 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
 
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      opacity: 0.1,
-      inAsyncCall: showSpinner,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            TopNavigationBar(title: 'Contact Us'),
-            Row(
+    return LayoutBuilder(builder: (context, constrains) {
+      if (constrains.maxWidth < 1240) {
+        return TabletContactUs();
+      } else {
+        return ModalProgressHUD(
+          opacity: 0.1,
+          inAsyncCall: showSpinner,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 100.0),
-                    child: Column(
-                      children: [
-                        Row(
+                TopNavigationBar(title: 'Contact Us'),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 100.0),
+                        child: Column(
                           children: [
-                            Icon(
-                              FontAwesomeIcons.mobileAlt,
-                              color: Colors.blue,
-                              size: 35,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              '0413-2238675',
-                              style: TextStyle(
-                                letterSpacing: 1,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: kfontname,
-                                color: kcontentcolor,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 50),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.email_outlined,
-                              color: Colors.blue,
-                              size: 35,
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: Text(
-                                'oceanacademy@gmail.com',
-                                style: TextStyle(
-                                  letterSpacing: 1,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: 60),
-                        Row(
-                          children: [
-                            Icon(
-                              FontAwesomeIcons.mapMarkerAlt,
-                              color: Colors.blue,
-                              size: 35,
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: Text(
-                                'No. 2, Karuvadikuppam Main Rd, '
-                                'near GINGER HOTEL, Senthamarai Nagar, '
-                                'Muthialpet, Puducherry, 605003',
-                                style: TextStyle(
-                                  letterSpacing: 1,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: 70),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 40),
-                                height: 380,
-                                width: 450,
-                                child: IframeScreen(500, 400, linkMaps),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 100, top: 100, left: 80),
-                    child: Form(
-                      key: _formKeyDesktop,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Contact Form',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff505050),
-                              fontSize: 25,
-                              fontFamily: kfontname,
-                            ),
-                          ),
-                          SizedBox(height: 13),
-                          Text(
-                            contactuscontent,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20,
-                              fontFamily: kfontname,
-                              color: kcontentcolor,
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          RichText(
-                            text: TextSpan(
-                                text: 'This Enquiry is for',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: '*',
-                                    style: TextStyle(color: Colors.red),
-                                  )
-                                ]),
-                          ),
-                          SizedBox(height: 20),
-                          Container(
-                            width: 700,
-                            child: DropdownButtonFormField<String>(
-                              autovalidate: validation,
-                              validator: (value) {
-                                if (value == 'Select') {
-                                  return 'enquiry is required';
-                                }
-                                return null;
-                              },
-                              decoration: InputDecoration(
-                                errorStyle: TextStyle(
-                                    color: Colors.redAccent, fontSize: 12),
-                                border: OutlineInputBorder(),
-                              ),
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor),
-                              value: enquiry,
-                              items: getDropdown(),
-                              onChanged: (value) {
-                                setState(() {
-                                  enquiry = value;
-                                });
-                                print(value);
-                              },
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          RichText(
-                            text: TextSpan(
-                              text: 'Full Name',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: kfontname,
-                                color: kcontentcolor,
-                              ),
+                            Row(
                               children: [
-                                TextSpan(
-                                  text: '*',
-                                  style: TextStyle(color: Colors.red),
+                                Icon(
+                                  FontAwesomeIcons.mobileAlt,
+                                  color: Colors.blue,
+                                  size: 35,
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                  '0413-2238675',
+                                  style: TextStyle(
+                                    letterSpacing: 1,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: kfontname,
+                                    color: kcontentcolor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 50),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.email_outlined,
+                                  color: Colors.blue,
+                                  size: 35,
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    'oceanacademy@gmail.com',
+                                    style: TextStyle(
+                                      letterSpacing: 1,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor,
+                                    ),
+                                  ),
                                 )
                               ],
                             ),
-                          ),
-                          SizedBox(height: 25),
-                          Container(
-                            width: 700,
-                            child: _buildName(),
-                          ),
-                          SizedBox(height: 25),
-                          RichText(
-                            text: TextSpan(
-                                text: 'Phone Number',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor,
+                            SizedBox(height: 60),
+                            Row(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.mapMarkerAlt,
+                                  color: Colors.blue,
+                                  size: 35,
                                 ),
-                                children: [
-                                  TextSpan(
-                                    text: '*',
-                                    style: TextStyle(color: Colors.red),
-                                  )
-                                ]),
-                          ),
-                          SizedBox(height: 25),
-                          Container(
-                            width: 700,
-                            child: _buildphonenumber(),
-                          ),
-                          SizedBox(height: 25),
-                          RichText(
-                            text: TextSpan(
-                                text: 'E-mail',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: '*',
-                                    style: TextStyle(color: Colors.red),
-                                  )
-                                ]),
-                          ),
-                          SizedBox(height: 25),
-                          Container(
-                            width: 700,
-                            child: _buildEmail(),
-                          ),
-                          SizedBox(height: 25),
-                          RichText(
-                            text: TextSpan(
-                                text: 'Query',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: kfontname,
-                                  color: kcontentcolor,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: '*',
-                                    style: TextStyle(color: Colors.red),
-                                  )
-                                ]),
-                          ),
-                          SizedBox(height: 25),
-                          Container(
-                            width: 700,
-                            child: _buildquery(),
-                          ),
-                          SizedBox(height: 20),
-                          Container(
-                            child: Text(
-                              "I'm not Robot",
-                              style: TextStyle(
-                                color: Colors.grey[600],
-                                letterSpacing: 2,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300,
-                              ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    'No. 2, Karuvadikuppam Main Rd, '
+                                    'near GINGER HOTEL, Senthamarai Nagar, '
+                                    'Muthialpet, Puducherry, 605003',
+                                    style: TextStyle(
+                                      letterSpacing: 1,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor,
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
-                          ),
-                          SizedBox(height: 5),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(15),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[100],
+                            SizedBox(height: 70),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 40),
+                                    height: 380,
+                                    width: 450,
+                                    child: IframeScreen(500, 400, linkMaps),
+                                  ),
                                 ),
-                                child: Column(
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(right: 100, top: 100, left: 80),
+                        child: Form(
+                          key: _formKeyDesktop,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Contact Form',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xff505050),
+                                  fontSize: 25,
+                                  fontFamily: kfontname,
+                                ),
+                              ),
+                              SizedBox(height: 13),
+                              Text(
+                                contactuscontent,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                  fontFamily: kfontname,
+                                  color: kcontentcolor,
+                                ),
+                              ),
+                              SizedBox(height: 30),
+                              RichText(
+                                text: TextSpan(
+                                    text: 'This Enquiry is for',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: '*',
+                                        style: TextStyle(color: Colors.red),
+                                      )
+                                    ]),
+                              ),
+                              SizedBox(height: 20),
+                              Container(
+                                width: 700,
+                                child: DropdownButtonFormField<String>(
+                                  autovalidate: validation,
+                                  validator: (value) {
+                                    if (value == 'Select') {
+                                      return 'enquiry is required';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    errorStyle: TextStyle(
+                                        color: Colors.redAccent, fontSize: 12),
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor),
+                                  value: enquiry,
+                                  items: getDropdown(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      enquiry = value;
+                                    });
+                                    print(value);
+                                  },
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              RichText(
+                                text: TextSpan(
+                                  text: 'Full Name',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: kfontname,
+                                    color: kcontentcolor,
+                                  ),
                                   children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[400],
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          alignment: Alignment.center,
-                                          width: 50,
-                                          height: 30,
-                                          child: Text(
-                                            firstInt =
-                                                randomBetween(1, 10).toString(),
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          width: 50,
-                                          height: 30,
-                                          child: Text(
-                                            '+',
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                color: Colors.grey),
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[400],
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          alignment: Alignment.center,
-                                          width: 50,
-                                          height: 30,
-                                          child: Text(
-                                            secondInt =
-                                                randomBetween(1, 10).toString(),
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          width: 50,
-                                          height: 30,
-                                          child: Text(
-                                            '=',
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                color: Colors.grey),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          width: 50,
-                                          height: 30,
-                                          color: Colors.white,
-                                          child: _buildAnswerField(),
-                                        ),
-                                      ],
+                                    TextSpan(
+                                      text: '*',
+                                      style: TextStyle(color: Colors.red),
                                     )
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
-                          SizedBox(height: 40),
-                          Container(
-                            width: 120,
-                            height: 53,
-                            child: ProgressButton(
-                                color: Color(0xff0091D2),
-                                animationDuration: Duration(milliseconds: 200),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                                strokeWidth: 2,
+                              SizedBox(height: 25),
+                              Container(
+                                width: 700,
+                                child: _buildName(),
+                              ),
+                              SizedBox(height: 25),
+                              RichText(
+                                text: TextSpan(
+                                    text: 'Phone Number',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: '*',
+                                        style: TextStyle(color: Colors.red),
+                                      )
+                                    ]),
+                              ),
+                              SizedBox(height: 25),
+                              Container(
+                                width: 700,
+                                child: _buildphonenumber(),
+                              ),
+                              SizedBox(height: 25),
+                              RichText(
+                                text: TextSpan(
+                                    text: 'E-mail',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: '*',
+                                        style: TextStyle(color: Colors.red),
+                                      )
+                                    ]),
+                              ),
+                              SizedBox(height: 25),
+                              Container(
+                                width: 700,
+                                child: _buildEmail(),
+                              ),
+                              SizedBox(height: 25),
+                              RichText(
+                                text: TextSpan(
+                                    text: 'Query',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: kfontname,
+                                      color: kcontentcolor,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: '*',
+                                        style: TextStyle(color: Colors.red),
+                                      )
+                                    ]),
+                              ),
+                              SizedBox(height: 25),
+                              Container(
+                                width: 700,
+                                child: _buildquery(),
+                              ),
+                              SizedBox(height: 20),
+                              Container(
                                 child: Text(
-                                  "Submit",
+                                  "I'm not Robot",
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontFamily: kfontname,
+                                    color: Colors.grey[600],
+                                    letterSpacing: 2,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w300,
                                   ),
                                 ),
-                                onPressed:
-                                    (AnimationController controller) async {
-                                  calc();
-                                  print(answerController.text);
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(15),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.grey[100],
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[400],
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              alignment: Alignment.center,
+                                              width: 50,
+                                              height: 30,
+                                              child: Text(
+                                                firstInt = randomBetween(1, 10)
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            Container(
+                                              alignment: Alignment.center,
+                                              width: 50,
+                                              height: 30,
+                                              child: Text(
+                                                '+',
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    color: Colors.grey),
+                                              ),
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[400],
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              alignment: Alignment.center,
+                                              width: 50,
+                                              height: 30,
+                                              child: Text(
+                                                secondInt = randomBetween(1, 10)
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            Container(
+                                              alignment: Alignment.center,
+                                              width: 50,
+                                              height: 30,
+                                              child: Text(
+                                                '=',
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    color: Colors.grey),
+                                              ),
+                                            ),
+                                            Container(
+                                              alignment: Alignment.center,
+                                              width: 50,
+                                              height: 30,
+                                              color: Colors.white,
+                                              child: _buildAnswerField(),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 40),
+                              Container(
+                                width: 120,
+                                height: 53,
+                                child: ProgressButton(
+                                    color: Color(0xff0091D2),
+                                    animationDuration:
+                                        Duration(milliseconds: 200),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    strokeWidth: 2,
+                                    child: Text(
+                                      "Submit",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontFamily: kfontname,
+                                      ),
+                                    ),
+                                    onPressed:
+                                        (AnimationController controller) async {
+                                      calc();
+                                      print(answerController.text);
 
-                                  TimeOfDay picked = TimeOfDay.now();
-                                  MaterialLocalizations localizations =
-                                      MaterialLocalizations.of(context);
-                                  time = localizations.formatTimeOfDay(picked,
-                                      alwaysUse24HourFormat: false);
+                                      TimeOfDay picked = TimeOfDay.now();
+                                      MaterialLocalizations localizations =
+                                          MaterialLocalizations.of(context);
+                                      time = localizations.formatTimeOfDay(
+                                          picked,
+                                          alwaysUse24HourFormat: false);
 
-                                  date = DateFormat("d-M-y")
-                                      .format(DateTime.now());
-                                  print('$time < Current Time >');
-                                  if (_formKeyDesktop.currentState.validate()) {
-                                    if (controller.isCompleted) {
-                                      controller.reverse();
-                                    } else {
-                                      controller.forward();
-                                    }
-                                    _formKeyDesktop.currentState.save();
-                                    if (enquiry != null &&
-                                        fullname != null &&
-                                        email != null &&
-                                        query != null &&
-                                        phoneNumber != null &&
-                                        answer.toString() == total) {
-                                      await _firestore
-                                          .collection('contact_us')
-                                          .add({
-                                        'Enquery': enquiry,
-                                        'Full_Name': fullname,
-                                        'Email': email,
-                                        'Query': query,
-                                        'Phone_Number': phoneNumber
-                                      });
-                                      // getData();
-                                      print("$date < Date Time >");
-                                      setState(() {
-                                        print(
-                                            'working////////////////////////////////////');
-                                        validation = false;
-                                      });
-                                      if (enquiry.isNotEmpty) {
-                                        setState(() {
-                                          enquiry = enquery[0];
-                                        });
-                                      }
-                                      nameController.clear();
-                                      emailController.clear();
-                                      queryController.clear();
-                                      phoneNumberController.clear();
-                                      answerController.clear();
-
-                                      if (controller.isCompleted) {
-                                        setState(() {
+                                      date = DateFormat("d-M-y")
+                                          .format(DateTime.now());
+                                      print('$time < Current Time >');
+                                      if (_formKeyDesktop.currentState
+                                          .validate()) {
+                                        if (controller.isCompleted) {
                                           controller.reverse();
+                                        } else {
+                                          controller.forward();
+                                        }
+                                        _formKeyDesktop.currentState.save();
+                                        if (enquiry != null &&
+                                            fullname != null &&
+                                            email != null &&
+                                            query != null &&
+                                            phoneNumber != null &&
+                                            answer.toString() == total) {
+                                          await _firestore
+                                              .collection('contact_us')
+                                              .add({
+                                            'Enquery': enquiry,
+                                            'Full_Name': fullname,
+                                            'Email': email,
+                                            'Query': query,
+                                            'Phone_Number': phoneNumber
+                                          });
+                                          // getData();
+                                          print("$date < Date Time >");
+                                          setState(() {
+                                            print(
+                                                'working////////////////////////////////////');
+                                            validation = false;
+                                          });
+                                          if (enquiry.isNotEmpty) {
+                                            setState(() {
+                                              enquiry = enquery[0];
+                                            });
+                                          }
+                                          nameController.clear();
+                                          emailController.clear();
+                                          queryController.clear();
+                                          phoneNumberController.clear();
+                                          answerController.clear();
+
+                                          if (controller.isCompleted) {
+                                            setState(() {
+                                              controller.reverse();
+                                            });
+                                          }
+                                          _showMyDialog(
+                                              context: context,
+                                              content: Alert());
+                                        }
+                                      } else {
+                                        setState(() {
+                                          print(
+                                              'working////////////////////////////////////');
+                                          validation = true;
                                         });
                                       }
-                                      _showMyDialog(
-                                          context: context, content: Alert());
-                                    }
-                                  } else {
-                                    setState(() {
-                                      print(
-                                          'working////////////////////////////////////');
-                                      validation = true;
-                                    });
-                                  }
-                                }),
+                                    }),
+                              ),
+                              SizedBox(height: 50),
+                            ],
                           ),
-                          SizedBox(height: 50),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
+                // DesktopFooter(),
               ],
             ),
-            // DesktopFooter(),
-          ],
-        ),
-      ),
-    );
+          ),
+        );
+      }
+    });
   }
 }
 

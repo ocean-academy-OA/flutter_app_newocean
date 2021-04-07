@@ -6,6 +6,8 @@ import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 
+import '../route/routeNames.dart';
+
 class MenuBarDesktop extends StatefulWidget {
   MenuBarDesktop({this.child});
   Widget child;
@@ -178,9 +180,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                       menuItem(
                           text: 'Contact Us', naviagationPath: ContactUsRoute),
 
-                      menuItem(
-                        text: 'Career',
-                      ),
+                      menuItem(text: 'Career', naviagationPath: CareerRoute),
                     ],
                   ),
                 ),
@@ -199,8 +199,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   onPressed: () {
-                    // print('${MenuBar.stayUser}MenuBar.stayUser');
-                    // print("${LogIn.registerNumber}LogIn.registerNumber");
+                    locator<NavigationService>().navigateTo(LoginRoute);
 
                     setState(() {
                       NavbarRouting.menu.updateAll(

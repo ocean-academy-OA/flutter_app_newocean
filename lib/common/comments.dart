@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/common/mobile_constents.dart';
+import 'package:flutter_app_newocean/common/constants.dart';
 
 class TextWidget extends StatelessWidget {
   final String title;
@@ -12,9 +12,8 @@ class TextWidget extends StatelessWidget {
             MediaQuery.of(context).size.width / 10,
         child: Text(
           title,
-          style: TextStyle(
-              fontFamily: kfontname, color: kcontentcolor, height: 1.5),
-          textAlign: TextAlign.justify,
+          style: otherSmallContentTextStyle,
+          textAlign: TextAlign.center,
         ),
       ),
     );

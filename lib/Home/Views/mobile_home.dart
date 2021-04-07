@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Alert/alert_msg.dart';
+
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/main_badget_widget.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/placement_company.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/upcoming_course_widget.dart';
+import 'package:flutter_app_newocean/alert/alert_msg.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

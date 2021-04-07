@@ -34,7 +34,7 @@ class BadgeWidget extends StatelessWidget {
           ),
           Text(
             title,
-            // style: otherSmallContentTextStyle,
+            style: otherSmallContentTextStyle,
             textAlign: TextAlign.center,
           ),
           SizedBox(

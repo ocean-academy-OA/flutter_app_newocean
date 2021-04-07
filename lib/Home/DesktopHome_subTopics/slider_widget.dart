@@ -34,13 +34,11 @@ class _SliderWidgetState extends State<SliderWidget> {
     setState(() {
       getData();
     });
-    print("hdkjasfkajdajd");
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600,
       padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 40.0),
       decoration: BoxDecoration(
         image: DecorationImage(

@@ -436,100 +436,99 @@ class _MobileContactUsState extends State<MobileContactUs> {
                         _buildquery(),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Text(
-                            "I'm not Robot",
-                            style: TextStyle(
-                              color: Colors.grey[600],
-                              letterSpacing: 2,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300,
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 20),
+                          Container(
+                            child: Text(
+                              "I'm not Robot",
+                              style: TextStyle(
+                                color: Colors.grey[600],
+                                letterSpacing: 2,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w300,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[100],
+                          SizedBox(height: 5),
+                          Container(
+                            padding: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue[400],
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      alignment: Alignment.center,
+                                      width: 50,
+                                      height: 30,
+                                      child: Text(
+                                        firstInt =
+                                            randomBetween(1, 10).toString(),
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      width: 50,
+                                      height: 30,
+                                      child: Text(
+                                        '+',
+                                        style: TextStyle(
+                                            fontSize: 25, color: Colors.grey),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue[400],
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      alignment: Alignment.center,
+                                      width: 50,
+                                      height: 30,
+                                      child: Text(
+                                        secondInt =
+                                            randomBetween(1, 10).toString(),
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      width: 50,
+                                      height: 30,
+                                      child: Text(
+                                        '=',
+                                        style: TextStyle(
+                                            fontSize: 25, color: Colors.grey),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      width: 50,
+                                      height: 30,
+                                      color: Colors.white,
+                                      child: _buildAnswerField(),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue[400],
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    alignment: Alignment.center,
-                                    width: 50,
-                                    height: 30,
-                                    child: Text(
-                                      firstInt =
-                                          randomBetween(1, 10).toString(),
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    width: 50,
-                                    height: 30,
-                                    child: Text(
-                                      '+',
-                                      style: TextStyle(
-                                          fontSize: 25, color: Colors.grey),
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue[400],
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    alignment: Alignment.center,
-                                    width: 50,
-                                    height: 30,
-                                    child: Text(
-                                      secondInt =
-                                          randomBetween(1, 10).toString(),
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    width: 50,
-                                    height: 30,
-                                    child: Text(
-                                      '=',
-                                      style: TextStyle(
-                                          fontSize: 25, color: Colors.grey),
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    width: 50,
-                                    height: 30,
-                                    color: Colors.white,
-                                    child: _buildAnswerField(),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
+                          SizedBox(height: 25),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 25),
                     Container(
                       width: 100,
                       height: 40,

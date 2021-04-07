@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
-import 'package:flutter_app_newocean/Menu/menu_item.dart';
-import 'package:flutter_app_newocean/Menu/menu_item_widget.dart';
+
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+
+import '../route/routeNames.dart';
 
 class MenuBarDrawer extends StatefulWidget {
   @override
@@ -79,6 +80,10 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
                   icon: Icons.contact_page_outlined,
                   text: 'Contact Us',
                   naviagationPath: ContactUsRoute),
+              menuItem(
+                  icon: Icons.bar_chart,
+                  text: 'Career',
+                  naviagationPath: CareerRoute),
             ],
           )),
           // Expanded(
