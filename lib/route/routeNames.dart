@@ -7,3 +7,4 @@ const String LoginRoute = "/Login";
 const String OTPRoute = "/OTP";
 const String testRoute = "testPage";
 const String RegistrationRoute = "Registration";
+const String UpcomingWebinarRoute = "UpcomingWebinar";

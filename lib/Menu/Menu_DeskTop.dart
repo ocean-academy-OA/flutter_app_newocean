@@ -6,6 +6,7 @@ import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 
+import '../ocean_icon/ocean_icons.dart';
 import '../route/routeNames.dart';
 
 class MenuBarDesktop extends StatefulWidget {
@@ -19,17 +20,6 @@ class MenuBarDesktop extends StatefulWidget {
 }
 
 class _MenuBarDesktopState extends State<MenuBarDesktop> {
-  // Timestamp timestamp;
-  // void retriveTime() async {
-  //   await for (var snapshot in _firestore
-  //       .collection('webinar')
-  //       .snapshots(includeMetadataChanges: true)) {
-  //     for (var message in snapshot.docs) {
-  //       timestamp = message.data()['timeStamp'];
-  //     }
-  //   }
-  // }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -44,33 +34,7 @@ class _MenuBarDesktopState extends State<MenuBarDesktop> {
       if (constrains.maxWidth < 1240) {
         return MenuBarTablet();
       } else {
-        return Column(
-          children: [
-            // StreamBuilder<QuerySnapshot>(
-            //     stream: _firestore.collection('Webinar').snapshots(),
-            //     builder: (context, snapshot) {
-            //       if (snapshot.hasData) {
-            //         if (snapshot.data.docs.isNotEmpty) {
-            //           return Visibility(
-            //             visible: Navbar.isNotification,
-            //             child: FlashNotification(
-            //               dismissNotification: () {
-            //                 setState(() {
-            //                   Navbar.isNotification = false;
-            //                 });
-            //               },
-            //             ),
-            //           );
-            //         } else {
-            //           return SizedBox();
-            //         }
-            //       } else {
-            //         return SizedBox();
-            //       }
-            //     }),
-            NavbarRouting(),
-          ],
-        );
+        return NavbarRouting();
       }
     });
   }
@@ -101,8 +65,6 @@ class _NavbarRoutingState extends State<NavbarRouting> {
 
   @override
   Widget build(BuildContext context) {
-    print('hhhhhhhhhhhhhhhhhhhhhhh');
-    // print(settings.name);
     return Container(
       color: Color(0xFFECF5FF),
       child: Padding(
@@ -113,11 +75,13 @@ class _NavbarRoutingState extends State<NavbarRouting> {
             GestureDetector(
               onTap: () {},
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(" OA "),
-                  SizedBox(
-                    width: 10,
+                  Icon(
+                    Ocean.oa,
+                    color: Color(0xFF0091D2),
+                    size: 50,
                   ),
                   Text(
                     "ocean academy",

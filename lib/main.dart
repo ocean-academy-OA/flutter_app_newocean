@@ -7,8 +7,6 @@ import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:provider/provider.dart';
 
-import 'Menu/ResponsiveMenu.dart';
-
 void main() {
   setupLocator();
   runApp(MyApp());

@@ -5,6 +5,8 @@ import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 
+import '../ocean_icon/ocean_icons.dart';
+
 class MenuBarTablet extends StatefulWidget {
   static Map menu = {
     'Home': true,
@@ -33,11 +35,16 @@ class _MenuBarTabletState extends State<MenuBarTablet> {
                 GestureDetector(
                   onTap: () {},
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text(" OA "),
+                      Icon(
+                        Ocean.oa,
+                        color: Color(0xFF0091D2),
+                        size: 45,
+                      ),
                       SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
                       Text(
                         "ocean academy",
