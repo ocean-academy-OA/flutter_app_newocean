@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/card_design.dart';
-import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/navigation_bar.dart';
+
+import 'package:flutter_app_newocean/TopNavigationBar/mobile_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
@@ -18,14 +20,14 @@ class _TabServiceState extends State<TabService> {
         child: Center(
           child: Column(
             children: [
-              TopNavigationBar(
+              MobileTopNavigationBar(
                 title: "Service",
               ),
               SizedBox(
                 height: 50.0,
               ),
               ContainerServiceWidget(
-                title: 'On-Campus trainin',
+                title: 'On-Campus training',
                 content:
                     "We offer on-campus learning for students of various Universities and Colleges and help facilitate knowledge and develop their career.",
                 icon: 'images/campus-training.png',
@@ -34,7 +36,7 @@ class _TabServiceState extends State<TabService> {
                 title: "Software development",
                 content:
                     "We offer various software development services such as designing, planning, and testing and also provide maintenance.",
-                icon: 'images/software devolopment.png',
+                icon: 'images/software development.png',
               ),
               ContainerServiceWidget(
                 title: "Technical Workshops (Implant training)",
@@ -85,8 +87,7 @@ class _TabServiceState extends State<TabService> {
                     'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/service%20images%20svgs%2Flearn%20new%20skil.svg?alt=media&token=1d608f76-07dc-48f2-951f-819cee6f0b92',
                 content: servicecontent4,
               ),
-
-              // Footer(),
+              Footer(),
             ],
           ),
         ),

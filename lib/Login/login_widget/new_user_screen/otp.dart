@@ -174,8 +174,8 @@ class _OTPState extends State<OTP> {
             width: double.infinity,
             child: Center(
               child: Container(
-                width: 600.0,
-                height: 1000,
+                width: 500.0,
+                height: 800,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -314,6 +314,8 @@ class _OTPState extends State<OTP> {
                                           borderRadius:
                                               BorderRadius.circular(70.0)),
                                       onPressed: () {
+                                        locator<NavigationService>()
+                                            .navigateTo(LoginRoute);
                                         // Provider.of<Routing>(context,
                                         //         listen: false)
                                         //     .updateRouting(widget: LogIn());

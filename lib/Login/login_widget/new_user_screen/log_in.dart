@@ -104,8 +104,8 @@ class _LogInState extends State<LogIn> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 470.0,
-                height: 430.0,
+                width: 500.0,
+                height: 470.0,
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
                 decoration: BoxDecoration(
                     color: Color(0xff006793),
@@ -129,13 +129,7 @@ class _LogInState extends State<LogIn> {
                           SizedBox(
                             height: 10.0,
                           ),
-                          Text(
-                            'Mobile Number',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold),
-                          ),
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,6 +150,8 @@ class _LogInState extends State<LogIn> {
                                   countryFilter: getContryCode(),
                                   showFlagDialog: true,
                                   showDropDownButton: true,
+                                  dialogBackgroundColor: Colors.white,
+
                                   hideSearch: true,
                                   dialogSize: Size(300.0, 550.0),
                                   onInit: (code) {
@@ -181,13 +177,15 @@ class _LogInState extends State<LogIn> {
                                   children: [
                                     Container(
                                       height: 50.0,
-                                      width: 280.0,
+                                      width: 300.0,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(3.0)),
                                       child: TextField(
                                         decoration: InputDecoration(
+                                            hintText:
+                                                'Enter your Mobile Number',
                                             fillColor: Colors.white,
                                             border: OutlineInputBorder()),
                                         controller: _phoneNumberController,
@@ -352,7 +350,7 @@ class _LogInState extends State<LogIn> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(vertical: 15.0),
-                width: 470,
+                width: 500,
                 padding: EdgeInsets.symmetric(vertical: 15),
                 decoration: BoxDecoration(
                     color: Color(0xff006793),

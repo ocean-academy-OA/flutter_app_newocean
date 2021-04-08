@@ -26,22 +26,10 @@ class _MenuBarMobileState extends State<MenuBarMobile> {
           scaffoldKey.currentState.openDrawer();
         },
       ),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Ocean.oa,
-            color: Color(0xFF0091D2),
-            size: 30,
-          ),
-          Text(
-            "ocean academy",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF0091D2),
-                fontSize: 20),
-          ),
-        ],
+      centerTitle: true,
+      title: Image.asset(
+        'images/OA.png',
+        width: 200,
       ),
       actions: [
         IconButton(

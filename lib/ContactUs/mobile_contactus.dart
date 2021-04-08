@@ -2,7 +2,10 @@
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter_app_newocean/ContactUs/iframe_map.dart';
-import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/navigation_bar.dart';
+import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
+
+import 'package:flutter_app_newocean/TopNavigationBar/mobile_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 import 'package:http/http.dart' as http;
@@ -237,7 +240,7 @@ class _MobileContactUsState extends State<MobileContactUs> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            TopNavigationBar(
+            MobileTopNavigationBar(
               title: 'Contact Us',
             ),
             Padding(
@@ -630,7 +633,7 @@ class _MobileContactUsState extends State<MobileContactUs> {
                 SizedBox(height: 40),
               ],
             ),
-            // Footer(),
+            Footer()
           ],
         ),
       ),

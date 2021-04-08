@@ -2,7 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ContainerWidget/desktop_container.dart';
-import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/navigation_bar.dart';
+import 'package:flutter_app_newocean/Footer/desktop_footer_lg.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
+
+import 'package:flutter_app_newocean/TopNavigationBar/desktop_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
@@ -31,7 +34,7 @@ class DesktopAboutUs extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                TopNavigationBar(
+                DesktopTopNavigationBar(
                   title: "About Us",
                 ),
                 Padding(
@@ -195,7 +198,7 @@ class DesktopAboutUs extends StatelessWidget {
                     },
                   ),
                 ]),
-                // Footer(),
+                DesktopFooterLg()
               ],
             ),
           ),

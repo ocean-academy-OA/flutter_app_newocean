@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
 
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/placement_company.dart';
@@ -57,7 +59,7 @@ class _TabletHomeState extends State<TabletHome> {
             OurClient(),
             WhatIsNew(),
             HowItWorks(),
-            //Footer(),
+            DesktopFooterMd()
           ],
         ),
       ),

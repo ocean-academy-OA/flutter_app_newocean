@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Footer/desktop_footer_lg.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/card_design.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/image_to_text.dart';
-import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/navigation_bar.dart';
+import 'package:flutter_app_newocean/TopNavigationBar/desktop_topnavigationbar.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/teext_to_image.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 
@@ -16,7 +18,7 @@ class _DesktopServiceState extends State<DesktopService> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          TopNavigationBar(
+          DesktopTopNavigationBar(
             title: "Services",
           ),
           SizedBox(
@@ -37,7 +39,7 @@ class _DesktopServiceState extends State<DesktopService> {
             child: Wrap(
               children: [
                 ContainerServiceWidget(
-                  title: 'On-Campus trainin',
+                  title: 'On-Campus training',
                   content:
                       "We offer on-campus learning for students of various Universities and Colleges and help facilitate knowledge and develop their career.",
                   icon: 'images/campus-training.png',
@@ -46,7 +48,7 @@ class _DesktopServiceState extends State<DesktopService> {
                   title: "Software development",
                   content:
                       "We offer various software development services such as designing, planning, and testing and also provide maintenance.",
-                  icon: 'images/software devolopment.png',
+                  icon: 'images/software development.png',
                 ),
                 ContainerServiceWidget(
                   title: "Technical Workshops (Implant training)",
@@ -103,7 +105,7 @@ class _DesktopServiceState extends State<DesktopService> {
           SizedBox(
             height: 20.0,
           ),
-          // Footer(),
+          DesktopFooterLg()
         ],
       ),
     );

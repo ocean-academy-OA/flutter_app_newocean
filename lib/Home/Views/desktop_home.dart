@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 import 'package:flutter_app_newocean/ClassRoom/classroom_menu/classroom_menu.dart';
+import 'package:flutter_app_newocean/Footer/desktop_footer_lg.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_badget_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/our_client.dart';
@@ -59,7 +61,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                 OurClient(),
                 WhatIsNew(),
                 HowItWorks(),
-                //Footer(),
+                DesktopFooterLg()
               ],
             ),
           ),

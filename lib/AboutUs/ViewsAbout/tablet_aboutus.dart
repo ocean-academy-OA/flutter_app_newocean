@@ -3,7 +3,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/AboutUs/ContainerWidget/desktop_container.dart';
+import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/navigation_bar.dart';
+import 'package:flutter_app_newocean/TopNavigationBar/tablet_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
@@ -26,7 +29,7 @@ class TabletAboutUs extends StatelessWidget {
         color: Colors.white,
         child: Column(
           children: [
-            TopNavigationBar(
+            TabletTopNavigationBar(
               title: "About Us",
             ),
             Padding(
@@ -139,7 +142,7 @@ class TabletAboutUs extends StatelessWidget {
                 },
               ),
             ]),
-            //  Footer(),
+            DesktopFooterMd()
           ],
         ),
       ),

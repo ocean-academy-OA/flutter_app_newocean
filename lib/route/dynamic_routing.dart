@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career_views/career_responsive.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
-import 'package:flutter_app_newocean/ClassRoom/classroom_menu/classroom_menu.dart';
+
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/otp.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/registration.dart';
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
-import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/upcoming_webinar.dart';
+
+import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart';
+import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
+import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:flutter_app_newocean/404/error_page.dart';
 
@@ -24,17 +27,28 @@ FirebaseAuth auth = FirebaseAuth.instance;
 Route<dynamic> generateRoute(
   RouteSettings settings,
 ) {
-  // if (settings.name.contains("OTP")) {
-  //   String mobileNumber =
-  //       Uri.parse(settings.name).queryParameters["mobileNumber"];
-  //
-  //   print("${mobileNumber}11111111111111111111111");
-  //   return _getPageRoute(
-  //       OTP(
-  //         number: mobileNumber,
-  //       ),
-  //       settings);
-  // }
+  if (settings.name.contains("WebinarJoin")) {
+    String courseName = Uri.parse(settings.name).queryParameters["id"];
+
+    print("${courseName} SingleWebinarScreen");
+    return _getPageRoute(
+        ResponsiveWebinar(
+          topic: courseName,
+        ),
+        settings);
+  }
+
+  if (settings.name.contains("JoinSuccessfully")) {
+    String userName = Uri.parse(settings.name).queryParameters["id"];
+
+    print("${userName} JoinSuccessfully");
+    return _getPageRoute(
+        ResponsiveWebinarJoinSuccessfully(
+          userName: userName,
+        ),
+        settings);
+  }
+
   switch (settings.name) {
     case HomeRoute:
       return _getPageRoute(
@@ -78,9 +92,27 @@ Route<dynamic> generateRoute(
       );
     case UpcomingWebinarRoute:
       return _getPageRoute(
-        UpcomingWebinar(),
+        ResponsiveWebinarCard(),
         settings,
       );
+    case WebinarJoinRoute:
+      String courseName = Uri.parse(settings.name).queryParameters["id"];
+      return _getPageRoute(
+        ResponsiveWebinar(
+          topic: courseName,
+        ),
+        settings,
+      );
+
+    case JoinSuccessfullyRoute:
+      String userName = Uri.parse(settings.name).queryParameters["id"];
+      return _getPageRoute(
+        ResponsiveWebinarJoinSuccessfully(
+          userName: userName,
+        ),
+        settings,
+      );
+    // case MobileJoinSuccessfullyRoute:
 
     // --------------------------
     case testRoute:

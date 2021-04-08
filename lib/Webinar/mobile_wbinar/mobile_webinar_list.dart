@@ -1,187 +1,182 @@
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Webinar/single_wbinar.dart';
+
+import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
-import '../../common/constants.dart';
-
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class WebinarCard extends StatefulWidget {
+class MobileWebinarCard extends StatefulWidget {
   static Map timing;
   @override
-  _WebinarCardState createState() => _WebinarCardState();
+  _MobileWebinarCardState createState() => _MobileWebinarCardState();
 }
 
-class _WebinarCardState extends State<WebinarCard> {
+class _MobileWebinarCardState extends State<MobileWebinarCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: Wrap(
-            alignment: WrapAlignment.center,
-            children: [
-              StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('Webinar').snapshots(),
-                // ignore: missing_return
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: LinearProgressIndicator(
-                        backgroundColor: Colors.blue,
-                      ),
-                    );
-                  } else {
-                    final messages = snapshot.data.docs;
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Upcoming Webinars'),
+        leading: BackButton(),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home),
+              color: Colors.white,
+              onPressed: () {
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (context) => Home()));
+              })
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: StreamBuilder<QuerySnapshot>(
+          stream: _firestore.collection('Webinar').snapshots(),
+          // ignore: missing_return
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: LinearProgressIndicator(
+                  backgroundColor: Colors.blue,
+                ),
+              );
+            } else {
+              final messages = snapshot.data.docs;
+              List<WebinarCardDb> courseList = [];
+              List<int> timingList = [];
+              Map<int, Widget> courseMap = {};
+              Map<String, Map> timingMap = {};
+              for (var message in messages) {
+                Timestamp timeStamp = message.data()['timestamp'];
+                final courseName = message.data()['course'];
+                final trainerName = message.data()['trainer name'];
+                final payment = message.data()['payment'];
+                final designation = message.data()['designation'];
+                final trainerImage = message.data()['trainer image'];
+                final mainTitle = message.data()['main subtitle'];
+                int duration = int.parse(message.data()['webinar duration']);
 
-                    List<WebinarCardDb> courseList = [];
-                    List<int> timingList = [];
-                    Map<int, Widget> courseMap = {};
-                    Map<String, Map> timingMap = {};
-                    for (var message in messages) {
-                      Timestamp timeStamp = message.data()['timestamp'];
-                      final courseName = message.data()['course'];
-                      final trainerName = message.data()['trainer name'];
-                      final payment = message.data()['payment'];
-                      final designation = message.data()['designation'];
-                      final trainerImage = message.data()['trainer image'];
-                      int duration =
-                          int.parse(message.data()['webinar duration']);
+                int yearFormat;
+                int monthFormat;
+                int dayFormat;
+                int hourFormat;
+                int minuteFormat;
+                int secondsFormat;
 
-                      int yearFormat;
-                      int monthFormat;
-                      int dayFormat;
-                      int hourFormat;
-                      int minuteFormat;
-                      int secondsFormat;
+                var year = DateFormat('y');
+                var month = DateFormat('MM');
+                var day = DateFormat('d');
+                var hour = DateFormat('hh');
+                var minute = DateFormat('mm');
+                var seconds = DateFormat('s');
 
-                      var year = DateFormat('y');
-                      var month = DateFormat('MM');
-                      var day = DateFormat('d');
-                      var hour = DateFormat('hh');
-                      var minute = DateFormat('mm');
-                      var seconds = DateFormat('s');
+                yearFormat = int.parse(year.format(timeStamp.toDate()));
+                monthFormat = int.parse(month.format(timeStamp.toDate()));
+                dayFormat = int.parse(day.format(timeStamp.toDate()));
+                hourFormat = int.parse(hour.format(timeStamp.toDate()));
+                minuteFormat = int.parse(minute.format(timeStamp.toDate()));
+                secondsFormat = int.parse(seconds.format(timeStamp.toDate()));
+                var timeFormat = DateFormat('a').format(timeStamp.toDate());
 
-                      yearFormat = int.parse(year.format(timeStamp.toDate()));
-                      monthFormat = int.parse(month.format(timeStamp.toDate()));
-                      dayFormat = int.parse(day.format(timeStamp.toDate()));
-                      hourFormat = int.parse(hour.format(timeStamp.toDate()));
-                      minuteFormat =
-                          int.parse(minute.format(timeStamp.toDate()));
-                      secondsFormat =
-                          int.parse(seconds.format(timeStamp.toDate()));
-                      var timeFormat =
-                          DateFormat('a').format(timeStamp.toDate());
+                var defrenceTime = DateTime(
+                        yearFormat,
+                        monthFormat,
+                        dayFormat,
+                        timeFormat == 'AM' ? hourFormat : hourFormat + 12,
+                        minuteFormat,
+                        secondsFormat)
+                    .difference(DateTime.now())
+                    .inSeconds;
 
-                      var defrenceTime = DateTime(
-                              yearFormat,
-                              monthFormat,
-                              dayFormat,
-                              timeFormat == 'AM' ? hourFormat : hourFormat + 12,
-                              minuteFormat,
-                              secondsFormat)
-                          .difference(DateTime.now())
-                          .inSeconds;
-                      var date =
-                          DateFormat('d/MM/y').format(timeStamp.toDate());
+                var date = DateFormat('d/MM/y').format(timeStamp.toDate());
 
-                      var timing = DateFormat.jm().format(timeStamp.toDate());
+                var timing = DateFormat.jm().format(timeStamp.toDate());
 
-                      //for mail info
-                      String toTimeFormat = timeFormat;
-                      int toTime = hourFormat;
-                      int toDuration = duration;
-                      if (toDuration >= 60) {
-                        var hourcalculate = toDuration ~/ 60;
-                        toDuration -= hourcalculate * 60;
-                        toTime += hourcalculate;
-                        if (toTime == 12) {
-                          if (timeFormat == 'AM') {
-                            toTimeFormat = 'PM';
-                          } else {
-                            toTimeFormat = 'AM';
-                          }
-                        } else if (toTime > 12) {
-                          toTime -= 12;
-                          if (timeFormat == 'AM') {
-                            toTimeFormat = 'PM';
-                          } else {
-                            toTimeFormat = 'AM';
-                          }
-                        }
-                      }
-
-                      var monthString = DateFormat('MMMM');
-                      var monthFormatString =
-                          monthString.format(timeStamp.toDate());
-                      Map dateForMail = {
-                        'Year': yearFormat,
-                        'Month': monthFormatString,
-                        'Day': dayFormat,
-                        'Hours': hourFormat,
-                        'To Hours': toTime,
-                        'Minutes': minuteFormat,
-                        'To Minutes': toDuration,
-                        'DayFormat': timeFormat,
-                        'To DayFormat': toTimeFormat
-                      };
-                      timingMap.addAll({courseName: dateForMail});
-
-                      final webinar = WebinarCardDb(
-                        topic: courseName,
-                        payment: payment,
-                        mentorDesignation: designation,
-                        mentorName: trainerName,
-                        mentorImage: trainerImage,
-                        date: date.toString(),
-                        time: timing.toString(),
-                        onPressed: () {
-                          locator<NavigationService>()
-                              .navigateTo('MobileWebinarJoin?id=${courseName}');
-
-                          //
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => SingleWebinarScreen(
-                          //               topic: courseName,
-                        },
-                      );
-                      if (defrenceTime > 0) {
-                        timingList.add(defrenceTime);
-                        timingList.sort();
-
-                        courseMap.addAll({defrenceTime: webinar});
-                      }
+                //for mail info
+                String toTimeFormat = timeFormat;
+                int toTime = hourFormat;
+                int toDuration = duration;
+                if (toDuration >= 60) {
+                  var hourcalculate = toDuration ~/ 60;
+                  toDuration -= hourcalculate * 60;
+                  toTime += hourcalculate;
+                  if (toTime == 12) {
+                    if (timeFormat == 'AM') {
+                      toTimeFormat = 'PM';
+                    } else {
+                      toTimeFormat = 'AM';
                     }
-                    print(timingList);
-                    for (var i in timingList) {
-                      print(i);
-                      //             )));
-
-                      courseList.add(courseMap[i]);
+                  } else if (toTime > 12) {
+                    toTime -= 12;
+                    if (timeFormat == 'AM') {
+                      toTimeFormat = 'PM';
+                    } else {
+                      toTimeFormat = 'AM';
                     }
-                    print(timingMap);
-                    print('**************//////////////////');
-                    WebinarCard.timing = timingMap;
-
-                    return Wrap(
-                      runSpacing: 20,
-                      spacing: 30,
-                      alignment: WrapAlignment.center,
-                      children: courseList,
-                    );
                   }
-                },
-              ),
-            ],
-          ),
+                }
+
+                var monthString = DateFormat('MMMM');
+                var monthFormatString = monthString.format(timeStamp.toDate());
+                Map dateForMail = {
+                  'Year': yearFormat,
+                  'Month': monthFormatString,
+                  'Day': dayFormat,
+                  'Hours': hourFormat,
+                  'To Hours': toTime,
+                  'Minutes': minuteFormat,
+                  'To Minutes': toDuration,
+                  'DayFormat': timeFormat,
+                  'To DayFormat': toTimeFormat
+                };
+                timingMap.addAll({courseName: dateForMail});
+
+                final webinar = WebinarCardDb(
+                  topic: courseName,
+                  payment: payment,
+                  mentorDesignation: designation,
+                  mentorName: trainerName,
+                  mentorImage: trainerImage,
+                  date: date.toString(),
+                  mainTitle: mainTitle,
+                  time: timing.toString(),
+                  onPressed: () {
+                    locator<NavigationService>()
+                        .navigateTo('MobileWebinarJoin?id=${courseName}');
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => MobileSingleWebinarScreen(
+                    //               topic: courseName,
+                    //             )));
+                  },
+                );
+                if (defrenceTime > 0) {
+                  timingList.add(defrenceTime);
+                  timingList.sort();
+                  courseMap.addAll({defrenceTime: webinar});
+                }
+              }
+              print(timingList);
+              for (var i in timingList) {
+                courseList.add(courseMap[i]);
+              }
+              MobileWebinarCard.timing = timingMap;
+              return Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: courseList,
+                ),
+              );
+            }
+          },
         ),
       ),
     );
@@ -197,7 +192,8 @@ class WebinarCardDb extends StatefulWidget {
       this.mentorName,
       this.mentorImage,
       this.payment,
-      this.onPressed});
+      this.onPressed,
+      this.mainTitle});
   String mentorName;
   Function onPressed;
   String mentorDesignation;
@@ -206,9 +202,12 @@ class WebinarCardDb extends StatefulWidget {
   String payment;
   String topic;
   String mentorImage;
+  String mainTitle;
   @override
   _WebinarCardDbState createState() => _WebinarCardDbState();
 }
+
+bool istest = false;
 
 class _WebinarCardDbState extends State<WebinarCardDb> {
   @override

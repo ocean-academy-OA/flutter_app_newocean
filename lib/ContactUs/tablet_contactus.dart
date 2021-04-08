@@ -2,7 +2,10 @@
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter_app_newocean/ContactUs/iframe_map.dart';
+import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/navigation_bar.dart';
+import 'package:flutter_app_newocean/TopNavigationBar/tablet_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 import 'package:http/http.dart' as http;
@@ -10,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -240,7 +244,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            TopNavigationBar(
+            TabletTopNavigationBar(
               title: 'Contact Us',
             ),
             Padding(
@@ -592,10 +596,6 @@ class _TabletContactUsState extends State<TabletContactUs> {
                                 if (enquiry.isNotEmpty) {
                                   setState(() {
                                     enquiry = enquery[0];
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                            content: Text(
-                                                'Your enquiry sent successfully!')));
                                   });
                                 }
                                 nameController.clear();
@@ -609,6 +609,8 @@ class _TabletContactUsState extends State<TabletContactUs> {
                                     controller.reverse();
                                   });
                                 }
+                                _showMyDialog(
+                                    context: context, content: Alert());
                               }
                             } else {
                               setState(() {
@@ -635,10 +637,135 @@ class _TabletContactUsState extends State<TabletContactUs> {
                 SizedBox(height: 40),
               ],
             ),
-            // Footer(),
+            DesktopFooterMd()
           ],
         ),
       ),
     );
   }
+}
+
+class Alert extends StatefulWidget {
+  @override
+  _AlertState createState() => _AlertState();
+}
+
+class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      height: 420,
+      width: 350,
+      child: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.zero,
+            width: 400,
+            height: 400,
+            child: Container(
+              child: Image(
+                image: AssetImage(
+                  'images/contactus_alert/Group 1.png',
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.zero,
+            width: 400,
+            height: 500,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 40),
+                Container(
+                  width: 180,
+                  height: 200,
+                  child: Lottie.asset("images/41793-correct.json",
+                      controller: _controller,
+                      fit: BoxFit.cover, onLoaded: (composition) {
+                    _controller
+                      ..duration = composition.duration
+                      ..forward();
+                  }),
+                ),
+                // Icon(
+                //   Icons.check_circle_outline_outlined,
+                //   size: 130,
+                //   color: Colors.green[500],
+                // ),
+                SizedBox(height: 40),
+                Text(
+                  'Sent Successfully!',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 30,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: "Gilroy",
+                  ),
+                ),
+                // SizedBox(height: 40),
+                // Text(
+                //   'Now we can go further',
+                //   style: TextStyle(color: Colors.grey),
+                // ),
+                // SizedBox(height: 5),
+                // Text(
+                //   'Few more steps',
+                //   style: TextStyle(color: Colors.grey),
+                // ),
+                SizedBox(height: 40),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  color: Colors.green[500],
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Continue',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Future<void> _showMyDialog({context, content}) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        // titlePadding: EdgeInsets.zero,
+        contentPadding: EdgeInsets.zero,
+        content: content,
+        actions: <Widget>[],
+      );
+    },
+  );
 }

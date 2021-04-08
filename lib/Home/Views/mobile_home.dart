@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
 
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/main_badget_widget.dart';
@@ -40,7 +41,7 @@ class MobileHome extends StatelessWidget {
             PlacementCompany(),
             ReviewsSection(),
             HowItWorks(),
-            // Footer(),
+            Footer(),
           ],
         ),
       ),
