@@ -70,10 +70,11 @@ dependencies:
     #  cool_alert: ^1.0.3
   flutter_gifimage: ^1.0.1
   lottie: ^0.7.0+1
-
+  url_strategy: 0.1.0+1
   random_string: ^2.1.0
   showcaseview: ^0.1.6
   get_it:
+  flutter_dropdown: ^0.0.8
 
 dev_dependencies:
   flutter_test:

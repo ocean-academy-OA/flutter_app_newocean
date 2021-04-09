@@ -51,23 +51,23 @@ class MobileHome extends StatelessWidget {
   Future showDialogIfFirstLoaded(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isFirstLoaded = prefs.getBool(keyIsFirstLoaded);
-    var alertStyle = AlertStyle(
-        animationType: AnimationType.fromTop,
-        isCloseButton: flag,
-        isOverlayTapDismiss: true,
-        descStyle: TextStyle(fontWeight: FontWeight.bold),
-        animationDuration: Duration(milliseconds: 400),
-        alertBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          // side: BorderSide(color: Colors.red),
-        ),
-        titleStyle: TextStyle(
-            color: Colors.black54, fontWeight: FontWeight.w700, fontSize: 25),
-        constraints: BoxConstraints.expand(width: 5000, height: 1000),
-        //First to chars "55" represents transparency of color
-        overlayColor: Color(0x55000000),
-        alertElevation: 100,
-        alertAlignment: Alignment.topCenter);
+    // var alertStyle = AlertStyle(
+    //     animationType: AnimationType.fromTop,
+    //     isCloseButton: flag,
+    //     isOverlayTapDismiss: true,
+    //     descStyle: TextStyle(fontWeight: FontWeight.bold),
+    //     animationDuration: Duration(milliseconds: 400),
+    //     alertBorder: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(10),
+    //       // side: BorderSide(color: Colors.red),
+    //     ),
+    //     titleStyle: TextStyle(
+    //         color: Colors.black54, fontWeight: FontWeight.w700, fontSize: 25),
+    //     constraints: BoxConstraints.expand(width: 5000, height: 1000),
+    //     //First to chars "55" represents transparency of color
+    //     overlayColor: Color(0x55000000),
+    //     alertElevation: 100,
+    //     alertAlignment: Alignment.topCenter);
 
     /// TODO insted of true = null
     if (isFirstLoaded == true) {
