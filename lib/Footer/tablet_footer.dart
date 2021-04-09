@@ -273,7 +273,7 @@ class _TabletFooterState extends State<TabletFooter> {
                           width: 180,
                           alignment: Alignment.center,
                           child: footerMouseRegion(
-                              text: "About Us", widget: ResponsiveAboutUs())),
+                              text: "ABOUT US", widget: ResponsiveAboutUs())),
                       SizedBox(height: 17.0),
                       Container(
                           width: 180,
