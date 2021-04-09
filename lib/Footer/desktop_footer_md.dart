@@ -273,7 +273,8 @@ class _DesktopFooterMdState extends State<DesktopFooterMd> {
                                 width: 180,
                                 alignment: Alignment.center,
                                 child: footerMouseRegion(
-                                    text: "About Us", widget: ResponsiveAboutUs())),
+                                    text: "ABOUT US",
+                                    widget: ResponsiveAboutUs())),
                             SizedBox(height: 20.0),
                             Container(
                                 width: 180,
