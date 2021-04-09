@@ -33,17 +33,24 @@ class WhatIsNew extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Ocean Academy Launches Its Own Private Social Network for Learners',
-                  style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      color: textColor),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30),
+                  child: Text(
+                    'Ocean Academy Launches Its Own Private Social Network for Learners',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                        color: textColor),
+                  ),
                 ),
-                Text(
-                  "Coming soon: our human to human matching engine will be able to introduce you to potential friends, partners and even dates with surprising accuracy.",
-                  style: contentTextStyle,
-                  textAlign: TextAlign.center,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text(
+                    "Coming soon: our human to human matching engine will be able to introduce you to potential friends, partners and even dates with surprising accuracy.",
+                    style: otherSmallContentTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),

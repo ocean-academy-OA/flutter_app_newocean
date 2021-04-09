@@ -1,21 +1,18 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
-
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/placement_company.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/main_badget_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/our_client.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/what_is_new.dart';
-
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
-
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Footer/tablet_footer.dart';
 
 class TabletHome extends StatefulWidget {
   @override
@@ -59,7 +56,7 @@ class _TabletHomeState extends State<TabletHome> {
             OurClient(),
             WhatIsNew(),
             HowItWorks(),
-            DesktopFooterMd()
+            TabletFooter()
           ],
         ),
       ),

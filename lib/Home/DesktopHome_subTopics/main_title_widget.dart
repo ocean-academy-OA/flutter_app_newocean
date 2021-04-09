@@ -28,7 +28,7 @@ class MainTitleWidgetHome extends StatelessWidget {
                   child: Text(
                     title,
                     style: TextStyle(
-                      fontSize: 30.0,
+                      fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       fontFamily: kfontname,
                       color: textColor,

@@ -17,16 +17,17 @@ class _TrustPilotReviewState extends State<TrustPilotReview> {
         children: [
           Image(
             image: AssetImage('images/trustpilotReview.png'),
+            width: 250,
           ),
           Positioned(
-            bottom: 0.0,
-            left: 10.0,
+            bottom: 40.0,
+            left: 120.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stars(
                   iconColor: Colors.white,
-                  containerSize: 40.0,
+                  containerSize: 30.0,
                   iconBgColor: Colors.green,
                   starRating: 5,
                 ),

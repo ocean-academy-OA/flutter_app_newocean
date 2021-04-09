@@ -11,13 +11,13 @@ class _JusDialReviewState extends State<JusDialReview> {
   Widget build(BuildContext context) {
     return Container(
       width: 370.0,
-      height: 140.0,
+      height: 130.0,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
           Image(
             image: AssetImage('images/jdReview.png'),
-            width: 250,
+            width: 200,
           ),
           Positioned(
             bottom: 30.0,

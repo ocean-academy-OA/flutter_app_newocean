@@ -11,33 +11,36 @@ class _GoogleReviewState extends State<GoogleReview> {
   Widget build(BuildContext context) {
     return Container(
       width: 370.0,
-      child: Stack(
-        alignment: Alignment.center,
+      child: Column(
         children: [
-          Image(
-            image: AssetImage('images/googleReview.png'),
+          SizedBox(height: 30),
+          Container(
             width: 300,
-          ),
-          Positioned(
-            bottom: 5.0,
-            right: 0.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                Text(
-                  'Student Review',
-                  style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[700]),
+                Image(
+                  image: AssetImage('images/googleReview.png'),
+                  width: 220,
                 ),
-                Stars(
-                  iconColor: Colors.green,
-                  starRating: 5,
+                Positioned(
+                  bottom: 5.0,
+                  right: -5.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stars(
+                        containerSize: 30,
+                        iconColor: Colors.green,
+                        starRating: 5,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );
