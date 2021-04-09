@@ -2,8 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
-import 'package:flutter_app_newocean/Career/career_views/career_responsive.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
