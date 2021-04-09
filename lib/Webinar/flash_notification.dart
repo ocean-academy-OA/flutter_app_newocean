@@ -31,6 +31,8 @@ class FlashNotification extends StatefulWidget {
 }
 
 class _FlashNotificationState extends State<FlashNotification> {
+  bool isUpcomingWebinar = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -172,37 +174,50 @@ class _FlashNotificationState extends State<FlashNotification> {
                       courseList.add(courseMap[i]);
                     }
                     WebinarCard.timing = timingMap;
+                    if (currentWebinar.isEmpty && courseList.isEmpty) {
+                      isUpcomingWebinar = false;
+                    }
                     return Container(
                       child: Column(
                         children: [
-                          currentWebinar.isEmpty
-                              ? courseList[0]
-                              : currentWebinar[0]
+                          currentWebinar.isEmpty && courseList.isEmpty
+                              ? SizedBox()
+                              : currentWebinar.isEmpty
+                                  ? courseList[0]
+                                  : currentWebinar[0]
                         ],
                       ),
                     );
                   }
                 },
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: FlatButton(
-                  child: Text(
-                    "Upcoming",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                        fontFamily: kfontname),
-                  ),
-                  height: 40,
-                  color: Colors.white,
-                  onPressed: () {
-                    locator<NavigationService>()
-                        .navigateTo(UpcomingWebinarRoute);
-                  },
-                ),
-              ),
+              isUpcomingWebinar
+                  ? Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: FlatButton(
+                        child: Text(
+                          "Upcoming",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2,
+                              fontFamily: kfontname),
+                        ),
+                        height: 40,
+                        color: Colors.white,
+                        onPressed: () {
+                          locator<NavigationService>()
+                              .navigateTo(UpcomingWebinarRoute);
+                        },
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        'Webinar Coming soon ',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
             ],
           ),
           IconButton(
