@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
 import 'package:flutter_app_newocean/Menu/Menu_Tablet.dart';
+
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
@@ -57,11 +58,46 @@ class NavbarRouting extends StatefulWidget {
 class _NavbarRoutingState extends State<NavbarRouting> {
   @override
   String valueChoose;
-
   List<String> courseList = [
     'Online',
     'Offline',
   ];
+//overlay variable
+//   GlobalKey dropdownKey;
+//   bool isDropdown = false;
+//   double height, width, xPosition, yPosition;
+//   OverlayEntry floatingDropdown;
+//
+//   findDropdownData() {
+//     RenderBox renderBox = dropdownKey.currentContext.findRenderObject();
+//     height = renderBox.size.height;
+//     width = renderBox.size.width;
+//     Offset offset = renderBox.localToGlobal(Offset.zero);
+//     xPosition = offset.dx;
+//     yPosition = offset.dy;
+//   }
+//
+//   OverlayEntry createFloatingDropdown() {
+//     return OverlayEntry(builder: (context) {
+//       return Positioned(
+//           left: xPosition,
+//           width: width,
+//           top: height + xPosition + 5,
+//           height: courseList.length * height,
+//           child: Container(
+//             height: 100,
+//             width: 100,
+//             color: Colors.red,
+//           ));
+//     });
+//   }
+//overlay variable
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // dropdownKey = GlobalKey();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,38 +145,81 @@ class _NavbarRoutingState extends State<NavbarRouting> {
 
                       ///todo dropdown button to remove the hide
                       // menuItem(text: 'Course', widget: Course()),
-                      Column(
-                        children: [
-                          DropdownButton(
-                            hint: Text(
-                              "Courses",
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Gilroy"),
-                            ),
-                            onChanged: (newValue) {
-                              valueChoose = newValue;
-                              print(valueChoose);
-                              // valueChoose == "Online"
-                              // ? locator<NavigationService>()
-                              //     .navigateTo(OnlineRoute)
-                              // : locator<NavigationService>()
-                              //     .navigateTo(OfflineRoute);
-                            },
-                            items: [
-                              DropdownMenuItem(
-                                child: Text("Online"),
-                                value: "Online",
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Offline"),
-                                value: "Offline",
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
+
+                      //===================
+                      // MouseRegion(
+                      //   cursor: SystemMouseCursors.click,
+                      //   child: GestureDetector(
+                      //     child: Text(
+                      //       'Course',
+                      //       style: TextStyle(
+                      //           color: Color(0xFF155575),
+                      //           fontSize: 20.0,
+                      //           fontWeight: FontWeight.bold,
+                      //           fontFamily: "Gilroy"),
+                      //     ),
+                      //     key: dropdownKey,
+                      //     onTap: () {
+                      //       isDropdown = !isDropdown;
+                      //       if (isDropdown) {
+                      //         findDropdownData();
+                      //         floatingDropdown = createFloatingDropdown();
+                      //         Overlay.of(context).insert(floatingDropdown);
+                      //       } else {
+                      //         floatingDropdown.remove();
+                      //       }
+                      //     },
+                      //   ),
+                      // ),
+                      //=======================
+
+                      // Column(
+                      //   children: [
+                      //     DropdownButton(
+                      //       hint: Text(
+                      //         "Courses",
+                      //         style: TextStyle(
+                      //             fontSize: 20.0,
+                      //             fontWeight: FontWeight.bold,
+                      //             fontFamily: "Gilroy"),
+                      //       ),
+                      //       onChanged: (newValue) {
+                      //         valueChoose = newValue;
+                      //         print(valueChoose);
+                      //         // valueChoose == "Online"
+                      //         // ? locator<NavigationService>()
+                      //         //     .navigateTo(OnlineRoute)
+                      //         // : locator<NavigationService>()
+                      //         //     .navigateTo(OfflineRoute);
+                      //       },
+                      //       items: [
+                      //         DropdownMenuItem(
+                      //           child: Text("Online"),
+                      //           value: "Online",
+                      //         ),
+                      //         DropdownMenuItem(
+                      //           child: Text("Offline"),
+                      //           value: "Offline",
+                      //         )
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
+                      // DropdownButton(
+                      //   value: 'test',
+                      //   onChanged: (value) {},
+                      //   items: [
+                      //     DropdownMenuItem(
+                      //       child: Text('test'),
+                      //       value: 'test',
+                      //     ),
+                      //     DropdownMenuItem(
+                      //       child: Text('test'),
+                      //       value: 'tesgt',
+                      //     ),
+                      //   ],
+                      // ),
+                      menuItem(text: 'Course', naviagationPath: ContactUsRoute),
                       menuItem(
                           text: 'Contact Us', naviagationPath: ContactUsRoute),
 

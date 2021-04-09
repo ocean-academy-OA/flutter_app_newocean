@@ -26,6 +26,12 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
@@ -53,21 +59,18 @@ class _MainLayoutState extends State<MainLayout> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              WillPopScope(
-                  child: sizingInformation.deviceScreenType ==
-                          DeviceScreenType.desktop
-                      ? Visibility(
-                          visible: MainLayout.sticNotification,
-                          child: FlashNotification(
-                            dismissNotification: () {
-                              setState(() {
-                                widget.notification = true;
-                              });
-                            },
-                          ),
-                        )
-                      : SizedBox(),
-                  onWillPop: () async => false),
+              sizingInformation.deviceScreenType == DeviceScreenType.desktop
+                  ? Visibility(
+                      visible: MainLayout.sticNotification,
+                      child: FlashNotification(
+                        dismissNotification: () {
+                          setState(() {
+                            widget.notification = true;
+                          });
+                        },
+                      ),
+                    )
+                  : SizedBox(),
               ResponsiveMenu(),
               Expanded(child: widget.child),
             ],

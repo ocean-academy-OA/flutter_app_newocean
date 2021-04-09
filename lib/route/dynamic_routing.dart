@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
+import 'package:flutter_app_newocean/Career/career/career_layout.dart';
 import 'package:flutter_app_newocean/Career/career_views/career_responsive.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 
@@ -72,7 +73,7 @@ Route<dynamic> generateRoute(
       );
     case CareerRoute:
       return _getPageRoute(
-        ResponsiveCareer(),
+        CareerLayout(),
         settings,
       );
     case LoginRoute:
