@@ -13,6 +13,7 @@ import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
 
 class MainLayout extends StatefulWidget {
+  static bool sticNotification = true;
   bool notification = true;
   MainLayout({
     this.child,
@@ -52,18 +53,21 @@ class _MainLayoutState extends State<MainLayout> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              sizingInformation.deviceScreenType == DeviceScreenType.desktop
-                  ? Visibility(
-                      visible: widget.notification,
-                      child: FlashNotification(
-                        dismissNotification: () {
-                          setState(() {
-                            widget.notification = false;
-                          });
-                        },
-                      ),
-                    )
-                  : SizedBox(),
+              WillPopScope(
+                  child: sizingInformation.deviceScreenType ==
+                          DeviceScreenType.desktop
+                      ? Visibility(
+                          visible: MainLayout.sticNotification,
+                          child: FlashNotification(
+                            dismissNotification: () {
+                              setState(() {
+                                widget.notification = true;
+                              });
+                            },
+                          ),
+                        )
+                      : SizedBox(),
+                  onWillPop: () async => false),
               ResponsiveMenu(),
               Expanded(child: widget.child),
             ],

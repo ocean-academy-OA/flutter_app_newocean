@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_list.dart';
+import 'package:flutter_app_newocean/layout_builder.dart';
 import 'package:intl/intl.dart';
 
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
@@ -175,7 +176,8 @@ class _FlashNotificationState extends State<FlashNotification> {
                     }
                     WebinarCard.timing = timingMap;
                     if (currentWebinar.isEmpty && courseList.isEmpty) {
-                      isUpcomingWebinar = false;
+                      MainLayout.sticNotification = false;
+                      print(MainLayout.sticNotification);
                     }
                     return Container(
                       child: Column(
@@ -191,7 +193,7 @@ class _FlashNotificationState extends State<FlashNotification> {
                   }
                 },
               ),
-              isUpcomingWebinar
+              MainLayout.sticNotification
                   ? Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: FlatButton(

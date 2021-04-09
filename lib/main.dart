@@ -6,9 +6,11 @@ import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:provider/provider.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
   setupLocator();
+  setPathUrlStrategy();
   runApp(MyApp());
 }
 
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UpcomingModel()),
       ],
       child: MaterialApp(
+        title: 'Ocean Academy',
         builder: (context, child) => MainLayout(
           child: child,
         ),

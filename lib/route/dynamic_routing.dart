@@ -117,7 +117,7 @@ Route<dynamic> generateRoute(
     // --------------------------
     case testRoute:
       return _getPageRoute(
-        NavigateTest(),
+        ResponsiveHome(),
         settings,
       );
     default:
