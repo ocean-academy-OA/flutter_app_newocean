@@ -10,6 +10,8 @@ import 'package:flutter_app_newocean/TopNavigationBar/tablet_topnavigationbar.da
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
+import '../../Footer/tablet_footer.dart';
+
 const ktopic = TextStyle(
     fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.normal);
 const kcontent = TextStyle(
@@ -28,57 +30,127 @@ class TabletAboutUs extends StatelessWidget {
       child: Container(
         color: Colors.white,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TabletTopNavigationBar(
               title: "About Us",
             ),
             Padding(
-              padding: const EdgeInsets.all(50.0),
-              child: Row(
+              padding: const EdgeInsets.all(20.0),
+              child: Wrap(
                 children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'About us Ocean Academy',
-                          style: TextStyle(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'About us Ocean Academy',
+                        style: TextStyle(
                             color: Color(0xff0091d2),
-                            fontSize: 25.0,
+                            fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            fontFamily: kfontname,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Text(aboutcontent1,
-                            textAlign: TextAlign.justify,
-                            style: contentTextStyle),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Text(aboutcontent2,
-                            textAlign: TextAlign.justify,
-                            style: contentTextStyle),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Text(aboutcontent3,
-                            textAlign: TextAlign.justify,
-                            style: contentTextStyle),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Text(aboutcontent4,
-                            textAlign: TextAlign.justify,
-                            style: contentTextStyle),
-                        SizedBox(
-                          height: 20.0,
+                            fontFamily: kfontname),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                    width: 20.0,
+                  ),
+                  Text(
+                    aboutcontent1,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        color: kcontentcolor,
+                        height: 1.5,
+                        fontFamily: kfontname),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                    width: 20.0,
+                  ),
+                  Text(
+                    aboutcontent2,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        color: kcontentcolor,
+                        height: 1.5,
+                        fontFamily: kfontname),
+                  ),
+                  SizedBox(
+                    height: 40.0,
+                    width: 30.0,
+                  ),
+                  Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              width: 150.0,
+                              height: 150.0,
+                              //height: 300,
+                              margin: EdgeInsets.fromLTRB(80.0, 0.0, 0.0, 50.0),
+                              padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Image(
+                                  image: AssetImage('images/lap.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                            Container(
+                              width: 150.0,
+                              height: 150.0,
+                              margin:
+                                  EdgeInsets.fromLTRB(20.0, 60.0, 0.0, 20.0),
+                              padding: EdgeInsets.fromLTRB(0.0, 0.0, 15.0, 0.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10.0),
+                                    bottomLeft: Radius.circular(10.0)),
+                                child: Image(
+                                  image: AssetImage('images/lap.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Color(0xff0091d2),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                    width: 20.0,
+                  ),
+                  Text(
+                    aboutcontent3,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        color: kcontentcolor,
+                        height: 1.5,
+                        fontFamily: kfontname),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                    width: 20.0,
+                  ),
+                  Text(
+                    aboutcontent4,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        color: kcontentcolor,
+                        height: 1.5,
+                        fontFamily: kfontname),
                   ),
                 ],
               ),
@@ -92,7 +164,7 @@ class TabletAboutUs extends StatelessWidget {
                   "Meet our Mentors",
                   style: TextStyle(
                       color: Color(0xff0091d2),
-                      fontSize: 30.0,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                       fontFamily: kfontname),
                 ),
@@ -101,9 +173,9 @@ class TabletAboutUs extends StatelessWidget {
             SizedBox(
               height: 30.0,
             ),
-            Wrap(children: [
+            Wrap(alignment: WrapAlignment.center, children: [
               StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('Mentor').snapshots(),
+                stream: _firestore.collection('trainer').snapshots(),
                 // ignore: missing_return
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
@@ -114,19 +186,11 @@ class TabletAboutUs extends StatelessWidget {
                     //List<String> subjects = [];
                     for (var message in messages) {
                       // if (message.data()['coursename'] == "python") {
-                      final trainerName = message.data()['name'];
+                      final trainerName = message.data()['trainername'];
                       final trainerDesignation = message.data()['designation'];
-                      final trainerImage = message.data()['image'];
-                      final fbLink = message.data()['fbLink'];
-                      final gmailLink = message.data()['gmailLink'];
-                      final linkedinLink = message.data()['linkedinLink'];
-                      final twitter = message.data()['twitter'];
+                      final trainerImage = message.data()['img'];
 
                       final messageContent = ContainerWidget(
-                        fbLink: fbLink,
-                        gmailLink: gmailLink,
-                        linkedinLink: linkedinLink,
-                        twitterLink: twitter,
                         designation: trainerDesignation,
                         trainerName: trainerName,
                         image: trainerImage,
@@ -142,7 +206,7 @@ class TabletAboutUs extends StatelessWidget {
                 },
               ),
             ]),
-            DesktopFooterMd()
+            TabletFooter(),
           ],
         ),
       ),
