@@ -77,6 +77,10 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
                   text: 'Services',
                   naviagationPath: ServiceRoute),
               menuItem(
+                  icon: Icons.book_rounded,
+                  text: 'Course',
+                  naviagationPath: CourseRoute),
+              menuItem(
                   icon: Icons.contact_page_outlined,
                   text: 'Contact Us',
                   naviagationPath: ContactUsRoute),
