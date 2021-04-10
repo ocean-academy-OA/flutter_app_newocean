@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+
 import 'package:fswitch/fswitch.dart';
 
 class SwitchButton extends StatelessWidget {
   SwitchButton({this.onChanged, this.open = false});
-  final switchContreller = AdvancedSwitchController();
+
   Function onChanged;
   bool open;
   @override
