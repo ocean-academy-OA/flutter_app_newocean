@@ -4,6 +4,7 @@ import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
 
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
+import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/otp.dart';
@@ -65,6 +66,11 @@ Route<dynamic> generateRoute(
     case ContactUsRoute:
       return _getPageRoute(
         ResponsiveContactUs(),
+        settings,
+      );
+    case CourseRoute:
+      return _getPageRoute(
+        ResponsiveCourse(),
         settings,
       );
     case CareerRoute:

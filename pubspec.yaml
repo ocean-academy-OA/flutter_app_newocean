@@ -74,7 +74,9 @@ dependencies:
   random_string: ^2.1.0
   showcaseview: ^0.1.6
   get_it:
-  flutter_dropdown: ^0.0.8
+#  flutter_dropdown: ^0.0.8
+  flutter_advanced_switch: 1.0.0+1
+  fswitch: ^1.1.2
 
 dev_dependencies:
   flutter_test:

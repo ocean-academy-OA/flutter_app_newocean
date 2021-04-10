@@ -9,7 +9,7 @@ class TranslateOnHover extends StatefulWidget {
 
 class _TranslateOnHoverState extends State<TranslateOnHover> {
   final nonHoverTransform = Matrix4.identity();
-  final hoverTransform = Matrix4.identity()..translate(0, -5, 10);
+  final hoverTransform = Matrix4.identity()..translate(0, 3, 0);
 
   bool _hovering = false;
   @override
@@ -18,7 +18,7 @@ class _TranslateOnHoverState extends State<TranslateOnHover> {
       onEnter: (e) => _mouseEnter(true),
       onExit: (e) => _mouseEnter(false),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 200),
         child: widget.child,
         transform: _hovering ? hoverTransform : nonHoverTransform,
       ),
