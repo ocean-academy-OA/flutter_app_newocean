@@ -660,6 +660,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
                   hoverColor: Colors.blue[50],
                   buttonWidth: 345,
                   onPressed: () async {
+                    print(widget.pdfLink);
                     await getUserData(context);
                   },
                 ).moveUpOnHover,

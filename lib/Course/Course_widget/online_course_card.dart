@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/border_button.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
 
-class OnlineCourseCard extends StatelessWidget {
+class OnlineCourseCard extends StatefulWidget {
   OnlineCourseCard(
       {this.coursename,
       this.trainername,
       this.duration,
       this.time,
       this.date,
+      this.onPressed,
       this.image,
       this.description,
       this.batchid});
@@ -20,6 +21,13 @@ class OnlineCourseCard extends StatelessWidget {
   final String description;
   final String batchid;
   final String date;
+  Function onPressed;
+
+  @override
+  _OnlineCourseCardState createState() => _OnlineCourseCardState();
+}
+
+class _OnlineCourseCardState extends State<OnlineCourseCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +54,7 @@ class OnlineCourseCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
               child: Image.network(
-                '$image',
+                '${widget.image}',
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.centerLeft,
               ),
@@ -61,7 +69,7 @@ class OnlineCourseCard extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
                   child: Text(
-                    "$coursename full package course",
+                    "${widget.coursename} full package course",
                     style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.grey[600],
@@ -72,7 +80,7 @@ class OnlineCourseCard extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
                   child: Text(
-                    "Trainer $trainername",
+                    "Trainer ${widget.trainername}",
                     style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.grey[600],
@@ -94,7 +102,7 @@ class OnlineCourseCard extends StatelessWidget {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              "$duration Hrs",
+                              "${widget.duration} Hrs",
                               style: TextStyle(
                                   fontSize: 20.0,
                                   color: Colors.grey[600],
@@ -113,7 +121,7 @@ class OnlineCourseCard extends StatelessWidget {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              "$date ",
+                              "${widget.date} ",
                               style: TextStyle(
                                   fontSize: 20.0,
                                   color: Colors.grey[600],
@@ -132,7 +140,7 @@ class OnlineCourseCard extends StatelessWidget {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              "$time",
+                              "${widget.time}",
                               style: TextStyle(
                                   fontSize: 20.0,
                                   color: Colors.grey[600],
@@ -146,14 +154,12 @@ class OnlineCourseCard extends StatelessWidget {
                   ),
                 ),
                 BorderButton(
-                  buttonName: 'View Detail',
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  hoverColor: Colors.blue[50],
-                  buttonWidth: 345,
-                  onPressed: () {
-                    print(coursename);
-                  },
-                ).moveUpOnHover,
+                        buttonName: 'View Detail',
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        hoverColor: Colors.blue[50],
+                        buttonWidth: 345,
+                        onPressed: widget.onPressed)
+                    .moveUpOnHover,
               ],
             ),
           ),

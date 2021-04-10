@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
 import 'package:flutter_app_newocean/Menu/Menu_Tablet.dart';
 
@@ -23,7 +24,6 @@ class MenuBarDesktop extends StatefulWidget {
 class _MenuBarDesktopState extends State<MenuBarDesktop> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     //retriveTime();
     //session();
@@ -99,8 +99,44 @@ class _NavbarRoutingState extends State<NavbarRouting> {
     // dropdownKey = GlobalKey();
   }
 
+  GlobalKey menuButtonKey = GlobalKey();
+  void onClickMenu(MenuItemProvider item) {
+    if (item.menuTitle == 'Certificates') {
+      print(item.menuTitle);
+    }
+  }
+
+  void popupMenuButton() {
+    PopupMenu menu = PopupMenu(
+      maxColumn: 1,
+      incrementWidth: 80,
+      incrementHeight: 50,
+      backgroundColor: Colors.grey[700],
+      lineColor: Colors.blue,
+      shadow: false,
+      onClickMenu: onClickMenu,
+      // highlightColor: Colors.red,
+      items: [
+        MenuItem(
+            title: 'Certificates',
+            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
+        MenuItem(
+            title: 'My profile',
+            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
+        MenuItem(
+            title: 'Purchase',
+            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
+        MenuItem(
+            title: 'Log Out',
+            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
+      ],
+    );
+    menu.show(widgetKey: menuButtonKey);
+  }
+
   @override
   Widget build(BuildContext context) {
+    PopupMenu.context = context;
     return Container(
       color: Color(0xFFECF5FF),
       child: Padding(
@@ -138,91 +174,11 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       menuItem(text: 'Home', naviagationPath: HomeRoute),
-
                       menuItem(text: 'About Us', naviagationPath: AboutRoute),
-
                       menuItem(text: 'Services', naviagationPath: ServiceRoute),
-
-                      ///todo dropdown button to remove the hide
-                      // menuItem(text: 'Course', widget: Course()),
-
-                      //===================
-                      // MouseRegion(
-                      //   cursor: SystemMouseCursors.click,
-                      //   child: GestureDetector(
-                      //     child: Text(
-                      //       'Course',
-                      //       style: TextStyle(
-                      //           color: Color(0xFF155575),
-                      //           fontSize: 20.0,
-                      //           fontWeight: FontWeight.bold,
-                      //           fontFamily: "Gilroy"),
-                      //     ),
-                      //     key: dropdownKey,
-                      //     onTap: () {
-                      //       isDropdown = !isDropdown;
-                      //       if (isDropdown) {
-                      //         findDropdownData();
-                      //         floatingDropdown = createFloatingDropdown();
-                      //         Overlay.of(context).insert(floatingDropdown);
-                      //       } else {
-                      //         floatingDropdown.remove();
-                      //       }
-                      //     },
-                      //   ),
-                      // ),
-                      //=======================
-
-                      // Column(
-                      //   children: [
-                      //     DropdownButton(
-                      //       hint: Text(
-                      //         "Courses",
-                      //         style: TextStyle(
-                      //             fontSize: 20.0,
-                      //             fontWeight: FontWeight.bold,
-                      //             fontFamily: "Gilroy"),
-                      //       ),
-                      //       onChanged: (newValue) {
-                      //         valueChoose = newValue;
-                      //         print(valueChoose);
-                      //         // valueChoose == "Online"
-                      //         // ? locator<NavigationService>()
-                      //         //     .navigateTo(OnlineRoute)
-                      //         // : locator<NavigationService>()
-                      //         //     .navigateTo(OfflineRoute);
-                      //       },
-                      //       items: [
-                      //         DropdownMenuItem(
-                      //           child: Text("Online"),
-                      //           value: "Online",
-                      //         ),
-                      //         DropdownMenuItem(
-                      //           child: Text("Offline"),
-                      //           value: "Offline",
-                      //         )
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
-                      // DropdownButton(
-                      //   value: 'test',
-                      //   onChanged: (value) {},
-                      //   items: [
-                      //     DropdownMenuItem(
-                      //       child: Text('test'),
-                      //       value: 'test',
-                      //     ),
-                      //     DropdownMenuItem(
-                      //       child: Text('test'),
-                      //       value: 'tesgt',
-                      //     ),
-                      //   ],
-                      // ),
                       menuItem(text: 'Course', naviagationPath: CourseRoute),
                       menuItem(
                           text: 'Contact Us', naviagationPath: ContactUsRoute),
-
                       menuItem(text: 'Career', naviagationPath: CareerRoute),
                     ],
                   ),

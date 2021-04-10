@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/switch_button.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/offline_course_card.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:intl/intl.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -30,7 +33,7 @@ class _DesktopCourseState extends State<DesktopCourse> {
                     isOnline = value;
                   });
                 },
-              )
+              ),
             ],
           ),
           !isOnline
@@ -84,6 +87,11 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           image: messageImage,
                           description: messageDescription,
                           batchid: messageBatchid,
+                          onPressed: () {
+                            print(messageSender);
+                            locator<NavigationService>().navigateTo(
+                                'CourseDetails?online=$messageSender');
+                          },
                         );
                         // Text('$messageText from $messageSender');
                         messageBubbles.add(messageBubble);
