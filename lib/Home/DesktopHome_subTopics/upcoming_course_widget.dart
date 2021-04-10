@@ -87,8 +87,6 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                         List<Container> DBUpcoming = [];
                         for (var message in messages) {
                           final images = message.data()['upcomingcourse'];
-                          print(
-                              "$images   ////////////////////////////////////////////////images//////////////");
                           Container messageContent = Container(
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             child: ClipRRect(
