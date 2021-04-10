@@ -219,7 +219,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                       //     ),
                       //   ],
                       // ),
-                      menuItem(text: 'Course', naviagationPath: ContactUsRoute),
+                      menuItem(text: 'Course', naviagationPath: CourseRoute),
                       menuItem(
                           text: 'Contact Us', naviagationPath: ContactUsRoute),
 

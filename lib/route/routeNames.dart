@@ -3,6 +3,7 @@ const String ServiceRoute = "/Service";
 const String AboutRoute = "/About";
 const String ContactUsRoute = "/ContactUs";
 const String CareerRoute = "/Career";
+const String CourseRoute = "/Course";
 const String LoginRoute = "/Login";
 const String OTPRoute = "/OTP";
 const String testRoute = "/testPage";

@@ -60,15 +60,12 @@ class _MainLayoutState extends State<MainLayout> {
           child: Column(
             children: [
               sizingInformation.deviceScreenType == DeviceScreenType.desktop
-                  ? Visibility(
-                      visible: MainLayout.sticNotification,
-                      child: FlashNotification(
-                        dismissNotification: () {
-                          setState(() {
-                            widget.notification = true;
-                          });
-                        },
-                      ),
+                  ? FlashNotification(
+                      dismissNotification: () {
+                        setState(() {
+                          widget.notification = true;
+                        });
+                      },
                     )
                   : SizedBox(),
               ResponsiveMenu(),
