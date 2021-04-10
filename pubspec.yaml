@@ -75,6 +75,7 @@ dependencies:
   showcaseview: ^0.1.6
   get_it:
   flutter_dropdown: ^0.0.8
+  carousel_slider: ^3.0.0
 
 dev_dependencies:
   flutter_test:
