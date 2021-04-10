@@ -608,7 +608,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(35.0),
+      margin: EdgeInsets.all(20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
       //  height: 375.0,
       width: 350.0,
