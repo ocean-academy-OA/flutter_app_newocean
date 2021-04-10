@@ -59,7 +59,7 @@ class _SliderWidgetState extends State<SliderWidget> {
                 Text(
                   '${Provider.of<SliderContent>(context, listen: false).title}',
                   style: TextStyle(
-                    fontSize: 50.0,
+                    fontSize: 45.0,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontFamily: kfontname,

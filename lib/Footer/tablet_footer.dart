@@ -265,33 +265,28 @@ class _TabletFooterState extends State<TabletFooter> {
                               width: 1, color: Colors.white.withOpacity(0.5)))),
                 ),
                 Container(
-                  width: 200,
+                  width: 250,
                   alignment: Alignment.center,
                   child: Column(
                     children: [
                       Container(
-                          width: 180,
                           alignment: Alignment.center,
                           child: footerMouseRegion(
                               text: "ABOUT US", widget: ResponsiveAboutUs())),
                       SizedBox(height: 17.0),
                       Container(
-                          width: 180,
                           alignment: Alignment.center,
                           child: footerMouseRegion(text: "WORK WITH US")),
                       SizedBox(height: 17.0),
                       Container(
-                          width: 180,
                           alignment: Alignment.center,
                           child: footerMouseRegion(text: "PRIVATE POLICIES")),
                       SizedBox(height: 17.0),
                       Container(
-                          width: 180,
                           alignment: Alignment.center,
                           child: footerMouseRegion(text: "PRESS ENQUIRES")),
                       SizedBox(height: 17.0),
                       Container(
-                          width: 250,
                           alignment: Alignment.center,
                           child: footerMouseRegion(text: "TERMS & CONDITIONS")),
                     ],
@@ -330,19 +325,18 @@ class _TabletFooterState extends State<TabletFooter> {
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        height: 70,
                         width: 200.0,
+                        height: 45,
                         child: TextField(
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           controller: _subscribe,
                           decoration: InputDecoration(
                             hintText: 'Enter your Email',
                             hintStyle: kbottom,
-
-                            // contentPadding: EdgeInsets.only(
-                            //     top: 10, bottom: 10, left: 38),
+                            contentPadding: EdgeInsets.all(10),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Colors.grey[200], width: 1.0),
@@ -355,14 +349,17 @@ class _TabletFooterState extends State<TabletFooter> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(bottom: 16),
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        // padding: EdgeInsets.only(bottom: 16),
                         child: FlatButton(
+                          padding: EdgeInsets.all(0),
                           color: Colors.white,
-                          minWidth: 20,
-                          height: 63.0,
-                          child: Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text("Subscribe")),
+                          minWidth: 100,
+                          height: 50.0,
+                          child: Text(
+                            "Subscribe",
+                            style: TextStyle(fontSize: 15),
+                          ),
                           onPressed: () {
                             if (validateEmail(_subscribe.text)) {
                               _firestore

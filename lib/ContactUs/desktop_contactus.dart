@@ -45,7 +45,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
   String linkMaps =
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2320.9284365759204!2d79.82874531102095!3d11.952276565466109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a53616c1e43a73f%3A0xf3758f2502e74f5b!2sOcean%20Academy%20Software%20Training%20Division!5e0!3m2!1sen!2sin!4v1613816776714!5m2!1sen!2sin";
   bool showSpinner = false;
-  static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKeyDesktop = GlobalKey<FormState>();
 
   final enquiryController = TextEditingController();
   final nameController = TextEditingController();
@@ -349,7 +349,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
                   child: Padding(
                     padding: EdgeInsets.only(right: 100, top: 100, left: 80),
                     child: Form(
-                      key: _formKey,
+                      key: _formKeyDesktop,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -635,13 +635,13 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
                                   date = DateFormat("d-M-y")
                                       .format(DateTime.now());
                                   print('$time < Current Time >');
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKeyDesktop.currentState.validate()) {
                                     if (controller.isCompleted) {
                                       controller.reverse();
                                     } else {
                                       controller.forward();
                                     }
-                                    _formKey.currentState.save();
+                                    _formKeyDesktop.currentState.save();
                                     if (enquiry != null &&
                                         fullname != null &&
                                         email != null &&
