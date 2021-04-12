@@ -3,6 +3,7 @@ import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter_app_newocean/ContactUs/iframe_map.dart';
 import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
+import 'package:flutter_app_newocean/Footer/tablet_footer.dart';
 import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/navigation_bar.dart';
 import 'package:flutter_app_newocean/TopNavigationBar/tablet_topnavigationbar.dart';
@@ -637,7 +638,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
                 SizedBox(height: 40),
               ],
             ),
-            DesktopFooterMd()
+            TabletFooter(),
           ],
         ),
       ),
