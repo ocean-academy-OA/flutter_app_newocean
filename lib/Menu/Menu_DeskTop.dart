@@ -46,7 +46,7 @@ class NavbarRouting extends StatefulWidget {
     'Home': true,
     'About Us': false,
     'Services': false,
-    'Course': false,
+    'Courses': false,
     'Contact Us': false,
     'Career': false,
   };
