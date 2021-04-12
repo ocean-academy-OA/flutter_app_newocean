@@ -9,6 +9,7 @@ class AlertTextField extends StatefulWidget {
       this.icon,
       this.lines,
       this.errorText,
+      this.textFieldWidth = 360,
       this.suffixIcon,
       this.onChanged,
       this.letterSpacing,
@@ -16,6 +17,7 @@ class AlertTextField extends StatefulWidget {
   final controller;
   final String hintText;
   final Icon icon;
+  double textFieldWidth;
   final int lines;
   final String errorText;
   List<TextInputFormatter> inputFormatters;
@@ -54,7 +56,7 @@ class _AlertTextFieldState extends State<AlertTextField> {
                     offset: Offset(4.0, 4.0))
                 : BoxShadow(color: Colors.transparent, blurRadius: 0.0)
           ]),
-      width: 360.0,
+      width: widget.textFieldWidth,
       child: TextFormField(
         onChanged: widget.onChanged,
         textAlignVertical: TextAlignVertical.center,

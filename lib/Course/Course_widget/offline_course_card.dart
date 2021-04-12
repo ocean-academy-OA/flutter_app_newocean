@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +62,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
   bool isEmail = true;
 
   bool isNumber = true;
-
+//desktop
   getUserData(context) {
     return showDialog(
         context: context,
@@ -208,209 +209,6 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
         });
   }
 
-  mobileGetUserData() {
-    return Container(
-      height: 350,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          AlertTextField(
-            suffixIcon: isName
-                ? null
-                : Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ),
-            hintText: 'Name',
-            icon: Icon(Icons.person),
-            controller: _name,
-          ),
-          AlertTextField(
-            suffixIcon: isNumber
-                ? null
-                : Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ),
-            hintText: 'Mobile',
-            errorText: 'Enter Valid Number',
-            icon: Icon(Icons.phone_android),
-            inputFormatters: [
-              FilteringTextInputFormatter(RegExp(r'^\d+\.?\d{0,2}'),
-                  allow: true),
-            ],
-            controller: _mobile,
-          ),
-          AlertTextField(
-            hintText: 'Email',
-            suffixIcon: isEmail
-                ? null
-                : Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ),
-            icon: Icon(Icons.email),
-            controller: _email,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 8.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    offset: Offset(0, 2),
-                    blurRadius: 5)
-              ],
-              color: Colors.white,
-            ),
-            child: FlatButton(
-              height: 60.0,
-              color: Colors.white,
-              minWidth: 360,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(3.0)),
-              child: Row(
-                children: [
-                  Container(
-                      width: 30,
-                      height: 30,
-                      child: Image.network(
-                          'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/download%20pdf%20svgs%2Fmail%20service.svg?alt=media&token=49ae698d-0e63-453e-ac4d-f45924d51b9b')),
-                  SizedBox(width: 6),
-                  Text(
-                    'Send to Mail',
-                    style: TextStyle(fontSize: 20.0, color: Colors.blue),
-                  ),
-                ],
-              ),
-              onPressed: () async {
-                if (validateEmail(_email.text) &&
-                    _mobile.text.length == 10 &&
-                    (_name.text.length > 3)) {
-                  print(_mobile.text);
-                  getDownloadOTP();
-                  Navigator.pop(context);
-                  otpPage(_mobile.text, context);
-                } else if (_email.text.isEmpty &&
-                    _mobile.text.isEmpty &&
-                    _name.text.isEmpty) {
-                  fillAllFieldsDialog(context);
-                } else if (_name.text.length < 3) {
-                  invalidNameDialog(context);
-                } else if (_mobile.text.length != 10) {
-                  invalidNumberDialog(context);
-                } else if (!validateEmail(_email.text)) {
-                  invalidMailDialog(context);
-                }
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  getDownloadOTP() async {
-    confirmationResult =
-        await _auth.signInWithPhoneNumber('+91 ${_mobile.text}');
-  }
-
-  verifyOTP() async {
-    if (_mobile.text.length > 10) {
-      try {
-        userCredential = await confirmationResult.confirm(_otp.text);
-        print(userCredential);
-        print(confirmationResult);
-        print('OTP submited oooooooo');
-        fireStoreAddWithDownload();
-
-        fieldClear();
-        Navigator.pop(context);
-      } catch (e) {
-        print('$e OTP faild');
-        Navigator.pop(context);
-        _invalidOTP();
-      }
-    } else {
-      Navigator.pop(context);
-      _invalidOTP();
-    }
-  }
-
-  Future<void> _invalidOTP() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Row(
-            children: [
-              Text(
-                'Sorry',
-                style: TextStyle(color: Colors.red, fontSize: 20),
-              ),
-              SizedBox(width: 15),
-              Icon(
-                FontAwesomeIcons.frown,
-                color: Colors.red,
-              )
-            ],
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(
-                  'Enter valid OTP or Update Mobile Number',
-                  style: TextStyle(color: Colors.grey[500], fontSize: 25),
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Enter OTP'),
-              color: Colors.blue,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              onPressed: () {
-                Navigator.pop(context);
-                otpPage(_mobile.text, context);
-              },
-            ),
-            FlatButton(
-              child: Text('Update Number'),
-              color: Colors.green,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              onPressed: () {
-                Navigator.pop(context);
-                getUserData(context);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  fieldClear() {
-    _mobile.clear();
-    _email.clear();
-    _name.clear();
-    _otp.clear();
-  }
-
-  void getData() async {
-    http.Response response = await http.get(
-        'http://free-webinar-registration.herokuapp.com/?name=${_name.text}&email=${_email.text}&type=syllabus');
-    print('tesss${_name.text}sssssssss${_email.text}sssssssst');
-
-    if (response.statusCode == 200) {
-      String data = response.body;
-      print(data);
-    } else {
-      print(response.statusCode);
-    }
-  }
-
   otpPage(String userMobileNumber, context) {
     return showDialog(
         context: context,
@@ -544,6 +342,396 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
         });
   }
 
+//mobile
+  mobileGetUserData(context) {
+    return showCupertinoModalPopup(
+      barrierColor: Colors.white,
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: Text(
+                'Download ${widget.coursename} Pdf',
+                style: TextStyle(fontSize: 35, color: Colors.blue),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width / 1.5,
+              height: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AlertTextField(
+                    textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                    suffixIcon: isName
+                        ? null
+                        : Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ),
+                    hintText: 'Name',
+                    icon: Icon(Icons.person),
+                    controller: _name,
+                  ),
+                  AlertTextField(
+                    textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                    suffixIcon: isNumber
+                        ? null
+                        : Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ),
+                    hintText: 'Mobile',
+                    errorText: 'Enter Valid Number',
+                    icon: Icon(Icons.phone_android),
+                    inputFormatters: [
+                      FilteringTextInputFormatter(RegExp(r'^\d+\.?\d{0,2}'),
+                          allow: true),
+                    ],
+                    controller: _mobile,
+                  ),
+                  AlertTextField(
+                    textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                    hintText: 'Email',
+                    suffixIcon: isEmail
+                        ? null
+                        : Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ),
+                    icon: Icon(Icons.email),
+                    controller: _email,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 8.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            offset: Offset(0, 2),
+                            blurRadius: 5)
+                      ],
+                      color: Colors.blueAccent,
+                    ),
+                    child: FlatButton(
+                      height: 60.0,
+                      minWidth: MediaQuery.of(context).size.width / 1.5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Container(
+                          //     width: 30,
+                          //     height: 30,
+                          //     child: Image.network(
+                          //         'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/download%20pdf%20svgs%2Fmail%20service.svg?alt=media&token=49ae698d-0e63-453e-ac4d-f45924d51b9b')),
+                          // SizedBox(width: 6),
+                          Text(
+                            'Send to Mail',
+                            style:
+                                TextStyle(fontSize: 20.0, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      onPressed: () async {
+                        if (validateEmail(_email.text) &&
+                            _mobile.text.length == 10 &&
+                            (_name.text.length > 3)) {
+                          print(_mobile.text);
+                          getDownloadOTP();
+                          Navigator.pop(context);
+                          mobileOtpPage(_mobile.text, context);
+                        } else if (_email.text.isEmpty &&
+                            _mobile.text.isEmpty &&
+                            _name.text.isEmpty) {
+                          fillAllFieldsDialog(context);
+                        } else if (_name.text.length < 3) {
+                          invalidNameDialog(context);
+                        } else if (_mobile.text.length != 10) {
+                          invalidNumberDialog(context);
+                        } else if (!validateEmail(_email.text)) {
+                          invalidMailDialog(context);
+                        }
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    margin: EdgeInsets.symmetric(vertical: 8.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            offset: Offset(0, 2),
+                            blurRadius: 5)
+                      ],
+                      color: Colors.redAccent,
+                    ),
+                    child: FlatButton(
+                      height: 60.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0)),
+                      child: Text(
+                        'Close',
+                        style: TextStyle(fontSize: 20.0, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  mobileOtpPage(String userMobileNumber, context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AlertTextField(
+                        textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                        errorText: 'invalid OTP',
+                        hintText: 'Enter OTP',
+                        icon: Icon(Icons.lock_clock),
+                        letterSpacing: 20,
+                        controller: _otp,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        margin: EdgeInsets.symmetric(vertical: 8.0),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                offset: Offset(0, 2),
+                                blurRadius: 5)
+                          ],
+                          color: Colors.blue,
+                        ),
+                        child: FlatButton(
+                          height: 60.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(3.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Container(
+                              //     width: 30,
+                              //     height: 30,
+                              //     child: Image.network(
+                              //         'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/download%20pdf%20svgs%2Fmail%20service.svg?alt=media&token=49ae698d-0e63-453e-ac4d-f45924d51b9b')),
+                              // SizedBox(width: 6),
+                              Text(
+                                'submit',
+                                style: TextStyle(
+                                    fontSize: 20.0, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          onPressed: () async {
+                            if (_mobile.text.length >= 10) {
+                              try {
+                                userCredential =
+                                    await confirmationResult.confirm(_otp.text);
+                                print('OTP submited oooppppppp');
+                                getData();
+                                fireStoreAddWithDownload();
+
+                                Navigator.pop(context);
+                                fieldClear();
+                                mailSendedDialog(context);
+                              } catch (e) {
+                                print('$e OTP faild');
+                                Navigator.pop(context);
+                                _invalidOTP();
+                              }
+                            } else {
+                              Navigator.pop(context);
+                              _invalidOTP();
+                            }
+                          },
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        margin: EdgeInsets.symmetric(vertical: 8.0),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                offset: Offset(0, 2),
+                                blurRadius: 5)
+                          ],
+                          color: Colors.redAccent,
+                        ),
+                        child: FlatButton(
+                          height: 60.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(3.0)),
+                          child: Text(
+                            'Close',
+                            style:
+                                TextStyle(fontSize: 20.0, color: Colors.white),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                                color: Colors.grey[500], fontSize: 15),
+                            children: [
+                              TextSpan(text: 'Not Received OTP'),
+                              TextSpan(
+                                  text: ' Update MobileNumber?',
+                                  style: TextStyle(color: Colors.blue),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () async {
+                                      Navigator.pop(context);
+                                      MediaQuery.of(context).size.width > 1100
+                                          ? getUserData(context)
+                                          : mobileGetUserData(context);
+                                    }),
+                            ]),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  getDownloadOTP() async {
+    confirmationResult =
+        await _auth.signInWithPhoneNumber('+91 ${_mobile.text}');
+  }
+
+  verifyOTP() async {
+    if (_mobile.text.length > 10) {
+      try {
+        userCredential = await confirmationResult.confirm(_otp.text);
+        print(userCredential);
+        print(confirmationResult);
+        print('OTP submited oooooooo');
+        fireStoreAddWithDownload();
+
+        fieldClear();
+        Navigator.pop(context);
+      } catch (e) {
+        print('$e OTP faild');
+        Navigator.pop(context);
+        _invalidOTP();
+      }
+    } else {
+      Navigator.pop(context);
+      _invalidOTP();
+    }
+  }
+
+  Future<void> _invalidOTP() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Text(
+                'Sorry',
+                style: TextStyle(color: Colors.red, fontSize: 20),
+              ),
+              SizedBox(width: 15),
+              Icon(
+                FontAwesomeIcons.frown,
+                color: Colors.red,
+              )
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'Enter valid OTP or Update Mobile Number',
+                  style: TextStyle(color: Colors.grey[500], fontSize: 25),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Enter OTP'),
+              color: Colors.blue,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              onPressed: () {
+                Navigator.pop(context);
+                MediaQuery.of(context).size.width > 1100
+                    ? otpPage(_mobile.text, context)
+                    : mobileOtpPage(_mobile.text, context);
+              },
+            ),
+            FlatButton(
+              child: Text('Update Number'),
+              color: Colors.green,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              onPressed: () {
+                Navigator.pop(context);
+                MediaQuery.of(context).size.width > 1100
+                    ? getUserData(context)
+                    : mobileGetUserData(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  fieldClear() {
+    _mobile.clear();
+    _email.clear();
+    _name.clear();
+    _otp.clear();
+  }
+
+  void getData() async {
+    http.Response response = await http.get(
+        'http://free-webinar-registration.herokuapp.com/?name=${_name.text}&email=${_email.text}&type=syllabus');
+    print('tesss${_name.text}sssssssss${_email.text}sssssssst');
+
+    if (response.statusCode == 200) {
+      String data = response.body;
+      print(data);
+    } else {
+      print(response.statusCode);
+    }
+  }
+
   mailSendedDialog(context) {
     return showDialog(
       context: context,
@@ -594,7 +782,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
           backgroundColor: Colors.transparent,
           content: Container(
             height: 50,
-            width: 250,
+            width: 500,
             decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5)),
@@ -626,7 +814,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
           backgroundColor: Colors.transparent,
           content: Container(
             height: 50,
-            width: 250,
+            width: 500,
             decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5)),
@@ -657,7 +845,8 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           backgroundColor: Colors.transparent,
           content: Container(
-            height: 50,
+            height: MediaQuery.of(context).size.width > 500 ? 50 : 80,
+            width: 500,
             decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5)),
@@ -689,6 +878,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
           backgroundColor: Colors.transparent,
           content: Container(
             height: 50,
+            width: 500,
             decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5)),
@@ -763,9 +953,9 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
                   buttonWidth: 345,
                   onPressed: () async {
                     print(widget.pdfLink);
-                    await MediaQuery.of(context).size.width > 600
+                    await MediaQuery.of(context).size.width > 1100
                         ? getUserData(context)
-                        : mobileGetUserData();
+                        : mobileGetUserData(context);
                   },
                 ).moveUpOnHover,
               ],
