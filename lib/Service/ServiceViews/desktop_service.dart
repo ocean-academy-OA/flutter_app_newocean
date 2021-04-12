@@ -48,7 +48,7 @@ class _DesktopServiceState extends State<DesktopService> {
                   title: "Software development",
                   content:
                       "We offer various software development services such as designing, planning, and testing and also provide maintenance.",
-                  icon: 'images/software development.png',
+                  icon: 'images/software devolopment.png',
                 ),
                 ContainerServiceWidget(
                   title: "Technical Workshops (Implant training)",
