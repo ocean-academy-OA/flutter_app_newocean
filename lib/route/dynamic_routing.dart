@@ -49,11 +49,13 @@ Route<dynamic> generateRoute(
   }
   if (settings.name.contains("CourseDetails")) {
     String courseName = Uri.parse(settings.name).queryParameters["online"];
+    String batchID = Uri.parse(settings.name).queryParameters["batchID"];
 
     print("${courseName} CourseDetails");
     return _getPageRoute(
         CourseDetails(
           courseName: courseName,
+          batchId: batchID,
         ),
         settings);
   }
@@ -86,9 +88,11 @@ Route<dynamic> generateRoute(
       );
     case DetailsRoute:
       String courseName = Uri.parse(settings.name).queryParameters["online"];
+      String batchID = Uri.parse(settings.name).queryParameters["batchID"];
       return _getPageRoute(
         CourseDetails(
           courseName: courseName,
+          batchId: batchID,
         ),
         settings,
       );

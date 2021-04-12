@@ -90,7 +90,7 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           onPressed: () {
                             print(messageSender);
                             locator<NavigationService>().navigateTo(
-                                'CourseDetails?online=$messageSender');
+                                'CourseDetails?online=$messageSender&batchID=$messageBatchid');
                           },
                         );
                         // Text('$messageText from $messageSender');
