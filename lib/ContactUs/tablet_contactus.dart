@@ -638,7 +638,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
                 SizedBox(height: 40),
               ],
             ),
-            TabletFooter(),
+            TabletFooter()
           ],
         ),
       ),

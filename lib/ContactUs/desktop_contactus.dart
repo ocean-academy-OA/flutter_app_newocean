@@ -1,5 +1,4 @@
 import 'package:flutter_app_newocean/ContactUs/iframe_map.dart';
-import 'package:flutter_app_newocean/Footer/desktop_footer_lg.dart';
 import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/TopNavigationBar/desktop_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
@@ -14,7 +13,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
 import 'package:progress_indicator_button/progress_button.dart';
 import 'package:random_string/random_string.dart';
 
@@ -700,7 +698,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
                 ),
               ],
             ),
-            DesktopFooterLg()
+            DesktopFooterLayout()
           ],
         ),
       ),
@@ -807,7 +805,7 @@ class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                )
+                ),
               ],
             ),
           ),

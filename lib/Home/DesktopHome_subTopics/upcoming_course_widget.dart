@@ -90,10 +90,10 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                           Container messageContent = Container(
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(15.0),
                               child: Container(
-                                width: 370,
-                                height: 250,
+                                width: 420,
+                                height: 400,
                                 child: Image(
                                   image: NetworkImage(images),
                                   fit: BoxFit.contain,
