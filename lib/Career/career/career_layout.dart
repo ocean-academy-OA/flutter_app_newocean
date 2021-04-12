@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Career/career/Mobile_Career/mobile_career.dart';
+import 'package:flutter_app_newocean/Career/career/Tab_Career/tab_career.dart';
 import 'package:flutter_app_newocean/Career/career/career_lg.dart';
 import 'package:flutter_app_newocean/Career/career/career_md.dart';
 import 'package:flutter_app_newocean/Career/career/career_sm.dart';
@@ -13,8 +15,12 @@ class CareerLayout extends StatelessWidget {
         return CareerLg();
       } else if (constraints.maxWidth > 1300 && constraints.maxWidth < 1601) {
         return CareerMd();
-      } else if (constraints.maxWidth > 600 && constraints.maxWidth < 1301) {
+      } else if (constraints.maxWidth > 901 && constraints.maxWidth < 1301) {
         return CareerSm();
+      } else if (constraints.maxWidth > 601 && constraints.maxWidth < 900) {
+        return TabCareer();
+      } else if (constraints.maxWidth > 300 && constraints.maxWidth < 600) {
+        return MobileCareer();
       }
     });
   }

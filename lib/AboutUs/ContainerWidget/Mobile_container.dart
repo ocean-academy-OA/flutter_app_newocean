@@ -15,10 +15,10 @@ class ContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(50.0),
-      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-      height: 320.0,
-      width: 255.0,
+      margin: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      height: 300.0,
+      width: 240.0,
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -34,8 +34,8 @@ class ContainerWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            width: 155,
-            height: 180,
+            width: 140,
+            height: 150,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
                 image: DecorationImage(
@@ -49,7 +49,7 @@ class ContainerWidget extends StatelessWidget {
           Text(
             "$trainerName",
             style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold),
           ),
