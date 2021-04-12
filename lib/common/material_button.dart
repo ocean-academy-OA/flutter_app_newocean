@@ -15,7 +15,7 @@ class MaterialFlatButton extends StatelessWidget {
         child: Icon(
           icon,
           color: Colors.white,
-          size: 30.0,
+          size: 25.0,
         ),
       ),
       onTap: onPressed,

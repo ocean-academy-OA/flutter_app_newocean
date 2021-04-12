@@ -135,6 +135,7 @@ class Footer extends StatelessWidget {
                 Text(
                   'Ocean was founded on the principle of building and implementing'
                   ' great ideas that drive progress for the students ond clients.',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
@@ -200,7 +201,7 @@ class Footer extends StatelessWidget {
                         children: [
                           Container(
                             height: 40,
-                            width: 180.0,
+                            width: 170.0,
                             child: TextField(
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),

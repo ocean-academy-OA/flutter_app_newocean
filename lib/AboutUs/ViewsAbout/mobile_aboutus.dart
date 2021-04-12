@@ -162,7 +162,7 @@ class MobileAboutUs extends StatelessWidget {
             ),
             Wrap(alignment: WrapAlignment.center, children: [
               StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('trainer').snapshots(),
+                stream: _firestore.collection('Mentor').snapshots(),
                 // ignore: missing_return
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
@@ -170,12 +170,11 @@ class MobileAboutUs extends StatelessWidget {
                   } else {
                     final messages = snapshot.data.docs;
                     List<ContainerWidget> trainerContent = [];
-                    //List<String> subjects = [];
+
                     for (var message in messages) {
-                      // if (message.data()['coursename'] == "python") {
-                      final trainerName = message.data()['trainername'];
+                      final trainerName = message.data()['name'];
                       final trainerDesignation = message.data()['designation'];
-                      final trainerImage = message.data()['img'];
+                      final trainerImage = message.data()['image'];
 
                       final messageContent = ContainerWidget(
                         designation: trainerDesignation,
@@ -192,7 +191,7 @@ class MobileAboutUs extends StatelessWidget {
                 },
               ),
             ]),
-           Footer()
+            Footer()
           ],
         ),
       ),

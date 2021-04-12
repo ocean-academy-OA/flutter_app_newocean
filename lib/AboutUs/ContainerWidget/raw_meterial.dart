@@ -13,11 +13,12 @@ class RectangularMaterialButton extends StatelessWidget {
       child: Icon(
         icon,
         color: Colors.white,
+        size: 14,
       ),
       onPressed: onPressed,
       constraints: BoxConstraints.tightFor(
-        width: 35.0,
-        height: 35.0,
+        width: 30.0,
+        height: 30.0,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       fillColor: Color(0xff0091d2),
