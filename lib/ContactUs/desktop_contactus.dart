@@ -750,22 +750,22 @@ class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 40),
-                Container(
-                  width: 180,
-                  height: 200,
-                  child: Lottie.asset("images/41793-correct.json",
-                      controller: _controller,
-                      fit: BoxFit.cover, onLoaded: (composition) {
-                    _controller
-                      ..duration = composition.duration
-                      ..forward();
-                  }),
-                ),
-                // Icon(
-                //   Icons.check_circle_outline_outlined,
-                //   size: 130,
-                //   color: Colors.green[500],
+                // Container(
+                //   width: 180,
+                //   height: 200,
+                //   child: Lottie.asset("images/41793-correct.json",
+                //       controller: _controller,
+                //       fit: BoxFit.cover, onLoaded: (composition) {
+                //     _controller
+                //       ..duration = composition.duration
+                //       ..forward();
+                //   }),
                 // ),
+                Icon(
+                  Icons.check_circle_outline_outlined,
+                  size: 130,
+                  color: Colors.green[500],
+                ),
                 SizedBox(height: 40),
                 Text(
                   'Sent Successfully!',
@@ -776,16 +776,16 @@ class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
                     fontFamily: "Gilroy",
                   ),
                 ),
-                // SizedBox(height: 40),
-                // Text(
-                //   'Now we can go further',
-                //   style: TextStyle(color: Colors.grey),
-                // ),
-                // SizedBox(height: 5),
-                // Text(
-                //   'Few more steps',
-                //   style: TextStyle(color: Colors.grey),
-                // ),
+                SizedBox(height: 40),
+                Text(
+                  'Now we can go further',
+                  style: TextStyle(color: Colors.grey),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'Few more steps',
+                  style: TextStyle(color: Colors.grey),
+                ),
                 SizedBox(height: 40),
                 RaisedButton(
                   shape: RoundedRectangleBorder(
