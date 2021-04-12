@@ -4,9 +4,24 @@ import 'package:flutter_app_newocean/Career/career/Tab_Career/tab_career.dart';
 import 'package:flutter_app_newocean/Career/career/career_lg.dart';
 import 'package:flutter_app_newocean/Career/career/career_md.dart';
 import 'package:flutter_app_newocean/Career/career/career_sm.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 
-class CareerLayout extends StatelessWidget {
+class CareerLayout extends StatefulWidget {
   static final emailController = TextEditingController();
+
+  @override
+  _CareerLayoutState createState() => _CareerLayoutState();
+}
+
+class _CareerLayoutState extends State<CareerLayout> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    menu.updateAll((key, value) => menu[key] = false);
+    menu['Career'] = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     // ignore: missing_return

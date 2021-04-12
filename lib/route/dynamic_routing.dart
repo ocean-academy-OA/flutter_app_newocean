@@ -40,7 +40,7 @@ Route<dynamic> generateRoute(
   if (settings.name.contains("JoinSuccessfully")) {
     String userName = Uri.parse(settings.name).queryParameters["id"];
 
-    print("${userName} JoinSuccessfully");
+    print("$userName JoinSuccessfully");
     return _getPageRoute(
         ResponsiveWebinarJoinSuccessfully(
           userName: userName,

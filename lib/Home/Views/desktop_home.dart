@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
-import 'package:flutter_app_newocean/ClassRoom/classroom_menu/classroom_menu.dart';
+
 import 'package:flutter_app_newocean/Footer/desktop_footer_lg.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
+
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_badget_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/our_client.dart';
@@ -12,7 +11,9 @@ import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/what_is_new.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
+import 'package:flutter_app_newocean/route/dynamic_routing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_newocean/Home/Views/Tablet_home.dart';
 
@@ -31,6 +32,8 @@ class _DesktopHomeState extends State<DesktopHome> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    menu.updateAll((key, value) => menu[key] = false);
+    menu['Home'] = true;
     //Navbar.visiblity = true;
     Future.delayed(
         Duration(milliseconds: 3000), () => showDialogIfFirstLoaded(context));
@@ -53,7 +56,6 @@ class _DesktopHomeState extends State<DesktopHome> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SliderWidget(),
-
                 MainBadgeWidget(),
                 UpcomingCourse(),
                 PlacementCompany(),

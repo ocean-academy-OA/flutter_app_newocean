@@ -18,14 +18,6 @@ class MenuBarDrawer extends StatefulWidget {
 
 class _MenuBarDrawerState extends State<MenuBarDrawer>
     with SingleTickerProviderStateMixin {
-  Map menu = {
-    'Home': true,
-    'About Us': false,
-    'Service': false,
-    'Courses': false,
-    'Contact Us': false,
-  };
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -128,15 +120,13 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
             children: [
               Icon(
                 icon,
-                color:
-                    NavbarRouting.menu[text] ? Colors.blue : Colors.grey[500],
+                color: menu[text] ? Colors.blue : Colors.grey[500],
               ),
               SizedBox(width: 10),
               Text(
                 text,
                 style: TextStyle(
-                  color:
-                      NavbarRouting.menu[text] ? Colors.blue : Colors.grey[500],
+                  color: menu[text] ? Colors.blue : Colors.grey[500],
                   fontSize: 18,
                 ),
               ),
@@ -145,9 +135,8 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
         ),
         onTap: () {
           setState(() {
-            NavbarRouting.menu
-                .updateAll((key, value) => NavbarRouting.menu[key] = false);
-            NavbarRouting.menu[text] = true;
+            menu.updateAll((key, value) => menu[key] = false);
+            menu[text] = true;
           });
           locator<NavigationService>().navigateTo(naviagationPath);
 

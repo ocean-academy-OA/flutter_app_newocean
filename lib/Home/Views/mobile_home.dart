@@ -8,6 +8,7 @@ import 'package:flutter_app_newocean/Home/MobileHome_subTopics/placement_company
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/upcoming_course_widget.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
 import 'package:flutter_app_newocean/alert/bottom_sheet.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -39,6 +40,8 @@ class _MobileHomeState extends State<MobileHome> {
   @override
   void initState() {
     // TODO: implement initState
+    menu.updateAll((key, value) => menu[key] = false);
+    menu['Home'] = true;
     super.initState();
     Future.delayed(
         Duration(seconds: 3), () => showDialogIfFirstLoaded(context));

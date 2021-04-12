@@ -10,6 +10,7 @@ import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/our_c
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/what_is_new.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
 import 'package:flutter_app_newocean/alert/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,6 +34,8 @@ class _TabletHomeState extends State<TabletHome> {
     // TODO: implement initState
     super.initState();
     // Navbar.visiblity = true;
+    menu.updateAll((key, value) => menu[key] = false);
+    menu['Home'] = true;
     Future.delayed(
         Duration(seconds: 3), () => showDialogIfFirstLoaded(context));
   }

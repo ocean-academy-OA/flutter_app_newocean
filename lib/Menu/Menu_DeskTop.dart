@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
+
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
 import 'package:flutter_app_newocean/Menu/Menu_Tablet.dart';
 
@@ -11,6 +11,16 @@ import 'package:flutter_app_newocean/route/routeNames.dart';
 import '../ocean_icon/ocean_icons.dart';
 import '../route/routeNames.dart';
 
+Map menu = {
+  'Home': false,
+  'About Us': false,
+  'Services': false,
+  'Courses': false,
+  'Contact Us': false,
+  'Career': false,
+};
+
+// ignore: must_be_immutable
 class MenuBarDesktop extends StatefulWidget {
   MenuBarDesktop({this.child});
   Widget child;
@@ -42,26 +52,13 @@ class _MenuBarDesktopState extends State<MenuBarDesktop> {
 }
 
 class NavbarRouting extends StatefulWidget {
-  static Map menu = {
-    'Home': true,
-    'About Us': false,
-    'Services': false,
-    'Courses': false,
-    'Contact Us': false,
-    'Career': false,
-  };
-
   @override
   _NavbarRoutingState createState() => _NavbarRoutingState();
 }
 
 class _NavbarRoutingState extends State<NavbarRouting> {
   @override
-  String valueChoose;
-  List<String> courseList = [
-    'Online',
-    'Offline',
-  ];
+
 //overlay variable
 //   GlobalKey dropdownKey;
 //   bool isDropdown = false;
@@ -96,47 +93,10 @@ class _NavbarRoutingState extends State<NavbarRouting> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // dropdownKey = GlobalKey();
-  }
-
-  GlobalKey menuButtonKey = GlobalKey();
-  void onClickMenu(MenuItemProvider item) {
-    if (item.menuTitle == 'Certificates') {
-      print(item.menuTitle);
-    }
-  }
-
-  void popupMenuButton() {
-    PopupMenu menu = PopupMenu(
-      maxColumn: 1,
-      incrementWidth: 80,
-      incrementHeight: 50,
-      backgroundColor: Colors.grey[700],
-      lineColor: Colors.blue,
-      shadow: false,
-      onClickMenu: onClickMenu,
-      // highlightColor: Colors.red,
-      items: [
-        MenuItem(
-            title: 'Certificates',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'My profile',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'Purchase',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'Log Out',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-      ],
-    );
-    menu.show(widgetKey: menuButtonKey);
   }
 
   @override
   Widget build(BuildContext context) {
-    PopupMenu.context = context;
     return Container(
       color: Color(0xFFECF5FF),
       child: Padding(
@@ -145,7 +105,9 @@ class _NavbarRoutingState extends State<NavbarRouting> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                locator<NavigationService>().navigateTo(HomeRoute);
+              },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -201,8 +163,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                     locator<NavigationService>().navigateTo(LoginRoute);
 
                     setState(() {
-                      NavbarRouting.menu.updateAll(
-                          (key, value) => NavbarRouting.menu[key] = false);
+                      menu.updateAll((key, value) => menu[key] = false);
                     });
 
                     ///todo:instead of resiter login will come
@@ -232,16 +193,15 @@ class _NavbarRoutingState extends State<NavbarRouting> {
         child: Text(
           text,
           style: TextStyle(
-              color: NavbarRouting.menu[text] ? Colors.blue : Color(0xFF155575),
+              color: menu[text] ? Colors.blue : Color(0xFF155575),
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
               fontFamily: "Gilroy"),
         ),
         onTap: () {
           setState(() {
-            NavbarRouting.menu
-                .updateAll((key, value) => NavbarRouting.menu[key] = false);
-            NavbarRouting.menu[text] = true;
+            menu.updateAll((key, value) => menu[key] = false);
+            menu[text] = true;
           });
           locator<NavigationService>().navigateTo(naviagationPath);
 
