@@ -5,6 +5,7 @@ import 'package:flutter_app_newocean/Career/career/career_layout.dart';
 
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
+import 'package:flutter_app_newocean/Course/course_description/course_details.dart';
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/otp.dart';
@@ -46,6 +47,18 @@ Route<dynamic> generateRoute(
         ),
         settings);
   }
+  if (settings.name.contains("CourseDetails")) {
+    String courseName = Uri.parse(settings.name).queryParameters["online"];
+    String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+
+    print("${courseName} CourseDetails");
+    return _getPageRoute(
+        CourseDetails(
+          courseName: courseName,
+          batchId: batchID,
+        ),
+        settings);
+  }
 
   switch (settings.name) {
     case HomeRoute:
@@ -73,11 +86,26 @@ Route<dynamic> generateRoute(
         ResponsiveCourse(),
         settings,
       );
+    case DetailsRoute:
+      String courseName = Uri.parse(settings.name).queryParameters["online"];
+      String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+      return _getPageRoute(
+        CourseDetails(
+          courseName: courseName,
+          batchId: batchID,
+        ),
+        settings,
+      );
+
+    //======course
+
     case CareerRoute:
       return _getPageRoute(
         CareerLayout(),
         settings,
       );
+
+    // login
     case LoginRoute:
       return _getPageRoute(
         LoginResponsive(),

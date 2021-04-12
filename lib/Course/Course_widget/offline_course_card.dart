@@ -208,6 +208,108 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
         });
   }
 
+  mobileGetUserData() {
+    return Container(
+      height: 350,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AlertTextField(
+            suffixIcon: isName
+                ? null
+                : Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ),
+            hintText: 'Name',
+            icon: Icon(Icons.person),
+            controller: _name,
+          ),
+          AlertTextField(
+            suffixIcon: isNumber
+                ? null
+                : Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ),
+            hintText: 'Mobile',
+            errorText: 'Enter Valid Number',
+            icon: Icon(Icons.phone_android),
+            inputFormatters: [
+              FilteringTextInputFormatter(RegExp(r'^\d+\.?\d{0,2}'),
+                  allow: true),
+            ],
+            controller: _mobile,
+          ),
+          AlertTextField(
+            hintText: 'Email',
+            suffixIcon: isEmail
+                ? null
+                : Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ),
+            icon: Icon(Icons.email),
+            controller: _email,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 8.0),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    offset: Offset(0, 2),
+                    blurRadius: 5)
+              ],
+              color: Colors.white,
+            ),
+            child: FlatButton(
+              height: 60.0,
+              color: Colors.white,
+              minWidth: 360,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3.0)),
+              child: Row(
+                children: [
+                  Container(
+                      width: 30,
+                      height: 30,
+                      child: Image.network(
+                          'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/download%20pdf%20svgs%2Fmail%20service.svg?alt=media&token=49ae698d-0e63-453e-ac4d-f45924d51b9b')),
+                  SizedBox(width: 6),
+                  Text(
+                    'Send to Mail',
+                    style: TextStyle(fontSize: 20.0, color: Colors.blue),
+                  ),
+                ],
+              ),
+              onPressed: () async {
+                if (validateEmail(_email.text) &&
+                    _mobile.text.length == 10 &&
+                    (_name.text.length > 3)) {
+                  print(_mobile.text);
+                  getDownloadOTP();
+                  Navigator.pop(context);
+                  otpPage(_mobile.text, context);
+                } else if (_email.text.isEmpty &&
+                    _mobile.text.isEmpty &&
+                    _name.text.isEmpty) {
+                  fillAllFieldsDialog(context);
+                } else if (_name.text.length < 3) {
+                  invalidNameDialog(context);
+                } else if (_mobile.text.length != 10) {
+                  invalidNumberDialog(context);
+                } else if (!validateEmail(_email.text)) {
+                  invalidMailDialog(context);
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   getDownloadOTP() async {
     confirmationResult =
         await _auth.signInWithPhoneNumber('+91 ${_mobile.text}');
@@ -608,7 +710,7 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(35.0),
+      margin: EdgeInsets.all(20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
       //  height: 375.0,
       width: 350.0,
@@ -660,7 +762,10 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
                   hoverColor: Colors.blue[50],
                   buttonWidth: 345,
                   onPressed: () async {
-                    await getUserData(context);
+                    print(widget.pdfLink);
+                    await MediaQuery.of(context).size.width > 600
+                        ? getUserData(context)
+                        : mobileGetUserData();
                   },
                 ).moveUpOnHover,
               ],

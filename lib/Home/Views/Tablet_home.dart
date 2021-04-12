@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/slide
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/what_is_new.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
+import 'package:flutter_app_newocean/alert/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Footer/tablet_footer.dart';
@@ -32,7 +34,7 @@ class _TabletHomeState extends State<TabletHome> {
     super.initState();
     // Navbar.visiblity = true;
     Future.delayed(
-        Duration(milliseconds: 300), () => showDialogIfFirstLoaded(context));
+        Duration(seconds: 3), () => showDialogIfFirstLoaded(context));
   }
 
   void dispose() {
@@ -69,11 +71,12 @@ class _TabletHomeState extends State<TabletHome> {
 
     //TODO make as isFirstLoaded == null
     if (isFirstLoaded == true) {
-      showDialog(
+      showCupertinoModalPopup(
+        barrierColor: Colors.white,
         context: context,
         builder: (BuildContext context) {
           // return object of type Dialog
-          return AlertEnquiry(
+          return MobileBottomSheet(
             keyIsFirstLoaded: keyIsFirstLoaded,
           );
         },
