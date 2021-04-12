@@ -110,7 +110,7 @@ class _DesktopFooterLgState extends State<DesktopFooterLg> {
     return Container(
         // height: 650,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 100),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 100),
         color: Color(0xFC004478),
         child: Column(
           children: [
@@ -242,7 +242,7 @@ class _DesktopFooterLgState extends State<DesktopFooterLg> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   // color: Colors.grey[600],
-                  width: MediaQuery.of(context).size.width * 0.2,
+                  width: MediaQuery.of(context).size.width * 0.2 + 25,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
