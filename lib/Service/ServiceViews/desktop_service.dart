@@ -63,9 +63,9 @@ class _DesktopServiceState extends State<DesktopService> {
                   icon: 'images/counseling.png',
                 ),
                 ContainerServiceWidget(
-                  title: "Title",
+                  title: "Free Webinars",
                   content: "Subtitle",
-                  icon: '',
+                  icon: 'images/wbinar.png',
                 ),
                 ContainerServiceWidget(
                   title: "Title",
