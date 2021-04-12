@@ -57,7 +57,7 @@ class PlacementCompany extends StatelessWidget {
                     }
                     return Wrap(
                       alignment: WrapAlignment.center,
-                      spacing: 50.0,
+                      spacing: 70.0,
                       children: companyLogo,
                     );
                   }
@@ -80,9 +80,12 @@ class CompanyLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image(
-      image: NetworkImage("$companyLogoImage,"),
-      width: 200.0,
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15),
+      child: Image(
+        image: NetworkImage("$companyLogoImage,"),
+        width: 160.0,
+      ),
     );
   }
 }

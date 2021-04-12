@@ -116,50 +116,41 @@ class _TabletFooterState extends State<TabletFooter> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: 230,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    height: 350,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: GestureDetector(
-                            onTap: () {
-                              // Provider.of<Routing>(context, listen: false)
-                              //     .updateRouting(widget: Home());
-                            },
-                            child: Text(
-                              'OCEAN ACADEMY',
-                              style: TextStyle(
-                                  fontSize: 30.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: kfontname),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 40),
-                        Container(
-                          width: 450,
-                          child: Text(
-                            'Ocean was founded on the principle of building and implementing'
-                            'great ideas that drive progress for the students ond clients.',
-                            style: TextStyle(
-                                height: 1.5,
-                                color: Colors.white,
-                                fontSize: 18.0,
-                                fontFamily: kfontname),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                      ],
+                    alignment: Alignment.center,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Provider.of<Routing>(context, listen: false)
+                        //     .updateRouting(widget: Home());
+                      },
+                      child: Text(
+                        'OCEAN ACADEMY',
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: kfontname),
+                      ),
                     ),
                   ),
+                  SizedBox(height: 40),
+                  Container(
+                    width: 450,
+                    child: Text(
+                      'Ocean was founded on the principle of building and implementing '
+                      'great ideas that drive progress for the students ond clients.',
+                      style: TextStyle(
+                          height: 1.5,
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontFamily: kfontname),
+                    ),
+                  ),
+                  SizedBox(height: 50),
                 ],
               ),
             ),
@@ -242,12 +233,8 @@ class _TabletFooterState extends State<TabletFooter> {
                       ),
                       SizedBox(height: 20.0),
                       GestureDetector(
-                        child: Container(
-                            child: Text(
-                          'FAQ',
-                          style: kbottom,
-                        )),
-                      ),
+                          child: footerMouseRegion(
+                              text: "ABOUT US", widget: ResponsiveAboutUs())),
                       SizedBox(height: 20.0),
                       Container(
                           child: Text(
@@ -270,9 +257,9 @@ class _TabletFooterState extends State<TabletFooter> {
                   child: Column(
                     children: [
                       Container(
-                          alignment: Alignment.center,
-                          child: footerMouseRegion(
-                              text: "ABOUT US", widget: ResponsiveAboutUs())),
+                        alignment: Alignment.center,
+                        child: Text("FAQ", style: kbottom),
+                      ),
                       SizedBox(height: 17.0),
                       Container(
                           alignment: Alignment.center,
