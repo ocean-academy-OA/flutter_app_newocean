@@ -176,7 +176,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                       menuItem(text: 'Home', naviagationPath: HomeRoute),
                       menuItem(text: 'About Us', naviagationPath: AboutRoute),
                       menuItem(text: 'Services', naviagationPath: ServiceRoute),
-                      menuItem(text: 'Course', naviagationPath: CourseRoute),
+                      menuItem(text: 'Courses', naviagationPath: CourseRoute),
                       menuItem(
                           text: 'Contact Us', naviagationPath: ContactUsRoute),
                       menuItem(text: 'Career', naviagationPath: CareerRoute),
