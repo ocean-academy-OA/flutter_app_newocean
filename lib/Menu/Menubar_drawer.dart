@@ -22,7 +22,7 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
     'Home': true,
     'About Us': false,
     'Service': false,
-    'Course': false,
+    'Courses': false,
     'Contact Us': false,
   };
 
