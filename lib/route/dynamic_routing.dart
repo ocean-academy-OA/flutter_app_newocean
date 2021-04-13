@@ -54,8 +54,8 @@ Route<dynamic> generateRoute(
     print("${courseName} CourseDetails");
     return _getPageRoute(
         CourseDetails(
-          courseName: courseName,
-          batchId: batchID,
+          course: 'Flask',
+          batch: 'OCNBK19',
         ),
         settings);
   }
@@ -91,8 +91,8 @@ Route<dynamic> generateRoute(
       String batchID = Uri.parse(settings.name).queryParameters["batchID"];
       return _getPageRoute(
         CourseDetails(
-          courseName: courseName,
-          batchId: batchID,
+          course: 'Flask',
+          batch: 'OCNBK19',
         ),
         settings,
       );

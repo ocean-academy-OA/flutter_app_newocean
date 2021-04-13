@@ -13,7 +13,7 @@ class BadgeWidget extends StatelessWidget {
       child: Column(
         children: [
           Icon(
-            icon,
+            icon, color: Colors.blue,
             size: 50.0,
             //color: textColor,
           ),
