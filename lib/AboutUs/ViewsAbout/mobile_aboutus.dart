@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ContainerWidget/Mobile_container.dart';
 import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 
 import 'package:flutter_app_newocean/TopNavigationBar/mobile_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';

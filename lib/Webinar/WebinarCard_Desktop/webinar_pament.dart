@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/join_successfully.dart';
+
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_list.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
+
 import 'package:intl/intl.dart';
 
 import 'dart:html';

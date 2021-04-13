@@ -12,7 +12,7 @@ import '../ocean_icon/ocean_icons.dart';
 import '../route/routeNames.dart';
 
 Map menu = {
-  'Home': false,
+  'Home': true,
   'About Us': false,
   'Services': false,
   'Courses': false,
