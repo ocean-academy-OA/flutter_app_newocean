@@ -175,11 +175,19 @@ class MobileAboutUs extends StatelessWidget {
                       final trainerName = message.data()['name'];
                       final trainerDesignation = message.data()['designation'];
                       final trainerImage = message.data()['image'];
+                      final fbLink = message.data()['fbLink'];
+                      final gmailLink = message.data()['gmailLink'];
+                      final linkedinLink = message.data()['linkedinLink'];
+                      final twitter = message.data()['twitter'];
 
                       final messageContent = ContainerWidget(
                         designation: trainerDesignation,
                         trainerName: trainerName,
                         image: trainerImage,
+                        fbLink: fbLink,
+                        gmailLink: gmailLink,
+                        linkedinLink: linkedinLink,
+                        twitterLink: twitter,
                       );
                       trainerContent.add(messageContent);
                       // }

@@ -53,7 +53,7 @@ class OurClient extends StatelessWidget {
                       collegeLogo.add(logos);
                     }
                     return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 300),
+                      padding: EdgeInsets.symmetric(horizontal: 100),
                       child: Wrap(
                         alignment: WrapAlignment.center,
                         spacing: 50.0,
@@ -82,16 +82,9 @@ class CollegeLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(500),
-          boxShadow: [
-            BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 10)
-          ]),
       child: Image(
-        image: NetworkImage("$collegeLogoImage,"),
-        width: 100.0,
+        image: NetworkImage("$collegeLogoImage"),
+        width: 150.0,
         // fit: BoxFit.fitWidth,
       ),
     );

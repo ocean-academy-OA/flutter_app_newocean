@@ -30,11 +30,11 @@ class _CareerLayoutState extends State<CareerLayout> {
         return CareerLg();
       } else if (constraints.maxWidth > 1300 && constraints.maxWidth < 1601) {
         return CareerMd();
-      } else if (constraints.maxWidth > 901 && constraints.maxWidth < 1301) {
+      } else if (constraints.maxWidth > 900 && constraints.maxWidth < 1301) {
         return CareerSm();
-      } else if (constraints.maxWidth > 601 && constraints.maxWidth < 900) {
+      } else if (constraints.maxWidth > 600 && constraints.maxWidth < 901) {
         return TabCareer();
-      } else if (constraints.maxWidth > 300 && constraints.maxWidth < 600) {
+      } else if (constraints.maxWidth > 300 && constraints.maxWidth < 601) {
         return MobileCareer();
       }
     });
