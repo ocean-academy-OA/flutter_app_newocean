@@ -17,6 +17,7 @@ class MainBadgeWidget extends StatelessWidget {
       ),
       TextWidget(
         title: ourjourneycontent,
+        style: TextStyle(),
       ),
       Container(
         child: Column(

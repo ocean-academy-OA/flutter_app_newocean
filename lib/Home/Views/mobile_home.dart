@@ -4,6 +4,7 @@ import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
 
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/main_badget_widget.dart';
+
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/placement_company.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/slider_widget.dart';
