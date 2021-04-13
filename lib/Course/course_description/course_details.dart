@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -10,17 +9,18 @@ class CourseDetails extends StatefulWidget {
   String course;
   String trainer;
   String sess;
-  String desc;
+  String time;
   String batch;
-  String section;
-  String chapter;
+  // String section;
+  // String chapter;
 
-  CourseDetails(
-      {this.course = 'Flask',
-      this.sess,
-      this.trainer,
-      this.desc,
-      this.batch = 'OCNBK19'});
+  CourseDetails({
+    this.course = 'Flask',
+    // this.sess,
+    // this.trainer,
+    // this.time,
+    this.batch = 'OCNBK19',
+  });
 
   @override
   _CourseDetailsState createState() => _CourseDetailsState();
@@ -32,41 +32,38 @@ class _CourseDetailsState extends State<CourseDetails> {
   void studentId() async {
     await for (var snapshot in _firestore
         .collection('course')
-        .where("coursename", isEqualTo: widget.course)
-        .snapshots(includeMetadataChanges: true)) {
-      for (var message in snapshot.docs) {
-        syllabusid = message.id;
-        print(syllabusid);
-      }
-    }
-  }
-
-  String syllabusCount;
-  List<int> syllabus = [];
-
-  void count() async {
-    await for (var snapshot in _firestore
-        .collection('course')
         .doc(widget.batch)
-        .collection('syllabus')
         .snapshots(includeMetadataChanges: true)) {
-      for (var message in snapshot.docs) {
-        syllabusCount = message.id;
-        syllabus.add(int.parse(syllabusCount));
-      }
-      syllabus.sort();
-      print("${syllabus.length}syllabus.length");
+      print(snapshot);
     }
   }
+  //
+  // String syllabusCount;
+  // List<int> syllabus = [];
+  //
+  // void count() async {
+  //   await for (var snapshot in _firestore
+  //       .collection('course')
+  //       .doc(widget.batch)
+  //       .collection('syllabus')
+  //       .snapshots(includeMetadataChanges: true)) {
+  //     for (var message in snapshot.docs) {
+  //       syllabusCount = message.id;
+  //       syllabus.add(int.parse(syllabusCount));
+  //     }
+  //     syllabus.sort();
+  //     print("${syllabus.length}syllabus.length");
+  //   }
+  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    studentId();
+    // studentId();
   }
 
-  bool isLogin = true;
+  // bool isLogin = true;
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +71,12 @@ class _CourseDetailsState extends State<CourseDetails> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            TextButton(
+              child: Text('test'),
+              onPressed: () {
+                studentId();
+              },
+            ),
             Container(
               color: Color(0xff004B71),
               child: Row(
@@ -307,7 +310,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                               Container(
                                 width: 1100.0,
                                 child: Text(
-                                  "${widget.desc}",
+                                  "${widget.time}",
                                   style: TextStyle(
                                       fontSize: 18.0, color: Colors.grey[700]),
                                 ),
@@ -351,7 +354,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                   final messageSession =
                                       message.data()[widget.sess];
                                   final messageCoursedescription =
-                                      message.data()[widget.desc];
+                                      message.data()[widget.time];
                                   final docid = message.id;
                                   // for (var k = 0;
                                   //     k < syllabus.length + 1;
