@@ -53,10 +53,10 @@ class OurClient extends StatelessWidget {
                       collegeLogo.add(logos);
                     }
                     return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 100),
+                      padding: EdgeInsets.symmetric(horizontal: 70),
                       child: Wrap(
                         alignment: WrapAlignment.center,
-                        spacing: 50.0,
+                        spacing: 70.0,
                         runSpacing: 30,
                         children: collegeLogo,
                       ),
@@ -84,7 +84,7 @@ class CollegeLogo extends StatelessWidget {
     return Container(
       child: Image(
         image: NetworkImage("$collegeLogoImage"),
-        width: 150.0,
+        width: 120.0,
         // fit: BoxFit.fitWidth,
       ),
     );

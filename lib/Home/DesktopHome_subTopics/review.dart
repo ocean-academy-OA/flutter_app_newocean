@@ -14,11 +14,11 @@ class _ReViewState extends State<ReView> {
     return Wrap(
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: 40,
+      spacing: 50,
       runSpacing: 40.0,
       children: [
-        GoogleReview(),
         JusDialReview(),
+        GoogleReview(),
         TrustPilotReview(),
       ],
     );

@@ -90,7 +90,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Container(
-                                width: 400,
+                                width: 420,
                                 height: 400,
                                 child: Image(
                                   image: NetworkImage(images),
@@ -132,13 +132,13 @@ class DB extends StatelessWidget {
       child: CarouselSlider(
         options: CarouselOptions(
           pageSnapping: true,
-          height: 300,
+          height: 220,
           enlargeCenterPage: true,
           autoPlay: true,
           aspectRatio: 16 / 9,
           autoPlayCurve: Curves.fastOutSlowIn,
           enableInfiniteScroll: true,
-          autoPlayAnimationDuration: Duration(milliseconds: 150),
+          autoPlayAnimationDuration: Duration(milliseconds: 200),
           viewportFraction: 0.3,
         ),
         items: images,

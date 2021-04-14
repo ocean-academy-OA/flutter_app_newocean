@@ -79,7 +79,7 @@ class CompanyLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image(
       image: NetworkImage("$companyLogoImage,"),
-      width: 100.0,
+      width: 60.0,
     );
   }
 }

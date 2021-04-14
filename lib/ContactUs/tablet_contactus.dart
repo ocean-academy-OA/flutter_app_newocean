@@ -447,7 +447,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
                     ),
                     SizedBox(height: 20),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           child: Text(
@@ -464,7 +464,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
                     ),
                     SizedBox(height: 5),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           padding: EdgeInsets.all(15),

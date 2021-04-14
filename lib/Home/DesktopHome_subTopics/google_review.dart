@@ -10,6 +10,7 @@ class _GoogleReviewState extends State<GoogleReview> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(bottom: 50),
       width: 370.0,
       child: Column(
         children: [
@@ -17,11 +18,13 @@ class _GoogleReviewState extends State<GoogleReview> {
           Container(
             width: 300,
             child: Stack(
-              alignment: Alignment.center,
+              alignment: Alignment.topCenter,
               children: [
-                Image(
-                  image: AssetImage('images/googleReview.png'),
-                  width: 220,
+                Container(
+                  child: Image(
+                    image: AssetImage('images/googleReview.png'),
+                    width: 200,
+                  ),
                 ),
                 Positioned(
                   bottom: 5.0,
