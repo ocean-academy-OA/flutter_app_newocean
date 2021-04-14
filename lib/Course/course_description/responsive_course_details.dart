@@ -23,8 +23,18 @@ class ResponsiveCourseDetails extends StatelessWidget {
         discription: description,
         trainer: trainerName,
       ),
-      mobile: CourseDetails(),
-      tablet: CourseDetails(),
+      mobile: CourseDetails(
+        batch: batchId,
+        course: courseName,
+        discription: description,
+        trainer: trainerName,
+      ),
+      tablet: CourseDetails(
+        batch: batchId,
+        course: courseName,
+        discription: description,
+        trainer: trainerName,
+      ),
     );
   }
 }

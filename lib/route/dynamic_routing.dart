@@ -59,7 +59,7 @@ Route<dynamic> generateRoute(
     return _getPageRoute(
         ResponsiveCourseDetails(
           courseName: courseName,
-          batchId: courseName,
+          batchId: batchID,
           trainerName: trainer,
           description: description,
         ),
@@ -101,7 +101,7 @@ Route<dynamic> generateRoute(
       return _getPageRoute(
         ResponsiveCourseDetails(
           courseName: courseName,
-          batchId: courseName,
+          batchId: batchID,
           trainerName: trainer,
           description: description,
         ),
