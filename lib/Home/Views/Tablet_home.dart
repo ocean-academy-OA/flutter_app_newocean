@@ -1,20 +1,17 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
-import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/placement_company.dart';
-import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/reviews.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/main_badget_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/our_client.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/slider_widget.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/what_is_new.dart';
-import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_widget.dart';
 import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
-import 'package:flutter_app_newocean/alert/alert_msg.dart';
 import 'package:flutter_app_newocean/alert/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter_app_newocean/Home/TabletHome_widgets/tablet_upcoming_course.dart';
+import 'package:flutter_app_newocean/Home/TabletHome_widgets/tablet_placement_company.dart';
+import 'package:flutter_app_newocean/Home/TabletHome_widgets/tablet_reviews.dart';
 import '../../Footer/tablet_footer.dart';
 
 class TabletHome extends StatefulWidget {
@@ -55,9 +52,9 @@ class _TabletHomeState extends State<TabletHome> {
           children: [
             SliderWidget(),
             MainBadgeWidget(),
-            UpcomingCourse(),
-            PlacementCompany(),
-            ReviewsSection(),
+            TabletUpcomingCourse(),
+            TabletPlacementCompany(),
+            TabletReviewsSection(),
             OurClient(),
             WhatIsNew(),
             HowItWorks(),

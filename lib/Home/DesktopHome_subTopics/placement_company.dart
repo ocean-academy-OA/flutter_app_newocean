@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter_app_newocean/common/comments.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
