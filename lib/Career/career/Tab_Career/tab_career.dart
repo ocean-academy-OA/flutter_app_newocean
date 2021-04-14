@@ -57,7 +57,7 @@ class _TabCareerState extends State<TabCareer> {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      // color: Colors.grey[100],
+      color: Colors.blue[50],
       child: Stack(
         children: [
           SingleChildScrollView(

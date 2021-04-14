@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/common/comments.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
-class OurClient extends StatelessWidget {
+class TabletPlacementCompany extends StatelessWidget {
   final _firestore = FirebaseFirestore.instance;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,13 +19,13 @@ class OurClient extends StatelessWidget {
           Column(
             children: [
               MainTitleWidgetHome(
-                title: "Our Clients",
+                title: "Our student got placement",
               ),
               SizedBox(
                 height: 40.0,
               ),
               TextWidget(
-                title: clientcontent,
+                title: placementcontent,
               ),
             ],
           ),
@@ -31,35 +33,29 @@ class OurClient extends StatelessWidget {
             height: 50.0,
           ),
           Wrap(
-            spacing: 60.0,
-            runSpacing: 100.0,
             children: [
               StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('Client').snapshots(),
+                stream: _firestore.collection('Company').snapshots(),
                 // ignore: missing_return
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Text("Loading...");
                   } else {
                     final messages = snapshot.data.docs;
-                    List<CollegeLogo> collegeLogo = [];
+                    List<CompanyLogo> companyLogo = [];
 
                     for (var message in messages) {
-                      final logoImage = message.data()['Client'];
-                      final logos = CollegeLogo(
-                        collegeLogoImage: logoImage,
+                      final logoImage = message.data()['Company'];
+                      final logos = CompanyLogo(
+                        companyLogoImage: logoImage,
                       );
                       // Text('$messageText from $messageSender');
-                      collegeLogo.add(logos);
+                      companyLogo.add(logos);
                     }
-                    return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Wrap(
-                        alignment: WrapAlignment.center,
-                        spacing: 25.0,
-                        runSpacing: 30,
-                        children: collegeLogo,
-                      ),
+                    return Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 20.0,
+                      children: companyLogo,
                     );
                   }
                 },
@@ -75,17 +71,17 @@ class OurClient extends StatelessWidget {
   }
 }
 
-class CollegeLogo extends StatelessWidget {
-  final String collegeLogoImage;
-  CollegeLogo({this.collegeLogoImage});
+class CompanyLogo extends StatelessWidget {
+  final String companyLogoImage;
+  CompanyLogo({this.companyLogoImage});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15),
       child: Image(
-        image: NetworkImage("$collegeLogoImage,"),
-        width: 75.0,
-        // fit: BoxFit.fitWidth,
+        image: NetworkImage("$companyLogoImage,"),
+        width: 70.0,
       ),
     );
   }

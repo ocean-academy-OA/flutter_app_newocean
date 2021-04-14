@@ -3,7 +3,8 @@ import 'package:flutter_app_newocean/common/constants.dart';
 
 class TextWidget extends StatelessWidget {
   final String title;
-  TextWidget({this.title});
+  final TextStyle style;
+  TextWidget({this.title, this.style = otherSmallContentTextStyle});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -12,7 +13,7 @@ class TextWidget extends StatelessWidget {
             MediaQuery.of(context).size.width / 10,
         child: Text(
           title,
-          style: otherSmallContentTextStyle,
+          style: style,
           textAlign: TextAlign.center,
         ),
       ),

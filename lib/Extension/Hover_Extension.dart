@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
-
 import 'package:flutter_app_newocean/Extension/translate_onHover.dart';
 
 extension HoverExtension on Widget {

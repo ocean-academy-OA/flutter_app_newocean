@@ -13,7 +13,7 @@ import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
 
 class MainLayout extends StatefulWidget {
-  static bool sticNotification = true;
+  // static bool sticNotification = true;
   bool notification = true;
   MainLayout({
     this.child,

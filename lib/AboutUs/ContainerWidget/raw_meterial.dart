@@ -9,15 +9,17 @@ class RectangularMaterialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
+      padding: EdgeInsets.zero,
+      hoverColor: Colors.blue,
       elevation: 0.0,
       child: Icon(
         icon,
         color: Colors.white,
-        size: 14,
+        size: 15,
       ),
       onPressed: onPressed,
       constraints: BoxConstraints.tightFor(
-        width: 30.0,
+        width: 35.0,
         height: 30.0,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),

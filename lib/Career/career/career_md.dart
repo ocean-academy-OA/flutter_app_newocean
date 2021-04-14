@@ -53,21 +53,12 @@ class _CareerMdState extends State<CareerMd> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.grey[300],
+      color: Colors.blue[50],
       child: Stack(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: [
-              //     Container(
-              //       padding: EdgeInsets.only(top: 20, left: 20),
-              //       child: Image.asset("images/coming_soon/Group 10.png"),
-              //     )
-              //   ],
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -161,37 +152,37 @@ class _CareerMdState extends State<CareerMd> {
             ],
           ),
           Positioned(
-            bottom: -50,
+            bottom: -100,
             left: -200,
             child: ClipPath(
               clipper: LinePathClass(),
               child: Container(
                 color: Colors.blue[100],
-                height: 250,
+                height: 200,
                 width: 470,
               ),
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: -80,
             right: -215,
             child: ClipPath(
               clipper: LinePathClass(),
               child: Container(
                 color: Colors.blue[200],
-                height: 260,
+                height: 220,
                 width: 470,
               ),
             ),
           ),
           Positioned(
-            bottom: -50,
-            right: -100,
+            bottom: -110,
+            right: -120,
             child: ClipPath(
               clipper: LinePathClass(),
               child: Container(
                 color: Colors.blue[100],
-                height: 250,
+                height: 200,
                 width: 470,
               ),
             ),

@@ -6,46 +6,46 @@ import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/main_title_widge
 import 'package:flutter_app_newocean/common/comments.dart';
 import 'package:flutter_app_newocean/common/text.dart';
 
-class UpcomingCourse extends StatefulWidget {
+class TabletUpcomingCourse extends StatefulWidget {
   @override
-  _UpcomingCourseState createState() => _UpcomingCourseState();
+  _TabletUpcomingCourseState createState() => _TabletUpcomingCourseState();
 }
 
-class _UpcomingCourseState extends State<UpcomingCourse> {
+class _TabletUpcomingCourseState extends State<TabletUpcomingCourse> {
   final _firestore = FirebaseFirestore.instance;
 
-  List<Container> bubbles = [];
-
-  void getData() async {
-    final message = await _firestore.collection('Upcoming_Course').get();
-    print(message.docs);
-
-    for (var courses in message.docs) {
-      String a = courses.data()['upcomingcourse'];
-      Widget coursIMG = Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: Container(
-            width: 400,
-            child: Image(
-              image: NetworkImage(a),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      );
-
-      bubbles.add(coursIMG);
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getData();
-  }
+  // List<Container> bubbles = [];
+  //
+  // void getData() async {
+  //   final message = await _firestore.collection('Upcoming_Course').get();
+  //   print(message.docs);
+  //
+  //   for (var courses in message.docs) {
+  //     String a = courses.data()['upcomingcourse'];
+  //     Widget coursIMG = Container(
+  //       margin: EdgeInsets.symmetric(horizontal: 20.0),
+  //       child: ClipRRect(
+  //         borderRadius: BorderRadius.circular(10.0),
+  //         child: Container(
+  //           width: 500,
+  //           child: Image(
+  //             image: NetworkImage(a),
+  //             fit: BoxFit.cover,
+  //           ),
+  //         ),
+  //       ),
+  //     );
+  //
+  //     bubbles.add(coursIMG);
+  //   }
+  // }
+  //
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   getData();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
               TextWidget(
                 title: upcomingcontent,
               ),
-              SizedBox(height: 70.0),
+              SizedBox(height: 50.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -90,8 +90,8 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Container(
-                                width: 400,
-                                height: 400,
+                                width: 350,
+                                height: 350,
                                 child: Image(
                                   image: NetworkImage(images),
                                   fit: BoxFit.contain,
@@ -131,6 +131,7 @@ class DB extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: CarouselSlider(
         options: CarouselOptions(
+          reverse: true,
           pageSnapping: true,
           height: 300,
           enlargeCenterPage: true,
@@ -139,7 +140,7 @@ class DB extends StatelessWidget {
           autoPlayCurve: Curves.fastOutSlowIn,
           enableInfiniteScroll: true,
           autoPlayAnimationDuration: Duration(milliseconds: 150),
-          viewportFraction: 0.3,
+          viewportFraction: 0.6,
         ),
         items: images,
       ),

@@ -2,14 +2,10 @@ import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_app_newocean/AboutUs/ContainerWidget/desktop_container.dart';
-import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
-import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/navigation_bar.dart';
+import 'package:flutter_app_newocean/AboutUs/ContainerWidget/Tablet_container.dart';
 import 'package:flutter_app_newocean/TopNavigationBar/tablet_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
-
 import '../../Footer/tablet_footer.dart';
 
 const ktopic = TextStyle(
@@ -175,7 +171,7 @@ class TabletAboutUs extends StatelessWidget {
             ),
             Wrap(alignment: WrapAlignment.center, children: [
               StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('trainer').snapshots(),
+                stream: _firestore.collection('Mentor').snapshots(),
                 // ignore: missing_return
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
@@ -185,18 +181,24 @@ class TabletAboutUs extends StatelessWidget {
                     List<ContainerWidget> trainerContent = [];
                     //List<String> subjects = [];
                     for (var message in messages) {
-                      // if (message.data()['coursename'] == "python") {
-                      final trainerName = message.data()['trainername'];
+                      final trainerName = message.data()['name'];
                       final trainerDesignation = message.data()['designation'];
-                      final trainerImage = message.data()['img'];
+                      final trainerImage = message.data()['image'];
+                      final fbLink = message.data()['fbLink'];
+                      final gmailLink = message.data()['gmailLink'];
+                      final linkedinLink = message.data()['linkedinLink'];
+                      final twitter = message.data()['twitter'];
 
                       final messageContent = ContainerWidget(
                         designation: trainerDesignation,
                         trainerName: trainerName,
                         image: trainerImage,
+                        twitterLink: twitter,
+                        linkedinLink: linkedinLink,
+                        gmailLink: gmailLink,
+                        fbLink: fbLink,
                       );
                       trainerContent.add(messageContent);
-                      // }
                     }
                     return Wrap(
                       alignment: WrapAlignment.center,
