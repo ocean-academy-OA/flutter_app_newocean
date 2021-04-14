@@ -88,9 +88,7 @@ class _TabServiceState extends State<TabService> {
                     'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/service%20images%20svgs%2Flearn%20new%20skil.svg?alt=media&token=1d608f76-07dc-48f2-951f-819cee6f0b92',
                 content: servicecontent4,
               ),
-              MediaQuery.of(context).size.width > 600
-                  ? TabletFooter()
-                  : Footer(),
+              TabletFooter()
             ],
           ),
         ),
@@ -120,14 +118,17 @@ class TitleWidget extends StatelessWidget {
   TitleWidget({this.title});
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-          fontSize: 22.0,
-          fontWeight: FontWeight.bold,
-          color: Colors.blue,
-          fontFamily: kfontname),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.blue,
+            fontFamily: kfontname),
+      ),
     );
   }
 }
