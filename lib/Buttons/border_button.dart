@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 class BorderButton extends StatelessWidget {
-  BorderButton({
-    this.onPressed,
-    this.buttonName = 'BorderButton',
-    this.borderColor = Colors.blue,
-    this.borderWidth = 1,
-    this.fillColor = Colors.white,
-    this.hoverColor = Colors.blue,
-    this.textColor = Colors.black,
-    this.buttonWidth,
-    this.margin,
-  });
+  BorderButton(
+      {this.onPressed,
+      this.buttonName = 'BorderButton',
+      this.borderColor = Colors.blue,
+      this.borderWidth = 1,
+      this.fillColor = Colors.white,
+      this.hoverColor = Colors.blue,
+      this.textColor = Colors.black,
+      this.buttonWidth,
+      this.margin,
+      this.buttonHeight = 45,
+      this.textStyle,
+      this.borderRadius = 1});
   Function onPressed;
   String buttonName;
   double borderWidth;
@@ -21,6 +23,9 @@ class BorderButton extends StatelessWidget {
   Color hoverColor;
   Color textColor;
   EdgeInsets margin;
+  double buttonHeight;
+  TextStyle textStyle;
+  double borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +33,17 @@ class BorderButton extends StatelessWidget {
       margin: margin,
       child: FlatButton(
           hoverColor: hoverColor,
-          height: 45,
+          height: buttonHeight,
           minWidth: buttonWidth,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(1),
+            borderRadius: BorderRadius.circular(borderRadius),
             side: BorderSide(color: borderColor, width: borderWidth),
           ),
           color: fillColor,
           onPressed: onPressed,
           child: Text(
             buttonName,
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.w400,
-            ),
+            style: textStyle,
           )),
     );
   }
