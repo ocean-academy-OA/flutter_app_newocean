@@ -140,7 +140,7 @@ class DB extends StatelessWidget {
           autoPlayCurve: Curves.fastOutSlowIn,
           enableInfiniteScroll: true,
           autoPlayAnimationDuration: Duration(milliseconds: 150),
-          viewportFraction: 0.6,
+          viewportFraction: 0.4,
         ),
         items: images,
       ),
