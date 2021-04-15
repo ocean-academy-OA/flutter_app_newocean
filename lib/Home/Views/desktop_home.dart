@@ -21,6 +21,7 @@ class DesktopHome extends StatefulWidget {
 }
 
 class _DesktopHomeState extends State<DesktopHome> {
+  ScrollController _scrollController = ScrollController();
   final keyIsFirstLoaded = 'is_first_loaded';
   String fullNameAlert;
   String phoneNumberAlert;
@@ -49,20 +50,24 @@ class _DesktopHomeState extends State<DesktopHome> {
         return TabletHome();
       } else {
         return Container(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SliderWidget(),
-                MainBadgeWidget(),
-                UpcomingCourse(),
-                PlacementCompany(),
-                ReviewsSection(),
-                OurClient(),
-                WhatIsNew(),
-                HowItWorks(),
-                DesktopFooterLg()
-              ],
+          child: Scrollbar(
+            controller: _scrollController,
+            isAlwaysShown: true,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SliderWidget(),
+                  MainBadgeWidget(),
+                  UpcomingCourse(),
+                  PlacementCompany(),
+                  ReviewsSection(),
+                  OurClient(),
+                  WhatIsNew(),
+                  HowItWorks(),
+                  DesktopFooterLg()
+                ],
+              ),
             ),
           ),
         );

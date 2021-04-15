@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
 import 'package:flutter_app_newocean/Footer/tablet_footer.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/card_design.dart';
-
 import 'package:flutter_app_newocean/TopNavigationBar/mobile_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/text.dart';
