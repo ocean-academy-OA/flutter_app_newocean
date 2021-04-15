@@ -8,7 +8,7 @@ void main() {
   runApp(MaterialApp(
     title: 'Thamizh testing page',
     home: Scaffold(
-      body: CourseDetails(),
+      body: DesktopCourseDetails(),
     ),
   ));
 }

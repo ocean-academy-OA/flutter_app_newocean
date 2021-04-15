@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app_newocean/Course/course_description/course_details.dart';
+import 'package:flutter_app_newocean/Course/course_description/mobile_course_details.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ResponsiveCourseDetails extends StatelessWidget {
@@ -17,19 +18,26 @@ class ResponsiveCourseDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      desktop: CourseDetails(
+      desktop: MediaQuery.of(context).size.width > 1177
+          ? DesktopCourseDetails(
+              batch: batchId,
+              course: courseName,
+              discription: description,
+              trainer: trainerName,
+            )
+          : MobileCourseDetails(
+              batch: batchId,
+              course: courseName,
+              discription: description,
+              trainer: trainerName,
+            ),
+      mobile: MobileCourseDetails(
         batch: batchId,
         course: courseName,
         discription: description,
         trainer: trainerName,
       ),
-      mobile: CourseDetails(
-        batch: batchId,
-        course: courseName,
-        discription: description,
-        trainer: trainerName,
-      ),
-      tablet: CourseDetails(
+      tablet: MobileCourseDetails(
         batch: batchId,
         course: courseName,
         discription: description,
