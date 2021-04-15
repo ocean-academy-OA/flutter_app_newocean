@@ -15,10 +15,9 @@ import 'route/routeNames.dart';
 class MainLayout extends StatefulWidget {
   // static bool sticNotification = true;
   bool notification = true;
-  MainLayout({
-    this.child,
-  });
+  MainLayout({this.child, this.menubar});
   Widget child;
+  Widget menubar;
 
   @override
   _MainLayoutState createState() => _MainLayoutState();
@@ -68,7 +67,13 @@ class _MainLayoutState extends State<MainLayout> {
                       },
                     )
                   : SizedBox(),
-              ResponsiveMenu(),
+              widget.menubar,
+              sizingInformation.deviceScreenType == DeviceScreenType.desktop
+                  ? SizedBox()
+                  : Container(
+                      height: 50,
+                      color: Colors.red,
+                    ),
               Expanded(child: widget.child),
             ],
           ),

@@ -65,137 +65,119 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            alignment: Alignment.center,
-            height: 250,
             color: Color(0xff004B71),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 200,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Row(
-                        children: [
-                          IconButton(
-                              icon: Icon(Icons.arrow_back_ios_outlined),
-                              color: Colors.white,
-                              onPressed: () {
-                                locator<NavigationService>()
-                                    .navigateTo(CourseRoute);
-                              })
-                        ],
-                      ),
-                      Text(
-                        '${widget.course} Certificate Development Course',
-                        style: TextStyle(
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Provider.of<Routing>(context, listen: false)
-                          //     .updateRouting(widget: AboutUs());
-                        },
-                        child: Text(
-                          '${widget.trainer}',
-                          style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(right: 20.0),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.access_time_outlined,
-                                  color: Colors.white,
-                                  size: 25.0,
-                                ),
-                                SizedBox(
-                                  width: 5.0,
-                                ),
-                                Text(
-                                  'Online Course',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15.0),
-                                ),
-                              ],
-                            ),
-                          ),
-                          // Container(
-                          //   margin: EdgeInsets.only(right: 20.0),
-                          //   child: Row(
-                          //     children: [
-                          //       Icon(
-                          //         Icons.dashboard,
-                          //         color: Colors.white,
-                          //         size: 25.0,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 5.0,
-                          //       ),
-                          //       Text(
-                          //         '${widget.time} Session',
-                          //         style: TextStyle(
-                          //             color: Colors.white, fontSize: 15.0),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-                          Container(
-                            margin: EdgeInsets.only(right: 20.0),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  FontAwesomeIcons.video,
-                                  color: Colors.white,
-                                  size: 25.0,
-                                ),
-                                SizedBox(
-                                  width: 5.0,
-                                ),
-                                Text(
-                                  'By Zoom',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15.0),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      IconButton(
+                          icon: Icon(Icons.close),
+                          color: Colors.white,
+                          onPressed: () {
+                            locator<NavigationService>()
+                                .navigateTo(CourseRoute);
+                          })
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            // padding: EdgeInsets.symmetric(
-            //     horizontal: 100.0, vertical: 60.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CourseDetailsHeadingText(title: 'Course Details'),
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.2,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "${widget.discription}",
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
+                    '${widget.course} Certificate Development Course',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      // Provider.of<Routing>(context, listen: false)
+                      //     .updateRouting(widget: AboutUs());
+                    },
+                    child: Text(
+                      '${widget.trainer}',
+                      style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 20.0),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.access_time_outlined,
+                              color: Colors.white,
+                              size: 25.0,
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              'Online Course',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 15.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Container(
+                      //   margin: EdgeInsets.only(right: 20.0),
+                      //   child: Row(
+                      //     children: [
+                      //       Icon(
+                      //         Icons.dashboard,
+                      //         color: Colors.white,
+                      //         size: 25.0,
+                      //       ),
+                      //       SizedBox(
+                      //         width: 5.0,
+                      //       ),
+                      //       Text(
+                      //         '${widget.time} Session',
+                      //         style: TextStyle(
+                      //             color: Colors.white, fontSize: 15.0),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      Container(
+                        margin: EdgeInsets.only(right: 20.0),
+                        child: Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.video,
+                              color: Colors.white,
+                              size: 25.0,
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              'By Zoom',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 15.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -275,6 +257,26 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                       );
                     }
                   },
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            // padding: EdgeInsets.symmetric(
+            //     horizontal: 100.0, vertical: 60.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CourseDetailsHeadingText(title: 'Course Details'),
+                Container(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  child: Text(
+                    "${widget.discription}",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
+                  ),
                 ),
               ],
             ),
