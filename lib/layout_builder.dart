@@ -54,28 +54,50 @@ class _MainLayoutState extends State<MainLayout> {
                 ? MenuBarDrawer()
                 : null
             : MenuBarDrawer(),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              sizingInformation.deviceScreenType == DeviceScreenType.desktop
-                  ? FlashNotification(
-                      dismissNotification: () {
-                        setState(() {
-                          widget.notification = true;
-                        });
-                      },
-                    )
-                  : SizedBox(),
-              widget.menubar,
-              sizingInformation.deviceScreenType == DeviceScreenType.desktop
-                  ? SizedBox()
-                  : Container(
-                      height: 50,
-                      color: Colors.red,
-                    ),
-              Expanded(child: widget.child),
-            ],
+        body: SafeArea(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              children: [
+                sizingInformation.deviceScreenType == DeviceScreenType.desktop
+                    ? FlashNotification(
+                        dismissNotification: () {
+                          setState(() {
+                            widget.notification = true;
+                          });
+                        },
+                      )
+                    : SizedBox(),
+                widget.menubar,
+                sizingInformation.deviceScreenType == DeviceScreenType.desktop
+                    ? SizedBox()
+                    : Container(
+                        height: 50,
+                        color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 30,
+                            ),
+                            Text(
+                              'Free Webinar',
+                              style: TextStyle(fontSize: 22, color: Colors.red),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.video_collection_outlined),
+                              color: Colors.red,
+                              onPressed: () {
+                                locator<NavigationService>()
+                                    .navigateTo(UpcomingWebinarRoute);
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                Expanded(child: widget.child),
+              ],
+            ),
           ),
         ),
       );

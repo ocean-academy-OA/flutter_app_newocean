@@ -264,6 +264,7 @@ class FlashDb extends StatefulWidget {
 
 class _FlashDbState extends State<FlashDb> {
   var remaingTime = 0;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -369,7 +370,7 @@ class _FlashDbState extends State<FlashDb> {
           padding: const EdgeInsets.all(15.0),
           child: FlatButton(
             child: Text(
-              remaingTime != 0 ? 'Join' : 'Join Live',
+              'Join',
               style: TextStyle(
                   color: remaingTime != 0 ? Colors.blue : Colors.red,
                   fontWeight: FontWeight.bold,
@@ -382,20 +383,8 @@ class _FlashDbState extends State<FlashDb> {
               setState(() {
                 // Navbar.isNotification = false;
               });
-              print('flash notification.............. ${widget.mailTiming}');
-              print(widget.content);
-              //
-              // Provider.of<Routing>(context, listen: false).updateRouting(
-              //     widget: widget.wbinarLive.isEmpty
-              //         ? SingleWebinarScreen(
-              //             topic: widget.content,
-              //           )
-              //         : LiveWebinar(
-              //             course: widget.content,
-              //             payment: widget.payment,
-              //           ));
-              // Provider.of<MenuBar>(context, listen: false)
-              //     .updateMenu(widget: WebinarMenu());
+              locator<NavigationService>()
+                  .navigateTo('MobileWebinarJoin?id=${widget.content}');
             },
           ),
         ),
