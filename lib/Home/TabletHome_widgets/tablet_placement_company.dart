@@ -81,7 +81,7 @@ class CompanyLogo extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 15),
       child: Image(
         image: NetworkImage("$companyLogoImage,"),
-        width: 70.0,
+        width: 80.0,
       ),
     );
   }
