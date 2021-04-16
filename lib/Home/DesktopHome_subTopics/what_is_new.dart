@@ -10,7 +10,7 @@ class WhatIsNew extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
           child: Column(
             children: [
               MainTitleWidgetHome(
@@ -31,7 +31,7 @@ class WhatIsNew extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 width: 400.0,
                 child: Column(
                   children: [
