@@ -71,6 +71,10 @@ class _MainLayoutState extends State<MainLayout> {
                     : isWebinar
                         ? Dismissible(
                             key: Key('webinar'),
+                            background: Container(
+                              color: Colors.blue,
+                              height: 10,
+                            ),
                             child: Container(
                               height: 50,
                               color: Colors.white,
@@ -78,8 +82,12 @@ class _MainLayoutState extends State<MainLayout> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SizedBox(
-                                    width: 30,
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.swipe,
+                                      color: Colors.blue,
+                                    ),
                                   ),
                                   Text(
                                     'Free Webinar',
