@@ -11,7 +11,7 @@ class MainBadgeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(20.0),
       child: Container(
         color: Color(0xFFF7F7F7),
         child: Column(children: [

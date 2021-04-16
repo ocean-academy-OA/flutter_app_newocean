@@ -76,7 +76,7 @@ class HowItWorks extends StatelessWidget {
                         width: 500.0,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Text('Online Live Training',
                             style: otherSmallHeaddingTextStyle),
                       ),
@@ -101,7 +101,7 @@ class HowItWorks extends StatelessWidget {
                         width: 500.0,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Text('Online Video Courses',
                             style: otherSmallHeaddingTextStyle),
                       ),
