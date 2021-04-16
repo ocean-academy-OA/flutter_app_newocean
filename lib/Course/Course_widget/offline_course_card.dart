@@ -349,146 +349,148 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Text(
-                'Download ${widget.coursename} Pdf',
-                style: TextStyle(fontSize: 35, color: Colors.blue),
+        return SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Text(
+                  'Download ${widget.coursename} Pdf',
+                  style: TextStyle(fontSize: 35, color: Colors.blue),
+                ),
               ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width / 1.5,
-              height: 400,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AlertTextField(
-                    textFieldWidth: MediaQuery.of(context).size.width / 1.5,
-                    suffixIcon: isName
-                        ? null
-                        : Icon(
-                            Icons.close,
-                            color: Colors.red,
-                          ),
-                    hintText: 'Name',
-                    icon: Icon(Icons.person),
-                    controller: _name,
-                  ),
-                  AlertTextField(
-                    textFieldWidth: MediaQuery.of(context).size.width / 1.5,
-                    suffixIcon: isNumber
-                        ? null
-                        : Icon(
-                            Icons.close,
-                            color: Colors.red,
-                          ),
-                    hintText: 'Mobile',
-                    errorText: 'Enter Valid Number',
-                    icon: Icon(Icons.phone_android),
-                    inputFormatters: [
-                      FilteringTextInputFormatter(RegExp(r'^\d+\.?\d{0,2}'),
-                          allow: true),
-                    ],
-                    controller: _mobile,
-                  ),
-                  AlertTextField(
-                    textFieldWidth: MediaQuery.of(context).size.width / 1.5,
-                    hintText: 'Email',
-                    suffixIcon: isEmail
-                        ? null
-                        : Icon(
-                            Icons.close,
-                            color: Colors.red,
-                          ),
-                    icon: Icon(Icons.email),
-                    controller: _email,
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            offset: Offset(0, 2),
-                            blurRadius: 5)
-                      ],
-                      color: Colors.blueAccent,
+              Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: 400,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AlertTextField(
+                      textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                      suffixIcon: isName
+                          ? null
+                          : Icon(
+                              Icons.close,
+                              color: Colors.red,
+                            ),
+                      hintText: 'Name',
+                      icon: Icon(Icons.person),
+                      controller: _name,
                     ),
-                    child: FlatButton(
-                      height: 60.0,
-                      minWidth: MediaQuery.of(context).size.width / 1.5,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Container(
-                          //     width: 30,
-                          //     height: 30,
-                          //     child: Image.network(
-                          //         'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/download%20pdf%20svgs%2Fmail%20service.svg?alt=media&token=49ae698d-0e63-453e-ac4d-f45924d51b9b')),
-                          // SizedBox(width: 6),
-                          Text(
-                            'Send to Mail',
-                            style:
-                                TextStyle(fontSize: 20.0, color: Colors.white),
-                          ),
+                    AlertTextField(
+                      textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                      suffixIcon: isNumber
+                          ? null
+                          : Icon(
+                              Icons.close,
+                              color: Colors.red,
+                            ),
+                      hintText: 'Mobile',
+                      errorText: 'Enter Valid Number',
+                      icon: Icon(Icons.phone_android),
+                      inputFormatters: [
+                        FilteringTextInputFormatter(RegExp(r'^\d+\.?\d{0,2}'),
+                            allow: true),
+                      ],
+                      controller: _mobile,
+                    ),
+                    AlertTextField(
+                      textFieldWidth: MediaQuery.of(context).size.width / 1.5,
+                      hintText: 'Email',
+                      suffixIcon: isEmail
+                          ? null
+                          : Icon(
+                              Icons.close,
+                              color: Colors.red,
+                            ),
+                      icon: Icon(Icons.email),
+                      controller: _email,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 8.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 2),
+                              blurRadius: 5)
                         ],
+                        color: Colors.blueAccent,
                       ),
-                      onPressed: () async {
-                        if (validateEmail(_email.text) &&
-                            _mobile.text.length == 10 &&
-                            (_name.text.length > 3)) {
-                          print(_mobile.text);
-                          getDownloadOTP();
+                      child: FlatButton(
+                        height: 60.0,
+                        minWidth: MediaQuery.of(context).size.width / 1.5,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3.0)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // Container(
+                            //     width: 30,
+                            //     height: 30,
+                            //     child: Image.network(
+                            //         'https://firebasestorage.googleapis.com/v0/b/ocean-live-project-ea2e7.appspot.com/o/download%20pdf%20svgs%2Fmail%20service.svg?alt=media&token=49ae698d-0e63-453e-ac4d-f45924d51b9b')),
+                            // SizedBox(width: 6),
+                            Text(
+                              'Send to Mail',
+                              style: TextStyle(
+                                  fontSize: 20.0, color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        onPressed: () async {
+                          if (validateEmail(_email.text) &&
+                              _mobile.text.length == 10 &&
+                              (_name.text.length > 3)) {
+                            print(_mobile.text);
+                            getDownloadOTP();
+                            Navigator.pop(context);
+                            mobileOtpPage(_mobile.text, context);
+                          } else if (_email.text.isEmpty &&
+                              _mobile.text.isEmpty &&
+                              _name.text.isEmpty) {
+                            fillAllFieldsDialog(context);
+                          } else if (_name.text.length < 3) {
+                            invalidNameDialog(context);
+                          } else if (_mobile.text.length != 10) {
+                            invalidNumberDialog(context);
+                          } else if (!validateEmail(_email.text)) {
+                            invalidMailDialog(context);
+                          }
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 1.5,
+                      margin: EdgeInsets.symmetric(vertical: 8.0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 2),
+                              blurRadius: 5)
+                        ],
+                        color: Colors.redAccent,
+                      ),
+                      child: FlatButton(
+                        height: 60.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3.0)),
+                        child: Text(
+                          'Close',
+                          style: TextStyle(fontSize: 20.0, color: Colors.white),
+                        ),
+                        onPressed: () {
                           Navigator.pop(context);
-                          mobileOtpPage(_mobile.text, context);
-                        } else if (_email.text.isEmpty &&
-                            _mobile.text.isEmpty &&
-                            _name.text.isEmpty) {
-                          fillAllFieldsDialog(context);
-                        } else if (_name.text.length < 3) {
-                          invalidNameDialog(context);
-                        } else if (_mobile.text.length != 10) {
-                          invalidNumberDialog(context);
-                        } else if (!validateEmail(_email.text)) {
-                          invalidMailDialog(context);
-                        }
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 1.5,
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            offset: Offset(0, 2),
-                            blurRadius: 5)
-                      ],
-                      color: Colors.redAccent,
-                    ),
-                    child: FlatButton(
-                      height: 60.0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0)),
-                      child: Text(
-                        'Close',
-                        style: TextStyle(fontSize: 20.0, color: Colors.white),
+                        },
                       ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

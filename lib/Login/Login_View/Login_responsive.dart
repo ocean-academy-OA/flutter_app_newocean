@@ -3,6 +3,7 @@ import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/log_in.d
 import 'package:responsive_builder/responsive_builder.dart';
 
 class LoginResponsive extends StatefulWidget {
+  static bool isLogin = false;
   @override
   _LoginResponsiveState createState() => _LoginResponsiveState();
 }

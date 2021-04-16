@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
 import 'package:flutter_app_newocean/layout_builder.dart';
 import 'package:flutter_app_newocean/route/Provider/provider_routing.dart';
 import 'package:flutter_app_newocean/route/dynamic_routing.dart';
@@ -30,6 +32,12 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Ocean Academy',
           builder: (context, child) => MainLayout(
+            menubar: LoginResponsive.isLogin
+                ? Container(
+                    height: 50,
+                    color: Colors.red,
+                  )
+                : ResponsiveMenu(),
             child: child,
           ),
           navigatorKey: locator<NavigationService>().navigatorKey,
