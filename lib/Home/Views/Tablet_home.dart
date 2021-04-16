@@ -48,10 +48,7 @@ class _TabletHomeState extends State<TabletHome> {
   @override
   Widget build(BuildContext context) {
     return SmoothScrollWeb(
-        scrollAnimationLength: 100,
-        scrollSpeed: 300,
-        controller: controller,
-        child: _getChild());
+        scrollSpeed: 1000, controller: controller, child: _getChild());
   }
 
   Future showDialogIfFirstLoaded(BuildContext context) async {
@@ -75,11 +72,13 @@ class _TabletHomeState extends State<TabletHome> {
 
   Widget _getChild() {
     return Container(
-      child: ListView(
-        physics: NeverScrollableScrollPhysics(),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: ListView.builder(
+        itemCount: 1,
         controller: controller,
-        children: [
-          Column(
+        itemBuilder: (context, index) {
+          return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SliderWidget(),
@@ -92,8 +91,8 @@ class _TabletHomeState extends State<TabletHome> {
               HowItWorks(),
               TabletFooter(),
             ],
-          )
-        ],
+          );
+        },
       ),
     );
   }
