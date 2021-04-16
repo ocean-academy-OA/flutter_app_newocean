@@ -11,6 +11,7 @@ class NavigationService {
     );
   }
 
+  // ignore: missing_return
   bool goBack() {
     navigatorKey.currentState.canPop();
   }

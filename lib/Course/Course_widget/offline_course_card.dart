@@ -953,9 +953,9 @@ class _OfflineCourseCardState extends State<OfflineCourseCard> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   hoverColor: Colors.blue[50],
                   buttonWidth: 345,
-                  onPressed: () async {
+                  onPressed: () {
                     print(widget.pdfLink);
-                    await MediaQuery.of(context).size.width > 1100
+                    MediaQuery.of(context).size.width > 1100
                         ? getUserData(context)
                         : mobileGetUserData(context);
                   },

@@ -5,6 +5,7 @@ import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 
+// ignore: must_be_immutable
 class JoinSuccessfully extends StatefulWidget {
   JoinSuccessfully({this.joinUserName});
   String joinUserName;

@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/border_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// ignore: must_be_immutable
 class CourseDescription extends StatelessWidget {
   String coursename;
   String trainername;
@@ -77,7 +77,8 @@ class CourseDetailsHeadingText extends StatelessWidget {
   }
 }
 
-class courseCard extends StatefulWidget {
+// ignore: must_be_immutable
+class CourseCard extends StatefulWidget {
   String courseName;
   String batchid;
   String image;
@@ -86,7 +87,7 @@ class courseCard extends StatefulWidget {
   String duration;
   String amount;
 
-  courseCard(
+  CourseCard(
       {this.batchTime,
       this.image,
       this.batchDate,
@@ -96,11 +97,11 @@ class courseCard extends StatefulWidget {
       this.batchid});
 
   @override
-  _courseCardState createState() => _courseCardState();
+  _CourseCardState createState() => _CourseCardState();
 }
 
-class _courseCardState extends State<courseCard> {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+class _CourseCardState extends State<CourseCard> {
+  // FirebaseFirestore _firestore = FirebaseFirestore.instance;
   num fullRate;
   bool isLogin = false;
   bool isCourse = true;
@@ -217,7 +218,7 @@ class _courseCardState extends State<courseCard> {
                   children: [
                     Icon(FontAwesomeIcons.rupeeSign),
                     Text(
-                      '${fullRate}',
+                      '$fullRate',
                       style: TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,

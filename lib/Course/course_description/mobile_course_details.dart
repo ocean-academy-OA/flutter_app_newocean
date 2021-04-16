@@ -205,7 +205,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                       return Text("Loading...");
                     } else {
                       final messages = snapshot.data.docs;
-                      List<courseCard> courseImage = [];
+                      List<CourseCard> courseImage = [];
                       //List<String> subjects = [];
                       for (var message in messages) {
                         if (message.data()['coursename'] == widget.course) {
@@ -213,8 +213,8 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                           final contentImage = message.data()['img'];
                           final messageCourse = message.data()['coursename'];
                           final courseBatchid = message.data()['batchid'];
-                          final time = message.data()['time'];
-                          final date = message.data()['date'];
+                          // final time = message.data()['time'];
+                          // final date = message.data()['date'];
                           Timestamp timeStamp = message.data()['date1'];
 
                           final dutation = message.data()['duration'];
@@ -238,7 +238,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                               int.parse(minute.format(timeStamp.toDate()));
                           dayTime = daytime.format(timeStamp.toDate());
 
-                          final card = courseCard(
+                          final card = CourseCard(
                             image: contentImage,
                             batchTime: '$hourFormat:$minuteFormat $dayTime',
                             batchDate: '$monthFormat $dayFormat',
@@ -314,7 +314,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                         //     message.data()[widget.time];
                         final messageCoursedescription =
                             message.data()[widget.discription];
-                        final docid = message.id;
+                        // final docid = message.id;
                         // for (var k = 0;
                         //     k < syllabus.length + 1;
                         //     k++) {

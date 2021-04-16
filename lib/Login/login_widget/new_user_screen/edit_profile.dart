@@ -10,10 +10,8 @@ import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/date_pic
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/gender_dropdoen_field.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/input_text_field.dart';
 import 'package:intl/intl.dart';
-
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:provider/provider.dart';
 
 class EditProfile extends StatefulWidget {
   static bool readOnly = false;
@@ -98,14 +96,14 @@ class _EditProfileState extends State<EditProfile> {
   String selectedCountry;
   String selectedState;
   int listCount = 0;
-  Map<String, List> CountryState = {};
+  Map<String, List> countryState = {};
   @override
   void initState() {
     super.initState();
     for (var i in contryState['countries']) {
       print(i['states']);
       country.add(i['country']);
-      CountryState.addAll({i['country']: i['states']});
+      countryState.addAll({i['country']: i['states']});
     }
     selectedCountry = countryContrller.text;
     selectedState = stateContrller.text;
@@ -241,7 +239,7 @@ class _EditProfileState extends State<EditProfile> {
                                     children: [
                                       profilePictureLink != null
                                           ? Image.network(
-                                              '${profilePictureLink}',
+                                              '$profilePictureLink',
                                               width: 500.0,
                                               height: 500.0,
                                               fit: BoxFit.cover,
@@ -600,9 +598,9 @@ class _EditProfileState extends State<EditProfile> {
                                     required: isState,
 
                                     itemsVisibleInDropdown: listCount,
-                                    items: CountryState[selectedCountry] == null
+                                    items: countryState[selectedCountry] == null
                                         ? <String>[selectedState]
-                                        : CountryState[selectedCountry],
+                                        : countryState[selectedCountry],
                                     onValueChanged: (value) {
                                       setState(() {
                                         selectedState = value;

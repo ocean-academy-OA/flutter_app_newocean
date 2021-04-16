@@ -1,19 +1,14 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_list.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-
 import 'package:intl/intl.dart';
-
-import 'dart:html';
 import 'package:http/http.dart' as http;
-
 //conditional import
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/UiFake.dart'
     if (dart.library.html) 'dart:ui' as ui;
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 // ignore: must_be_immutable
 class WebinarRazorPayWeb extends StatefulWidget {
@@ -39,7 +34,7 @@ class WebinarRazorPayWeb extends StatefulWidget {
 
 class _WebinarRazorPayWebState extends State<WebinarRazorPayWeb> {
   var date;
-  final _firestore = FirebaseFirestore.instance;
+  // final _firestore = FirebaseFirestore.instance;
 
   // TextEditingController duration = TextEditingController();
 

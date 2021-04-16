@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_list.dart';
-import 'package:flutter_app_newocean/layout_builder.dart';
 import 'package:intl/intl.dart';
-
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
-
 import '../common/constants.dart';
 import '../route/navigation_locator.dart';
 import '../route/navigation_service.dart';
@@ -239,6 +236,7 @@ class _FlashNotificationState extends State<FlashNotification> {
   }
 }
 
+// ignore: must_be_immutable
 class FlashDb extends StatefulWidget {
   Function joinButton;
   Function upcomingButton;

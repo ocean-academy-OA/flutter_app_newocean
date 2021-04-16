@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/main_badget_widget.dart';
@@ -28,7 +27,7 @@ class _TabletHomeState extends State<TabletHome> {
   String phoneNumberAlert;
   String emailAlert;
   bool flag = true;
-  Timer _timer;
+  // Timer _timer;
 
   void initState() {
     // TODO: implement initState

@@ -12,7 +12,7 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  WhyFarther _selection = WhyFarther.smarter;
+  WhyFarther selection = WhyFarther.smarter;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _MainMenuState extends State<MainMenu> {
         ),
         onSelected: (WhyFarther result) {
           setState(() {
-            _selection = result;
+            selection = result;
           });
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
@@ -66,7 +66,7 @@ class SubMenu extends StatefulWidget {
 }
 
 class _SubMenuState extends State<SubMenu> {
-  WhyFarther _selection = WhyFarther.smarter;
+  WhyFarther selection = WhyFarther.smarter;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _SubMenuState extends State<SubMenu> {
       },
       onSelected: (WhyFarther result) {
         setState(() {
-          _selection = result;
+          selection = result;
         });
       },
       // how much the submenu should offset from parent. This seems to have an upper limit.

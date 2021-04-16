@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MenuItemWidget extends StatefulWidget {
   MenuItemWidget({this.title, this.iconData});
   String title;

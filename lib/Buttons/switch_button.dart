@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:fswitch/fswitch.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
+// ignore: must_be_immutable
 class SwitchButton extends StatelessWidget {
   SwitchButton({this.onChanged, this.open = false});
 
@@ -45,17 +44,17 @@ class SwitchButton extends StatelessWidget {
         onChanged: onChanged,
       ),
     );
-    LiteRollingSwitch(
-        //initial value
-        value: open,
-        textOn: 'disponible',
-        textOff: 'ocupado',
-        colorOn: Colors.greenAccent[700],
-        colorOff: Colors.redAccent[700],
-        iconOn: Icons.done,
-        iconOff: Icons.remove_circle_outline,
-        textSize: 16.0,
-        onChanged: onChanged);
+    // LiteRollingSwitch(
+    //     //initial value
+    //     value: open,
+    //     textOn: 'disponible',
+    //     textOff: 'ocupado',
+    //     colorOn: Colors.greenAccent[700],
+    //     colorOff: Colors.redAccent[700],
+    //     iconOn: Icons.done,
+    //     iconOff: Icons.remove_circle_outline,
+    //     textSize: 16.0,
+    //     onChanged: onChanged);
   }
 }
 

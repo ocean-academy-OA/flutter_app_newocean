@@ -82,6 +82,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                         return Text("Loading...");
                       } else {
                         final messages = snapshot.data.docs;
+                        // ignore: non_constant_identifier_names
                         List<Container> DBUpcoming = [];
                         for (var message in messages) {
                           final images = message.data()['upcomingcourse'];
@@ -120,6 +121,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
   }
 }
 
+// ignore: must_be_immutable
 class DB extends StatelessWidget {
   List<Widget> images = [];
 

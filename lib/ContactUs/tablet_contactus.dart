@@ -1,11 +1,7 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
-import 'dart:ui' as ui;
 import 'package:flutter_app_newocean/ContactUs/iframe_map.dart';
-import 'package:flutter_app_newocean/Footer/desktop_footer_md.dart';
 import 'package:flutter_app_newocean/Footer/tablet_footer.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
-import 'package:flutter_app_newocean/Service/service_widget/Mobile_Tab_widget/navigation_bar.dart';
 import 'package:flutter_app_newocean/TopNavigationBar/tablet_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/common/text.dart';
@@ -16,12 +12,9 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:email_validator/email_validator.dart';
-
 import 'package:progress_indicator_button/progress_button.dart';
 import 'package:random_string/random_string.dart';
 
@@ -84,6 +77,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
 
   Widget _buildName() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z]+|\s")),
@@ -112,6 +106,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
 
   Widget _buildphonenumber() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r"^\d+\.?\d{0,2}")),
@@ -138,6 +133,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
 
   Widget _buildEmail() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
       validator: (value) =>
@@ -157,6 +153,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
 
   Widget _buildquery() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       validator: (value) {
         // query = value;
@@ -186,6 +183,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
 
   Widget _buildAnswerField() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(
@@ -373,6 +371,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
                               borderRadius: BorderRadius.circular(5),
                               border: Border.all(color: Colors.grey)),
                           child: DropdownButtonFormField<String>(
+                            // ignore: deprecated_member_use
                             autovalidate: validation,
                             style: TextStyle(
                               fontSize: 15,

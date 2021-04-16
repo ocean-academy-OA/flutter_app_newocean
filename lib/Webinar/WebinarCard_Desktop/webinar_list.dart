@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Webinar/single_wbinar.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-
 import '../../common/constants.dart';
 
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -143,7 +140,7 @@ class _WebinarCardState extends State<WebinarCard> {
                         time: timing.toString(),
                         onPressed: () {
                           locator<NavigationService>()
-                              .navigateTo('MobileWebinarJoin?id=${courseName}');
+                              .navigateTo('MobileWebinarJoin?id=$courseName');
 
                           //
                           // Navigator.push(
@@ -188,6 +185,7 @@ class _WebinarCardState extends State<WebinarCard> {
   }
 }
 
+// ignore: must_be_immutable
 class WebinarCardDb extends StatefulWidget {
   WebinarCardDb(
       {this.time,

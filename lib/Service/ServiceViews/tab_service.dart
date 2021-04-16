@@ -152,6 +152,7 @@ class ImageWidget extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ImageWithContent extends StatelessWidget {
   ImageWithContent({this.title, this.image, this.content});
   String title;

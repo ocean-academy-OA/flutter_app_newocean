@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
+// ignore: must_be_immutable
 class MobileBottomSheet extends StatefulWidget {
   String buttonName;
   bool queryField;

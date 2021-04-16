@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Course/course_description/course_details.dart';
-import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
-import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
-import 'package:flutter_app_newocean/practice/pop_up_button_checking.dart';
 
 void main() {
   runApp(MaterialApp(

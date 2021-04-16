@@ -37,7 +37,7 @@ class _TabletReviewsSectionState extends State<TabletReviewsSection> {
   // ignore: must_call_super
   void initState() {
     // TODO: implement initState
-    var finding = plus();
+    // var finding = plus();
   }
 
   @override
@@ -121,6 +121,7 @@ class _TabletReviewsSectionState extends State<TabletReviewsSection> {
   }
 }
 
+// ignore: must_be_immutable
 class ReviewLable extends StatelessWidget {
   ReviewLable({this.color, this.content, this.name, this.reviewtaken});
   final Color color;

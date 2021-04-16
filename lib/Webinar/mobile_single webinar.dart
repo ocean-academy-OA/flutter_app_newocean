@@ -3,18 +3,14 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/join_successfully.dart';
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_const.dart';
-import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_join_successfuly.dart';
 import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_webinar_footer.dart';
 import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_webinar_payment.dart';
 import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_webinar_list.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-
 import 'package:intl/intl.dart';
-
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
 import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
@@ -157,7 +153,7 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
                     final dBaboutMentor = a.data()['about mentor'];
 
                     if (sDate > 0) {
-                      int DBwbinarTime = sDate;
+                      int dbWebinarTime = sDate;
                       if (dBcourse == widget.topic) {
                         SingleWebinarDB singleWebinar = SingleWebinarDB(
                           superTitle: dBsuperTitle,
@@ -169,7 +165,7 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
                           payment: dBpayment,
                           studentEnrolled: int.parse(dBstudentEnrolled),
                           webinarDuration: dBwebinarDuration,
-                          webinarTime: DBwbinarTime,
+                          webinarTime: dbWebinarTime,
                           mentorImage: dBmentorImage,
                           aboutMentor: dBaboutMentor,
                           allTopics: allTopics,
@@ -178,7 +174,7 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
                         wbinars.add(singleWebinar);
                       }
                     } else {
-                      int DBwbinarTime = sDate;
+                      int dbwebinarTime = sDate;
                       if (dBcourse == widget.topic) {
                         SingleWebinarDB singleWebinar = SingleWebinarDB(
                           superTitle: dBsuperTitle,
@@ -190,7 +186,7 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
                           payment: dBpayment,
                           studentEnrolled: int.parse(dBstudentEnrolled),
                           webinarDuration: dBwebinarDuration,
-                          webinarTime: DBwbinarTime,
+                          webinarTime: dbwebinarTime,
                           mentorImage: dBmentorImage,
                           aboutMentor: dBaboutMentor,
                           allTopics: allTopics,
@@ -214,6 +210,7 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
   }
 }
 
+// ignore: must_be_immutable
 class SingleWebinarDB extends StatefulWidget {
   SingleWebinarDB(
       {this.name,

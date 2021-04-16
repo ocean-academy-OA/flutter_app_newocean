@@ -1,20 +1,14 @@
+import 'package:http/http.dart' as http;
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html';
+//conditional import
+import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/UiFake.dart'
+    if (dart.library.html) 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_join_successfuly.dart';
 import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_webinar_list.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:intl/intl.dart';
-
-import 'package:http/http.dart' as http;
-
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
-
-//conditional import
-import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/UiFake.dart'
-    if (dart.library.html) 'dart:ui' as ui;
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 // ignore: must_be_immutable
 class MobileRazorPayWeb extends StatefulWidget {
@@ -40,7 +34,7 @@ class MobileRazorPayWeb extends StatefulWidget {
 
 class _MobileRazorPayWebState extends State<MobileRazorPayWeb> {
   var date;
-  final _firestore = FirebaseFirestore.instance;
+  // final _firestore = FirebaseFirestore.instance;
 
   void getData() async {
     http.Response response = await http.get(
@@ -71,6 +65,8 @@ class _MobileRazorPayWebState extends State<MobileRazorPayWeb> {
 
   @override
   void initState() {
+    // TODO: implement initState
+    super.initState();
     year = MobileWebinarCard.timing[widget.courseName]['Year'];
     day = MobileWebinarCard.timing[widget.courseName]['Day'];
     hours = MobileWebinarCard.timing[widget.courseName]['Hours'];

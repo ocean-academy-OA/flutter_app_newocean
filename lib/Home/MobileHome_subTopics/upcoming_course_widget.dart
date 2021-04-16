@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Home/MobileHome_subTopics/main_title_widget.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UpcomingCourse extends StatefulWidget {
@@ -71,7 +70,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                         return Text("Loading...");
                       } else {
                         final messages = snapshot.data.docs;
-                        List<Container> DBUpcoming = [];
+                        List<Container> dbUpcoming = [];
                         for (var message in messages) {
                           final images = message.data()['upcomingcourse'];
                           Container messageContent = Container(
@@ -88,11 +87,11 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
                             ),
                           );
 
-                          DBUpcoming.add(messageContent);
+                          dbUpcoming.add(messageContent);
                         }
                         return Row(
                           children: [
-                            DB(images: DBUpcoming),
+                            DB(images: dbUpcoming),
                           ],
                         );
                       }
@@ -108,6 +107,7 @@ class _UpcomingCourseState extends State<UpcomingCourse> {
   }
 }
 
+// ignore: must_be_immutable
 class DB extends StatelessWidget {
   List<Widget> images = [];
 

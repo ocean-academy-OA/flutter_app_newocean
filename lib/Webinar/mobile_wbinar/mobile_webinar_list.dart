@@ -2,11 +2,9 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -149,7 +147,7 @@ class _MobileWebinarCardState extends State<MobileWebinarCard> {
                   time: timing.toString(),
                   onPressed: () {
                     locator<NavigationService>()
-                        .navigateTo('MobileWebinarJoin?id=${courseName}');
+                        .navigateTo('MobileWebinarJoin?id=$courseName');
                     // Navigator.push(
                     //     context,
                     //     MaterialPageRoute(
@@ -183,6 +181,7 @@ class _MobileWebinarCardState extends State<MobileWebinarCard> {
   }
 }
 
+// ignore: must_be_immutable
 class WebinarCardDb extends StatefulWidget {
   WebinarCardDb(
       {this.time,

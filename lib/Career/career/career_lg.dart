@@ -33,6 +33,7 @@ class _CareerLgState extends State<CareerLg> {
   Widget buildEmail() {
     return TextFormField(
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
+      // ignore: deprecated_member_use
       autovalidate: validation,
       validator: (value) =>
           EmailValidator.validate(value) ? null : "please enter a valid email",

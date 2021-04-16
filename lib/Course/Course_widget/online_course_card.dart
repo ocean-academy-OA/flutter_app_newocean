@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/border_button.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
 
+// ignore: must_be_immutable
 class OnlineCourseCard extends StatefulWidget {
   OnlineCourseCard(
       {this.coursename,

@@ -4,14 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'package:provider/provider.dart';
-
 import 'dart:ui';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../route/navigation_locator.dart';
 import '../../../route/navigation_service.dart';
-import '../../../route/routeNames.dart';
 import '../../../route/routeNames.dart';
 import 'otp.dart';
 

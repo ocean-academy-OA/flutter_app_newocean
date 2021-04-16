@@ -6,7 +6,6 @@ import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dar
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:intl/intl.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -51,8 +50,8 @@ class _DesktopCourseState extends State<DesktopCourse> {
                         final messageText = message.data()['trainername'];
                         final messageSender = message.data()['coursename'];
                         final messageDuration = message.data()['duration'];
-                        final messageTime = message.data()['time'];
-                        final messageDate = message.data()['date'];
+                        // final messageTime = message.data()['time'];
+                        // final messageDate = message.data()['date'];
                         final messageImage = message.data()['img'];
                         final messageDescription =
                             message.data()['coursedescription'];
@@ -90,7 +89,7 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           onPressed: () {
                             print(messageSender);
                             locator<NavigationService>().navigateTo(
-                                'CourseDetails?online=$messageSender&batchID=$messageBatchid&trainer=${messageText}&description=$messageDescription');
+                                'CourseDetails?online=$messageSender&batchID=$messageBatchid&trainer=$messageText&description=$messageDescription');
                           },
                         );
                         // Text('$messageText from $messageSender');

@@ -1,10 +1,7 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
-import 'dart:ui' as ui;
 import 'package:flutter_app_newocean/ContactUs/iframe_map.dart';
 import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
-
 import 'package:flutter_app_newocean/TopNavigationBar/mobile_topnavigationbar.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/common/text.dart';
@@ -14,12 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:email_validator/email_validator.dart';
-
 import 'package:progress_indicator_button/progress_button.dart';
 import 'package:random_string/random_string.dart';
 
@@ -152,6 +146,7 @@ class _MobileContactUsState extends State<MobileContactUs> {
 
   Widget _buildquery() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       validator: (value) {
         // query = value;
@@ -181,6 +176,7 @@ class _MobileContactUsState extends State<MobileContactUs> {
 
   Widget _buildAnswerField() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(

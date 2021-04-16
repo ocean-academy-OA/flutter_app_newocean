@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
-
-import '../ocean_icon/ocean_icons.dart';
 import '../route/navigation_locator.dart';
 import '../route/navigation_service.dart';
 import '../route/routeNames.dart';

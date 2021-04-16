@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:progress_indicator_button/progress_button.dart';
 import 'package:random_string/random_string.dart';
@@ -90,6 +89,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
 
   Widget _buildName() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z]+|\s")),
@@ -120,6 +120,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
 
   Widget _buildphonenumber() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(
@@ -183,6 +184,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
   Widget _buildEmail() {
     return TextFormField(
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
+      // ignore: deprecated_member_use
       autovalidate: validation,
       validator: (value) =>
           EmailValidator.validate(value) ? null : "please enter a valid email",
@@ -202,6 +204,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
 
   Widget _buildquery() {
     return TextFormField(
+      // ignore: deprecated_member_use
       autovalidate: validation,
       validator: (value) {
         // query = value;
@@ -391,6 +394,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
                           Container(
                             width: 700,
                             child: DropdownButtonFormField<String>(
+                              // ignore: deprecated_member_use
                               autovalidate: validation,
                               validator: (value) {
                                 if (value == 'Select') {
@@ -712,14 +716,14 @@ class Alert extends StatefulWidget {
 }
 
 class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _controller = AnimationController(vsync: this);
-  }
+  // AnimationController _controller;
+  //
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _controller = AnimationController(vsync: this);
+  // }
 
   @override
   Widget build(BuildContext context) {

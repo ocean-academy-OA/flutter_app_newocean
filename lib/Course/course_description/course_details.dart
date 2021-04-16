@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
+// ignore: must_be_immutable
 class DesktopCourseDetails extends StatefulWidget {
   String course;
   String trainer;
@@ -61,6 +62,7 @@ class _DesktopCourseDetailsState extends State<DesktopCourseDetails> {
       child: Column(
         children: [
           Stack(
+            // ignore: deprecated_member_use
             overflow: Overflow.visible,
             children: [
               Column(
@@ -273,7 +275,7 @@ class _DesktopCourseDetailsState extends State<DesktopCourseDetails> {
                                 //     message.data()[widget.time];
                                 final messageCoursedescription =
                                     message.data()[widget.discription];
-                                final docid = message.id;
+                                // final docid = message.id;
                                 // for (var k = 0;
                                 //     k < syllabus.length + 1;
                                 //     k++) {
@@ -366,7 +368,7 @@ class _DesktopCourseDetailsState extends State<DesktopCourseDetails> {
                             return Text("Loading...");
                           } else {
                             final messages = snapshot.data.docs;
-                            List<courseCard> courseImage = [];
+                            List<CourseCard> courseImage = [];
                             //List<String> subjects = [];
                             for (var message in messages) {
                               if (message.data()['coursename'] ==
@@ -376,8 +378,8 @@ class _DesktopCourseDetailsState extends State<DesktopCourseDetails> {
                                 final messageCourse =
                                     message.data()['coursename'];
                                 final courseBatchid = message.data()['batchid'];
-                                final time = message.data()['time'];
-                                final date = message.data()['date'];
+                                // final time = message.data()['time'];
+                                // final date = message.data()['date'];
                                 Timestamp timeStamp = message.data()['date1'];
 
                                 final dutation = message.data()['duration'];
@@ -402,7 +404,7 @@ class _DesktopCourseDetailsState extends State<DesktopCourseDetails> {
                                     minute.format(timeStamp.toDate()));
                                 dayTime = daytime.format(timeStamp.toDate());
 
-                                final card = courseCard(
+                                final card = CourseCard(
                                   image: contentImage,
                                   batchTime:
                                       '$hourFormat:$minuteFormat $dayTime',

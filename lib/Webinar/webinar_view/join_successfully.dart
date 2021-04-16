@@ -3,6 +3,7 @@ import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/join_successful
 import 'package:flutter_app_newocean/Webinar/mobile_wbinar/mobile_join_successfuly.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+// ignore: must_be_immutable
 class ResponsiveWebinarJoinSuccessfully extends StatelessWidget {
   ResponsiveWebinarJoinSuccessfully({this.userName});
   String userName;

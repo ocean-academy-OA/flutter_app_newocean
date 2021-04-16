@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Footer/desktop_footer_lg.dart';
-import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/card_design.dart';
 import 'package:flutter_app_newocean/Service/service_widget/Desktop_widget/image_to_text.dart';
 import 'package:flutter_app_newocean/TopNavigationBar/desktop_topnavigationbar.dart';

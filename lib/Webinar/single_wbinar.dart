@@ -11,7 +11,6 @@ import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_pament.
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
@@ -153,7 +152,7 @@ class _SingleWebinarScreenState extends State<SingleWebinarScreen> {
                           wbinars.add(singleWebinar);
                         }
                       } else {
-                        int DBwbinarTime = sDate;
+                        int dbwebinarTime = sDate;
                         if (dBcourse == widget.topic) {
                           SingleWebinarDB singleWebinar = SingleWebinarDB(
                             superTitle: dBsuperTitle,
@@ -165,7 +164,7 @@ class _SingleWebinarScreenState extends State<SingleWebinarScreen> {
                             payment: dBpayment,
                             studentEnrolled: int.parse(dBstudentEnrolled),
                             webinarDuration: dBwebinarDuration,
-                            webinarTime: DBwbinarTime,
+                            webinarTime: dbwebinarTime,
                             mentorImage: dBmentorImage,
                             aboutMentor: dBaboutMentor,
                             allTopics: allTopics,
@@ -190,6 +189,7 @@ class _SingleWebinarScreenState extends State<SingleWebinarScreen> {
   }
 }
 
+// ignore: must_be_immutable
 class SingleWebinarDB extends StatefulWidget {
   SingleWebinarDB({
     this.name,

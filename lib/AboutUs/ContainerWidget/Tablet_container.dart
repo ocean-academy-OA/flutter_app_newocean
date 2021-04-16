@@ -3,6 +3,7 @@ import 'package:flutter_app_newocean/AboutUs/ContainerWidget/raw_meterial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class ContainerWidget extends StatefulWidget {
   String trainerName;
   String designation;

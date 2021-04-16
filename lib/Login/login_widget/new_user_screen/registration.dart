@@ -81,7 +81,7 @@ class _RegistrationState extends State<Registration> {
   final stateContrller = TextEditingController();
   String selectedCountry = '';
   String selectedState = '';
-  Map<String, List> CountryState = {};
+  Map<String, List> countryState = {};
   @override
   void initState() {
     // TODO: implement initState
@@ -89,7 +89,7 @@ class _RegistrationState extends State<Registration> {
     for (var i in contryState['countries']) {
       print(i['states']);
       country.add(i['country']);
-      CountryState.addAll({i['country']: i['states']});
+      countryState.addAll({i['country']: i['states']});
     }
   }
 
@@ -365,7 +365,7 @@ class _RegistrationState extends State<Registration> {
                                   strict: false,
                                   required: isState,
                                   itemsVisibleInDropdown: 3,
-                                  items: CountryState[selectedCountry],
+                                  items: countryState[selectedCountry],
                                   onValueChanged: (value) {
                                     setState(() {
                                       selectedState = value;

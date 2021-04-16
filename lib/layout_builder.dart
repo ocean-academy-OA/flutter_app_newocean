@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
-
 import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
-import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
 import 'package:flutter_app_newocean/Webinar/flash_notification.dart';
-
 import 'package:responsive_builder/responsive_builder.dart';
-
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
 
+// ignore: must_be_immutable
 class MainLayout extends StatefulWidget {
   // static bool sticNotification = true;
   bool notification = true;

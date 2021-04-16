@@ -82,7 +82,7 @@ class _TabletUpcomingCourseState extends State<TabletUpcomingCourse> {
                         return Text("Loading...");
                       } else {
                         final messages = snapshot.data.docs;
-                        List<Container> DBUpcoming = [];
+                        List<Container> dbUpcoming = [];
                         for (var message in messages) {
                           final images = message.data()['upcomingcourse'];
                           Container messageContent = Container(
@@ -100,11 +100,11 @@ class _TabletUpcomingCourseState extends State<TabletUpcomingCourse> {
                             ),
                           );
 
-                          DBUpcoming.add(messageContent);
+                          dbUpcoming.add(messageContent);
                         }
                         return Row(
                           children: [
-                            DB(images: DBUpcoming),
+                            DB(images: dbUpcoming),
                           ],
                         );
                       }
@@ -120,6 +120,7 @@ class _TabletUpcomingCourseState extends State<TabletUpcomingCourse> {
   }
 }
 
+// ignore: must_be_immutable
 class DB extends StatelessWidget {
   List<Widget> images = [];
 

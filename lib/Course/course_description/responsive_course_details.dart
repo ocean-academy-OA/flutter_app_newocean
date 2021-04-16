@@ -4,6 +4,7 @@ import 'package:flutter_app_newocean/Course/course_description/course_details.da
 import 'package:flutter_app_newocean/Course/course_description/mobile_course_details.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+// ignore: must_be_immutable
 class ResponsiveCourseDetails extends StatelessWidget {
   String courseName;
   String batchId;
