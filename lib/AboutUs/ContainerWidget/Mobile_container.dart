@@ -3,6 +3,7 @@ import 'package:flutter_app_newocean/AboutUs/ContainerWidget/raw_meterial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class ContainerWidget extends StatefulWidget {
   String trainerName;
   String designation;
@@ -93,9 +94,6 @@ class _ContainerWidgetState extends State<ContainerWidget> {
                   fit: BoxFit.cover,
                 )),
           ),
-          // SizedBox(
-          //   height: 15.0,
-          // ),
           Text(
             "${widget.trainerName}",
             style: TextStyle(
@@ -103,9 +101,6 @@ class _ContainerWidgetState extends State<ContainerWidget> {
                 color: Colors.black87,
                 fontWeight: FontWeight.bold),
           ),
-          // SizedBox(
-          //   height: 15.0,
-          // ),
           Text(
             "${widget.designation} at Ocean",
             textAlign: TextAlign.center,
@@ -114,9 +109,6 @@ class _ContainerWidgetState extends State<ContainerWidget> {
               fontSize: 15.0,
             ),
           ),
-          // SizedBox(
-          //   height: 15.0,
-          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

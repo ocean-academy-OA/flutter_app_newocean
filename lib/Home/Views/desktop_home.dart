@@ -11,7 +11,6 @@ import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/upcoming_course_
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/what_is_new.dart';
 import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
-import 'package:flutter_app_newocean/route/dynamic_routing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_newocean/Home/Views/Tablet_home.dart';
 
@@ -21,7 +20,6 @@ class DesktopHome extends StatefulWidget {
 }
 
 class _DesktopHomeState extends State<DesktopHome> {
-  ScrollController _scrollController = ScrollController();
   final keyIsFirstLoaded = 'is_first_loaded';
   String fullNameAlert;
   String phoneNumberAlert;
@@ -50,11 +48,9 @@ class _DesktopHomeState extends State<DesktopHome> {
         return TabletHome();
       } else {
         return Container(
-          child: Scrollbar(
-            controller: _scrollController,
-            isAlwaysShown: true,
-            child: SingleChildScrollView(
-              child: Column(
+          child: ListView(
+            children: [
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SliderWidget(),
@@ -68,7 +64,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                   DesktopFooterLg()
                 ],
               ),
-            ),
+            ],
           ),
         );
       }

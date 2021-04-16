@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/layout_builder.dart';
 import 'package:flutter_app_newocean/route/Provider/provider_routing.dart';
@@ -9,8 +10,11 @@ import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  // GestureBinding.instance.resamplingEnabled = true;
   setupLocator();
   setPathUrlStrategy();
+  // WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MyApp());
 }
 

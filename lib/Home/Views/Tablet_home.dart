@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/how_it_works.dart';
 import 'package:flutter_app_newocean/Home/DesktopHome_subTopics/tab_widget/main_badget_widget.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_app_newocean/Home/TabletHome_widgets/tablet_upcoming_cou
 import 'package:flutter_app_newocean/Home/TabletHome_widgets/tablet_placement_company.dart';
 import 'package:flutter_app_newocean/Home/TabletHome_widgets/tablet_reviews.dart';
 import '../../Footer/tablet_footer.dart';
+import 'package:smooth_scroll_web/smooth_scroll_web.dart';
 
 class TabletHome extends StatefulWidget {
   @override
@@ -20,6 +22,7 @@ class TabletHome extends StatefulWidget {
 }
 
 class _TabletHomeState extends State<TabletHome> {
+  ScrollController controller = ScrollController();
   final keyIsFirstLoaded = 'is_first_loaded';
   String fullNameAlert;
   String phoneNumberAlert;
@@ -45,24 +48,11 @@ class _TabletHomeState extends State<TabletHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SliderWidget(),
-            MainBadgeWidget(),
-            TabletUpcomingCourse(),
-            TabletPlacementCompany(),
-            TabletReviewsSection(),
-            OurClient(),
-            WhatIsNew(),
-            HowItWorks(),
-            TabletFooter()
-          ],
-        ),
-      ),
-    );
+    return SmoothScrollWeb(
+        scrollAnimationLength: 100,
+        scrollSpeed: 300,
+        controller: controller,
+        child: _getChild());
   }
 
   Future showDialogIfFirstLoaded(BuildContext context) async {
@@ -82,5 +72,30 @@ class _TabletHomeState extends State<TabletHome> {
         },
       );
     }
+  }
+
+  Widget _getChild() {
+    return Container(
+      child: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: controller,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SliderWidget(),
+              MainBadgeWidget(),
+              TabletUpcomingCourse(),
+              TabletPlacementCompany(),
+              TabletReviewsSection(),
+              OurClient(),
+              WhatIsNew(),
+              HowItWorks(),
+              TabletFooter(),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

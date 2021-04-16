@@ -1,3 +1,5 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html';
 import 'dart:ui' as ui;
 
 // ignore: camel_case_types

@@ -91,7 +91,7 @@ class _TabletUpcomingCourseState extends State<TabletUpcomingCourse> {
                               borderRadius: BorderRadius.circular(15.0),
                               child: Container(
                                 width: 350,
-                                height: 350,
+                                height: 250,
                                 child: Image(
                                   image: NetworkImage(images),
                                   fit: BoxFit.contain,
@@ -131,9 +131,10 @@ class DB extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: CarouselSlider(
         options: CarouselOptions(
+          scrollDirection: Axis.horizontal,
           reverse: true,
           pageSnapping: true,
-          height: 300,
+          height: 250,
           enlargeCenterPage: true,
           autoPlay: true,
           aspectRatio: 16 / 9,
