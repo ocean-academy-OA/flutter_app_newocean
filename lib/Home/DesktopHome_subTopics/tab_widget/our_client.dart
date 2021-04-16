@@ -53,7 +53,7 @@ class OurClient extends StatelessWidget {
                       collegeLogo.add(logos);
                     }
                     return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Wrap(
                         alignment: WrapAlignment.center,
                         spacing: 25.0,
