@@ -20,6 +20,7 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
+  bool isWebinar = true;
   @override
   void initState() {
     // TODO: implement initState
@@ -67,30 +68,50 @@ class _MainLayoutState extends State<MainLayout> {
                 widget.menubar,
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
                     ? SizedBox()
-                    : Container(
-                        height: 50,
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 30,
+                    : isWebinar
+                        ? Dismissible(
+                            key: Key('webinar'),
+                            background: Container(
+                              color: Colors.blue,
+                              height: 10,
                             ),
-                            Text(
-                              'Free Webinar',
-                              style: TextStyle(fontSize: 22, color: Colors.red),
+                            child: Container(
+                              height: 50,
+                              color: Colors.white,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.swipe,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Free Webinar',
+                                    style: TextStyle(
+                                        fontSize: 22, color: Colors.red),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.video_collection_outlined),
+                                    color: Colors.red,
+                                    onPressed: () {
+                                      locator<NavigationService>()
+                                          .navigateTo(UpcomingWebinarRoute);
+                                    },
+                                  )
+                                ],
+                              ),
                             ),
-                            IconButton(
-                              icon: Icon(Icons.video_collection_outlined),
-                              color: Colors.red,
-                              onPressed: () {
-                                locator<NavigationService>()
-                                    .navigateTo(UpcomingWebinarRoute);
-                              },
-                            )
-                          ],
-                        ),
-                      ),
+                            onDismissed: (deirection) {
+                              setState(() {
+                                isWebinar = false;
+                              });
+                            },
+                          )
+                        : SizedBox(),
                 Expanded(child: widget.child),
               ],
             ),
