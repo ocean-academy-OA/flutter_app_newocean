@@ -35,7 +35,7 @@ class _TabServiceState extends State<TabService> {
                 title: "Software development",
                 content:
                     "We offer various software development services such as designing, planning, and testing and also provide maintenance.",
-                icon: 'images/software development.png',
+                icon: 'images/software-development.png',
               ),
               ContainerServiceWidget(
                 title: "Technical Workshops (Implant training)",

@@ -195,6 +195,7 @@ class TabletAboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       scrollDirection: Axis.vertical,
       itemCount: 1,
       itemBuilder: (context, index) {

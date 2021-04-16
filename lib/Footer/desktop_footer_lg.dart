@@ -190,44 +190,46 @@ class _DesktopFooterLgState extends State<DesktopFooterLg> {
                                     ),
                                   ),
                                 ),
-                                FlatButton(
-                                  color: Colors.white,
-                                  minWidth: 1.0,
-                                  height: 60.0,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text(
-                                      'SUBSCRIBE',
-                                      style: TextStyle(
-                                        fontSize: 18.0,
-                                        color: Colors.blue,
-                                        fontFamily: kfontname,
+                                Container(
+                                  child: FlatButton(
+                                    color: Colors.white,
+                                    minWidth: 1.0,
+                                    height: 60.0,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(5.0),
+                                      child: Text(
+                                        'SUBSCRIBE',
+                                        style: TextStyle(
+                                          fontSize: 18.0,
+                                          color: Colors.blue,
+                                          fontFamily: kfontname,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(5.0)),
-                                      side: BorderSide(
-                                        color: Colors.white,
-                                        width: 2.0,
-                                      )),
-                                  onPressed: () {
-                                    if (validateEmail(_subscribe.text)) {
-                                      _firestore
-                                          .collection('subscribed user')
-                                          .doc(_subscribe.text)
-                                          .set({
-                                        'Email': _subscribe.text,
-                                      });
-                                      getData();
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5.0)),
+                                        side: BorderSide(
+                                          color: Colors.white,
+                                          width: 2.0,
+                                        )),
+                                    onPressed: () {
+                                      if (validateEmail(_subscribe.text)) {
+                                        _firestore
+                                            .collection('subscribed user')
+                                            .doc(_subscribe.text)
+                                            .set({
+                                          'Email': _subscribe.text,
+                                        });
+                                        getData();
 
-                                      subscribeDialog(context);
-                                      _subscribe.clear();
-                                    } else {
-                                      subscribeFailedDialog(context);
-                                    }
-                                  },
+                                        subscribeDialog(context);
+                                        _subscribe.clear();
+                                      } else {
+                                        subscribeFailedDialog(context);
+                                      }
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
