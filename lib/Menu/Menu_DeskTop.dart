@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Menu/Menu_Tablet.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:get/get.dart';
 import '../ocean_icon/ocean_icons.dart';
 import '../route/routeNames.dart';
 
@@ -92,6 +95,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
     super.initState();
   }
 
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -142,6 +146,9 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                     ],
                   ),
                 ),
+                Obx(() => valueController.isLogin.value
+                    ? Text('true')
+                    : Text('true')),
                 MaterialButton(
                   child: Text(
                     "Log in",
@@ -157,6 +164,9 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   onPressed: () {
+                    print(valueController.isLogin.value);
+                    valueController.isLogin.value = true;
+                    print(valueController.isLogin.value);
                     locator<NavigationService>().navigateTo(LoginRoute);
 
                     setState(() {

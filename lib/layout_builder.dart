@@ -75,34 +75,28 @@ class _MainLayoutState extends State<MainLayout> {
                               color: Colors.blue,
                               height: 10,
                             ),
-                            child: Container(
-                              height: 50,
-                              color: Colors.white,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                            child: ListTile(
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.swipe,
-                                      color: Colors.blue,
-                                    ),
-                                  ),
                                   Text(
                                     'Free Webinar',
                                     style: TextStyle(
                                         fontSize: 22, color: Colors.red),
                                   ),
-                                  IconButton(
-                                    icon: Icon(Icons.video_collection_outlined),
-                                    color: Colors.red,
-                                    onPressed: () {
-                                      locator<NavigationService>()
-                                          .navigateTo(UpcomingWebinarRoute);
-                                    },
-                                  )
                                 ],
+                              ),
+                              leading: IconButton(
+                                icon: Icon(Icons.video_collection_outlined),
+                                color: Colors.red,
+                                onPressed: () {
+                                  locator<NavigationService>()
+                                      .navigateTo(UpcomingWebinarRoute);
+                                },
+                              ),
+                              trailing: Icon(
+                                Icons.swipe,
+                                color: Colors.blue,
                               ),
                             ),
                             onDismissed: (deirection) {
