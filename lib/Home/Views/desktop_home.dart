@@ -26,6 +26,18 @@ class _DesktopHomeState extends State<DesktopHome> {
   String emailAlert;
   bool flag = true;
 
+  List<Widget> desktopHomeWidgets = [
+    SliderWidget(),
+    MainBadgeWidget(),
+    UpcomingCourse(),
+    PlacementCompany(),
+    ReviewsSection(),
+    OurClient(),
+    WhatIsNew(),
+    HowItWorks(),
+    DesktopFooterLg()
+  ];
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -48,23 +60,14 @@ class _DesktopHomeState extends State<DesktopHome> {
         return TabletHome();
       } else {
         return Container(
-          child: ListView(
-            children: [
-              Column(
+          child: ListView.builder(
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SliderWidget(),
-                  MainBadgeWidget(),
-                  UpcomingCourse(),
-                  PlacementCompany(),
-                  ReviewsSection(),
-                  OurClient(),
-                  WhatIsNew(),
-                  HowItWorks(),
-                  DesktopFooterLg()
-                ],
-              ),
-            ],
+                children: desktopHomeWidgets,
+              );
+            },
           ),
         );
       }

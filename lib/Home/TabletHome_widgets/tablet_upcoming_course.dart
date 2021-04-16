@@ -90,8 +90,8 @@ class _TabletUpcomingCourseState extends State<TabletUpcomingCourse> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Container(
-                                width: 350,
-                                height: 250,
+                                width: 400,
+                                height: 300,
                                 child: Image(
                                   image: NetworkImage(images),
                                   fit: BoxFit.contain,
@@ -142,7 +142,7 @@ class DB extends StatelessWidget {
           autoPlayCurve: Curves.fastOutSlowIn,
           enableInfiniteScroll: true,
           autoPlayAnimationDuration: Duration(milliseconds: 150),
-          viewportFraction: 0.4,
+          viewportFraction: 0.5,
         ),
         items: images,
       ),
