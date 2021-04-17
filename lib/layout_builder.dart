@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
-import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import 'package:flutter_app_newocean/Webinar/flash_notification.dart';
+import 'package:flutter_app_newocean/all_menubar.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
@@ -21,6 +23,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   bool isWebinar = true;
+  final valueController = Get.find<ValueListener>();
   @override
   void initState() {
     // TODO: implement initState
@@ -48,67 +51,65 @@ class _MainLayoutState extends State<MainLayout> {
               ),
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.desktop
             ? MediaQuery.of(context).size.width < 1240
-                ? MenuBarDrawer()
+                ? AllDrawer()
                 : null
-            : MenuBarDrawer(),
+            : AllDrawer(),
         body: SafeArea(
           child: Container(
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
-                    ? FlashNotification(
-                        dismissNotification: () {
-                          setState(() {
-                            widget.notification = true;
-                          });
-                        },
-                      )
+                    ? Obx(() {
+                        return Visibility(
+                          visible: valueController.isFlashNotification.value,
+                          child: FlashNotification(
+                            dismissNotification: () {
+                              valueController.isFlashNotification.value = false;
+                            },
+                          ),
+                        );
+                      })
                     : SizedBox(),
                 widget.menubar,
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
                     ? SizedBox()
-                    : isWebinar
+                    : valueController.isFlashNotification.value
                         ? Dismissible(
                             key: Key('webinar'),
                             background: Container(
                               color: Colors.blue,
                               height: 10,
                             ),
-                            child: Container(
-                              height: 50,
-                              color: Colors.white,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                            child: ListTile(
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.swipe,
-                                      color: Colors.blue,
-                                    ),
-                                  ),
                                   Text(
                                     'Free Webinar',
                                     style: TextStyle(
                                         fontSize: 22, color: Colors.red),
                                   ),
-                                  IconButton(
-                                    icon: Icon(Icons.video_collection_outlined),
-                                    color: Colors.red,
-                                    onPressed: () {
-                                      locator<NavigationService>()
-                                          .navigateTo(UpcomingWebinarRoute);
-                                    },
-                                  )
                                 ],
+                              ),
+                              leading: IconButton(
+                                icon: Icon(Icons.video_collection_outlined),
+                                color: Colors.red,
+                                onPressed: () {
+                                  locator<NavigationService>()
+                                      .navigateTo(UpcomingWebinarRoute);
+                                },
+                              ),
+                              trailing: Icon(
+                                Icons.swipe,
+                                color: Colors.blue,
                               ),
                             ),
                             onDismissed: (deirection) {
-                              setState(() {
-                                isWebinar = false;
-                              });
+                              // setState(() {
+                              //   isWebinar = false;
+                              // });
+                              valueController.isFlashNotification.value = false;
                             },
                           )
                         : SizedBox(),

@@ -1,14 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/log_in.dart';
+import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/log_in.dart';
+
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/otp_inputs.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:timer_count_down/timer_count_down.dart';
-import '../../../route/navigation_locator.dart';
-import '../../../route/navigation_service.dart';
-import '../../../route/routeNames.dart';
+import '../../../../route/navigation_locator.dart';
+import '../../../../route/navigation_service.dart';
+import '../../../../route/routeNames.dart';
 
 // ignore: must_be_immutable
 class OTP extends StatefulWidget {
@@ -111,7 +114,7 @@ class _OTPState extends State<OTP> {
   //     )));
   //   }
   // }
-
+  final valueController = Get.find<ValueListener>();
   _verifyOtp() async {
     try {
       userCredential = await LogIn.confirmationResult.confirm(_otp.text);
@@ -120,6 +123,7 @@ class _OTPState extends State<OTP> {
           await _firestore.collection('new users').doc(OTP.userID).get();
       if (userSession.data() != null) {
         locator<NavigationService>().navigateTo(testRoute);
+        valueController.navebars.value = 'Login';
         LogIn.isLogin = true;
       } else {
         locator<NavigationService>().navigateTo(RegistrationRoute);
