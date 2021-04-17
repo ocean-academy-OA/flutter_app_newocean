@@ -52,8 +52,10 @@ class NavbarRouting extends StatefulWidget {
   @override
   _NavbarRoutingState createState() => _NavbarRoutingState();
 }
-
-class _NavbarRoutingState extends State<NavbarRouting> {
+class _NavbarRoutingState extends State<NavbarRouting>
+    with SingleTickerProviderStateMixin {
+  double _scale;
+  AnimationController _controller;
   @override
 
 //overlay variable
@@ -90,10 +92,27 @@ class _NavbarRoutingState extends State<NavbarRouting> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 150,
+      ),
+      lowerBound: 0.0,
+      upperBound: 0.3,
+    )..addListener(() {
+        setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    _scale = 1 - _controller.value;
     return Container(
       color: Color(0xFFECF5FF),
       child: Padding(
@@ -142,21 +161,12 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                     ],
                   ),
                 ),
-                MaterialButton(
-                  child: Text(
-                    "Log in",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Gilroy"),
-                  ),
-                  padding: EdgeInsets.all(20.0),
-                  minWidth: 150.0,
-                  color: Color(0xFF0091D2),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                  onPressed: () {
+                GestureDetector(
+                  onTapDown: _onTapDown,
+                  onTapUp: _onTapUp,
+                  child:
+                      Transform.scale(scale: _scale, child: _animatedButtonUI),
+                  onTap: () {
                     locator<NavigationService>().navigateTo(LoginRoute);
 
                     setState(() {
@@ -173,7 +183,7 @@ class _NavbarRoutingState extends State<NavbarRouting> {
                     //         ? NavbarRouting()
                     //         : AppBarWidget());
                   },
-                ).moveUpOnHover,
+                ),
               ],
             ),
           ],
@@ -207,5 +217,46 @@ class _NavbarRoutingState extends State<NavbarRouting> {
         },
       ),
     );
+  }
+
+  Widget get _animatedButtonUI => Container(
+        height: 50,
+        width: 120,
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(5.0),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0x80000000),
+              blurRadius: 30.0,
+              offset: Offset(10.0, 5.0),
+            ),
+          ],
+          // gradient: LinearGradient(
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          //   colors: [
+          //     Colors.blue,
+          //     Color(0xff00D5F6),
+          //   ],
+          // ),
+        ),
+        child: Center(
+          child: Text(
+            'Log In',
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
+        ),
+      ).moveUpOnHover;
+
+  void _onTapDown(TapDownDetails details) {
+    _controller.forward();
+  }
+
+  void _onTapUp(TapUpDetails details) {
+    _controller.reverse();
   }
 }

@@ -29,26 +29,25 @@ class _DesktopHomeState extends State<DesktopHome> {
   bool flag = true;
 
   Widget _getChild() {
-    return Container(
-      child: ListView.builder(
-        itemCount: 1,
-        itemBuilder: (context, index) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SliderWidget(),
-              MainBadgeWidget(),
-              UpcomingCourse(),
-              PlacementCompany(),
-              ReviewsSection(),
-              OurClient(),
-              WhatIsNew(),
-              HowItWorks(),
-              DesktopFooterLg()
-            ],
-          );
-        },
-      ),
+    return ListView.builder(
+      physics: AlwaysScrollableScrollPhysics(),
+      itemCount: 1,
+      itemBuilder: (context, index) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SliderWidget(),
+            MainBadgeWidget(),
+            UpcomingCourse(),
+            PlacementCompany(),
+            ReviewsSection(),
+            OurClient(),
+            WhatIsNew(),
+            HowItWorks(),
+            DesktopFooterLg()
+          ],
+        );
+      },
     );
   }
 

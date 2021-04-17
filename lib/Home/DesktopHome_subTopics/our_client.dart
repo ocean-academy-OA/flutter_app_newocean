@@ -9,7 +9,7 @@ class OurClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0),
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,8 +31,6 @@ class OurClient extends StatelessWidget {
             height: 100.0,
           ),
           Wrap(
-            spacing: 60.0,
-            runSpacing: 100.0,
             children: [
               StreamBuilder<QuerySnapshot>(
                 stream: _firestore.collection('Client').snapshots(),
@@ -66,9 +64,6 @@ class OurClient extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 50.0,
-          ),
         ],
       ),
     );
@@ -84,7 +79,7 @@ class CollegeLogo extends StatelessWidget {
     return Container(
       child: Image(
         image: NetworkImage("$collegeLogoImage"),
-        width: 120.0,
+        width: 110.0,
         // fit: BoxFit.fitWidth,
       ),
     );
