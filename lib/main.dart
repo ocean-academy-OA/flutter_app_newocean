@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
 
 import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
@@ -38,11 +39,8 @@ class MyApp extends StatelessWidget {
           title: 'Ocean Academy',
           builder: (context, child) => MainLayout(
             menubar: Obx(
-              () => valueController.isLogin.value
-                  ? Container(
-                      height: 10,
-                      color: Colors.red,
-                    )
+              () => valueController.navebars.value == 'Login'
+                  ? ResponsiveLoginMenu()
                   : ResponsiveMenu(),
             ),
             child: child,

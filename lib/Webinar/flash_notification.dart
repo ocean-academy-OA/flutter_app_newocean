@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_list.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
 import '../common/constants.dart';
@@ -30,7 +32,8 @@ class FlashNotification extends StatefulWidget {
 
 class _FlashNotificationState extends State<FlashNotification> {
   bool isUpcomingWebinar = true;
-
+  final valueController = Get.find<ValueListener>();
+  String comingSoon = 'Webinar';
   @override
   void initState() {
     // TODO: implement initState
@@ -41,196 +44,194 @@ class _FlashNotificationState extends State<FlashNotification> {
   Widget build(BuildContext context) {
     print('@@@@@@@@@@@@@@@@@@@@@@@@');
     print(widget.webinar);
+    // if (comingSoon == 'Webinar Coming soon') {
+    //   valueController.isFlashNotification.value = false;
+    // }
+    return Container(
+      color: Colors.blue,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(),
+          Row(
+            children: [
+              StreamBuilder<QuerySnapshot>(
+                stream: _firestore.collection('Webinar').snapshots(),
+                // ignore: missing_return
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text("Loading...");
+                  } else {
+                    final messages = snapshot.data.docs;
 
-    return Visibility(
-      visible: isUpcomingWebinar,
-      child: Container(
-        color: Colors.blue,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(),
-            Row(
-              children: [
-                StreamBuilder<QuerySnapshot>(
-                  stream: _firestore.collection('Webinar').snapshots(),
-                  // ignore: missing_return
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Text("Loading...");
-                    } else {
-                      final messages = snapshot.data.docs;
+                    List<FlashDb> courseList = [];
+                    List<int> timingList = [];
+                    Map<int, Widget> courseMap = {};
+                    List<Widget> currentWebinar = [];
+                    Map<String, Map> timingMap = {};
+                    for (var message in messages) {
+                      Timestamp time = message.data()['timestamp'];
+                      final freeWebinarContent = message.data()['course'];
+                      final courseName = message.data()['course'];
+                      final payment = message.data()['payment'];
+                      int duration =
+                          int.parse(message.data()['webinar duration']);
 
-                      List<FlashDb> courseList = [];
-                      List<int> timingList = [];
-                      Map<int, Widget> courseMap = {};
-                      List<Widget> currentWebinar = [];
-                      Map<String, Map> timingMap = {};
-                      for (var message in messages) {
-                        Timestamp time = message.data()['timestamp'];
-                        final freeWebinarContent = message.data()['course'];
-                        final courseName = message.data()['course'];
-                        final payment = message.data()['payment'];
-                        int duration =
-                            int.parse(message.data()['webinar duration']);
+                      int yearFormat;
+                      int monthFormat;
+                      int dayFormat;
+                      int hourFormat;
+                      int minuteFormat;
+                      int secondsFormat;
 
-                        int yearFormat;
-                        int monthFormat;
-                        int dayFormat;
-                        int hourFormat;
-                        int minuteFormat;
-                        int secondsFormat;
+                      var year = DateFormat('y');
+                      var month = DateFormat('MM');
+                      var day = DateFormat('d');
+                      var hour = DateFormat('hh');
+                      var minute = DateFormat('mm');
+                      var seconds = DateFormat('s');
 
-                        var year = DateFormat('y');
-                        var month = DateFormat('MM');
-                        var day = DateFormat('d');
-                        var hour = DateFormat('hh');
-                        var minute = DateFormat('mm');
-                        var seconds = DateFormat('s');
+                      yearFormat = int.parse(year.format(time.toDate()));
+                      monthFormat = int.parse(month.format(time.toDate()));
+                      dayFormat = int.parse(day.format(time.toDate()));
+                      hourFormat = int.parse(hour.format(time.toDate()));
+                      minuteFormat = int.parse(minute.format(time.toDate()));
+                      secondsFormat = int.parse(seconds.format(time.toDate()));
+                      var timeFormat = DateFormat('a').format(time.toDate());
 
-                        yearFormat = int.parse(year.format(time.toDate()));
-                        monthFormat = int.parse(month.format(time.toDate()));
-                        dayFormat = int.parse(day.format(time.toDate()));
-                        hourFormat = int.parse(hour.format(time.toDate()));
-                        minuteFormat = int.parse(minute.format(time.toDate()));
-                        secondsFormat =
-                            int.parse(seconds.format(time.toDate()));
-                        var timeFormat = DateFormat('a').format(time.toDate());
+                      var defrenceTime = DateTime(
+                              yearFormat,
+                              monthFormat,
+                              dayFormat,
+                              timeFormat == 'AM' ? hourFormat : hourFormat + 12,
+                              minuteFormat,
+                              secondsFormat)
+                          .difference(DateTime.now())
+                          .inSeconds;
 
-                        var defrenceTime = DateTime(
-                                yearFormat,
-                                monthFormat,
-                                dayFormat,
-                                timeFormat == 'AM'
-                                    ? hourFormat
-                                    : hourFormat + 12,
-                                minuteFormat,
-                                secondsFormat)
-                            .difference(DateTime.now())
-                            .inSeconds;
-
-                        //for mail info
-                        String toTimeFormat = timeFormat;
-                        int toTime = hourFormat;
-                        int toDuration = duration;
-                        if (toDuration >= 60) {
-                          var hourcalculate = toDuration ~/ 60;
-                          toDuration -= hourcalculate * 60;
-                          toTime += hourcalculate;
-                          if (toTime == 12) {
-                            if (timeFormat == 'AM') {
-                              toTimeFormat = 'PM';
-                            } else {
-                              toTimeFormat = 'AM';
-                            }
-                          } else if (toTime > 12) {
-                            toTime -= 12;
-                            if (timeFormat == 'AM') {
-                              toTimeFormat = 'PM';
-                            } else {
-                              toTimeFormat = 'AM';
-                            }
+                      //for mail info
+                      String toTimeFormat = timeFormat;
+                      int toTime = hourFormat;
+                      int toDuration = duration;
+                      if (toDuration >= 60) {
+                        var hourcalculate = toDuration ~/ 60;
+                        toDuration -= hourcalculate * 60;
+                        toTime += hourcalculate;
+                        if (toTime == 12) {
+                          if (timeFormat == 'AM') {
+                            toTimeFormat = 'PM';
+                          } else {
+                            toTimeFormat = 'AM';
+                          }
+                        } else if (toTime > 12) {
+                          toTime -= 12;
+                          if (timeFormat == 'AM') {
+                            toTimeFormat = 'PM';
+                          } else {
+                            toTimeFormat = 'AM';
                           }
                         }
-
-                        var monthString = DateFormat('MMMM');
-                        var monthFormatString =
-                            monthString.format(time.toDate());
-                        Map dateForMail = {
-                          'Year': yearFormat,
-                          'Month': monthFormatString,
-                          'Day': dayFormat,
-                          'Hours': hourFormat,
-                          'To Hours': toTime,
-                          'Minutes': minuteFormat,
-                          'To Minutes': toDuration,
-                          'DayFormat': timeFormat,
-                          'To DayFormat': toTimeFormat
-                        };
-                        timingMap.addAll({courseName: dateForMail});
-
-                        if (defrenceTime > 0) {
-                          final webinar = FlashDb(
-                            content: freeWebinarContent,
-                            joinButton: widget.joinButton,
-                            dismissNotification: widget.dismissNotification,
-                            payment: payment,
-                            wbinarLive: currentWebinar,
-                            mailTiming: dateForMail,
-                          );
-                          timingList.add(defrenceTime);
-                          timingList.sort();
-
-                          courseMap.addAll({defrenceTime: webinar});
-                        } else if (defrenceTime > -duration) {
-                          final webinar = FlashDb(
-                            content: freeWebinarContent,
-                            mailTiming: dateForMail,
-                            joinButton: widget.joinButton,
-                            dismissNotification: widget.dismissNotification,
-                            payment: payment,
-                            wbinarLive: currentWebinar,
-                          );
-                          currentWebinar.add(webinar);
-                        }
                       }
-                      for (var i in timingList) {
-                        courseList.add(courseMap[i]);
-                      }
-                      WebinarCard.timing = timingMap;
-                      if (currentWebinar.isEmpty && courseList.isEmpty) {
-                        isUpcomingWebinar = false;
 
-                        print('$currentWebinar $courseList');
+                      var monthString = DateFormat('MMMM');
+                      var monthFormatString = monthString.format(time.toDate());
+                      Map dateForMail = {
+                        'Year': yearFormat,
+                        'Month': monthFormatString,
+                        'Day': dayFormat,
+                        'Hours': hourFormat,
+                        'To Hours': toTime,
+                        'Minutes': minuteFormat,
+                        'To Minutes': toDuration,
+                        'DayFormat': timeFormat,
+                        'To DayFormat': toTimeFormat
+                      };
+                      timingMap.addAll({courseName: dateForMail});
+
+                      if (defrenceTime > 0) {
+                        final webinar = FlashDb(
+                          content: freeWebinarContent,
+                          joinButton: widget.joinButton,
+                          dismissNotification: widget.dismissNotification,
+                          payment: payment,
+                          wbinarLive: currentWebinar,
+                          mailTiming: dateForMail,
+                        );
+                        timingList.add(defrenceTime);
+                        timingList.sort();
+
+                        courseMap.addAll({defrenceTime: webinar});
+                      } else if (defrenceTime > -duration) {
+                        final webinar = FlashDb(
+                          content: freeWebinarContent,
+                          mailTiming: dateForMail,
+                          joinButton: widget.joinButton,
+                          dismissNotification: widget.dismissNotification,
+                          payment: payment,
+                          wbinarLive: currentWebinar,
+                        );
+                        currentWebinar.add(webinar);
                       }
-                      return Container(
-                        child: Column(
-                          children: [
-                            currentWebinar.isEmpty && courseList.isEmpty
-                                ? SizedBox()
-                                : currentWebinar.isEmpty
-                                    ? courseList[0]
-                                    : currentWebinar[0]
-                          ],
-                        ),
-                      );
                     }
-                  },
-                ),
-                isUpcomingWebinar
-                    ? Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: FlatButton(
-                          child: Text(
-                            "Upcoming",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2,
-                                fontFamily: kfontname),
-                          ),
-                          height: 40,
-                          color: Colors.white,
-                          onPressed: () {
-                            locator<NavigationService>()
-                                .navigateTo(UpcomingWebinarRoute);
-                          },
-                        ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          'Webinar Coming soon ',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
+                    for (var i in timingList) {
+                      courseList.add(courseMap[i]);
+                    }
+                    WebinarCard.timing = timingMap;
+                    if (currentWebinar.isEmpty && courseList.isEmpty) {
+                      // valueController.isFlashNotification.value = false;
+                      isUpcomingWebinar = false;
+
+                      comingSoon = 'Webinar Coming soon';
+
+                      print('$currentWebinar $courseList');
+                    }
+                    return Container(
+                      child: Column(
+                        children: [
+                          currentWebinar.isEmpty && courseList.isEmpty
+                              ? SizedBox()
+                              : currentWebinar.isEmpty
+                                  ? courseList[0]
+                                  : currentWebinar[0]
+                        ],
                       ),
-              ],
-            ),
-            IconButton(
-                icon: Icon(Icons.close, color: Colors.white),
-                onPressed: widget.dismissNotification),
-          ],
-        ),
+                    );
+                  }
+                },
+              ),
+              isUpcomingWebinar
+                  ? Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: FlatButton(
+                        child: Text(
+                          "Upcoming",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2,
+                              fontFamily: kfontname),
+                        ),
+                        height: 40,
+                        color: Colors.white,
+                        onPressed: () {
+                          locator<NavigationService>()
+                              .navigateTo(UpcomingWebinarRoute);
+                        },
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        '$comingSoon',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+            ],
+          ),
+          IconButton(
+              icon: Icon(Icons.close, color: Colors.white),
+              onPressed: widget.dismissNotification),
+        ],
       ),
     );
   }

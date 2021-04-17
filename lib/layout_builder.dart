@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
-import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import 'package:flutter_app_newocean/Webinar/flash_notification.dart';
+import 'package:flutter_app_newocean/all_menubar.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
@@ -21,6 +23,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   bool isWebinar = true;
+  final valueController = Get.find<ValueListener>();
   @override
   void initState() {
     // TODO: implement initState
@@ -48,27 +51,30 @@ class _MainLayoutState extends State<MainLayout> {
               ),
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.desktop
             ? MediaQuery.of(context).size.width < 1240
-                ? MenuBarDrawer()
+                ? AllDrawer()
                 : null
-            : MenuBarDrawer(),
+            : AllDrawer(),
         body: SafeArea(
           child: Container(
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
-                    ? FlashNotification(
-                        dismissNotification: () {
-                          setState(() {
-                            widget.notification = true;
-                          });
-                        },
-                      )
+                    ? Obx(() {
+                        return Visibility(
+                          visible: valueController.isFlashNotification.value,
+                          child: FlashNotification(
+                            dismissNotification: () {
+                              valueController.isFlashNotification.value = false;
+                            },
+                          ),
+                        );
+                      })
                     : SizedBox(),
                 widget.menubar,
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
                     ? SizedBox()
-                    : isWebinar
+                    : valueController.isFlashNotification.value
                         ? Dismissible(
                             key: Key('webinar'),
                             background: Container(
@@ -100,9 +106,10 @@ class _MainLayoutState extends State<MainLayout> {
                               ),
                             ),
                             onDismissed: (deirection) {
-                              setState(() {
-                                isWebinar = false;
-                              });
+                              // setState(() {
+                              //   isWebinar = false;
+                              // });
+                              valueController.isFlashNotification.value = false;
                             },
                           )
                         : SizedBox(),
