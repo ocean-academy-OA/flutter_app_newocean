@@ -52,6 +52,7 @@ class NavbarRouting extends StatefulWidget {
   @override
   _NavbarRoutingState createState() => _NavbarRoutingState();
 }
+
 class _NavbarRoutingState extends State<NavbarRouting>
     with SingleTickerProviderStateMixin {
   double _scale;
