@@ -14,24 +14,33 @@ class _MobileLoginState extends State<MobileLogin> {
     return Container(
       color: Color(0xff006793),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text('Welcome Back'),
+          Text(
+            'Welcome Back',
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
           Container(
-            width: 300,
+            width: MediaQuery.of(context).size.width / 1.4,
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 1),
-                borderRadius: BorderRadius.circular(50)),
+              border: Border.all(color: Colors.white, width: 1),
+            ),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Enter Valid Mobile Number',
-                hintStyle: TextStyle(color: Colors.white),
-                filled: true,
-                fillColor: Colors.white12,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                border: InputBorder.none,
-                disabledBorder: InputBorder.none,
-              ),
+                  hintText: 'Enter Valid Mobile Number',
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+                  filled: true,
+                  fillColor: Colors.white,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  border: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.blue,
+                    ),
+                  )),
             ),
           )
         ],
