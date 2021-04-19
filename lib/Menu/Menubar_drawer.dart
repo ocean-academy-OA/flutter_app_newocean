@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:get/get.dart';
 
 import '../route/routeNames.dart';
 
@@ -18,6 +20,7 @@ class MenuBarDrawer extends StatefulWidget {
 
 class _MenuBarDrawerState extends State<MenuBarDrawer>
     with SingleTickerProviderStateMixin {
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,6 +83,14 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
                   icon: Icons.bar_chart,
                   text: 'Career',
                   naviagationPath: CareerRoute),
+              TextButton(
+                child: Text('Login'),
+                onPressed: () {
+                  locator<NavigationService>().navigateTo(LoginRoute);
+                  valueController.navebars.value = "Login";
+                  scaffoldKey.currentState.openEndDrawer();
+                },
+              )
             ],
           )),
           // Expanded(
