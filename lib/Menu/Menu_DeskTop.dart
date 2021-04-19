@@ -229,8 +229,8 @@ class _NavbarRoutingState extends State<NavbarRouting>
           boxShadow: [
             BoxShadow(
               color: Color(0x80000000),
-              blurRadius: 30.0,
-              offset: Offset(10.0, 5.0),
+              blurRadius: 20.0,
+              offset: Offset(0.0, 1.0),
             ),
           ],
           // gradient: LinearGradient(

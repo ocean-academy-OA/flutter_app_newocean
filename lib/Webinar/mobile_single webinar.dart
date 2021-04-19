@@ -447,16 +447,32 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
                   style: TextStyle(fontSize: 18, color: Colors.white)),
             ),
             SizedBox(height: 20),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
-              width: 1000,
-              child: Text(
-                widget.mainTitle,
-                style: kHeaddingTitle,
-                textAlign: TextAlign.center,
-              ),
+            LayoutBuilder(
+              // ignore: missing_return
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 600 && constraints.maxWidth > 300) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      widget.mainTitle,
+                      textAlign: TextAlign.center,
+                      style: kTitlemobview,
+                    ),
+                  );
+                } else if (constraints.maxWidth > 600) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      widget.mainTitle,
+                      style: kHeaddingTitleTab,
+                      textAlign: TextAlign.center,
+                    ),
+                  );
+                }
+              },
             ),
             Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
               width: 1000,
               child: Text(
                 widget.mainSubtitle,
@@ -562,36 +578,30 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
                                                 child: Stack(
                                                   alignment: Alignment.center,
                                                   children: [
-                                                    Container(
-                                                      width: 300,
-                                                      height: 100,
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Positioned(
-                                                        bottom: 0,
-                                                        child:
-                                                            SlideCountdownClock(
-                                                          duration: Duration(
-                                                              seconds: widget
-                                                                  .webinarTime),
-                                                          separator: ' : ',
-                                                          textStyle: TextStyle(
-                                                              fontSize: 40,
-                                                              fontFamily:
-                                                                  kfontname,
-                                                              color: kBlue),
-                                                          separatorTextStyle:
-                                                              TextStyle(
-                                                                  fontSize: 35,
-                                                                  color: kBlue),
-                                                          shouldShowDays: true,
-                                                          onDone: () {
-                                                            setState(() {
-                                                              print(DateTime
-                                                                  .now());
-                                                            });
-                                                          },
-                                                        ),
+                                                    Positioned(
+                                                      bottom: 0,
+                                                      child:
+                                                          SlideCountdownClock(
+                                                        duration: Duration(
+                                                            seconds: widget
+                                                                .webinarTime),
+                                                        separator: ' : ',
+                                                        textStyle: TextStyle(
+                                                            fontSize: 40,
+                                                            fontFamily:
+                                                                kfontname,
+                                                            color: kBlue),
+                                                        separatorTextStyle:
+                                                            TextStyle(
+                                                                fontSize: 35,
+                                                                color: kBlue),
+                                                        shouldShowDays: true,
+                                                        onDone: () {
+                                                          setState(() {
+                                                            print(
+                                                                DateTime.now());
+                                                          });
+                                                        },
                                                       ),
                                                     ),
                                                   ],
@@ -892,11 +902,30 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
             //   ),
             // ),
             // SizedBox(height: 40),
-            //Watch The Preview For This Masterclass
-            Text(
-              'Watch The Preview For This Webinar',
-              textAlign: TextAlign.center,
-              style: kTitle,
+            // Watch The Preview For This Masterclass
+            LayoutBuilder(
+              // ignore: missing_return
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 600 && constraints.maxWidth > 300) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      'Watch The Preview For This Webinar',
+                      textAlign: TextAlign.center,
+                      style: kTitlemobview,
+                    ),
+                  );
+                } else if (constraints.maxWidth > 600) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      'Watch The Preview For This Webinar',
+                      textAlign: TextAlign.center,
+                      style: kTitle,
+                    ),
+                  );
+                }
+              },
             ),
             SizedBox(height: 20),
             Padding(

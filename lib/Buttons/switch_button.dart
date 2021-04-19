@@ -3,42 +3,30 @@ import 'package:fswitch/fswitch.dart';
 
 // ignore: must_be_immutable
 class SwitchButton extends StatelessWidget {
-  SwitchButton({this.onChanged, this.open = false});
+  SwitchButton(
+      {this.onChanged,
+      this.open = true,
+      this.sliderChild,
+      this.closeChild,
+      this.openChild});
 
   Function onChanged;
   bool open;
+  Widget sliderChild;
+  Widget closeChild;
+  Widget openChild;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(5),
       child: FSwitch(
+        sliderChild: sliderChild,
+        enable: true,
         open: open,
         width: 300,
         height: 50,
-        closeChild: Container(
-          width: 275,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Online',
-                style: TextStyle(fontSize: 30, color: Colors.white),
-              ),
-            ],
-          ),
-        ),
-        openChild: Container(
-          width: 300,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Offline',
-                style: TextStyle(fontSize: 30, color: Colors.white),
-              ),
-            ],
-          ),
-        ),
+        closeChild: closeChild,
+        openChild: openChild,
         color: Colors.blue,
         openColor: Colors.blue[800],
         onChanged: onChanged,
