@@ -124,6 +124,8 @@ class _OTPState extends State<OTP> {
       if (userSession.data() != null) {
         locator<NavigationService>().navigateTo(testRoute);
         valueController.navebars.value = 'Login';
+        valueController.userNumber.value = OTP.userID;
+
         LogIn.isLogin = true;
       } else {
         locator<NavigationService>().navigateTo(RegistrationRoute);
