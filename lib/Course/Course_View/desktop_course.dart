@@ -26,6 +26,39 @@ class _DesktopCourseState extends State<DesktopCourse> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SwitchButton(
+                closeChild: Container(
+                  width: 275,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Online',
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                openChild: Container(
+                  width: 300,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Offline',
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                sliderChild: isOnline
+                    ? Icon(
+                        Icons.arrow_left,
+                        size: 35,
+                      )
+                    : Icon(
+                        Icons.arrow_right,
+                        size: 35,
+                      ),
                 open: isOnline,
                 onChanged: (value) {
                   setState(() {

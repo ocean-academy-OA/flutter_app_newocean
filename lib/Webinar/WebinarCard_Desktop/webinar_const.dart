@@ -15,12 +15,26 @@ const TextStyle kHeaddingTitle = TextStyle(
     fontFamily: kfontname,
     fontWeight: FontWeight.bold);
 
+const TextStyle kHeaddingTitleTab = TextStyle(
+    inherit: false,
+    fontSize: 30,
+    color: Color(0xffFF616161),
+    fontFamily: kfontname,
+    fontWeight: FontWeight.w600);
+
 const TextStyle kTitle = TextStyle(
     inherit: false,
     fontSize: 33,
     color: Color(0xffFF616161),
     fontFamily: kfontname,
     fontWeight: FontWeight.w400);
+
+const TextStyle kTitlemobview = TextStyle(
+    inherit: false,
+    fontSize: 20,
+    color: Color(0xffFF616161),
+    fontFamily: kfontname,
+    fontWeight: FontWeight.w600);
 
 const TextStyle kContentTitle = TextStyle(
     inherit: false,
