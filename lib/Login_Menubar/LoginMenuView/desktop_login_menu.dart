@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -97,6 +99,8 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
     );
     menu.show(widgetKey: notificationKey);
   }
+
+  final valueController = Get.find<ValueListener>();
 
   String test;
   @override
@@ -227,33 +231,33 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                               List<ProfilePictureDb> profile = [];
 
                               for (var message in messages) {
-                                // var id = MenuBar.stayUser != null
+                                // var id = valueController.userNumber.value != null
                                 //     ? MenuBar.stayUser
                                 //     : LogIn.registerNumber;
-                                // if (message.id == id) {
-                                //   final profileImage =
-                                //       message.data()['Profile Picture'];
-                                //
-                                //   final pictures = ProfilePictureDb(
-                                //     profilePicture: profileImage,
-                                //     onpress: () {
-                                //       setState(() {
-                                //         ContentWidget.isShow =
-                                //             !ContentWidget.isShow;
-                                //
-                                //         ContentWidget.isVisible = false;
-                                //       });
-                                //       Provider.of<Routing>(context,
-                                //               listen: false)
-                                //           .updateRouting(widget: CoursesView());
-                                //
-                                //       Provider.of<UserProfiles>(context,
-                                //               listen: false)
-                                //           .updateUser(routing: User_Profile());
-                                //     },
-                                //   );
-                                //   profile.add(pictures);
-                                // }
+                                if (message.id == '+91 1234567890') {
+                                  final profileImage =
+                                      message.data()['Profile Picture'];
+
+                                  final pictures = ProfilePictureDb(
+                                    profilePicture: profileImage,
+                                    onpress: () {
+                                      // setState(() {
+                                      //   ContentWidget.isShow =
+                                      //       !ContentWidget.isShow;
+                                      //
+                                      //   ContentWidget.isVisible = false;
+                                      // });
+                                      // Provider.of<Routing>(context,
+                                      //         listen: false)
+                                      //     .updateRouting(widget: CoursesView());
+                                      //
+                                      // Provider.of<UserProfiles>(context,
+                                      //         listen: false)
+                                      //     .updateUser(routing: User_Profile());
+                                    },
+                                  );
+                                  profile.add(pictures);
+                                }
                               }
                               return MaterialButton(
                                 child: Row(

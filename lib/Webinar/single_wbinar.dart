@@ -39,12 +39,6 @@ class _SingleWebinarScreenState extends State<SingleWebinarScreen> {
   int dayFormat;
   int hourFormat;
   int minuteFormat;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-  }
 
   @override
   Widget build(BuildContext context) {
