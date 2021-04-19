@@ -511,9 +511,7 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
                           // ),
                         ],
                       )),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                   // Join and timer
                   Container(
                     height: 630,
@@ -564,30 +562,36 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
                                                 child: Stack(
                                                   alignment: Alignment.center,
                                                   children: [
-                                                    Positioned(
-                                                      bottom: 0,
-                                                      child:
-                                                          SlideCountdownClock(
-                                                        duration: Duration(
-                                                            seconds: widget
-                                                                .webinarTime),
-                                                        separator: ' : ',
-                                                        textStyle: TextStyle(
-                                                            fontSize: 40,
-                                                            fontFamily:
-                                                                kfontname,
-                                                            color: kBlue),
-                                                        separatorTextStyle:
-                                                            TextStyle(
-                                                                fontSize: 35,
-                                                                color: kBlue),
-                                                        shouldShowDays: true,
-                                                        onDone: () {
-                                                          setState(() {
-                                                            print(
-                                                                DateTime.now());
-                                                          });
-                                                        },
+                                                    Container(
+                                                      width: 300,
+                                                      height: 100,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Positioned(
+                                                        bottom: 0,
+                                                        child:
+                                                            SlideCountdownClock(
+                                                          duration: Duration(
+                                                              seconds: widget
+                                                                  .webinarTime),
+                                                          separator: ' : ',
+                                                          textStyle: TextStyle(
+                                                              fontSize: 40,
+                                                              fontFamily:
+                                                                  kfontname,
+                                                              color: kBlue),
+                                                          separatorTextStyle:
+                                                              TextStyle(
+                                                                  fontSize: 35,
+                                                                  color: kBlue),
+                                                          shouldShowDays: true,
+                                                          onDone: () {
+                                                            setState(() {
+                                                              print(DateTime
+                                                                  .now());
+                                                            });
+                                                          },
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -983,10 +987,14 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
               style: kTitle,
             ),
             SizedBox(height: 40),
-            Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: widget.allTopics),
-
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: widget.allTopics,
+              ),
+            ),
             SizedBox(height: 40),
             Container(
               padding: EdgeInsets.symmetric(vertical: 50),
