@@ -13,8 +13,10 @@ class _AllDrawerState extends State<AllDrawer> {
   final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
-    return valueController.navebars.value == 'Login'
-        ? LoginDrawer()
-        : MenuBarDrawer();
+    if (valueController.navebars.value == 'Login') {
+      return LoginDrawer();
+    } else if (valueController.navebars.value == 'Home') {
+      return MenuBarDrawer();
+    }
   }
 }

@@ -9,14 +9,14 @@ import 'package:get/get.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
-class DesktopLoginMenu extends StatefulWidget {
-  DesktopLoginMenu({this.userProfile});
+class TabletLoginMenu extends StatefulWidget {
+  TabletLoginMenu({this.userProfile});
   String userProfile;
   @override
-  _DesktopLoginMenuState createState() => _DesktopLoginMenuState();
+  _TabletLoginMenuState createState() => _TabletLoginMenuState();
 }
 
-class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
+class _TabletLoginMenuState extends State<TabletLoginMenu> {
   String userProfile;
   // session() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -118,6 +118,13 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  IconButton(
+                      icon: Icon(
+                        Icons.menu,
+                      ),
+                      color: Colors.white,
+                      iconSize: 25,
+                      onPressed: () {}),
                   GestureDetector(
                     onTap: () {
                       // Provider.of<Routing>(context, listen: false)
@@ -129,7 +136,7 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                       children: [
                         Icon(
                           Ocean.oa,
-                          size: 70.0,
+                          size: 40.0,
                           color: Colors.white,
                         ),
                         SizedBox(
@@ -140,84 +147,49 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
-                              fontSize: 35),
+                              fontSize: 25),
                         ),
                       ],
                     ),
                   ),
+                  IconButton(
+                      icon: Icon(Icons.settings),
+                      onPressed: () {
+                        valueController.navebars.value = 'Home';
+                      }),
                   Container(
-                    // color: Colors.red,
-                    width: 830.0,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        MaterialButton(
-                          padding: EdgeInsets.all(20.0),
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0))),
-                          onPressed: () {
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: CoursesView());
-                            // Provider.of<SyllabusView>(context, listen: false)
-                            //     .updateCourseSyllabus(routing: MyCourse());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: AppBarWidget());
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          child: IconButton(
+                              icon: Icon(
                                 Icons.menu_book,
-                                color: Color(0xFF0091D2),
-                                size: 30.0,
                               ),
-                              SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                "My Courses",
-                                style: TextStyle(
-                                  color: Color(0xFF0091D2),
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                            ],
-                          ),
+                              color: Color(0xFF0091D2),
+                              iconSize: 25,
+                              onPressed: () {}),
                         ),
-                        MaterialButton(
-                          padding: EdgeInsets.all(20.0),
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0))),
-                          onPressed: () {
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: CoursesView());
-                            // Provider.of<SyllabusView>(context, listen: false)
-                            //     .updateCourseSyllabus(routing: EnrollNew());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: AppBarWidget());
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.collections_bookmark_rounded,
-                                color: Color(0xFF0091D2),
-                                size: 30.0,
-                              ),
-                              SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                "All Courses",
-                                style: TextStyle(
-                                  color: Color(0xFF0091D2),
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                            ],
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
                           ),
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.collections_bookmark_rounded,
+                              ),
+                              color: Color(0xFF0091D2),
+                              iconSize: 25,
+                              onPressed: () {}),
                         ),
                         StreamBuilder<QuerySnapshot>(
                           stream:
@@ -237,8 +209,6 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                                 if (message.id == '+91 1234567890') {
                                   final profileImage =
                                       message.data()['Profile Picture'];
-
-                                  print("profile $profileImage");
 
                                   final pictures = ProfilePictureDb(
                                     profilePicture: profileImage,
@@ -269,21 +239,29 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                             }
                           },
                         ),
-                        FocusedMenuHolder(
-                          openWithTap: true,
-                          blurBackgroundColor: Colors.transparent,
-                          animateMenuItems: false,
-                          blurSize: 0,
-                          animationDuration: 50,
-                          arrowColor: Colors.grey[700],
-                          menuWidth: 350,
-                          onPressed: () {},
-                          menuItemExtent: 55,
-                          menuItems: notificationItem,
-                          child: Icon(
-                            Icons.notifications_none_outlined,
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
                             color: Colors.white,
-                            size: 50.0,
+                          ),
+                          child: FocusedMenuHolder(
+                            openWithTap: true,
+                            blurBackgroundColor: Colors.transparent,
+                            animateMenuItems: false,
+                            blurSize: 0,
+                            animationDuration: 50,
+                            arrowColor: Colors.grey[700],
+                            menuWidth: 350,
+                            onPressed: () {},
+                            menuItemExtent: 55,
+                            menuItems: notificationItem,
+                            child: Icon(
+                              Icons.notifications_none_outlined,
+                              color: Color(0xFF0091D2),
+                              size: 40.0,
+                            ),
                           ),
                         ),
                         // MaterialButton(
@@ -424,22 +402,28 @@ class _ProfilePictureDbState extends State<ProfilePictureDb> {
 
   @override
   Widget build(BuildContext context) {
-    print("picture${widget.profilePicture}");
     PopupMenu.context = context;
 
     return MaterialButton(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(15.0),
       minWidth: 10.0,
       key: menuButtonKey,
       hoverColor: Colors.white10,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(600.0))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(600.0),
+        ),
+      ),
       onPressed: popupMenuButton,
       child: widget.profilePicture != null
           ? ClipRRect(
               borderRadius: BorderRadius.circular(100.0),
-              child: Image.network(widget.profilePicture,
-                  height: 60, width: 60, fit: BoxFit.cover),
+              child: Image.network(
+                widget.profilePicture,
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+              ),
             )
           : Icon(
               FontAwesomeIcons.solidUserCircle,
