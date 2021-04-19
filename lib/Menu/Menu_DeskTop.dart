@@ -117,7 +117,7 @@ class _NavbarRoutingState extends State<NavbarRouting>
     return Container(
       color: Color(0xFFECF5FF),
       child: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: EdgeInsets.all(25.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
