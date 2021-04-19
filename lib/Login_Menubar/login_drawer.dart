@@ -1,5 +1,94 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+final _firestore = FirebaseFirestore.instance;
+
+///drawer content
+
+class HorizontalMenu extends StatefulWidget {
+  List<String> courseList = [];
+  // static Widget customWidget;
+  Map menu = {};
+  List<String> batchId = [];
+  List<String> courseIcon = [];
+  HorizontalMenu({this.courseList, this.menu, this.batchId, this.courseIcon});
+  @override
+  _HorizontalMenuState createState() => _HorizontalMenuState();
+}
+
+class _HorizontalMenuState extends State<HorizontalMenu> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('${widget.courseList} widget.courseList ');
+    //HorizontalMenu.customWidget = EnrollNew();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: widget.courseList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            margin: EdgeInsets.all(10.0),
+            child: MouseRegion(
+              child: ListTile(
+                hoverColor: Colors.white,
+                leading: ClipRRect(
+                  child: Container(
+                      height: 40,
+                      width: 40,
+                      child: Icon(
+                        FontAwesomeIcons.graduationCap,
+                        color: Colors.white,
+                      )),
+                  borderRadius: BorderRadius.circular(500),
+                ),
+                title: MouseRegion(
+                  child: courseEnroll(
+                    text: widget.courseList[index],
+                    color: widget.menu[index],
+                  ),
+                ),
+                onTap: () {
+                  print("welcome batchid ${widget.batchId[index]}");
+                  setState(() {
+                    widget.menu
+                        .updateAll((key, value) => widget.menu[key] = false);
+                    widget.menu[index] = true;
+                  });
+                  // Provider.of<SyllabusView>(context, listen: false)
+                  //     .updateCourseSyllabus(
+                  //   routing: ContentWidget(
+                  //     course: widget.courseList[index],
+                  //     batchid: widget.batchId[index],
+                  //     //batchid: "OCNBK08",
+                  //   ),
+                  // );
+                },
+              ),
+            ),
+          );
+        });
+  }
+}
+
+Widget courseEnroll({text, color}) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: color == true ? Colors.blue : Colors.white,
+      fontSize: 20.0,
+    ),
+  );
+}
+
+///end
 
 class LoginDrawer extends StatefulWidget {
   @override
@@ -9,93 +98,97 @@ class LoginDrawer extends StatefulWidget {
 class _LoginDrawerState extends State<LoginDrawer> {
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   width: 250,
-    //   color: Colors.blue[800],
-    //   child: Column(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: [
-    //       // Container(
-    //       //   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    //       //   child: Image.asset('images/alert.png'),
-    //       // ),
-    //       Container(
-    //         color: Colors.blue,
-    //         child: Column(
-    //           children: [
-    //             Icon(
-    //               Ocean.oa,
-    //               color: Colors.white,
-    //               size: 50,
-    //             ),
-    //             Text(
-    //               "Ocean Academy",
-    //               style: TextStyle(
-    //                   color: Colors.white,
-    //                   fontFamily: 'Ubuntu',
-    //                   fontSize: 30,
-    //                   fontWeight: FontWeight.bold),
-    //             ),
-    //             Container(
-    //               margin: EdgeInsets.only(bottom: 15, top: 8),
-    //               color: Colors.transparent,
-    //               height: 1,
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Expanded(
-    //           child: Column(
-    //             children: [
-    //               menuItem(
-    //                   icon: Icons.home, text: 'Home', naviagationPath: HomeRoute),
-    //               menuItem(
-    //                   icon: Icons.info,
-    //                   text: 'About Us',
-    //                   naviagationPath: AboutRoute),
-    //               menuItem(
-    //                   icon: Icons.miscellaneous_services_rounded,
-    //                   text: 'Services',
-    //                   naviagationPath: ServiceRoute),
-    //               menuItem(
-    //                   icon: Icons.book_rounded,
-    //                   text: 'Courses',
-    //                   naviagationPath: CourseRoute),
-    //               menuItem(
-    //                   icon: Icons.contact_page_outlined,
-    //                   text: 'Contact Us',
-    //                   naviagationPath: ContactUsRoute),
-    //               menuItem(
-    //                   icon: Icons.bar_chart,
-    //                   text: 'Career',
-    //                   naviagationPath: CareerRoute),
-    //             ],
-    //           )),
-    //       // Expanded(
-    //       //     child: ListView.builder(
-    //       //   itemCount: menuItemList.length,
-    //       //   itemBuilder: (context, counter) {
-    //       //     return MenuItemWidget(
-    //       //         title: menuItemList[counter].title,
-    //       //         iconData: menuItemList[counter].icon);
-    //       //   },
-    //       // )),
-    //       Container(
-    //         margin: EdgeInsets.symmetric(vertical: 50),
-    //         child: IconButton(
-    //           icon: Icon(Icons.arrow_back_ios_outlined),
-    //           color: Colors.grey[700],
-    //           onPressed: () {
-    //             scaffoldKey.currentState.openEndDrawer();
-    //           },
-    //         ),
-    //       ),
-    //
-    //       // menuItem(text: "About Us"),
-    //       // menuItem(text: "Service"),
-    //       // menuItem(text: "Contact Us"),
-    //     ],
-    //   ),
-    // );
+    Map menu = {};
+
+    Map<String, String> courses_icon = {};
+    return Container(
+      width: 250,
+      color: Colors.blue[800],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            color: Colors.blue,
+            child: Column(
+              children: [
+                Icon(
+                  Ocean.oa,
+                  color: Colors.white,
+                  size: 50,
+                ),
+                Text(
+                  "Ocean Academy",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Ubuntu',
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 15, top: 8),
+                  color: Colors.transparent,
+                  height: 1,
+                )
+              ],
+            ),
+          ),
+          Expanded(
+              child: Column(
+            children: [
+              Text(
+                "Courses",
+                style: TextStyle(
+                  fontSize: 30.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              StreamBuilder<QuerySnapshot>(
+                stream: _firestore.collection('new users').snapshots(),
+                // ignore: missing_return
+                builder: (context1, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text("Loading...");
+                  } else {
+                    final messages = snapshot.data.docs;
+
+                    //userCourses();
+                    int pos = 0;
+                    List<String> courseList = [];
+                    List<String> courseIconList = [];
+                    List<String> batchId = [];
+
+                    for (var message in messages) {
+                      ///todo seesion id to messege.id
+                      if (message.id == "+91 1234567890") {
+                        final messageSender = message.data()['Courses'];
+
+                        final batch = message.data()['batchid'];
+
+                        for (var i in messageSender) {
+                          menu[pos++] = false;
+                          courseList.add(i);
+                          courseIconList.add(courses_icon[i]);
+                        }
+                        for (var i in batch) {
+                          batchId.add(i);
+                        }
+                      }
+                    }
+
+                    return HorizontalMenu(
+                      courseList: courseList,
+                      menu: menu,
+                      batchId: batchId,
+                      courseIcon: courseIconList,
+                    );
+                  }
+                },
+              ),
+            ],
+          )),
+        ],
+      ),
+    );
   }
 }
