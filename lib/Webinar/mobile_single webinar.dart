@@ -728,7 +728,7 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
                                         });
                                         getData();
                                         locator<NavigationService>().navigateTo(
-                                            'JoinSuccessfully?=${widget.name}');
+                                            'JoinSuccessfully?id=${widget.name}');
                                       } else {
                                         ///TODO payment Function
                                         await showJoinDialog(context);
