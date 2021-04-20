@@ -20,7 +20,7 @@ class _MyCourseState extends State<MyCourse> {
     // getMessage();
     //batch_id();
     super.initState();
-    // print('${CoursesView.batchId}CoursesView.batchId');
+    print('${CoursesView.batchId}CoursesView.batchId');
   }
 
   @override
@@ -47,6 +47,7 @@ class _MyCourseState extends State<MyCourse> {
                   for (var message in messages) {
                     for (var batch in CoursesView.batchId) {
                       if (message.id == batch) {
+                        print("now${message.id}");
                         final messageText = message.data()['trainername'];
                         final messageSender = message.data()['coursename'];
                         final messageSession = message.data()['session'];
@@ -273,7 +274,7 @@ class _MyCourseDbState extends State<MyCourseDb> {
                             MyCourseDb.visiblity = true;
                           });
                           setState(() {
-                           // OnlineCourse.visiblity = false;
+                            // OnlineCourse.visiblity = false;
                           });
                           setState(() {
                             // Navbar.visiblity = false;
@@ -296,6 +297,7 @@ class _MyCourseDbState extends State<MyCourseDb> {
                             fontWeight: FontWeight.w400,
                           ),
                         ))
+
                     /// todo . .moveUpOnHover,
                   ],
                 )

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ResponsiveClassRoomContent extends StatefulWidget {
@@ -10,6 +12,14 @@ class ResponsiveClassRoomContent extends StatefulWidget {
 
 class _ResponsiveClassRoomContentState
     extends State<ResponsiveClassRoomContent> {
+  final valueController = Get.find<ValueListener>();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    valueController.navebars.value = "Login";
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -152,6 +153,7 @@ class _CoursesViewState extends State<CoursesView> {
   @override
   void initState() {
     // getSession();
+    batch_id();
 
     // TODO: implement initState
     super.initState();
@@ -260,7 +262,7 @@ class _CoursesViewState extends State<CoursesView> {
               ///todo ternary operator
               Expanded(
                 flex: 6,
-                child: Container(color: Colors.pinkAccent, child: AllCourse()),
+                child: Container(child: MyCourse()),
               )
             ],
           ),
