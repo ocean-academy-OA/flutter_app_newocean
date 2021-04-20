@@ -8,8 +8,13 @@ const String DetailsRoute =
     "/CourseDetails?online=courseName&batchID=batch&trainer=OA%20trainer&description=course%20description";
 const String LoginRoute = "/Login";
 const String OTPRoute = "/OTP";
-const String classRoom = "/ClassRoom?userNumber=+91%201234567890";
+const String classRoom =
+    "/ClassRoom?userNumber=+91%201234567890&typeOfCourse=My%20Course";
 const String testRoute = "/testPage";
+const String Payment =
+    "/payment?amount=Amount&courseImage=courseimage&courseName=coursename&courseList=courselist&batchid=batch";
+const String ThanksForPurchase = "/thanksforpurchasing";
+const String allCourse = "/AllCourse";
 const String RegistrationRoute = "/Registration";
 const String UpcomingWebinarRoute = "/UpcomingWebinar";
 const String WebinarJoinRoute = "/WebinarJoin?id=course";

@@ -422,15 +422,6 @@ class _ContentWidgetState extends State<ContentWidget> {
                               });
                               locator<NavigationService>().navigateTo(
                                   'CourseDetails?online=${widget.course}&batchID=${widget.batchid}&trainer=${widget.trainername}&description=${widget.description}');
-                              // Provider.of<SyllabusView>(context, listen: false)
-                              //     .updateCourseSyllabus(
-                              //     routing: CourseDetails(
-                              //       course: widget.course,
-                              //       trainer: trainername,
-                              //       sess: widget.startDate,
-                              //       desc: description,
-                              //       batch: widget.batchid,
-                              //     ));
                             },
                           ),
                         ],

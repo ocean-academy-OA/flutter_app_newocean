@@ -124,8 +124,8 @@ class _OTPState extends State<OTP> {
       userSession =
           await _firestore.collection('new users').doc(OTP.userID).get();
       if (userSession.data() != null) {
-        locator<NavigationService>()
-            .navigateTo('/ClassRoom?userNumber=${OTP.userID}');
+        locator<NavigationService>().navigateTo(
+            '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=${valueController.courseType.value}');
         valueController.navebars.value = 'Login';
         valueController.userNumber.value = OTP.userID;
         print(valueController.userNumber.value);
