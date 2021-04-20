@@ -38,7 +38,7 @@ Route<dynamic> generateRoute(
   if (settings.name.contains("ClassRoom")) {
     String userNumber = Uri.parse(settings.name).queryParameters["userNumber"];
 
-    print("$userNumber Login user");
+    print("$userNumber  Login user");
     return _getPageRoute(
       ResponsiveClassRoomContent(),
       settings,

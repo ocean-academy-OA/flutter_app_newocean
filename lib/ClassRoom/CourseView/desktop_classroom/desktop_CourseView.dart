@@ -7,6 +7,7 @@ import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Map<String, String> courses_icon = {};
 final _firestore = FirebaseFirestore.instance;
@@ -150,17 +152,17 @@ class _CoursesViewState extends State<CoursesView> {
 
   bool visibility = true;
 
-  // getSession() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   LogIn.registerNumber = (prefs.getString('user') ?? null);
-  //   userCourses();
-  //   batch_id();
-  //   print("${CoursesView.batchId}CoursesView.batchId");
-  // }
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+    userCourses();
+    batch_id();
+    print("${CoursesView.batchId}CoursesView.batchId");
+  }
 
   @override
   void initState() {
-    // getSession();
+    getSession();
     batch_id();
 
     // TODO: implement initState
@@ -175,7 +177,7 @@ class _CoursesViewState extends State<CoursesView> {
         .collection("new users")
 
         ///todo LogIn.registerNumber
-        .doc("+91 1234567890")
+        .doc(LoginResponsive.registerNumber)
         .get();
     CoursesView.courseEnroll = course.data()["First Name"];
     CoursesView.studentemail = course.data()["E Mail"];
@@ -234,7 +236,8 @@ class _CoursesViewState extends State<CoursesView> {
 
                                   for (var message in messages) {
                                     ///todo LogIn.registerNumber
-                                    if (message.id == "+91 1234567890") {
+                                    if (message.id ==
+                                        LoginResponsive.registerNumber) {
                                       final messageSender =
                                           message.data()['Courses'];
 
