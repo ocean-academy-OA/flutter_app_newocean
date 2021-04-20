@@ -36,6 +36,15 @@ Route<dynamic> generateRoute(
         ),
         settings);
   }
+  if (settings.name.contains("ClassRoom")) {
+    String userNumber = Uri.parse(settings.name).queryParameters["userNumber"];
+
+    print("$userNumber Login user");
+    return _getPageRoute(
+      ResponsiveClassRoomContent(),
+      settings,
+    );
+  }
 
   if (settings.name.contains("JoinSuccessfully")) {
     String userName = Uri.parse(settings.name).queryParameters["id"];
