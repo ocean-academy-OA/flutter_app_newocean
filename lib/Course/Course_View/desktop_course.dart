@@ -120,6 +120,9 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           description: messageDescription,
                           batchid: messageBatchid,
                           onPressed: () {
+                            setState(() {
+                              OnlineCourseCard.visiblity = true;
+                            });
                             print(messageSender);
                             locator<NavigationService>().navigateTo(
                                 'CourseDetails?online=$messageSender&batchID=$messageBatchid&trainer=$messageText&description=$messageDescription');

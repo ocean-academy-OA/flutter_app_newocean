@@ -44,6 +44,18 @@ Route<dynamic> generateRoute(
       settings,
     );
   }
+  if (settings.name.contains("ViewSchedule")) {
+    String courseName = Uri.parse(settings.name).queryParameters["courseName"];
+    String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+
+    return _getPageRoute(
+      ContentWidget(
+        course: courseName,
+        batchid: batchID,
+      ),
+      settings,
+    );
+  }
 
   if (settings.name.contains("JoinSuccessfully")) {
     String userName = Uri.parse(settings.name).queryParameters["id"];
@@ -172,6 +184,18 @@ Route<dynamic> generateRoute(
     case classRoom:
       return _getPageRoute(
         CoursesView(),
+        settings,
+      );
+    case ViewSchedule:
+      String courseName =
+          Uri.parse(settings.name).queryParameters["courseName"];
+      String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+      return _getPageRoute(
+        ContentWidget(
+          course: courseName,
+          batchid: batchID,
+        ),
+        //ResponsiveContactUs(),
         settings,
       );
     default:

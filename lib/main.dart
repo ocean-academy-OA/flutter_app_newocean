@@ -29,6 +29,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final valueController = Get.find<ValueListener>();
   String session;
+  Widget route;
   // This widget is the root of your application.
   sessionCheck() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

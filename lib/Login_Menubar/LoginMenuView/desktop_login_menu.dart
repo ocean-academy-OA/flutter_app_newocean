@@ -158,12 +158,9 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0))),
                           onPressed: () {
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: CoursesView());
-                            // Provider.of<SyllabusView>(context, listen: false)
-                            //     .updateCourseSyllabus(routing: MyCourse());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: AppBarWidget());
+                            // ignore: unnecessary_statements
+                            valueController.courseType.value = "My Course";
+                            print("My Course");
                           },
                           child: Row(
                             children: [
@@ -192,12 +189,9 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0))),
                           onPressed: () {
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: CoursesView());
-                            // Provider.of<SyllabusView>(context, listen: false)
-                            //     .updateCourseSyllabus(routing: EnrollNew());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: AppBarWidget());
+                            // ignore: unnecessary_statements
+                            valueController.courseType.value = 'All Course';
+                            print("All Course");
                           },
                           child: Row(
                             children: [

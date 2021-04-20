@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -23,8 +24,8 @@ class _ResponsiveClassRoomContentState
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      mobile: CoursesView(),
-      tablet: CoursesView(),
+      mobile: NavigateTest(),
+      tablet: NavigateTest(),
       desktop: CoursesView(),
     );
   }

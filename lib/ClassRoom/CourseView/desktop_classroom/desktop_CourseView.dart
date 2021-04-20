@@ -6,8 +6,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
+import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -70,6 +74,8 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                         .updateAll((key, value) => widget.menu[key] = false);
                     widget.menu[index] = true;
                   });
+                  locator<NavigationService>().navigateTo(
+                      '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}');
                   // Provider.of<SyllabusView>(context, listen: false)
                   //     .updateCourseSyllabus(
                   //   routing: ContentWidget(
@@ -266,7 +272,11 @@ class _CoursesViewState extends State<CoursesView> {
               Expanded(
                   flex: 6,
                   child: Obx(() {
-                    if (valueController.co) {}
+                    if (valueController.courseType.value == "My Course") {
+                      return MyCourse();
+                    } else {
+                      return AllCourse();
+                    }
                   })
 
                   //Container(child: MyCourse()),
@@ -405,8 +415,10 @@ class _ContentWidgetState extends State<ContentWidget> {
                             elevation: 0,
                             onPressed: () {
                               setState(() {
-                                // OnlineCourse.visiblity = false;
+                                OnlineCourseCard.visiblity = false;
                               });
+                              locator<NavigationService>().navigateTo(
+                                  'CourseDetails?online=${widget.course}&batchID=${widget.batchid}&trainer=${widget.trainername}&description=${widget.description}');
                               // Provider.of<SyllabusView>(context, listen: false)
                               //     .updateCourseSyllabus(
                               //     routing: CourseDetails(
