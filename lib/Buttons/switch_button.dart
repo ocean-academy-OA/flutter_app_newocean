@@ -20,6 +20,7 @@ class SwitchButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(5),
       child: FSwitch(
+        sliderColor: Colors.white,
         sliderChild: sliderChild,
         enable: true,
         open: open,
