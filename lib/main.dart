@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
@@ -27,9 +28,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final valueController = Get.find<ValueListener>();
+  String session;
   // This widget is the root of your application.
+  sessionCheck() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    session = (prefs.getString('user') ?? null);
+  }
+
   @override
   Widget build(BuildContext context) {
+    sessionCheck();
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => SliderContent()),
@@ -47,7 +55,7 @@ class MyApp extends StatelessWidget {
           ),
           navigatorKey: locator<NavigationService>().navigatorKey,
           onGenerateRoute: generateRoute,
-          initialRoute: HomeRoute,
+          initialRoute: session == null ? HomeRoute : testRoute,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,

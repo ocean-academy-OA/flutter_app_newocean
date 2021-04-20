@@ -22,6 +22,9 @@ class _LoginResponsiveState extends State<LoginResponsive> {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-        desktop: LogIn(), tablet: LogIn(), mobile: MobileLogin());
+      desktop: LogIn(),
+      tablet: LogIn(),
+      mobile: MobileLogin(),
+    );
   }
 }
