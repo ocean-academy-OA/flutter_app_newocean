@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
@@ -13,9 +15,11 @@ import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Registration/registration.dart';
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
+import 'package:flutter_app_newocean/Thanks_Purchase/responsive_Purchase.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
+import 'package:flutter_app_newocean/payment/responsive_payment.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'routeNames.dart';
 
@@ -37,6 +41,8 @@ Route<dynamic> generateRoute(
   }
   if (settings.name.contains("ClassRoom")) {
     String userNumber = Uri.parse(settings.name).queryParameters["userNumber"];
+    String typeOfCourse =
+        Uri.parse(settings.name).queryParameters["typeOfCourse"];
 
     print("$userNumber  Login user");
     return _getPageRoute(
@@ -56,7 +62,6 @@ Route<dynamic> generateRoute(
       settings,
     );
   }
-
   if (settings.name.contains("JoinSuccessfully")) {
     String userName = Uri.parse(settings.name).queryParameters["id"];
 
@@ -83,6 +88,26 @@ Route<dynamic> generateRoute(
           description: description,
         ),
         settings);
+  }
+  if (settings.name.contains("payment")) {
+    String amount = Uri.parse(settings.name).queryParameters["amount"];
+    String courseImage =
+        Uri.parse(settings.name).queryParameters["courseImage"];
+    String courseName = Uri.parse(settings.name).queryParameters["courseName"];
+    String courseList = Uri.parse(settings.name).queryParameters["courseList"];
+    String batchid = Uri.parse(settings.name).queryParameters["batchid"];
+
+    print("$courseName CourseDetails");
+    return _getPageRoute(
+      ResponsivePayment(
+        courseImage: courseImage,
+        amount: amount,
+        courseName: courseName,
+        course: [courseList],
+        batchid: batchid,
+      ),
+      settings,
+    );
   }
 
   switch (settings.name) {
@@ -167,6 +192,7 @@ Route<dynamic> generateRoute(
 
     case JoinSuccessfullyRoute:
       String userName = Uri.parse(settings.name).queryParameters["id"];
+
       return _getPageRoute(
         ResponsiveWebinarJoinSuccessfully(
           userName: userName,
@@ -182,10 +208,46 @@ Route<dynamic> generateRoute(
         settings,
       );
     case classRoom:
+      String typeOfCourse =
+          Uri.parse(settings.name).queryParameters["typeOfCourse"];
       return _getPageRoute(
         CoursesView(),
         settings,
       );
+    case Payment:
+      String amount = Uri.parse(settings.name).queryParameters["amount"];
+      String courseImage =
+          Uri.parse(settings.name).queryParameters["courseImage"];
+      String courseName =
+          Uri.parse(settings.name).queryParameters["courseName"];
+      String courseList =
+          Uri.parse(settings.name).queryParameters["courseList"];
+      String batchid = Uri.parse(settings.name).queryParameters["batchid"];
+      return _getPageRoute(
+        ResponsivePayment(
+          courseImage: courseImage,
+          amount: amount,
+          courseName: courseName,
+          course: [courseList],
+          batchid: batchid,
+        ),
+        settings,
+      );
+    case ThanksForPurchase:
+      String typeOfCourse =
+          Uri.parse(settings.name).queryParameters["typeOfCourse"];
+      String userNumber =
+          Uri.parse(settings.name).queryParameters["userNumber"];
+      return _getPageRoute(
+        ResponsiveThanksForPurchase(),
+        settings,
+      );
+    case allCourse:
+      return _getPageRoute(
+        AllCourse(),
+        settings,
+      );
+
     case ViewSchedule:
       String courseName =
           Uri.parse(settings.name).queryParameters["courseName"];
