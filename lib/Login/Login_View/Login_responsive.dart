@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/log_in.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/mobile-login.dart';
@@ -8,6 +9,9 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 class LoginResponsive extends StatefulWidget {
   // static bool isLogin = false;
+  static ConfirmationResult confirmationResult;
+  static String registerNumber;
+  static bool isLogin = false;
 
   @override
   _LoginResponsiveState createState() => _LoginResponsiveState();
@@ -18,6 +22,9 @@ class _LoginResponsiveState extends State<LoginResponsive> {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-        desktop: LogIn(), tablet: LogIn(), mobile: MobileLogin());
+      desktop: LogIn(),
+      tablet: LogIn(),
+      mobile: MobileLogin(),
+    );
   }
 }

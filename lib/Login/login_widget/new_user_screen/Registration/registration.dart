@@ -4,6 +4,7 @@ import 'package:dropdownfield/dropdownfield.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/log_in.dart';
 
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/contry_states.dart';
@@ -55,7 +56,8 @@ class _RegistrationState extends State<Registration> {
   final _eMail = TextEditingController();
   final _companyOrSchool = TextEditingController();
   final _dgree = TextEditingController();
-  final _phoneNumber = TextEditingController(text: LogIn.registerNumber);
+  final _phoneNumber =
+      TextEditingController(text: LoginResponsive.registerNumber);
 
   List inputFormatte({@required String regExp, int length}) {
     List<TextInputFormatter> formater = [
@@ -68,9 +70,9 @@ class _RegistrationState extends State<Registration> {
   session() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('login', 1);
-    await prefs.setString('user', LogIn.registerNumber);
+    await prefs.setString('user', LoginResponsive.registerNumber);
     // print("${MenuBar.stayUser}MenuBar.stayUser");
-    print("${LogIn.registerNumber}LogIn.registerNumber");
+    print("${LoginResponsive.registerNumber}LogIn.registerNumber");
   }
 
   Uint8List uploadFile;
