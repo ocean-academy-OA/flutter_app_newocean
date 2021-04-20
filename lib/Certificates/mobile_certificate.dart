@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:get/get.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -22,6 +23,7 @@ class _MobileCertificateState extends State<MobileCertificate> {
                 GestureDetector(
                     onTap: () {
                       ///Navigation to back screen
+                      Get.back();
                       // Provider.of<Routing>(context, listen: false)
                       //     .updateRouting(widget: CoursesView());
                     },

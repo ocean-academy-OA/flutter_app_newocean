@@ -37,7 +37,7 @@ class CourseDescription extends StatelessWidget {
             children: [
               ExpansionTile(
                 title: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
                     "$topic",
                     style: TextStyle(
