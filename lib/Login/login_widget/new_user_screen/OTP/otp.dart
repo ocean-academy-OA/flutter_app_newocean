@@ -167,204 +167,194 @@ class _OTPState extends State<OTP> {
   Container DesktopOtp(BuildContext context) {
     return Container(
       color: Color(0xff2B9DD1),
-      child: Column(
-        children: [
-          Center(
-            child: Container(
-              width: 500,
-              height: 800,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 600.0,
-                    height: 500.0,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-                    decoration: BoxDecoration(
-                        color: Color(0xff006793),
-                        borderRadius: BorderRadius.circular(6.0)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Welcome Back',
-                          style: TextStyle(
-                              fontSize: 40.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Container(
-                          height: 350,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+      child: Center(
+        child: Container(
+          width: 500,
+          height: 800,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 600.0,
+                height: 500.0,
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                decoration: BoxDecoration(
+                    color: Color(0xff006793),
+                    borderRadius: BorderRadius.circular(6.0)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Welcome Back',
+                      style: TextStyle(
+                          fontSize: 40.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      height: 350,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Spacer(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 55.0,
-                                    width: 450,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0)),
-                                    child: OTPTextField(
-                                      length: 6,
-                                      width: MediaQuery.of(context).size.width,
-                                      textFieldAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      fieldWidth: 50,
-                                      onChanged: (value) {
-                                        print(value);
-                                      },
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      onCompleted: (value) {
-                                        _otp.text = value;
-                                      },
-                                    ),
-                                  ),
-                                ],
-                                // children: otpCount(6),
-                              ),
-                              Spacer(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Countdown(
-                                    seconds: 600,
-                                    build:
-                                        (BuildContext context, double time) =>
-                                            Text(
-                                      '${(time ~/ 60).toString().length == 1 ? "0" + (time ~/ 60).toString() : (time ~/ 60)} : ${(time % 60).toString().length == 1 ? "0" + (time % 60).toString() : (time % 60)}',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 23.0,
-                                      ),
-                                    ),
-                                    onFinished: () {
-                                      // Provider.of<Routing>(context,
-                                      //         listen: false)
-                                      //     .updateRouting(widget: LogIn());
-                                      // Provider.of<MenuBar>(context,
-                                      //         listen: false)
-                                      //     .updateMenu(
-                                      //         widget: NavbarRouting());
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 40.0,
-                                  )
-                                ],
-                              ),
-                              Spacer(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  RawMaterialButton(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Color(0xff014965),
-                                          borderRadius:
-                                              BorderRadius.circular(5.0)),
-                                      alignment: Alignment.center,
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 15.0),
-                                      width: 450.0,
-                                      child: Text(
-                                        'NEXT',
-                                        style: TextStyle(
-                                          fontSize: 20.0,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    elevation: 0.0,
-                                    onPressed: () async {
-                                      _verifyOtp();
-                                      //_verifyPhone();
-                                    },
-                                  ),
-                                ],
-                              ),
-                              Spacer(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  MaterialButton(
-                                    child: Icon(
-                                      Icons.chevron_left,
-                                      color: Color(0xff006793),
-                                      size: 35.0,
-                                    ),
+                              Container(
+                                height: 55.0,
+                                width: 450,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5.0)),
+                                child: OTPTextField(
+                                  length: 6,
+                                  width: MediaQuery.of(context).size.width,
+                                  textFieldAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  fieldWidth: 50,
+                                  onChanged: (value) {
+                                    print(value);
+                                  },
+                                  style: TextStyle(
+                                    fontSize: 20,
                                     color: Colors.white,
-                                    minWidth: 70.0,
-                                    height: 70.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(70.0)),
-                                    onPressed: () {
-                                      locator<NavigationService>()
-                                          .navigateTo(LoginRoute);
-                                      // Provider.of<Routing>(context,
-                                      //         listen: false)
-                                      //     .updateRouting(widget: LogIn());
-                                      // Provider.of<MenuBar>(context,
-                                      //         listen: false)
-                                      //     .updateMenu(
-                                      //         widget: NavbarRouting());
-                                    },
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
+                                  onCompleted: (value) {
+                                    _otp.text = value;
+                                  },
+                                ),
+                              ),
+                            ],
+                            // children: otpCount(6),
+                          ),
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Countdown(
+                                seconds: 600,
+                                build: (BuildContext context, double time) =>
+                                    Text(
+                                  '${(time ~/ 60).toString().length == 1 ? "0" + (time ~/ 60).toString() : (time ~/ 60)} : ${(time % 60).toString().length == 1 ? "0" + (time % 60).toString() : (time % 60)}',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 23.0,
+                                  ),
+                                ),
+                                onFinished: () {
+                                  // Provider.of<Routing>(context,
+                                  //         listen: false)
+                                  //     .updateRouting(widget: LogIn());
+                                  // Provider.of<MenuBar>(context,
+                                  //         listen: false)
+                                  //     .updateMenu(
+                                  //         widget: NavbarRouting());
+                                },
+                              ),
+                              SizedBox(
+                                width: 40.0,
+                              )
+                            ],
+                          ),
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RawMaterialButton(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color(0xff014965),
+                                      borderRadius: BorderRadius.circular(5.0)),
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                                  width: 450.0,
+                                  child: Text(
+                                    'NEXT',
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                elevation: 0.0,
+                                onPressed: () async {
+                                  _verifyOtp();
+                                  //_verifyPhone();
+                                },
                               ),
                             ],
                           ),
-                        ),
-                        SizedBox(height: 10.0),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(vertical: 15.0),
-                    width: 600,
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    decoration: BoxDecoration(
-                        color: Color(0xff006793),
-                        borderRadius: BorderRadius.circular(6.0)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Or ',
-                          style: TextStyle(color: Colors.white, fontSize: 18.0),
-                        ),
-                        GestureDetector(
-                          onTap: _clickHere,
-                          child: Text(
-                            'click here',
-                            style: TextStyle(
-                                color: Colors.cyanAccent, fontSize: 18.0),
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              MaterialButton(
+                                child: Icon(
+                                  Icons.chevron_left,
+                                  color: Color(0xff006793),
+                                  size: 35.0,
+                                ),
+                                color: Colors.white,
+                                minWidth: 70.0,
+                                height: 70.0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(70.0)),
+                                onPressed: () {
+                                  locator<NavigationService>()
+                                      .navigateTo(LoginRoute);
+                                  // Provider.of<Routing>(context,
+                                  //         listen: false)
+                                  //     .updateRouting(widget: LogIn());
+                                  // Provider.of<MenuBar>(context,
+                                  //         listen: false)
+                                  //     .updateMenu(
+                                  //         widget: NavbarRouting());
+                                },
+                              ),
+                            ],
                           ),
-                        ),
-                        Text(
-                          ' to visit website',
-                          style: TextStyle(color: Colors.white, fontSize: 18.0),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 10.0),
+                  ],
+                ),
               ),
-            ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(vertical: 15.0),
+                width: 600,
+                padding: EdgeInsets.symmetric(vertical: 15),
+                decoration: BoxDecoration(
+                    color: Color(0xff006793),
+                    borderRadius: BorderRadius.circular(6.0)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Or ',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    ),
+                    GestureDetector(
+                      onTap: _clickHere,
+                      child: Text(
+                        'click here',
+                        style:
+                            TextStyle(color: Colors.cyanAccent, fontSize: 18.0),
+                      ),
+                    ),
+                    Text(
+                      ' to visit website',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
