@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Buttons/switch_button.dart';
 
 class NavigateTest extends StatefulWidget {
   @override
@@ -41,6 +40,7 @@ class _NavigateTestState extends State<NavigateTest> {
         ),
         Column(
           children: [
+            Testing(),
             BottomNavigationBar(
               currentIndex:
                   current, // this will be set when a new tab is tapped
@@ -66,6 +66,22 @@ class _NavigateTestState extends State<NavigateTest> {
 
         // tabs[current]
       ]),
+    );
+  }
+}
+
+class Testing extends StatefulWidget {
+  @override
+  _TestingState createState() => _TestingState();
+}
+
+class _TestingState extends State<Testing> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
+      color: Colors.green,
     );
   }
 }

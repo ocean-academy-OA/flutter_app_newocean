@@ -158,6 +158,11 @@ Route<dynamic> generateRoute(
     // --------------------------
     case testRoute:
       return _getPageRoute(
+        NavigateTest(),
+        settings,
+      );
+    case classRoom:
+      return _getPageRoute(
         ResponsiveClassRoomContent(),
         settings,
       );

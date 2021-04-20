@@ -11,12 +11,6 @@ class ResponsiveClassRoomContent extends StatefulWidget {
 class _ResponsiveClassRoomContentState
     extends State<ResponsiveClassRoomContent> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
       mobile: CoursesView(),
