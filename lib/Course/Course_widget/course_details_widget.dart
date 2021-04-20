@@ -38,7 +38,7 @@ class CourseDescription extends StatelessWidget {
             children: [
               ExpansionTile(
                 title: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
                     "$topic",
                     style: TextStyle(
@@ -135,7 +135,6 @@ class _CourseCardState extends State<CourseCard> {
                     child: Image(
                       image: NetworkImage('${widget.image}'),
                       fit: BoxFit.cover,
-
                       // height: 100.0,
                     ),
                   ),

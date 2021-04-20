@@ -27,19 +27,33 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final valueController = Get.find<ValueListener>();
+
   String session;
-  Widget route;
-  // This widget is the root of your application.
+
+  String route;
+
   sessionCheck() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     session = (prefs.getString('user') ?? null);
+    route = session != null ? '/ClassRoom?userNumber=$session' : HomeRoute;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    sessionCheck();
   }
 
   @override
   Widget build(BuildContext context) {
-    sessionCheck();
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => SliderContent()),
@@ -59,8 +73,7 @@ class MyApp extends StatelessWidget {
           ),
           navigatorKey: locator<NavigationService>().navigatorKey,
           onGenerateRoute: generateRoute,
-          initialRoute:
-              session == null ? HomeRoute : '/ClassRoom?userNumber=$session',
+          initialRoute: route,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,

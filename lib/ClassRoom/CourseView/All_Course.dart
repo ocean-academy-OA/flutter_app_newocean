@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -21,16 +23,16 @@ class _AllCourseState extends State<AllCourse> {
 
   String courseId;
 
-  // getSession() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   LogIn.registerNumber = (prefs.getString('user') ?? null);
-  // }
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+  }
 
   @override
   void initState() {
     // TODO: implement initState
 
-    //getSession();
+    getSession();
     super.initState();
   }
 
@@ -56,8 +58,8 @@ class _AllCourseState extends State<AllCourse> {
                     final messages = snapshot.data.docs;
 
                     for (var message in messages) {
-                      // print("${LogIn.registerNumber}LogIn.registerNumber");
-                      if (message.id == "+91 1234567890") {
+                      /// print("${LogIn.registerNumber}LogIn.registerNumber");
+                      if (message.id == LoginResponsive.registerNumber) {
                         EnrollList = message.data()['Courses'];
                         print("${EnrollList}EnrollList");
                       }
