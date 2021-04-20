@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
 
 import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
+import 'package:flutter_app_newocean/Webinar/webinar_menubar/responsive_webinar_menubar.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/layout_builder.dart';
 import 'package:flutter_app_newocean/route/Provider/provider_routing.dart';
@@ -67,7 +68,9 @@ class _MyAppState extends State<MyApp> {
             menubar: Obx(
               () => valueController.navebars.value == 'Login'
                   ? ResponsiveLoginMenu()
-                  : ResponsiveMenu(),
+                  : valueController.navebars.value == 'Webinar'
+                      ? ResponsiveWbinarMenubar()
+                      : ResponsiveMenu(),
             ),
             child: child,
           ),

@@ -148,7 +148,6 @@ class _CourseCardState extends State<CourseCard> {
                     child: Image(
                       image: NetworkImage('${widget.image}'),
                       fit: BoxFit.cover,
-
                       // height: 100.0,
                     ),
                   ),

@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../common/constants.dart';
 
@@ -15,6 +17,7 @@ class WebinarCard extends StatefulWidget {
 }
 
 class _WebinarCardState extends State<WebinarCard> {
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,6 +142,7 @@ class _WebinarCardState extends State<WebinarCard> {
                         date: date.toString(),
                         time: timing.toString(),
                         onPressed: () {
+                          valueController.navebars.value = 'Webinar';
                           locator<NavigationService>()
                               .navigateTo('MobileWebinarJoin?id=$courseName');
 
