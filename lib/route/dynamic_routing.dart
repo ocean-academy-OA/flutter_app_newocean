@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
@@ -157,7 +158,7 @@ Route<dynamic> generateRoute(
     // --------------------------
     case testRoute:
       return _getPageRoute(
-        NavigateTest(),
+        ResponsiveClassRoomContent(),
         settings,
       );
     default:
