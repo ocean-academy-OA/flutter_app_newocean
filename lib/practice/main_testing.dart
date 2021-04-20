@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Course/course_description/course_details.dart';
+import 'package:flutter_app_newocean/Webinar/webinar_menubar/responsive_webinar_menubar.dart';
 
 void main() {
   runApp(MaterialApp(
     title: 'Thamizh testing page',
     home: Scaffold(
-      body: DesktopCourseDetails(),
+      body: ResponsiveWbinarMenubar(),
     ),
   ));
 }
