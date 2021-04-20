@@ -7,7 +7,9 @@ import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 Map<String, String> courses_icon = {};
@@ -174,6 +176,7 @@ class _CoursesViewState extends State<CoursesView> {
     print('${CoursesView.courseEnroll}CoursesView.courseEnroll');
   }
 
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     Map menu = {};
@@ -261,9 +264,13 @@ class _CoursesViewState extends State<CoursesView> {
 
               ///todo ternary operator
               Expanded(
-                flex: 6,
-                child: Container(child: MyCourse()),
-              )
+                  flex: 6,
+                  child: Obx(() {
+                    if (valueController.co) {}
+                  })
+
+                  //Container(child: MyCourse()),
+                  )
             ],
           ),
           // Consumer<UserProfiles>(builder: (context, routing, child) {
