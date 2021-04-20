@@ -12,13 +12,11 @@ import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Registration/registration.dart';
-
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
-import 'package:flutter_app_newocean/404/error_page.dart';
 import 'routeNames.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;

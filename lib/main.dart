@@ -55,7 +55,8 @@ class MyApp extends StatelessWidget {
           ),
           navigatorKey: locator<NavigationService>().navigatorKey,
           onGenerateRoute: generateRoute,
-          initialRoute: session == null ? HomeRoute : testRoute,
+          initialRoute:
+              session == null ? HomeRoute : '/ClassRoom?userNumber=$session',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,

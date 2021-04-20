@@ -53,11 +53,11 @@ class _DesktopCourseState extends State<DesktopCourse> {
                 sliderChild: isOnline
                     ? Icon(
                         Icons.arrow_left,
-                        size: 35,
+                        size: 45,
                       )
                     : Icon(
                         Icons.arrow_right,
-                        size: 35,
+                        size: 45,
                       ),
                 open: isOnline,
                 onChanged: (value) {
@@ -138,7 +138,7 @@ class _DesktopCourseState extends State<DesktopCourse> {
                 )
               : StreamBuilder<QuerySnapshot>(
                   stream: _firestore.collection('offline_course').snapshots(),
-// ignore: missing_return
+                  // ignore: missing_return
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Text("Loading...");
@@ -156,7 +156,7 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           pdfLink: messagePdflink,
                           image: messageImage,
                         );
-// Text('$messageText from $messageSender');
+                        // Text('$messageText from $messageSender');
                         offlineCourse.add(messageCourse);
                       }
 

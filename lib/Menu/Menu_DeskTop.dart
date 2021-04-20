@@ -228,9 +228,9 @@ class _NavbarRoutingState extends State<NavbarRouting>
           borderRadius: BorderRadius.circular(5.0),
           boxShadow: [
             BoxShadow(
-              color: Color(0x80000000),
-              blurRadius: 20.0,
-              offset: Offset(0.0, 1.0),
+              color: Colors.black45,
+              blurRadius: 10.0,
+              // offset: Offset(0.0, 0.1),
             ),
           ],
           // gradient: LinearGradient(
