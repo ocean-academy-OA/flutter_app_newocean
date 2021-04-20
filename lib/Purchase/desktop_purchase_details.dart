@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ocean_project/desktopview/Components/course_enrole.dart';
-import 'package:ocean_project/desktopview/route/routing.dart';
 import 'package:provider/provider.dart';
 
 class DesktopPurchaseDetails extends StatelessWidget {
@@ -28,8 +26,8 @@ class DesktopPurchaseDetails extends StatelessWidget {
                     iconSize: 50,
                     splashRadius: 30,
                     onPressed: () {
-                      Provider.of<Routing>(context, listen: false)
-                          .updateRouting(widget: CoursesView());
+                      // Provider.of<Routing>(context, listen: false)
+                      //     .updateRouting(widget: CoursesView());
                     },
                   ),
                 ),
