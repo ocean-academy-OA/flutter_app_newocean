@@ -38,9 +38,21 @@ Route<dynamic> generateRoute(
   if (settings.name.contains("ClassRoom")) {
     String userNumber = Uri.parse(settings.name).queryParameters["userNumber"];
 
-    print("$userNumber Login user");
+    print("$userNumber  Login user");
     return _getPageRoute(
       ResponsiveClassRoomContent(),
+      settings,
+    );
+  }
+  if (settings.name.contains("ViewSchedule")) {
+    String courseName = Uri.parse(settings.name).queryParameters["courseName"];
+    String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+
+    return _getPageRoute(
+      ContentWidget(
+        course: courseName,
+        batchid: batchID,
+      ),
       settings,
     );
   }
@@ -172,6 +184,18 @@ Route<dynamic> generateRoute(
     case classRoom:
       return _getPageRoute(
         CoursesView(),
+        settings,
+      );
+    case ViewSchedule:
+      String courseName =
+          Uri.parse(settings.name).queryParameters["courseName"];
+      String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+      return _getPageRoute(
+        ContentWidget(
+          course: courseName,
+          batchid: batchID,
+        ),
+        //ResponsiveContactUs(),
         settings,
       );
     default:

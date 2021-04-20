@@ -1,6 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
+import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -17,16 +23,16 @@ class _AllCourseState extends State<AllCourse> {
 
   String courseId;
 
-  // getSession() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   LogIn.registerNumber = (prefs.getString('user') ?? null);
-  // }
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+  }
 
   @override
   void initState() {
     // TODO: implement initState
 
-    //getSession();
+    getSession();
     super.initState();
   }
 
@@ -52,8 +58,8 @@ class _AllCourseState extends State<AllCourse> {
                     final messages = snapshot.data.docs;
 
                     for (var message in messages) {
-                      // print("${LogIn.registerNumber}LogIn.registerNumber");
-                      if (message.id == "+91 1234567890") {
+                      /// print("${LogIn.registerNumber}LogIn.registerNumber");
+                      if (message.id == LoginResponsive.registerNumber) {
                         EnrollList = message.data()['Courses'];
                         print("${EnrollList}EnrollList");
                       }
@@ -137,11 +143,15 @@ class _AllCourseDbState extends State<AllCourseDb> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          AllCourseDb.visiblity = true;
+          MyCourseDb.visiblity = true;
         });
         setState(() {
-          //OnlineCourse.visiblity = true;
+          //OnlineCourse.visiblity = false;
         });
+        setState(() {
+          // Navbar.visiblity = false;
+        });
+        print("${widget.coursename}widget.coursename");
         // Provider.of<SyllabusView>(context, listen: false).updateCourseSyllabus(
         //     routing: CourseDetails(
         //       batch: widget.batchid,
@@ -151,89 +161,179 @@ class _AllCourseDbState extends State<AllCourseDb> {
         //       desc: widget.description,
         //     ));
       },
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: Container(
-          margin: EdgeInsets.all(35.0),
-          //padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-          height: 310.0,
-          width: 370.0,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              borderRadius: BorderRadius.circular(15.0)),
-          child: Column(
-            children: [
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Container(
-                  width: 350,
-                  height: 200,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0),
-                    child: Image(
-                      image: NetworkImage('${widget.image}'),
-                      fit: BoxFit.cover,
-                      // width: 350.0,
-                      // height: 100.0,
-                    ),
-                  ),
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "${widget.coursename} full package course | ${widget.trainername} | Ocean Academy",
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(
-                          Icons.schedule,
-                          color: Color(0xff3B7EB6),
-                        ),
-                        Text("${widget.time} hr"),
-                        Icon(
-                          Icons.web_sharp,
-                          color: Color(0xff3B7EB6),
-                        ),
-                        Text("${widget.session} sessions"),
-                        Icon(
-                          Icons.video_call,
-                          color: Color(0xff3B7EB6),
-                        ),
-                        Text("by zoom"),
-                        Text(
-                          "Click Here",
-                          style: TextStyle(
-                            color: Color(0xff3B7EB6),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+      child: Container(
+        margin: EdgeInsets.all(35.0),
+        //padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+        height: 350.0,
+        width: 343.0,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
               ),
             ],
-          ),
+            borderRadius: BorderRadius.circular(15.0)),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 5,
+            ),
+            MouseRegion(
+              //cursor: SystemMouseCursors.click,
+              child: Container(
+                width: 330,
+                height: 200,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image(
+                    image: NetworkImage('${widget.image}'),
+                    fit: BoxFit.cover,
+                    // width: 350.0,
+                    // height: 100.0,
+                  ),
+                ),
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    "${widget.coursename} full package course | ${widget.trainername} | Ocean Academy",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(5.0),
+                //   child: Column(
+                //     children: [
+                //       Row(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: [
+                //           Container(
+                //             padding: EdgeInsets.all(5),
+                //             decoration: BoxDecoration(
+                //                 color: Colors.blue[400],
+                //                 borderRadius: BorderRadius.circular(5)),
+                //             child: Row(
+                //               children: [
+                //                 Icon(
+                //                   Icons.timer,
+                //                   color: Colors.white,
+                //                 ),
+                //                 SizedBox(width: 5),
+                //                 Text(
+                //                   "${widget.time} hr",
+                //                   style: TextStyle(color: Colors.white),
+                //                 ),
+                //               ],
+                //             ),
+                //           ),
+                //           // Container(
+                //           //   padding: EdgeInsets.all(5),
+                //           //   decoration: BoxDecoration(
+                //           //       color: Colors.blue[400],
+                //           //       borderRadius: BorderRadius.circular(5)),
+                //           //   child: Row(
+                //           //     children: [
+                //           //       Icon(
+                //           //         Icons.schedule,
+                //           //         color: Colors.white,
+                //           //       ),
+                //           //       SizedBox(width: 5),
+                //           //       Text(
+                //           //         "${widget.time} hr",
+                //           //         style: TextStyle(color: Colors.white),
+                //           //       ),
+                //           //     ],
+                //           //   ),
+                //           // ),
+                //           SizedBox(width: 10),
+                //           Container(
+                //             padding: EdgeInsets.all(5),
+                //             decoration: BoxDecoration(
+                //                 color: Colors.blue[400],
+                //                 borderRadius: BorderRadius.circular(5)),
+                //             child: Row(
+                //               children: [
+                //                 Icon(
+                //                   Icons.video_call,
+                //                   color: Colors.white,
+                //                 ),
+                //                 SizedBox(width: 5),
+                //                 Text(
+                //                   "by zoom",
+                //                   style: TextStyle(color: Colors.white),
+                //                 ),
+                //               ],
+                //             ),
+                //           ),
+                //           Row(
+                //             children: [],
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FlatButton(
+                        hoverColor: Colors.blue[50],
+                        height: 45,
+                        minWidth: 300,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(1),
+                          side: BorderSide(color: Colors.blue, width: 1),
+                        ),
+                        color: Colors.white,
+                        onPressed: () {
+                          setState(() {
+                            MyCourseDb.visiblity = true;
+                          });
+                          setState(() {
+                            OnlineCourseCard.visiblity = true;
+                          });
+                          setState(() {
+                            // Navbar.visiblity = false;
+                          });
+                          print("${widget.coursename}widget.coursename");
+                          locator<NavigationService>().navigateTo(
+                              'CourseDetails?online=${widget.coursename}&batchID=${widget.batchid}&trainer=${widget.trainername}&description=${widget.description}');
+                          // Provider.of<SyllabusView>(context, listen: false)
+                          //     .updateCourseSyllabus(
+                          //         routing: CourseDetails(
+                          //   batch: widget.batchid,
+                          //   course: widget.coursename,
+                          //   trainer: widget.trainername,
+                          //   sess: widget.time,
+                          //   desc: widget.description,
+                          // ));
+                        },
+                        child: Text(
+                          'MORE INFO',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ))
+
+                    /// todo . .moveUpOnHover,
+                  ],
+                )
+              ],
+            ),
+          ],
         ),
       ),
     );
