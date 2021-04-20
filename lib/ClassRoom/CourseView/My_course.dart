@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -280,6 +282,8 @@ class _MyCourseDbState extends State<MyCourseDb> {
                             // Navbar.visiblity = false;
                           });
                           print("${widget.coursename}widget.coursename");
+                          locator<NavigationService>().navigateTo(
+                              'CourseDetails?online=${widget.coursename}&batchID=${widget.batchid}&trainer=${widget.trainername}&description=${widget.description}');
                           // Provider.of<SyllabusView>(context, listen: false)
                           //     .updateCourseSyllabus(
                           //         routing: CourseDetails(
