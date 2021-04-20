@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
@@ -10,13 +11,11 @@ import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Registration/registration.dart';
-
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
-import 'package:flutter_app_newocean/404/error_page.dart';
 import 'routeNames.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -34,6 +33,15 @@ Route<dynamic> generateRoute(
           topic: courseName,
         ),
         settings);
+  }
+  if (settings.name.contains("ClassRoom")) {
+    String userNumber = Uri.parse(settings.name).queryParameters["userNumber"];
+
+    print("$userNumber Login user");
+    return _getPageRoute(
+      ResponsiveClassRoomContent(),
+      settings,
+    );
   }
 
   if (settings.name.contains("JoinSuccessfully")) {
@@ -158,6 +166,11 @@ Route<dynamic> generateRoute(
     case testRoute:
       return _getPageRoute(
         NavigateTest(),
+        settings,
+      );
+    case classRoom:
+      return _getPageRoute(
+        ResponsiveClassRoomContent(),
         settings,
       );
     default:
