@@ -75,6 +75,7 @@ class _LogInState extends State<LogIn> {
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Container(
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Color(0xff2b9dd1),
             image: DecorationImage(
@@ -99,6 +100,7 @@ class _LogInState extends State<LogIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  alignment: Alignment.center,
                   width: 500.0,
                   height: 470.0,
                   padding:
