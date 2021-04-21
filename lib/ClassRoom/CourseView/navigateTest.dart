@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_app_newocean/ClassRoom/CourseView/my_Course/tab_myCourse.dart';
+import 'package:flutter_app_newocean/Landing/Home_view.dart';
+
 class NavigateTest extends StatefulWidget {
   @override
   _NavigateTestState createState() => _NavigateTestState();
@@ -9,18 +12,10 @@ class _NavigateTestState extends State<NavigateTest> {
   bool isCourseMode = false;
   int current = 0;
   List tabs = [
-    Wrap(
-      spacing: 30,
-      runSpacing: 30,
-      children: [
-        Container(
-          color: Colors.blue,
-          width: 200,
-          height: 200,
-        ),
-      ],
+    Container(
+      child: Text("jaya"),
     ),
-    Container(child: Text("latha")),
+    TabMyCourse()
   ];
 
   @override
@@ -33,6 +28,7 @@ class _NavigateTestState extends State<NavigateTest> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height / 1.5,
           child: ListView.builder(
+            itemCount: 1,
             itemBuilder: (context, index) {
               return tabs[current];
             },
@@ -40,7 +36,6 @@ class _NavigateTestState extends State<NavigateTest> {
         ),
         Column(
           children: [
-            Testing(),
             BottomNavigationBar(
               currentIndex:
                   current, // this will be set when a new tab is tapped
@@ -56,6 +51,7 @@ class _NavigateTestState extends State<NavigateTest> {
                     title: Text('View My Course'))
               ],
               onTap: (int index) {
+                scaffoldKey.currentState.openDrawer();
                 setState(() {
                   current = index;
                 });
