@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/border_button.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class CourseDescription extends StatelessWidget {
@@ -115,10 +121,17 @@ class _CourseCardState extends State<CourseCard> {
     double disCalc = (100 - dis) / 100;
     orgionlaAmmount = orgionlaAmmount / disCalc;
     fullRate = orgionlaAmmount;
+    getSession();
+  }
+
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
   }
 
   @override
   Widget build(BuildContext context) {
+    print("${LoginResponsive.registerNumber}in course-details_widget");
     return Visibility(
       visible: OnlineCourseCard.visiblity,
       child: Column(
@@ -256,6 +269,15 @@ class _CourseCardState extends State<CourseCard> {
             borderWidth: 2,
             buttonHeight: 60,
             borderRadius: 6,
+            onPressed: () {
+              LoginResponsive.registerNumber == null
+                  ? locator<NavigationService>().navigateTo(LoginRoute)
+                  : locator<NavigationService>().navigateTo(
+                      '/payment?amount=${widget.amount}&courseImage=${widget.image}&courseName=${widget.courseName}&courseList=${widget.courseName}&batchid=${widget.batchid}');
+              print("course${widget.amount}");
+              print("course${widget.batchid}");
+              print("course${widget.courseName}");
+            },
           )
         ],
       ),

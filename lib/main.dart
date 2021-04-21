@@ -42,7 +42,10 @@ class _MyAppState extends State<MyApp> {
   sessionCheck() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     session = (prefs.getString('user') ?? null);
-    route = session != null ? '/ClassRoom?userNumber=$session' : HomeRoute;
+    route = session != null
+        ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
+        : HomeRoute;
+    print("routeChecking in mainpage${route}");
   }
 
   @override

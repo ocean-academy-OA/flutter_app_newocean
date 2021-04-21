@@ -2,8 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
+import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -160,7 +164,10 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                           onPressed: () {
                             // ignore: unnecessary_statements
                             valueController.courseType.value = "My Course";
-                            print("My Course");
+                            locator<NavigationService>().navigateTo(
+                                '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=${valueController.courseType.value}');
+
+                            print(valueController.courseType.value);
                           },
                           child: Row(
                             children: [
@@ -191,7 +198,9 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                           onPressed: () {
                             // ignore: unnecessary_statements
                             valueController.courseType.value = 'All Course';
-                            print("All Course");
+                            locator<NavigationService>().navigateTo(
+                                '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=${valueController.courseType.value}');
+                            print(valueController.courseType.value);
                           },
                           child: Row(
                             children: [
