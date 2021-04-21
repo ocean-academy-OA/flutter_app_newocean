@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
           ),
           navigatorKey: locator<NavigationService>().navigatorKey,
           onGenerateRoute: generateRoute,
-          initialRoute: session != null
+          initialRoute: valueController.navebars.value == 'Login'
               ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
               : '/Home',
           debugShowCheckedModeBanner: false,
