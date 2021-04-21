@@ -1635,7 +1635,7 @@ Map contryState = {
         "Mizoram",
         "Nagaland",
         "Orissa",
-        "Pondicherry",
+        "Puducherry",
         "Punjab",
         "Rajasthan",
         "Sikkim",
