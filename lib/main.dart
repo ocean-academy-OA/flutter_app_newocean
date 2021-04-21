@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     session = (prefs.getString('user') ?? null);
     route = session != null
         ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
-        : '/Home';
+        : HomeRoute;
     print("routeChecking in mainpage${route}");
     print("routeChecking in mainpage session${session}");
     session != null
@@ -81,9 +81,7 @@ class _MyAppState extends State<MyApp> {
           ),
           navigatorKey: locator<NavigationService>().navigatorKey,
           onGenerateRoute: generateRoute,
-          initialRoute: valueController.navebars.value == 'Login'
-              ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
-              : '/Home',
+          initialRoute: route,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
