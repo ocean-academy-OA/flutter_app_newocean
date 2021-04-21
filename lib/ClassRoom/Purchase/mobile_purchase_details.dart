@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MobilePurchaseDetails extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _MobilePurchaseDetailsState extends State<MobilePurchaseDetails> {
                       splashRadius: 30,
                       onPressed: () {
                         /// go back navigation with getX
+                        Get.back();
                         // Provider.of<Routing>(context, listen: false)
                         //     .updateRouting(widget: CoursesView());
                       },
@@ -55,6 +57,7 @@ class _MobilePurchaseDetailsState extends State<MobilePurchaseDetails> {
                 child: Column(
                   children: [
                     StreamBuilder<QuerySnapshot>(
+                      ///todo update doc
                       stream: _firestore
                           .collection('new users')
                           .doc("+91 1234567890")

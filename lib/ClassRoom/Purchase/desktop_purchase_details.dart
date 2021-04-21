@@ -119,6 +119,7 @@ class DesktopPurchaseDetails extends StatelessWidget {
                     ),
                   ),
                   StreamBuilder<QuerySnapshot>(
+                    ///todo update doc
                     stream: _firestore
                         .collection('new users')
                         .doc("+91 1234567890")
