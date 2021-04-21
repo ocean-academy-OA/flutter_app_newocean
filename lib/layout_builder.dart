@@ -34,6 +34,10 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
+        // appBar: PreferredSize(
+        //   preferredSize: Size.fromHeight(100.0), // here the desired height
+        //   child: widget.menubar,
+        // ),
         key: scaffoldKey,
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: sizingInformation.deviceScreenType ==

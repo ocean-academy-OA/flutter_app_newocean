@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_app_newocean/Thanks_Purchase/responsive_Purchase.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
+import 'package:flutter_app_newocean/Zoom_integration/Responsive_Zoom.dart';
 import 'package:flutter_app_newocean/payment/responsive_payment.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'routeNames.dart';
@@ -109,7 +109,16 @@ Route<dynamic> generateRoute(
       settings,
     );
   }
+  if (settings.name.contains("zoomlink")) {
+    String zoomLink = Uri.parse(settings.name).queryParameters["zoomLink"];
 
+    print("$zoomLink ZoomIntegration");
+    return _getPageRoute(
+        ResponsiveZoomLink(
+          zoomLink: zoomLink,
+        ),
+        settings);
+  }
   switch (settings.name) {
     case HomeRoute:
       return _getPageRoute(
@@ -151,6 +160,13 @@ Route<dynamic> generateRoute(
         ),
         settings,
       );
+    case ZoomLink:
+      String zoomLink = Uri.parse(settings.name).queryParameters["zoomLink"];
+      return _getPageRoute(
+          ResponsiveZoomLink(
+            zoomLink: zoomLink,
+          ),
+          settings);
 
     //======course
 

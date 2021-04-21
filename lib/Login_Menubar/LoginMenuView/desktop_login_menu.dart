@@ -2,18 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
 class DesktopLoginMenu extends StatefulWidget {
+  final navigatorKey = GlobalKey<NavigatorState>();
   DesktopLoginMenu({this.userProfile});
   String userProfile;
   @override
@@ -31,6 +34,10 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
   //
   //   //getProfilePicture();
   // }
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+  }
 
   notification() async {
     var db = await _firestore.collection('new users').get();
@@ -75,6 +82,7 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
     notification();
 
     //getImage();
+    getSession();
   }
 
   GlobalKey notificationKey = GlobalKey();
@@ -163,10 +171,10 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                                   BorderRadius.all(Radius.circular(10.0))),
                           onPressed: () {
                             // ignore: unnecessary_statements
-                            valueController.courseType.value = "My Course";
+                            // valueController.courseType.value = "My Course";
                             locator<NavigationService>().navigateTo(
-                                '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=${valueController.courseType.value}');
-
+                                '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                            valueController.courseType.value = "My Course";
                             print(valueController.courseType.value);
                           },
                           child: Row(
@@ -197,10 +205,11 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                                   BorderRadius.all(Radius.circular(10.0))),
                           onPressed: () {
                             // ignore: unnecessary_statements
-                            valueController.courseType.value = 'All Course';
+
                             locator<NavigationService>().navigateTo(
-                                '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=${valueController.courseType.value}');
+                                '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
                             print(valueController.courseType.value);
+                            valueController.courseType.value = 'All Course';
                           },
                           child: Row(
                             children: [
@@ -222,6 +231,19 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                             ],
                           ),
                         ),
+                        IconButton(
+                            icon: Icon(Icons.settings),
+                            onPressed: () async {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+
+                              await prefs.setString('user', null);
+                              LoginResponsive.registerNumber = null;
+                              locator<NavigationService>()
+                                  .navigateTo(HomeRoute);
+                              valueController.navebars.value = 'Home';
+                            }),
+
                         StreamBuilder<QuerySnapshot>(
                           stream:
                               _firestore.collection('new users').snapshots(),
