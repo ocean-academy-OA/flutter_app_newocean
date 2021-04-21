@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DesktopThanksForPurchasing extends StatefulWidget {
   @override
@@ -11,6 +16,21 @@ class DesktopThanksForPurchasing extends StatefulWidget {
 class _DesktopThanksForPurchasingState
     extends State<DesktopThanksForPurchasing> {
   @override
+  void initState() {
+    // TODO: implement initState
+    getSession();
+    super.initState();
+  }
+
+  @override
+  final valueController = Get.find<ValueListener>();
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+    print("thanks for ${LoginResponsive.registerNumber}");
+    print("thanks for ${OTP.userID}");
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -40,7 +60,7 @@ class _DesktopThanksForPurchasingState
                 color: Color(0xff0091D2),
                 onPressed: () {
                   locator<NavigationService>().navigateTo(
-                      '"/ClassRoom?userNumber=+91%201234567890&typeOfCourse=My%20Course"');
+                      '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
                 },
                 child: Text("Go to Courses",
                     style: TextStyle(color: Colors.white, fontSize: 22)),

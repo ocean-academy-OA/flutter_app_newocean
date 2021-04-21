@@ -18,5 +18,6 @@ const String allCourse = "/AllCourse";
 const String RegistrationRoute = "/Registration";
 const String UpcomingWebinarRoute = "/UpcomingWebinar";
 const String WebinarJoinRoute = "/WebinarJoin?id=course";
+const String ZoomLink = "/zoomlink?zoomLink=link";
 const String JoinSuccessfullyRoute = "/JoinSuccessfully?id=name";
 const String ViewSchedule = "/ViewSchedule?courseName=name&batchID=batch";

@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
         : HomeRoute;
     print("routeChecking in mainpage${route}");
+    print("routeChecking in mainpage session${session}");
   }
 
   @override
