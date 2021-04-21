@@ -48,6 +48,9 @@ class _MyAppState extends State<MyApp> {
         : '/Home';
     print("routeChecking in mainpage${route}");
     print("routeChecking in mainpage session${session}");
+    session != null
+        ? valueController.navebars.value = 'Login'
+        : valueController.navebars.value = 'Home';
   }
 
   @override
