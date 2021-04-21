@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login_Menubar/LoginMenuView/desktop_login_menu.dart';
 import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
 
 import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     session = (prefs.getString('user') ?? null);
     route = session != null
         ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
-        : HomeRoute;
+        : '/Home';
     print("routeChecking in mainpage${route}");
     print("routeChecking in mainpage session${session}");
   }

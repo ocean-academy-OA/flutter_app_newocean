@@ -23,10 +23,15 @@ class _ResponsiveClassRoomContentState
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: NavigateTest(),
-      tablet: NavigateTest(),
-      desktop: CoursesView(),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: ScreenTypeLayout(
+        mobile: NavigateTest(),
+        tablet: NavigateTest(),
+        desktop: CoursesView(),
+      ),
     );
   }
 }
