@@ -144,6 +144,9 @@ class _CoursesViewState extends State<CoursesView> {
         .snapshots(includeMetadataChanges: true)) {
       for (var message in snapshot.docs) {
         CoursesView.batchId = message.data()['batchid'];
+
+        print(
+            '${valueController.myBatchid} testingggggggggggggggggggggggggggggggggggg');
       }
     }
 
@@ -197,79 +200,83 @@ class _CoursesViewState extends State<CoursesView> {
         children: [
           Row(
             children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  //width: 250.0,
-                  color: Color(0xff006793),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        //color: Color(0xff006793).withOpacity(0.5),
+              MediaQuery.of(context).size.width < 1241
+                  ? SizedBox()
+                  : Expanded(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        //width: 250.0,
+                        color: Color(0xff006793),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Courses",
-                              style: TextStyle(
-                                fontSize: 30.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                            Container(
+                              //color: Color(0xff006793).withOpacity(0.5),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Courses",
+                                    style: TextStyle(
+                                      fontSize: 30.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  StreamBuilder<QuerySnapshot>(
+                                    stream: _firestore
+                                        .collection('new users')
+                                        .snapshots(),
+                                    // ignore: missing_return
+                                    builder: (context1, snapshot) {
+                                      if (!snapshot.hasData) {
+                                        return Text("Loading...");
+                                      } else {
+                                        final messages = snapshot.data.docs;
+
+                                        //userCourses();
+                                        int pos = 0;
+                                        List<String> courseList = [];
+                                        List<String> courseIconList = [];
+                                        List<String> batchId = [];
+
+                                        for (var message in messages) {
+                                          ///todo LogIn.registerNumber
+                                          if (message.id ==
+                                              LoginResponsive.registerNumber) {
+                                            final messageSender =
+                                                message.data()['Courses'];
+
+                                            final batch =
+                                                message.data()['batchid'];
+
+                                            for (var i in messageSender) {
+                                              menu[pos++] = false;
+                                              courseList.add(i);
+                                              courseIconList
+                                                  .add(courses_icon[i]);
+                                            }
+                                            for (var i in batch) {
+                                              batchId.add(i);
+                                            }
+                                          }
+                                        }
+
+                                        return HorizontalMenu(
+                                          courseList: courseList,
+                                          menu: menu,
+                                          batchId: batchId,
+                                          courseIcon: courseIconList,
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ],
                               ),
-                            ),
-                            StreamBuilder<QuerySnapshot>(
-                              stream: _firestore
-                                  .collection('new users')
-                                  .snapshots(),
-                              // ignore: missing_return
-                              builder: (context1, snapshot) {
-                                if (!snapshot.hasData) {
-                                  return Text("Loading...");
-                                } else {
-                                  final messages = snapshot.data.docs;
-
-                                  //userCourses();
-                                  int pos = 0;
-                                  List<String> courseList = [];
-                                  List<String> courseIconList = [];
-                                  List<String> batchId = [];
-
-                                  for (var message in messages) {
-                                    ///todo LogIn.registerNumber
-                                    if (message.id ==
-                                        LoginResponsive.registerNumber) {
-                                      final messageSender =
-                                          message.data()['Courses'];
-
-                                      final batch = message.data()['batchid'];
-
-                                      for (var i in messageSender) {
-                                        menu[pos++] = false;
-                                        courseList.add(i);
-                                        courseIconList.add(courses_icon[i]);
-                                      }
-                                      for (var i in batch) {
-                                        batchId.add(i);
-                                      }
-                                    }
-                                  }
-
-                                  return HorizontalMenu(
-                                    courseList: courseList,
-                                    menu: menu,
-                                    batchId: batchId,
-                                    courseIcon: courseIconList,
-                                  );
-                                }
-                              },
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
 
               ///todo ternary operator
               Expanded(

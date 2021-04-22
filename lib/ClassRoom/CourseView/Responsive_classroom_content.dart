@@ -28,8 +28,8 @@ class _ResponsiveClassRoomContentState
         return false;
       },
       child: ScreenTypeLayout(
-        mobile: NavigateTest(),
-        tablet: NavigateTest(),
+        mobile: CoursesView(),
+        tablet: CoursesView(),
         desktop: CoursesView(),
       ),
     );

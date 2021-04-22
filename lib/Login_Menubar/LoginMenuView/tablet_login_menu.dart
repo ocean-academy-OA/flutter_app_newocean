@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
+import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -124,7 +125,9 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                       ),
                       color: Colors.white,
                       iconSize: 25,
-                      onPressed: () {}),
+                      onPressed: () {
+                        scaffoldKey.currentState.openDrawer();
+                      }),
                   GestureDetector(
                     onTap: () {
                       // Provider.of<Routing>(context, listen: false)
