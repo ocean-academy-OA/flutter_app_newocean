@@ -108,7 +108,6 @@ Widget courseEnroll({text, color}) {
 class CoursesView extends StatefulWidget {
   static String courseEnroll;
   static String studentname;
-
   static String studentemail;
   static List batchId = [];
 
@@ -391,8 +390,8 @@ class _ContentWidgetState extends State<ContentWidget> {
                     height: 30.0,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    textBaseline: TextBaseline.ideographic,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    // textBaseline: TextBaseline.ideographic,
                     children: [
                       Row(
                         children: [
