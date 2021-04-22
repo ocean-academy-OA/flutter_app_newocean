@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/my_Course/My_course.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
@@ -140,7 +140,7 @@ class _CoursesViewState extends State<CoursesView> {
         .collection('new users')
 
         ///todo LogIn.registerNumber
-        .where("Phone Number", isEqualTo: "+91 1234567890")
+        .where("Phone Number", isEqualTo: LoginResponsive.registerNumber)
         .snapshots(includeMetadataChanges: true)) {
       for (var message in snapshot.docs) {
         CoursesView.batchId = message.data()['batchid'];

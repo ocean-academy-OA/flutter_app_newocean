@@ -31,6 +31,12 @@ class _MainLayoutState extends State<MainLayout> {
     super.initState();
   }
 
+  Map bottom = {
+    'MyCourse': true,
+    'AllCourse': false,
+    'Settings': false,
+  };
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
@@ -40,6 +46,7 @@ class _MainLayoutState extends State<MainLayout> {
         //   child: widget.menubar,
         // ),
         key: scaffoldKey,
+
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: sizingInformation.deviceScreenType ==
                 DeviceScreenType.desktop
@@ -59,6 +66,26 @@ class _MainLayoutState extends State<MainLayout> {
                 ? AllDrawer()
                 : null
             : AllDrawer(),
+
+        bottomNavigationBar: MediaQuery.of(context).size.width < 1240
+            ? Container(
+                color: Colors.red,
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    buildGestureDetector(
+                      icon: Icons.menu_book,
+                      iconName: "MyCourse",
+                    ),
+                    buildGestureDetector(
+                      icon: Icons.collections_bookmark_rounded,
+                      iconName: "AllCourse",
+                    ),
+                  ],
+                ),
+              )
+            : SizedBox(),
         body: SafeArea(
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -127,4 +154,77 @@ class _MainLayoutState extends State<MainLayout> {
       );
     });
   }
+
+  GestureDetector buildGestureDetector({iconName, icon, navigationPath}) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          bottom.updateAll((key, value) => bottom[key] = false);
+          bottom[iconName] = true;
+          print(iconName);
+          locator<NavigationService>().navigateTo(navigationPath);
+        });
+      },
+      child: Expanded(
+        child: Container(
+          //color: Colors.yellow,
+          child: Column(
+            children: [
+              Icon(
+                icon,
+                color: bottom[iconName] == true ? Colors.blue : Colors.black,
+              ),
+              Text(iconName)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
+
+// class bottom_icons extends StatefulWidget {
+//   bottom_icons({this.icon, this.iconName});
+//   String iconName;
+//   IconData icon;
+//
+//   @override
+//   _bottom_iconsState createState() => _bottom_iconsState();
+// }
+//
+// class _bottom_iconsState extends State<bottom_icons> {
+//   Map bottom = {
+//     'MyCourse': true,
+//     'AllCourse': false,
+//     'Settings': false,
+//   };
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () {
+//         setState(() {
+//           // bottom.updateAll((key, value) => bottom[key] = false);
+//           // bottom[widget.iconName] = true;
+//           // print(widget.iconName);
+//         });
+//       },
+//       child: Expanded(
+//         child: Container(
+//           //color: Colors.yellow,
+//           child: Column(
+//             children: [
+//               Icon(
+//                 widget.icon,
+//                 color: bottom[widget.iconName] == true
+//                     ? Colors.blue
+//                     : Colors.black,
+//               ),
+//               Text(widget.iconName)
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

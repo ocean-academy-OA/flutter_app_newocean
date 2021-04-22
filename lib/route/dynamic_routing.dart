@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
@@ -258,11 +258,6 @@ Route<dynamic> generateRoute(
         ResponsiveThanksForPurchase(),
         settings,
       );
-    case allCourse:
-      return _getPageRoute(
-        AllCourse(),
-        settings,
-      );
 
     case ViewSchedule:
       String courseName =
@@ -277,8 +272,13 @@ Route<dynamic> generateRoute(
         settings,
       );
     default:
+      print("thamizh");
+      print(LoginResponsive.registerNumber);
+      Widget checking = LoginResponsive.registerNumber != null
+          ? CoursesView()
+          : ResponsiveHome();
       return _getPageRoute(
-        ResponsiveHome(),
+        checking,
         settings,
       );
   }
