@@ -91,11 +91,37 @@ Widget courseEnroll({text, color}) {
 ///end
 
 class LoginDrawer extends StatefulWidget {
+  static List courseMenuDrawer = [];
   @override
   _LoginDrawerState createState() => _LoginDrawerState();
 }
 
 class _LoginDrawerState extends State<LoginDrawer> {
+  void tab_batch_id() async {
+    print("----------1234-----------------");
+
+    // print("${LogIn.registerNumber}register number");
+    await for (var snapshot in _firestore
+        .collection('new users')
+
+        ///todo LogIn.registerNumber
+        .where("Phone Number", isEqualTo: "+91 1234567890")
+        .snapshots(includeMetadataChanges: true)) {
+      for (var message in snapshot.docs) {
+        LoginDrawer.courseMenuDrawer = message.data()['batchid'];
+      }
+    }
+
+    print("---------------------------");
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tab_batch_id();
+  }
+
   @override
   Widget build(BuildContext context) {
     Map menu = {};

@@ -14,7 +14,6 @@ const String testRoute = "/testPage";
 const String Payment =
     "/payment?amount=Amount&courseImage=courseimage&courseName=coursename&courseList=courselist&batchid=batch";
 const String ThanksForPurchase = "/thanksforpurchasing";
-const String allCourse = "/AllCourse";
 const String RegistrationRoute = "/Registration";
 const String UpcomingWebinarRoute = "/UpcomingWebinar";
 const String WebinarJoinRoute = "/WebinarJoin?id=course";

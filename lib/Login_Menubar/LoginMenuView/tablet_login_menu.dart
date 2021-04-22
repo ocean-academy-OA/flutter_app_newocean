@@ -160,37 +160,6 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                   Container(
                     child: Row(
                       children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                          child: IconButton(
-                              icon: Icon(
-                                Icons.menu_book,
-                              ),
-                              color: Color(0xFF0091D2),
-                              iconSize: 25,
-                              onPressed: () {}),
-                        ),
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                          child: IconButton(
-                              icon: Icon(
-                                Icons.collections_bookmark_rounded,
-                              ),
-                              color: Color(0xFF0091D2),
-                              iconSize: 25,
-                              onPressed: () {}),
-                        ),
                         StreamBuilder<QuerySnapshot>(
                           stream:
                               _firestore.collection('new users').snapshots(),

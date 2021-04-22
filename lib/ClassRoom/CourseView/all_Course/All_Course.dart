@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/My_course.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/my_Course/My_course.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
@@ -211,79 +211,6 @@ class _AllCourseDbState extends State<AllCourseDb> {
                     ),
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.all(5.0),
-                //   child: Column(
-                //     children: [
-                //       Row(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: [
-                //           Container(
-                //             padding: EdgeInsets.all(5),
-                //             decoration: BoxDecoration(
-                //                 color: Colors.blue[400],
-                //                 borderRadius: BorderRadius.circular(5)),
-                //             child: Row(
-                //               children: [
-                //                 Icon(
-                //                   Icons.timer,
-                //                   color: Colors.white,
-                //                 ),
-                //                 SizedBox(width: 5),
-                //                 Text(
-                //                   "${widget.time} hr",
-                //                   style: TextStyle(color: Colors.white),
-                //                 ),
-                //               ],
-                //             ),
-                //           ),
-                //           // Container(
-                //           //   padding: EdgeInsets.all(5),
-                //           //   decoration: BoxDecoration(
-                //           //       color: Colors.blue[400],
-                //           //       borderRadius: BorderRadius.circular(5)),
-                //           //   child: Row(
-                //           //     children: [
-                //           //       Icon(
-                //           //         Icons.schedule,
-                //           //         color: Colors.white,
-                //           //       ),
-                //           //       SizedBox(width: 5),
-                //           //       Text(
-                //           //         "${widget.time} hr",
-                //           //         style: TextStyle(color: Colors.white),
-                //           //       ),
-                //           //     ],
-                //           //   ),
-                //           // ),
-                //           SizedBox(width: 10),
-                //           Container(
-                //             padding: EdgeInsets.all(5),
-                //             decoration: BoxDecoration(
-                //                 color: Colors.blue[400],
-                //                 borderRadius: BorderRadius.circular(5)),
-                //             child: Row(
-                //               children: [
-                //                 Icon(
-                //                   Icons.video_call,
-                //                   color: Colors.white,
-                //                 ),
-                //                 SizedBox(width: 5),
-                //                 Text(
-                //                   "by zoom",
-                //                   style: TextStyle(color: Colors.white),
-                //                 ),
-                //               ],
-                //             ),
-                //           ),
-                //           Row(
-                //             children: [],
-                //           ),
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -310,15 +237,6 @@ class _AllCourseDbState extends State<AllCourseDb> {
                           print("${widget.coursename}widget.coursename");
                           locator<NavigationService>().navigateTo(
                               'CourseDetails?online=${widget.coursename}&batchID=${widget.batchid}&trainer=${widget.trainername}&description=${widget.description}');
-                          // Provider.of<SyllabusView>(context, listen: false)
-                          //     .updateCourseSyllabus(
-                          //         routing: CourseDetails(
-                          //   batch: widget.batchid,
-                          //   course: widget.coursename,
-                          //   trainer: widget.trainername,
-                          //   sess: widget.time,
-                          //   desc: widget.description,
-                          // ));
                         },
                         child: Text(
                           'MORE INFO',
