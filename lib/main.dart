@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Login_Menubar/LoginMenuView/desktop_login_menu.dart';
+
 import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
 
 import 'package:flutter_app_newocean/Menu/ResponsiveMenu.dart';
@@ -12,7 +12,6 @@ import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:get/get.dart';
-
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -79,6 +78,7 @@ class _MyAppState extends State<MyApp> {
             ),
             child: child,
           ),
+          showPerformanceOverlay: false,
           navigatorKey: locator<NavigationService>().navigatorKey,
           onGenerateRoute: generateRoute,
           initialRoute: route,

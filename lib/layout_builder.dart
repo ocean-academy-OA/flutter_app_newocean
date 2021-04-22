@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
+import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
 
 Map bottom = {
   'My Course': true,
@@ -138,6 +139,7 @@ class _MainLayoutState extends State<MainLayout> {
                       })
                     : SizedBox(),
                 widget.menubar,
+                // ResponsiveLoginMenu(),
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
                     ? SizedBox()
                     : valueController.isFlashNotification.value

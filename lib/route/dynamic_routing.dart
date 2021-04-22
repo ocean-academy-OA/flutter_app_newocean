@@ -119,6 +119,38 @@ Route<dynamic> generateRoute(
         ),
         settings);
   }
+
+  ///
+  if (settings.name.contains("Profile")) {
+    String userName = Uri.parse(settings.name).queryParameters["id"];
+
+    print("$userName Profile");
+    return _getPageRoute(
+        ResponsiveWebinarJoinSuccessfully(
+          userName: userName,
+        ),
+        settings);
+  }
+  if (settings.name.contains("Certificate")) {
+    String userName = Uri.parse(settings.name).queryParameters["id"];
+
+    print("$userName Certificate");
+    return _getPageRoute(
+        ResponsiveWebinarJoinSuccessfully(
+          userName: userName,
+        ),
+        settings);
+  }
+  if (settings.name.contains("Purchase")) {
+    String userName = Uri.parse(settings.name).queryParameters["id"];
+
+    print("$userName Purchase");
+    return _getPageRoute(
+        ResponsiveWebinarJoinSuccessfully(
+          userName: userName,
+        ),
+        settings);
+  }
   switch (settings.name) {
     case HomeRoute:
       return _getPageRoute(
