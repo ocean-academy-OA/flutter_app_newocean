@@ -5,6 +5,8 @@ import 'package:flutter_app_newocean/ClassRoom/Certificates/tablet_certificate.d
 import 'package:flutter_app_newocean/ClassRoom/Certificates/mobile_certificate.dart';
 
 class ResponsiveCertificate extends StatelessWidget {
+  String userNumber;
+  ResponsiveCertificate({this.userNumber});
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(

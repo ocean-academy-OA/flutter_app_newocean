@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -18,16 +22,12 @@ class TabletLoginMenu extends StatefulWidget {
 }
 
 class _TabletLoginMenuState extends State<TabletLoginMenu> {
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+  }
+
   String userProfile;
-  // session() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   await prefs.setInt('login', 1);
-  //   await prefs.setString('user', MenuBar.stayUser);
-  //   print("${MenuBar.stayUser} MenuBar.stayUser");
-  //   MenuBar.stayUser = OTP.userID;
-  //
-  //   //getProfilePicture();
-  // }
 
   notification() async {
     var db = await _firestore.collection('new users').get();
@@ -67,7 +67,7 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // session();
+    getSession();
     print('hhhhhhhhhhhhhhhhhhhhhhhhhh');
     notification();
 
@@ -226,7 +226,10 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                             animationDuration: 50,
                             arrowColor: Colors.grey[700],
                             menuWidth: 350,
-                            onPressed: () {},
+                            onPressed: () {
+                              locator<NavigationService>().navigateTo(
+                                  "/UserNotification?id=${LoginResponsive.registerNumber}");
+                            },
                             menuItemExtent: 55,
                             menuItems: notificationItem,
                             child: Icon(
