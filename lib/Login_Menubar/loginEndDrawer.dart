@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ClassRoomMenu extends StatelessWidget {
+class LoginEndDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      width: 300,
       color: Colors.red,
     );
   }

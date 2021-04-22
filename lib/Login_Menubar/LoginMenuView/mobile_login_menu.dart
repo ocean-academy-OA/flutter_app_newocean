@@ -18,7 +18,10 @@ class _MobileLoginMenuState extends State<MobileLoginMenu> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-                icon: Icon(Icons.menu),
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
                 onPressed: () {
                   scaffoldKey.currentState.openDrawer();
                 }),
@@ -33,17 +36,22 @@ class _MobileLoginMenuState extends State<MobileLoginMenu> {
             //   ),
             // ),
             //  PopupMenuButton(itemBuilder: ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.pink,
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHByb2ZpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'),
-                    fit: BoxFit.cover),
+            GestureDetector(
+              onTap: () {
+                scaffoldKey.currentState.openEndDrawer();
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.pink,
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          'https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHByb2ZpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'),
+                      fit: BoxFit.cover),
+                ),
               ),
             )
           ],

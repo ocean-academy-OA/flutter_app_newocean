@@ -386,7 +386,9 @@ class _ProfilePictureDbState extends State<ProfilePictureDb> {
           Radius.circular(600.0),
         ),
       ),
-      onPressed: popupMenuButton,
+      onPressed: () {
+        scaffoldKey.currentState.openEndDrawer();
+      },
       child: widget.profilePicture != null
           ? ClipRRect(
               borderRadius: BorderRadius.circular(100.0),

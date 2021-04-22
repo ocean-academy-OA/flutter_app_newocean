@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/bottom_navigation.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Login_Menubar/loginEndDrawer.dart';
 import 'package:flutter_app_newocean/Webinar/flash_notification.dart';
+import 'package:flutter_app_newocean/all_end_drawer.dart';
 import 'package:flutter_app_newocean/all_menubar.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
@@ -71,6 +73,8 @@ class _MainLayoutState extends State<MainLayout> {
                   locator<NavigationService>().navigateTo(UpcomingWebinarRoute);
                 },
               ),
+        endDrawer: AllEndDrawer(),
+        extendBodyBehindAppBar: true,
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.desktop
             ? MediaQuery.of(context).size.width < 1240
                 ? AllDrawer()
