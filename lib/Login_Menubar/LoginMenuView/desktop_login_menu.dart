@@ -244,13 +244,23 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                               valueController.navebars.value = 'Home';
                             }),
                         IconButton(
-                            icon: Icon(Icons.person_add), onPressed: () {}),
+                            icon: Icon(Icons.person_add),
+                            onPressed: () {
+                              locator<NavigationService>().navigateTo(
+                                  "/Profile?id=${LoginResponsive.registerNumber}");
+                            }),
                         IconButton(
                             icon: Icon(Icons.cast_for_education_sharp),
-                            onPressed: () {}),
+                            onPressed: () {
+                              locator<NavigationService>().navigateTo(
+                                  "/Certificate?id=${LoginResponsive.registerNumber}");
+                            }),
                         IconButton(
                             icon: Icon(Icons.pest_control_rodent_outlined),
-                            onPressed: () {}),
+                            onPressed: () {
+                              locator<NavigationService>().navigateTo(
+                                  "/Purchase?id=${LoginResponsive.registerNumber}");
+                            }),
                         StreamBuilder<QuerySnapshot>(
                           stream:
                               _firestore.collection('new users').snapshots(),
@@ -309,7 +319,10 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                           animationDuration: 50,
                           arrowColor: Colors.grey[700],
                           menuWidth: 350,
-                          onPressed: () {},
+                          onPressed: () {
+                            locator<NavigationService>().navigateTo(
+                                "/UserNotification?id=${LoginResponsive.registerNumber}");
+                          },
                           menuItemExtent: 55,
                           menuItems: notificationItem,
                           child: Icon(

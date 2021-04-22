@@ -22,4 +22,5 @@ const String JoinSuccessfullyRoute = "/JoinSuccessfully?id=name";
 const String Purchase = "/Purchase?id=+91 1234567890";
 const String Certificate = "/Certificate?id=+91 1234567890";
 const String Profile = "/Profile?id=+91 1234567890";
+const String UserNotification = "/UserNotification?id=+91 1234567890";
 const String ViewSchedule = "/ViewSchedule?courseName=name&batchID=batch";

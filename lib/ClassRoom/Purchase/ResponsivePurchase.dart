@@ -5,6 +5,8 @@ import 'package:flutter_app_newocean/ClassRoom/Purchase/tablet_purchase_details.
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ResponsivePurchase extends StatefulWidget {
+  String userNumber;
+  ResponsivePurchase({this.userNumber});
   @override
   _ResponsivePurchaseState createState() => _ResponsivePurchaseState();
 }

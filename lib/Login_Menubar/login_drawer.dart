@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -62,14 +64,8 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                         .updateAll((key, value) => widget.menu[key] = false);
                     widget.menu[index] = true;
                   });
-                  // Provider.of<SyllabusView>(context, listen: false)
-                  //     .updateCourseSyllabus(
-                  //   routing: ContentWidget(
-                  //     course: widget.courseList[index],
-                  //     batchid: widget.batchId[index],
-                  //     //batchid: "OCNBK08",
-                  //   ),
-                  // );
+                  locator<NavigationService>().navigateTo(
+                      '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}');
                 },
               ),
             ),

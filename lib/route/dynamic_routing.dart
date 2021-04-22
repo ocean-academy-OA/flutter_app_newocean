@@ -2,10 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
+import 'package:flutter_app_newocean/ClassRoom/Certificates/responsives_certificate.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
+import 'package:flutter_app_newocean/ClassRoom/Edit_profile/Responsive_Profile.dart';
+import 'package:flutter_app_newocean/ClassRoom/Purchase/ResponsivePurchase.dart';
+import 'package:flutter_app_newocean/ClassRoom/User_Notification/Responsive_UserNotification.dart';
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
 import 'package:flutter_app_newocean/Course/course_description/responsive_course_details.dart';
@@ -123,34 +127,43 @@ Route<dynamic> generateRoute(
 
   ///
   if (settings.name.contains("Profile")) {
-    String userName = Uri.parse(settings.name).queryParameters["id"];
+    String userNumber = Uri.parse(settings.name).queryParameters["id"];
 
-    print("$userName Profile");
     return _getPageRoute(
-        ResponsiveWebinarJoinSuccessfully(
-          userName: userName,
+        ResponsiveEditProfile(
+          userNumber: userNumber,
         ),
         settings);
   }
   if (settings.name.contains("Certificate")) {
-    String userName = Uri.parse(settings.name).queryParameters["id"];
+    String userNumber = Uri.parse(settings.name).queryParameters["id"];
 
-    print("$userName Certificate");
     return _getPageRoute(
-        ResponsiveWebinarJoinSuccessfully(
-          userName: userName,
-        ),
-        settings);
+      ResponsiveCertificate(
+        userNumber: userNumber,
+      ),
+      settings,
+    );
   }
   if (settings.name.contains("Purchase")) {
-    String userName = Uri.parse(settings.name).queryParameters["id"];
+    String userNumber = Uri.parse(settings.name).queryParameters["id"];
 
-    print("$userName Purchase");
     return _getPageRoute(
-        ResponsiveWebinarJoinSuccessfully(
-          userName: userName,
-        ),
-        settings);
+      ResponsivePurchase(
+        userNumber: userNumber,
+      ),
+      settings,
+    );
+  }
+  if (settings.name.contains("UserNotification")) {
+    String userNumber = Uri.parse(settings.name).queryParameters["id"];
+
+    return _getPageRoute(
+      ResponsiveUserNotification(
+        userNumber: userNumber,
+      ),
+      settings,
+    );
   }
   switch (settings.name) {
     case HomeRoute:
@@ -248,6 +261,44 @@ Route<dynamic> generateRoute(
         ),
         settings,
       );
+
+    case Certificate:
+      String userNumber = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsiveCertificate(
+          userNumber: userNumber,
+        ),
+        settings,
+      );
+    case Profile:
+      String userNumber = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsiveEditProfile(
+          userNumber: userNumber,
+        ),
+        settings,
+      );
+    case UserNotification:
+      String userNumber = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsiveUserNotification(
+          userNumber: userNumber,
+        ),
+        settings,
+      );
+
+    case Purchase:
+      String userNumber = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsivePurchase(
+          userNumber: userNumber,
+        ),
+        settings,
+      );
     // case MobileJoinSuccessfullyRoute:
 
     // --------------------------
@@ -305,7 +356,7 @@ Route<dynamic> generateRoute(
         settings,
       );
     default:
-      print("thamizh");
+      print("thamizhhema");
       print(LoginResponsive.registerNumber);
       Widget checking = LoginResponsive.registerNumber != null
           ? CoursesView()
