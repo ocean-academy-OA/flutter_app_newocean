@@ -5,7 +5,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/log_in.dart';
 
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/contry_states.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/date_picker.dart';
@@ -17,9 +16,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../route/navigation_locator.dart';
-import '../../../../route/navigation_service.dart';
-import '../../../../route/routeNames.dart';
+import '../../route/navigation_locator.dart';
+import '../../route/navigation_service.dart';
+import '../../route/routeNames.dart';
 
 class Registration extends StatefulWidget {
   @override

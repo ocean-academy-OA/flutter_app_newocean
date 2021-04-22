@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/log_in.dart';
 
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/otp_inputs.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
@@ -11,9 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:timer_count_down/timer_count_down.dart';
-import '../../../../route/navigation_locator.dart';
-import '../../../../route/navigation_service.dart';
-import '../../../../route/routeNames.dart';
+import '../../route/navigation_locator.dart';
+import '../../route/navigation_service.dart';
+import '../../route/routeNames.dart';
 
 // ignore: must_be_immutable
 class OTP extends StatefulWidget {
