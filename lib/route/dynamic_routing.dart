@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
+import 'package:flutter_app_newocean/ClassRoom/Certificates/responsives_certificate.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
+import 'package:flutter_app_newocean/ClassRoom/Purchase/ResponsivePurchase.dart';
 import 'package:flutter_app_newocean/ContactUs/ContactUsViews/responsive_contact_us.dart';
 import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
 import 'package:flutter_app_newocean/Course/course_description/responsive_course_details.dart';
@@ -245,6 +247,35 @@ Route<dynamic> generateRoute(
         ResponsiveWebinarJoinSuccessfully(
           userName: userName,
         ),
+        settings,
+      );
+
+    case Certificate:
+      String userName = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsiveCertificate(
+            //userName: userName,
+            ),
+        settings,
+      );
+    case Profile:
+      String userName = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsiveWebinarJoinSuccessfully(
+          userName: userName,
+        ),
+        settings,
+      );
+
+    case Purchase:
+      String userName = Uri.parse(settings.name).queryParameters["id"];
+
+      return _getPageRoute(
+        ResponsivePurchase(
+            // userName: userName,
+            ),
         settings,
       );
     // case MobileJoinSuccessfullyRoute:
