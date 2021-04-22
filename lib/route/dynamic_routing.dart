@@ -13,8 +13,9 @@ import 'package:flutter_app_newocean/Course/Course_View/responsive_course.dart';
 import 'package:flutter_app_newocean/Course/course_description/responsive_course_details.dart';
 import 'package:flutter_app_newocean/Home/Views/responsive_home.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/OTP/otp.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Registration/registration.dart';
+import 'package:flutter_app_newocean/Login/Login_View/otp.dart';
+import 'package:flutter_app_newocean/Login/Login_View/registration.dart';
+
 import 'package:flutter_app_newocean/Service/ServiceViews/ResponsiveService.dart';
 import 'package:flutter_app_newocean/Thanks_Purchase/responsive_Purchase.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart';
