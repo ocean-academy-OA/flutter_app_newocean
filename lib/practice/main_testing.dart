@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 void main() {
   Get.put(ValueListener());
-  runApp(MaterialApp(
+  runApp(GetMaterialApp(
     title: 'Thamizh testing page',
     home: Scaffold(
       body: ResponsiveLoginMenu(),

@@ -8,6 +8,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
+import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
 
 // ignore: must_be_immutable
 class MainLayout extends StatefulWidget {
@@ -76,6 +77,7 @@ class _MainLayoutState extends State<MainLayout> {
                       })
                     : SizedBox(),
                 widget.menubar,
+                // ResponsiveLoginMenu(),
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
                     ? SizedBox()
                     : valueController.isFlashNotification.value
