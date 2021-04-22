@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
+import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
@@ -450,7 +451,9 @@ class _ProfilePictureDbState extends State<ProfilePictureDb> {
       hoverColor: Colors.white10,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(600.0))),
-      onPressed: popupMenuButton,
+      onPressed: () {
+        scaffoldKey.currentState.openEndDrawer();
+      },
       child: widget.profilePicture != null
           ? ClipRRect(
               borderRadius: BorderRadius.circular(100.0),
