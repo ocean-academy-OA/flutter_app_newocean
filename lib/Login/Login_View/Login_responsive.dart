@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/log_in.dart';
-import 'package:flutter_app_newocean/Login/login_widget/new_user_screen/Login/mobile-login.dart';
+import 'package:flutter_app_newocean/Login/Login_View/log_in.dart';
+import 'package:flutter_app_newocean/Login/Login_View/mobile-login.dart';
 
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
