@@ -6,6 +6,7 @@ import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -79,8 +80,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                           icon: Icon(Icons.close),
                           color: Colors.white,
                           onPressed: () {
-                            locator<NavigationService>()
-                                .navigateTo(CourseRoute);
+                            Get.back();
                           })
                     ],
                   ),

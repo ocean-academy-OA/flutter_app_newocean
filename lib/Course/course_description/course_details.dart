@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/course_details_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -88,27 +89,7 @@ class _DesktopCourseDetailsState extends State<DesktopCourseDetails> {
                                     cursor: SystemMouseCursors.click,
                                     child: GestureDetector(
                                       onTap: () async {
-                                        // print("${MenuBar.stayUser}MenuBar.stayUser");
-                                        // var userSession = await _firestore
-                                        //     .collection('new users')
-                                        //     .doc(MenuBar.stayUser != null
-                                        //         ? MenuBar.stayUser
-                                        //         : LogIn.registerNumber)
-                                        //     .get();
-                                        //
-                                        // if (userSession.data() != null) {
-                                        //   setState(() {
-                                        //     isLogin = true;
-                                        //   });
-                                        //   Provider.of<SyllabusView>(context,
-                                        //           listen: false)
-                                        //       .updateCourseSyllabus(
-                                        //     routing: MyCourse(),
-                                        //   );
-                                        // } else {
-                                        //   Provider.of<Routing>(context, listen: false)
-                                        //       .updateRouting(widget: Course());
-                                        // }
+                                        Get.back();
                                       },
                                       child: Icon(
                                         Icons.arrow_back_ios,
