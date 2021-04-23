@@ -28,6 +28,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  static String session;
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -35,19 +36,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final valueController = Get.find<ValueListener>();
 
-  String session;
-
   String route;
 
   sessionCheck() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    session = (prefs.getString('user') ?? null);
-    route = session != null
-        ? '/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
+    MyApp.session = (prefs.getString('user') ?? null);
+    route = MyApp.session != null
+
+        ///'/ClassRoom?userNumber=$session&typeOfCourse=${valueController.courseType.value}'
+        ? '/ClassRoom?userNumber=${MyApp.session}&typeOfCourse=${valueController.courseType.value}'
         : HomeRoute;
     print("routeChecking in mainpage${route}");
-    print("routeChecking in mainpage session${session}");
-    session != null
+    print("routeChecking in mainpage session${MyApp.session}");
+    MyApp.session != null
         ? valueController.navebars.value = 'Login'
         : valueController.navebars.value = 'Home';
   }

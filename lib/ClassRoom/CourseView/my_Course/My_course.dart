@@ -31,7 +31,6 @@ class _MyCourseState extends State<MyCourse> {
     return SingleChildScrollView(
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.pinkAccent,
             image: DecorationImage(
                 image: AssetImage('images/oa_bg.png'),
                 repeat: ImageRepeat.repeatY)),
