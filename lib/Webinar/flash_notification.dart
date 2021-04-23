@@ -9,6 +9,8 @@ import '../common/constants.dart';
 import '../route/navigation_locator.dart';
 import '../route/navigation_service.dart';
 import '../route/routeNames.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -34,10 +36,17 @@ class _FlashNotificationState extends State<FlashNotification> {
   bool isUpcomingWebinar = true;
   final valueController = Get.find<ValueListener>();
   String comingSoon = 'Webinar';
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // int x = (prefs.getInt('login') ?? 0);
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
   }
 
   @override
@@ -263,7 +272,7 @@ class FlashDb extends StatefulWidget {
 
 class _FlashDbState extends State<FlashDb> {
   var remaingTime = 0;
-
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -382,6 +391,8 @@ class _FlashDbState extends State<FlashDb> {
               setState(() {
                 // Navbar.isNotification = false;
               });
+              valueController.navebars.value = 'Webinar';
+
               locator<NavigationService>()
                   .navigateTo('MobileWebinarJoin?id=${widget.content}');
             },

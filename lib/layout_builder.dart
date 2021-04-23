@@ -13,7 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
-import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
+
+import 'package:flutter_app_newocean/main.dart';
 
 Map bottom = {
   'My Course': true,
@@ -25,7 +26,10 @@ Map bottom = {
 class MainLayout extends StatefulWidget {
   // static bool sticNotification = true;
   bool notification = true;
-  MainLayout({this.child, this.menubar});
+  MainLayout({
+    this.child,
+    this.menubar,
+  });
   Widget child;
   Widget menubar;
 
@@ -47,18 +51,16 @@ class _MainLayoutState extends State<MainLayout> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    valueController.navebars.value = 'Login';
   }
 
   @override
   Widget build(BuildContext context) {
+    getSession();
+
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
-        // appBar: PreferredSize(
-        //   preferredSize: Size.fromHeight(100.0), // here the desired height
-        //   child: widget.menubar,
-        // ),
         key: scaffoldKey,
-
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: sizingInformation.deviceScreenType ==
                 DeviceScreenType.desktop
@@ -81,50 +83,59 @@ class _MainLayoutState extends State<MainLayout> {
                 : null
             : AllDrawer(),
 
-        bottomNavigationBar: MediaQuery.of(context).size.width < 1240
-            ? Container(
-                height: 50,
-                color: Colors.grey,
-                child: Row(
-                  children: [
-                    ClassRoomBottomNavigationBar(
-                      iconName: 'My Course',
-                      icon: Icons.add,
-                      color:
-                          bottom['My Course'] ? Colors.blue[800] : Colors.blue,
-                      onTap: () {
-                        setState(() {
-                          bottom.updateAll((key, value) => false);
-                          bottom['My Course'] = true;
-                        });
-                        locator<NavigationService>().navigateTo(
-                            '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
-                        print(valueController.courseType.value);
-                        valueController.courseType.value = 'My Course';
-                      },
-                    ),
-                    ClassRoomBottomNavigationBar(
-                      iconName: 'All Course',
-                      icon: Icons.add,
-                      color:
-                          bottom['All Course'] ? Colors.blue[800] : Colors.blue,
-                      onTap: () {
-                        setState(() {
-                          bottom.updateAll((key, value) => false);
-                          bottom['All Course'] = true;
-                        });
-                        locator<NavigationService>().navigateTo(
-                            '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
-                        print(valueController.courseType.value);
-                        valueController.courseType.value = 'All Course';
+        ///MediaQuery.of(context).size.width < 1240 &&
+        ///              valueController.navebars.value == 'Login'
+        ///            ?
+        bottomNavigationBar: LayoutBuilder(
 
-                        print('tap');
-                      },
-                    ),
-                  ],
-                ),
-              )
-            : SizedBox(),
+            // ignore: missing_return
+            builder: (context, constraints) {
+          if (constraints.maxWidth < 1240 ||
+              valueController.navebars.value == 'Login') {
+            return Container(
+              height: 50,
+              color: Colors.grey,
+              child: Row(
+                children: [
+                  ClassRoomBottomNavigationBar(
+                    iconName: 'My Course',
+                    icon: Icons.add,
+                    color: bottom['My Course'] ? Colors.blue[800] : Colors.blue,
+                    onTap: () {
+                      setState(() {
+                        bottom.updateAll((key, value) => false);
+                        bottom['My Course'] = true;
+                      });
+                      locator<NavigationService>().navigateTo(
+                          '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                      print(valueController.courseType.value);
+                      valueController.courseType.value = 'My Course';
+                    },
+                  ),
+                  ClassRoomBottomNavigationBar(
+                    iconName: 'All Course',
+                    icon: Icons.add,
+                    color:
+                        bottom['All Course'] ? Colors.blue[800] : Colors.blue,
+                    onTap: () {
+                      setState(() {
+                        bottom.updateAll((key, value) => false);
+                        bottom['All Course'] = true;
+                      });
+                      locator<NavigationService>().navigateTo(
+                          '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                      print(valueController.courseType.value);
+                      valueController.courseType.value = 'All Course';
+
+                      print('tap');
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+        }),
+
         body: SafeArea(
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -192,32 +203,5 @@ class _MainLayoutState extends State<MainLayout> {
         ),
       );
     });
-  }
-
-  GestureDetector buildGestureDetector({iconName, icon, navigationPath}) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          bottom.updateAll((key, value) => bottom[key] = false);
-          bottom[iconName] = true;
-          print(iconName);
-        });
-        // locator<NavigationService>().navigateTo(navigationPath);
-      },
-      child: Expanded(
-        child: Container(
-          //color: Colors.yellow,
-          child: Column(
-            children: [
-              Icon(
-                icon,
-                color: bottom[iconName] == true ? Colors.blue : Colors.black,
-              ),
-              Text(iconName)
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
