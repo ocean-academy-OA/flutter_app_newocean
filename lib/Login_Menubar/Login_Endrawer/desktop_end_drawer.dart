@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DesktopEndDrawer extends StatelessWidget {
+class DesktopEndDrawer extends StatefulWidget {
+  @override
+  _DesktopEndDrawerState createState() => _DesktopEndDrawerState();
+}
+
+class _DesktopEndDrawerState extends State<DesktopEndDrawer> {
   final valueController = Get.find<ValueListener>();
+
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+    print("End_drayer session ${LoginResponsive.registerNumber}");
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getSession();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          vertical: valueController.isFlashNotification.value ? 150 : 100),
+          vertical: valueController.isFlashNotification.value ? 165 : 100),
       width: 300,
       color: Colors.transparent,
       child: Column(
@@ -19,7 +43,7 @@ class DesktopEndDrawer extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
             ),
-            // height: 300,
+            //height: 300,
             width: 200,
             child: Column(
               children: [
@@ -27,10 +51,39 @@ class DesktopEndDrawer extends StatelessWidget {
                   topRadius: 10,
                   icon: Icons.palette,
                   label: 'Edit Profile',
+                  onPressed: () {
+                    locator<NavigationService>().navigateTo(
+                        "/Profile?id=${LoginResponsive.registerNumber}");
+                  },
                 ),
                 ProfileItems(
                   icon: Icons.palette,
-                  label: 'Edit Profile',
+                  label: 'Certificate',
+                  onPressed: () {
+                    locator<NavigationService>().navigateTo(
+                        "/Certificate?id=${LoginResponsive.registerNumber}");
+                  },
+                ),
+                ProfileItems(
+                  icon: Icons.palette,
+                  label: 'Purchase',
+                  onPressed: () {
+                    locator<NavigationService>().navigateTo(
+                        "/Purchase?id=${LoginResponsive.registerNumber}");
+                  },
+                ),
+                ProfileItems(
+                  icon: Icons.palette,
+                  label: 'LogOut',
+                  onPressed: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+
+                    await prefs.setString('user', null);
+                    LoginResponsive.registerNumber = null;
+                    locator<NavigationService>().navigateTo(HomeRoute);
+                    valueController.navebars.value = 'Home';
+                  },
                 ),
               ],
             ),
