@@ -179,6 +179,7 @@ class _RazorPayWebState extends State<RazorPayWeb> {
       return element;
     });
     return Container(
+      color: Color(0xffFFFFFF),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(

@@ -116,580 +116,594 @@ class _TabletEditProfileState extends State<TabletEditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 10.0,
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  // TODO: Navigator to back
-                });
-              },
-              child: Container(
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 100.0,
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.chevron_left,
-                      ),
-                      color: Colors.blue,
-                      iconSize: 50,
-                      splashRadius: 30,
-                      onPressed: () {
-                        ///todo navigation
-                        // Provider.of<Routing>(context, listen: false)
-                        //     .updateRouting(widget: CoursesView());
-                      },
-                    ),
-                    Text(
-                      'My Profile',
-                      style: TextStyle(fontSize: 30.0, color: Colors.blue),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              width: 1500,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    alignment: Alignment.centerLeft,
-                    height: 300,
-                    child: Wrap(
-                      runSpacing: 40,
-                      spacing: 10,
-                      alignment: WrapAlignment.start,
-                      crossAxisAlignment: WrapCrossAlignment.center,
+        body: SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 10.0),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      // TODO: Navigator to back
+                    });
+                  },
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10.0),
-                          padding: EdgeInsets.all(5.0),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(500.0),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                    blurRadius: 8.0,
-                                    offset: Offset(4.0, 4.0))
-                              ]),
-                          child: GestureDetector(
-                            onTap: () async {
-                              FilePickerResult result = await FilePicker
-                                  .platform
-                                  .pickFiles(type: FileType.image);
-                              if (result != null) {
-                                uploadFile = result.files.single.bytes;
-                                fileName = basename(result.files.single.name);
-                                print(fileName);
-                              } else {
-                                print('pick image');
-                              }
-                              // Upload to  firebase Storage
-                              Future uploadProfilePicture(
-                                  BuildContext context) async {
-                                Reference firebaseStorageRef = FirebaseStorage
-                                    .instance
-                                    .ref()
-                                    .child(fileName);
-                                UploadTask uploadTask =
-                                    firebaseStorageRef.putData(uploadFile);
-                                // SnakBar Message
-                                TaskSnapshot taskSnapShot =
-                                    await uploadTask.whenComplete(() {
-                                  setState(() {
-                                    print('Profile Picuter Upload Complete');
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                            content: Text(
-                                                'Profile picture Uploaded')));
-                                    // get Link
-                                    uploadTask.snapshot.ref
-                                        .getDownloadURL()
-                                        .then((value) {
-                                      setState(() {
-                                        profilePictureLink = value;
-                                      });
-                                      print(profilePictureLink);
-                                    });
-                                  });
-                                });
-                              }
-
-                              uploadProfilePicture(
-                                  context); // call upload function
-                            },
-                            child: CircleAvatar(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(500.0),
-                                child: Container(
-                                  color: Colors.white,
-                                  width: 300.0,
-                                  height: 300.0,
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      profilePictureLink != null
-                                          ? Image.network(
-                                              '${profilePictureLink}',
-                                              width: 500.0,
-                                              height: 500.0,
-                                              fit: BoxFit.cover,
-                                            )
-                                          : Icon(
-                                              Icons.add_a_photo,
-                                              color: Colors.blue,
-                                            ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              radius: 50.0,
-                            ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.chevron_left,
                           ),
+                          color: Colors.blue,
+                          iconSize: 50,
+                          splashRadius: 30,
+                          onPressed: () {
+                            ///todo navigation
+                            // Provider.of<Routing>(context, listen: false)
+                            //     .updateRouting(widget: CoursesView());
+                          },
                         ),
-                        Visibility(
-                          child: TabletEditProfile.readOnly != false
-                              ? GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      listCount = 3;
-                                      TabletEditProfile.readOnly = false;
-                                      print(TabletEditProfile.readOnly);
-                                    });
-                                  },
-                                  child: Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 100.0),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Edit Account',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    width: 150.0,
-                                    height: 50.0,
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius:
-                                            BorderRadius.circular(50.0)),
-                                  ),
-                                )
-                              : GestureDetector(
-                                  onTap: () async {
-                                    FilePickerResult result = await FilePicker
-                                        .platform
-                                        .pickFiles(type: FileType.image);
-                                    if (result != null) {
-                                      uploadFile = result.files.single.bytes;
-                                      fileName =
-                                          basename(result.files.single.name);
-                                      print(fileName);
-                                    } else {
-                                      print('pick image');
-                                    }
-                                    // Upload to  firebase Storage
-                                    Future uploadProfilePicture(
-                                        BuildContext context) async {
-                                      Reference firebaseStorageRef =
-                                          FirebaseStorage.instance
-                                              .ref()
-                                              .child(fileName);
-                                      UploadTask uploadTask = firebaseStorageRef
-                                          .putData(uploadFile);
-                                      // SnakBar Message
-                                      TaskSnapshot taskSnapShot =
-                                          await uploadTask.whenComplete(() {
-                                        setState(() {
-                                          print(
-                                              'Profile Picuter Upload Complete');
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(SnackBar(
-                                                  content: Text(
-                                                      'Profile picture Uploaded')));
-                                          // get Link
-                                        });
-                                      });
-                                    }
-
-                                    uploadProfilePicture(
-                                        context); // call upload function
-                                  },
-                                  child: Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 50.0),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Upload Photos',
-                                      style: TextStyle(
-                                        fontSize: 18.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    width: 150.0,
-                                    height: 50.0,
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius:
-                                            BorderRadius.circular(50.0)),
-                                  ),
-                                ),
-                        ),
-                        Row(
-                          children: [
-                            Visibility(
-                              visible: TabletEditProfile.readOnly != false,
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20.0),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.blue,
-                                      width: 1.0,
-                                    ),
-                                    color: Colors.blue[50],
-                                    borderRadius: BorderRadius.circular(10.0)),
-                                width: 120.0,
-                                height: 120.0,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Courses Enrolled',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.blue,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Text(
-                                      '28',
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Visibility(
-                              visible: TabletEditProfile.readOnly != false,
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20.0),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.blue,
-                                      width: 1.0,
-                                    ),
-                                    color: Colors.blue[50],
-                                    borderRadius: BorderRadius.circular(10.0)),
-                                width: 120.0,
-                                height: 120.0,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Courses Completed',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.blue,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Text(
-                                      '02',
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
+                        Container(
+                          child: Text(
+                            'My Profile',
+                            style:
+                                TextStyle(fontSize: 25.0, color: Colors.blue),
+                          ),
                         )
                       ],
                     ),
                   ),
-                  SizedBox(height: 50.0),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    width: double.infinity,
-                    child: Form(
-                      // key: formkey,
+                ),
+              ],
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 1500,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      alignment: Alignment.centerLeft,
+                      height: 300,
                       child: Wrap(
+                        runSpacing: 40,
+                        spacing: 10,
                         alignment: WrapAlignment.start,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          LableWithTextField(
-                            color: Colors.black,
-                            lableText: 'First Name',
-                            errorText: 'Enter First Name',
-                            rReadOnly: TabletEditProfile.readOnly == false
-                                ? false
-                                : true,
-                            width: 300.0,
-                            controller: _firstName,
-                            visible: isFirstName,
-                            onChanged: (value) {},
-                            inputFormatters: inputFormatte(
-                                regExp: r"[a-zA-Z]+|\s", length: 15),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10.0),
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(500.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.3),
+                                      blurRadius: 8.0,
+                                      offset: Offset(4.0, 4.0))
+                                ]),
+                            child: GestureDetector(
+                              onTap: () async {
+                                FilePickerResult result = await FilePicker
+                                    .platform
+                                    .pickFiles(type: FileType.image);
+                                if (result != null) {
+                                  uploadFile = result.files.single.bytes;
+                                  fileName = basename(result.files.single.name);
+                                  print(fileName);
+                                } else {
+                                  print('pick image');
+                                }
+                                // Upload to  firebase Storage
+                                Future uploadProfilePicture(
+                                    BuildContext context) async {
+                                  Reference firebaseStorageRef = FirebaseStorage
+                                      .instance
+                                      .ref()
+                                      .child(fileName);
+                                  UploadTask uploadTask =
+                                      firebaseStorageRef.putData(uploadFile);
+                                  // SnakBar Message
+                                  TaskSnapshot taskSnapShot =
+                                      await uploadTask.whenComplete(() {
+                                    setState(() {
+                                      print('Profile Picuter Upload Complete');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  'Profile picture Uploaded')));
+                                      // get Link
+                                      uploadTask.snapshot.ref
+                                          .getDownloadURL()
+                                          .then((value) {
+                                        setState(() {
+                                          profilePictureLink = value;
+                                        });
+                                        print(profilePictureLink);
+                                      });
+                                    });
+                                  });
+                                }
+
+                                uploadProfilePicture(
+                                    context); // call upload function
+                              },
+                              child: CircleAvatar(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(500.0),
+                                  child: Container(
+                                    color: Colors.white,
+                                    width: 300.0,
+                                    height: 300.0,
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        profilePictureLink != null
+                                            ? Image.network(
+                                                '${profilePictureLink}',
+                                                width: 500.0,
+                                                height: 500.0,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Icon(
+                                                Icons.add_a_photo,
+                                                color: Colors.blue,
+                                              ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                radius: 50.0,
+                              ),
+                            ),
                           ),
-                          LableWithTextField(
+                          Visibility(
+                            child: TabletEditProfile.readOnly != false
+                                ? GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        listCount = 3;
+                                        TabletEditProfile.readOnly = false;
+                                        print(TabletEditProfile.readOnly);
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 50.0),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Edit Account',
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      width: 150.0,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius:
+                                              BorderRadius.circular(10.0)),
+                                    ),
+                                  )
+                                : GestureDetector(
+                                    onTap: () async {
+                                      FilePickerResult result = await FilePicker
+                                          .platform
+                                          .pickFiles(type: FileType.image);
+                                      if (result != null) {
+                                        uploadFile = result.files.single.bytes;
+                                        fileName =
+                                            basename(result.files.single.name);
+                                        print(fileName);
+                                      } else {
+                                        print('pick image');
+                                      }
+                                      // Upload to  firebase Storage
+                                      Future uploadProfilePicture(
+                                          BuildContext context) async {
+                                        Reference firebaseStorageRef =
+                                            FirebaseStorage.instance
+                                                .ref()
+                                                .child(fileName);
+                                        UploadTask uploadTask =
+                                            firebaseStorageRef
+                                                .putData(uploadFile);
+                                        // SnakBar Message
+                                        TaskSnapshot taskSnapShot =
+                                            await uploadTask.whenComplete(() {
+                                          setState(() {
+                                            print(
+                                                'Profile Picuter Upload Complete');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
+                                                    content: Text(
+                                                        'Profile picture Uploaded')));
+                                            // get Link
+                                          });
+                                        });
+                                      }
+
+                                      uploadProfilePicture(
+                                          context); // call upload function
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 50.0),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Upload Photos',
+                                        style: TextStyle(
+                                          fontSize: 18.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      width: 150.0,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius:
+                                              BorderRadius.circular(50.0)),
+                                    ),
+                                  ),
+                          ),
+                          Row(
+                            children: [
+                              Visibility(
+                                visible: TabletEditProfile.readOnly != false,
+                                child: Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.blue,
+                                        width: 1.0,
+                                      ),
+                                      color: Colors.blue[50],
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  width: 120.0,
+                                  height: 120.0,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Courses Enrolled',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.blue,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        '28',
+                                        style: TextStyle(
+                                            fontSize: 40,
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Visibility(
+                                visible: TabletEditProfile.readOnly != false,
+                                child: Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.blue,
+                                        width: 1.0,
+                                      ),
+                                      color: Colors.blue[50],
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  width: 120.0,
+                                  height: 120.0,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Courses Completed',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.blue,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        '02',
+                                        style: TextStyle(
+                                            fontSize: 40,
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 50.0),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 50),
+                      width: double.infinity,
+                      child: Form(
+                        // key: formkey,
+                        child: Wrap(
+                          alignment: WrapAlignment.start,
+                          children: [
+                            LableWithTextField(
                               color: Colors.black,
-                              lableText: 'Last Name',
-                              errorText: 'Enter Last Name',
+                              lableText: 'First Name',
+                              errorText: 'Enter First Name',
                               rReadOnly: TabletEditProfile.readOnly == false
                                   ? false
                                   : true,
                               width: 300.0,
-                              visible: isLastName,
-                              controller: _lastName,
+                              controller: _firstName,
+                              visible: isFirstName,
                               onChanged: (value) {},
                               inputFormatters: inputFormatte(
-                                  regExp: r"[a-zA-Z]+|\s", length: 15)),
-                          GenderDropdownField(
-                            visible: isGender,
-                            errorText: 'Select',
-                            color: Colors.black,
-                          ),
-                          DatePicker(
-                            color: Colors.black,
-                            errorText: 'Date Required',
-                            datePickerIcon: IconButton(
-                              icon: Icon(Icons.date_range),
-                              onPressed: () async {
-                                final selectedDate =
-                                    await _selectDateTime(context);
+                                  regExp: r"[a-zA-Z]+|\s", length: 15),
+                            ),
+                            LableWithTextField(
+                                color: Colors.black,
+                                lableText: 'Last Name',
+                                errorText: 'Enter Last Name',
+                                rReadOnly: TabletEditProfile.readOnly == false
+                                    ? false
+                                    : true,
+                                width: 300.0,
+                                visible: isLastName,
+                                controller: _lastName,
+                                onChanged: (value) {},
+                                inputFormatters: inputFormatte(
+                                    regExp: r"[a-zA-Z]+|\s", length: 15)),
+                            GenderDropdownField(
+                              visible: isGender,
+                              errorText: 'Select',
+                              color: Colors.black,
+                            ),
+                            DatePicker(
+                              color: Colors.black,
+                              errorText: 'Date Required',
+                              datePickerIcon: IconButton(
+                                icon: Icon(Icons.date_range),
+                                onPressed: () async {
+                                  final selectedDate =
+                                      await _selectDateTime(context);
+                                  setState(() {
+                                    dOB = DateFormat('d-M-y')
+                                        .format(selectedDate);
+                                    _dateOfBirth.text = dOB;
+                                    print(dOB);
+                                  });
+                                },
+                              ),
+                              controller: _dateOfBirth,
+                              visible: isDateOfBirth,
+                              onChanged: (value) {
                                 setState(() {
-                                  dOB =
-                                      DateFormat('d-M-y').format(selectedDate);
-                                  _dateOfBirth.text = dOB;
-                                  print(dOB);
+                                  _dateOfBirth.text = value;
                                 });
                               },
                             ),
-                            controller: _dateOfBirth,
-                            visible: isDateOfBirth,
-                            onChanged: (value) {
-                              setState(() {
-                                _dateOfBirth.text = value;
-                              });
-                            },
-                          ),
-                          LableWithTextField(
-                            color: Colors.black,
-                            lableText: 'E-Mail Address',
-                            errorText: 'Invalid Email Address',
-                            rReadOnly: TabletEditProfile.readOnly == false
-                                ? false
-                                : true,
-                            visible: isEmail,
-                            width: 300.0,
-                            controller: _eMail,
-                            onChanged: (value) {},
-                          ),
-                          LableWithTextField(
-                            color: Colors.black,
-                            lableText: 'Company/School',
-                            errorText: 'Your Company/School Name',
-                            rReadOnly: TabletEditProfile.readOnly == false
-                                ? false
-                                : true,
-                            width: 300.0,
-                            visible: isCompanyOrSchool,
-                            controller: _companyOrSchool,
-                            inputFormatters:
-                                inputFormatte(regExp: r"[a-zA-Z]+|\s"),
-                            onChanged: (value) {},
-                          ),
-                          LableWithTextField(
-                            color: Colors.black,
-                            lableText: 'Degree',
-                            errorText: 'Enter your Education Qualification',
-                            rReadOnly: TabletEditProfile.readOnly == false
-                                ? false
-                                : true,
-                            width: 250.0,
-                            visible: isDegree,
-                            controller: _dgree,
-                            onChanged: (value) {},
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Country',
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: 9,
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 300,
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.white,
-                                  ),
-                                  child: DropDownField(
-                                    controller: countryContrller,
-                                    hintText: 'Select Country',
-                                    hintStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[500]),
-                                    textStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[700]),
-                                    enabled: true,
-                                    value: selectedCountry,
-                                    required: isCountry,
-                                    itemsVisibleInDropdown: listCount,
-                                    items: country,
-                                    onValueChanged: (value) {
-                                      setState(() {
-                                        selectedCountry = value;
-                                        stateContrller.clear();
-                                        print(selectedCountry);
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
+                            LableWithTextField(
+                              color: Colors.black,
+                              lableText: 'E-Mail Address',
+                              errorText: 'Invalid Email Address',
+                              rReadOnly: TabletEditProfile.readOnly == false
+                                  ? false
+                                  : true,
+                              visible: isEmail,
+                              width: 300.0,
+                              controller: _eMail,
+                              onChanged: (value) {},
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'State',
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: 9,
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 300,
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.white,
+                            LableWithTextField(
+                              color: Colors.black,
+                              lableText: 'Company/School',
+                              errorText: 'Your Company/School Name',
+                              rReadOnly: TabletEditProfile.readOnly == false
+                                  ? false
+                                  : true,
+                              width: 300.0,
+                              visible: isCompanyOrSchool,
+                              controller: _companyOrSchool,
+                              inputFormatters:
+                                  inputFormatte(regExp: r"[a-zA-Z]+|\s"),
+                              onChanged: (value) {},
+                            ),
+                            LableWithTextField(
+                              color: Colors.black,
+                              lableText: 'Degree',
+                              errorText: 'Enter your Education Qualification',
+                              rReadOnly: TabletEditProfile.readOnly == false
+                                  ? false
+                                  : true,
+                              width: 250.0,
+                              visible: isDegree,
+                              controller: _dgree,
+                              onChanged: (value) {},
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Country',
+                                    style: TextStyle(
+                                        fontSize: 20.0, color: Colors.black),
                                   ),
-                                  child: DropDownField(
-                                    controller: stateContrller,
-                                    hintText: 'Select State',
-                                    hintStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[500]),
-                                    textStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[700]),
-                                    enabled: true,
-                                    //selectedCountry.length > 1 ? true : false,
-                                    strict: false,
-                                    required: isState,
+                                  SizedBox(
+                                    height: 9,
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: 300,
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white,
+                                    ),
+                                    child: DropDownField(
+                                      controller: countryContrller,
+                                      hintText: 'Select Country',
+                                      hintStyle: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey[500]),
+                                      textStyle: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey[700]),
+                                      enabled: true,
+                                      value: selectedCountry,
+                                      required: isCountry,
+                                      itemsVisibleInDropdown: listCount,
+                                      items: country,
+                                      onValueChanged: (value) {
+                                        setState(() {
+                                          selectedCountry = value;
+                                          stateContrller.clear();
+                                          print(selectedCountry);
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'State',
+                                    style: TextStyle(
+                                        fontSize: 20.0, color: Colors.black),
+                                  ),
+                                  SizedBox(
+                                    height: 9,
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: 300,
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white,
+                                    ),
+                                    child: DropDownField(
+                                      controller: stateContrller,
+                                      hintText: 'Select State',
+                                      hintStyle: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey[500]),
+                                      textStyle: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey[700]),
+                                      enabled: true,
+                                      //selectedCountry.length > 1 ? true : false,
+                                      strict: false,
+                                      required: isState,
 
-                                    itemsVisibleInDropdown: listCount,
-                                    items: CountryState[selectedCountry] == null
-                                        ? <String>[selectedState]
-                                        : CountryState[selectedCountry],
-                                    onValueChanged: (value) {
-                                      setState(() {
-                                        selectedState = value;
-                                        print(selectedState);
-                                      });
-                                    },
+                                      itemsVisibleInDropdown: listCount,
+                                      items:
+                                          CountryState[selectedCountry] == null
+                                              ? <String>[selectedState]
+                                              : CountryState[selectedCountry],
+                                      onValueChanged: (value) {
+                                        setState(() {
+                                          selectedState = value;
+                                          print(selectedState);
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            LableWithTextField(
+                              color: Colors.black,
+                              lableText: 'Phone Number',
+                              errorText: 'Invalid Phonenumber',
+                              width: 250.0,
+                              rReadOnly: true,
+                              visible: isPhoneNumber,
+                              controller: _phoneNumber,
+                              onChanged: (value) {},
+                              inputFormatters: inputFormatte(
+                                  regExp: r'^\d+\.?\d{0,2}', length: 15),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Visibility(
+                            visible: TabletEditProfile.readOnly == false,
+                            child: FlatButton(
+                                minWidth: 300.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Update',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 25.0),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          LableWithTextField(
-                            color: Colors.black,
-                            lableText: 'Phone Number',
-                            errorText: 'Invalid Phonenumber',
-                            width: 250.0,
-                            rReadOnly: true,
-                            visible: isPhoneNumber,
-                            controller: _phoneNumber,
-                            onChanged: (value) {},
-                            inputFormatters: inputFormatte(
-                                regExp: r'^\d+\.?\d{0,2}', length: 15),
+                                color: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0)),
+                                onPressed: () {
+                                  print(selectedState);
+                                  if (registerFormValidation() == true) {
+                                    fireStoreAdd();
+                                    print('qqqqqqqqqqqqqqqqq');
+
+                                    TabletEditProfile.readOnly = true;
+                                  }
+                                }),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 100.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Visibility(
-                          visible: TabletEditProfile.readOnly == false,
-                          child: FlatButton(
-                              minWidth: 300.0,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Update',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 25.0),
-                                ),
-                              ),
-                              color: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                              onPressed: () {
-                                print(selectedState);
-                                if (registerFormValidation() == true) {
-                                  fireStoreAdd();
-                                  print('qqqqqqqqqqqqqqqqq');
-
-                                  TabletEditProfile.readOnly = true;
-                                }
-                              }),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 10.0,
-            )
-          ],
-        ),
+            ],
+          ),
+          SizedBox(
+            height: 10.0,
+          )
+        ],
       ),
     ));
   }
