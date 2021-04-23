@@ -31,6 +31,7 @@ class _DesktopEndDrawerState extends State<DesktopEndDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    print(valueController.isFlashNotification.value);
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: valueController.isFlashNotification.value ? 165 : 100),

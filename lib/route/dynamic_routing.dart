@@ -24,16 +24,27 @@ import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
 import 'package:flutter_app_newocean/Zoom_integration/Responsive_Zoom.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/payment/responsive_payment.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'routeNames.dart';
+import 'package:flutter_app_newocean/main.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 // ConfirmationResult confirmationResult;
+getSession() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+  print("${LoginResponsive.registerNumber}dynamic routing");
+}
 
 Route<dynamic> generateRoute(
   RouteSettings settings,
 ) {
+  getSession();
+
   if (settings.name.contains("WebinarJoin")) {
     String courseName = Uri.parse(settings.name).queryParameters["id"];
 
@@ -124,8 +135,6 @@ Route<dynamic> generateRoute(
         ),
         settings);
   }
-
-  ///
   if (settings.name.contains("Profile")) {
     String userNumber = Uri.parse(settings.name).queryParameters["id"];
 
@@ -356,10 +365,13 @@ Route<dynamic> generateRoute(
         settings,
       );
     default:
-      print("thamizhhema");
-      print(LoginResponsive.registerNumber);
-      Widget checking = LoginResponsive.registerNumber != null
-          ? CoursesView()
+      print('session${MyApp.session}');
+      getSession();
+      // String userNumber =
+      //     Uri.parse(settings.name).queryParameters["userNumber"];
+      print("jayalatha");
+      Widget checking = MyApp.session != null
+          ? ResponsiveClassRoomContent()
           : ResponsiveHome();
       return _getPageRoute(
         checking,
