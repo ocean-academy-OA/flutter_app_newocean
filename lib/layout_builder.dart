@@ -13,7 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'route/navigation_locator.dart';
 import 'route/navigation_service.dart';
 import 'route/routeNames.dart';
-import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
+
+import 'package:flutter_app_newocean/main.dart';
 
 Map bottom = {
   'My Course': true,
@@ -51,14 +52,12 @@ class _MainLayoutState extends State<MainLayout> {
 
   @override
   Widget build(BuildContext context) {
+    getSession();
+    print('layout1 ${LoginResponsive.registerNumber}');
+
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
-        // appBar: PreferredSize(
-        //   preferredSize: Size.fromHeight(100.0), // here the desired height
-        //   child: widget.menubar,
-        // ),
         key: scaffoldKey,
-
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: sizingInformation.deviceScreenType ==
                 DeviceScreenType.desktop
@@ -80,8 +79,8 @@ class _MainLayoutState extends State<MainLayout> {
                 ? AllDrawer()
                 : null
             : AllDrawer(),
-
-        bottomNavigationBar: MediaQuery.of(context).size.width < 1240
+        bottomNavigationBar: LoginResponsive.registerNumber != null &&
+                MediaQuery.of(context).size.width < 1240
             ? Container(
                 height: 50,
                 color: Colors.grey,
@@ -192,32 +191,5 @@ class _MainLayoutState extends State<MainLayout> {
         ),
       );
     });
-  }
-
-  GestureDetector buildGestureDetector({iconName, icon, navigationPath}) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          bottom.updateAll((key, value) => bottom[key] = false);
-          bottom[iconName] = true;
-          print(iconName);
-        });
-        // locator<NavigationService>().navigateTo(navigationPath);
-      },
-      child: Expanded(
-        child: Container(
-          //color: Colors.yellow,
-          child: Column(
-            children: [
-              Icon(
-                icon,
-                color: bottom[iconName] == true ? Colors.blue : Colors.black,
-              ),
-              Text(iconName)
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

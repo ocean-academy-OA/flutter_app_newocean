@@ -14,6 +14,8 @@ import 'package:intl/intl.dart';
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
 import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -25,6 +27,7 @@ class MobileSingleWebinarScreen extends StatefulWidget {
   MobileSingleWebinarScreen({this.timestamp, this.topic});
   String topic;
   String payment;
+
   @override
   _MobileSingleWebinarScreenState createState() =>
       _MobileSingleWebinarScreenState();
@@ -71,6 +74,15 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => widget));
       },
     );
+  }
+
+  @override
+  final valueController = Get.find<ValueListener>();
+
+  void initState() {
+    // TODO: implement initState
+    valueController.navebars.value = 'Webinar';
+    super.initState();
   }
 
   @override
@@ -400,6 +412,7 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
 
   int year, day, hours, toHours, minutes, toMinutes;
   String month, dayFormat, toDayFormat;
+
   @override
   void initState() {
     print('${widget.webinarTime} jjjjjjjjjjjjjjjjjjj');
