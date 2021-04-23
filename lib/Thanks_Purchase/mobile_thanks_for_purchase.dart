@@ -7,14 +7,13 @@ import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DesktopThanksForPurchasing extends StatefulWidget {
+class MobileThanksForPurchasing extends StatefulWidget {
   @override
-  _DesktopThanksForPurchasingState createState() =>
-      _DesktopThanksForPurchasingState();
+  _MobileThanksForPurchasingState createState() =>
+      _MobileThanksForPurchasingState();
 }
 
-class _DesktopThanksForPurchasingState
-    extends State<DesktopThanksForPurchasing> {
+class _MobileThanksForPurchasingState extends State<MobileThanksForPurchasing> {
   @override
   void initState() {
     // TODO: implement initState
@@ -23,7 +22,7 @@ class _DesktopThanksForPurchasingState
   }
 
   @override
-  // final valueController = Get.find<ValueListener>();
+  final valueController = Get.find<ValueListener>();
   getSession() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
@@ -42,31 +41,41 @@ class _DesktopThanksForPurchasingState
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 50),
-              Text(
-                'Thanks for purchasing!',
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w400),
+              Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'Thanks for purchasing!',
+                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.w400),
+                ),
               ),
               SizedBox(height: 30),
               Container(
-                  height: 300,
+                  alignment: Alignment.center,
+                  height: 150,
                   child: Image.asset("images/thanksforpurchase.gif")),
               SizedBox(height: 30),
-              Text('Your payment has been made successfully',
-                  style: TextStyle(fontSize: 20, color: Color(0xff333333))),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: Text('Your payment has been made successfully',
+                    style: TextStyle(fontSize: 15, color: Color(0xff333333))),
+              ),
               SizedBox(height: 40),
               Container(
-                height: 70,
-                width: 200,
-                child: FlatButton(
-                  color: Color(0xff0091D2),
+                height: 50,
+                width: 160,
+                child: OutlineButton(
+                  borderSide: BorderSide(color: Colors.blue),
+                  // color: Color(0xff0091D2),
                   onPressed: () {
-                    // locator<NavigationService>().navigateTo(
-                    //     '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                    locator<NavigationService>().navigateTo(
+                        '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
                   },
-                  child: Text("Go to Courses",
-                      style: TextStyle(color: Colors.white, fontSize: 22)),
+                  child: Text(
+                    "Go to Courses",
+                    style: TextStyle(color: Colors.blue, fontSize: 18),
+                  ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                 ),
               ),

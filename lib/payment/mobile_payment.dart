@@ -12,7 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_newocean/payment/ui_payment.dart'
     if (dart.library.html) 'dart:ui' as ui;
 
-class RazorPayWeb extends StatefulWidget {
+// ignore: must_be_immutable
+class MobileRazorPay extends StatefulWidget {
   String courseName;
   String amount;
   List course;
@@ -21,17 +22,17 @@ class RazorPayWeb extends StatefulWidget {
   String studentname;
   String studentemail;
 
-  RazorPayWeb(
+  MobileRazorPay(
       {this.amount,
       this.course,
       this.courseName,
       this.courseImage,
       this.batchid});
   @override
-  _RazorPayWebState createState() => _RazorPayWebState();
+  _MobileRazorPayState createState() => _MobileRazorPayState();
 }
 
-class _RazorPayWebState extends State<RazorPayWeb> {
+class _MobileRazorPayState extends State<MobileRazorPay> {
   var date;
   final _firestore = FirebaseFirestore.instance;
   TextEditingController rupees = TextEditingController(text: '5');
@@ -179,86 +180,24 @@ class _RazorPayWebState extends State<RazorPayWeb> {
       return element;
     });
     return Container(
-      color: Color(0xffFFFFFF),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          LayoutBuilder(
-            // ignore: missing_return
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 1300) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
-                      height: MediaQuery.of(context).size.height / 1.5,
-                      width: 400,
-                      decoration:
-                          BoxDecoration(color: Colors.white, boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            blurRadius: 6),
-                      ]),
-                      child: HtmlElementView(
-                        viewType: 'rzp-html',
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/dribbble-payment-boy.gif',
-                          height: MediaQuery.of(context).size.height / 1.5,
-                          width: MediaQuery.of(context).size.height / 1.5,
-                        ),
-                      ],
-                    ),
-                    SizedBox(),
-                  ],
-                  // ignore: missing_return
-                );
-              } else if (constraints.maxWidth > 950 &&
-                  constraints.maxWidth < 1300) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
-                      height: MediaQuery.of(context).size.height / 1.5,
-                      width: 350,
-                      decoration: BoxDecoration(color: Colors.grey, boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            blurRadius: 6),
-                      ]),
-                      child: HtmlElementView(
-                        viewType: 'rzp-html',
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/dribbble-payment-boy.gif',
-                          height: MediaQuery.of(context).size.height / 1.5,
-                          width: MediaQuery.of(context).size.width / 1.8,
-                        ),
-                      ],
-                    ),
-                    SizedBox(),
-                  ],
-                  // ignore: missing_return
-                );
-              }
-            },
-          )
-        ],
-      ),
-    );
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              height: MediaQuery.of(context).size.height / 1.4,
+              width: MediaQuery.of(context).size.width / 1.5,
+              decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6),
+              ]),
+              child: HtmlElementView(
+                viewType: 'rzp-html',
+              ),
+            ),
+          ],
+        ));
   }
 }
