@@ -24,7 +24,7 @@ class ClassRoomBottomNavigationBar extends StatelessWidget {
           child: Container(
             color: color,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(icon, color: Colors.white),
                 Text(
