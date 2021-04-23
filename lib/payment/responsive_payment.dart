@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/payment/desktop_payment.dart';
+import 'package:flutter_app_newocean/payment/mobile_payment.dart';
+import 'package:flutter_app_newocean/payment/tablet_payment.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+// ignore: must_be_immutable
 class ResponsivePayment extends StatelessWidget {
   String courseName;
   String amount;
@@ -18,7 +21,13 @@ class ResponsivePayment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      mobile: RazorPayWeb(),
+      mobile: MobileRazorPay(
+        courseName: courseName,
+        courseImage: courseImage,
+        course: [courseName],
+        batchid: [batchid],
+        amount: amount,
+      ),
       desktop: RazorPayWeb(
         course: [courseName],
         amount: amount,
@@ -26,7 +35,13 @@ class ResponsivePayment extends StatelessWidget {
         courseImage: courseImage,
         courseName: courseName,
       ),
-      tablet: RazorPayWeb(),
+      tablet: TabletRazorPay(
+        amount: amount,
+        batchid: [batchid],
+        course: [courseName],
+        courseImage: courseImage,
+        courseName: courseName,
+      ),
     );
   }
 }

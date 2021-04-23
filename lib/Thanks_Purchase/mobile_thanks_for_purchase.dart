@@ -22,7 +22,7 @@ class _MobileThanksForPurchasingState extends State<MobileThanksForPurchasing> {
   }
 
   @override
-  // final valueController = Get.find<ValueListener>();
+  final valueController = Get.find<ValueListener>();
   getSession() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
@@ -67,8 +67,8 @@ class _MobileThanksForPurchasingState extends State<MobileThanksForPurchasing> {
                   borderSide: BorderSide(color: Colors.blue),
                   // color: Color(0xff0091D2),
                   onPressed: () {
-                    // locator<NavigationService>().navigateTo(
-                    //     '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                    locator<NavigationService>().navigateTo(
+                        '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
                   },
                   child: Text(
                     "Go to Courses",
