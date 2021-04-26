@@ -73,49 +73,53 @@ class _MainLayoutState extends State<MainLayout> {
                 : null
             : AllDrawer(),
         bottomNavigationBar: Obx(() {
-          if (MediaQuery.of(context).size.width < 1240 &&
-              valueController.navebars.value == 'Login') {
-            return Container(
-              height: 50,
-              color: Colors.grey,
-              child: Row(
-                children: [
-                  ClassRoomBottomNavigationBar(
-                    iconName: 'My Course',
-                    icon: Icons.add,
-                    color: bottom['My Course'] ? Colors.blue[800] : Colors.blue,
-                    onTap: () {
-                      setState(() {
-                        bottom.updateAll((key, value) => false);
-                        bottom['My Course'] = true;
-                      });
-                      locator<NavigationService>().navigateTo(
-                          '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
-                      print(valueController.courseType.value);
-                      valueController.courseType.value = 'My Course';
-                    },
-                  ),
-                  ClassRoomBottomNavigationBar(
-                    iconName: 'All Course',
-                    icon: Icons.add,
-                    color:
-                        bottom['All Course'] ? Colors.blue[800] : Colors.blue,
-                    onTap: () {
-                      setState(() {
-                        bottom.updateAll((key, value) => false);
-                        bottom['All Course'] = true;
-                      });
-                      locator<NavigationService>().navigateTo(
-                          '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
-                      print(valueController.courseType.value);
-                      valueController.courseType.value = 'All Course';
+          if (valueController.navebars.value == 'Login') {
+            return MediaQuery.of(context).size.width < 1240
+                ? Container(
+                    height: 50,
+                    color: Colors.grey,
+                    child: Row(
+                      children: [
+                        ClassRoomBottomNavigationBar(
+                          iconName: 'My Course',
+                          icon: Icons.add,
+                          color: bottom['My Course']
+                              ? Colors.blue[800]
+                              : Colors.blue,
+                          onTap: () {
+                            setState(() {
+                              bottom.updateAll((key, value) => false);
+                              bottom['My Course'] = true;
+                            });
+                            locator<NavigationService>().navigateTo(
+                                '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                            print(valueController.courseType.value);
+                            valueController.courseType.value = 'My Course';
+                          },
+                        ),
+                        ClassRoomBottomNavigationBar(
+                          iconName: 'All Course',
+                          icon: Icons.add,
+                          color: bottom['All Course']
+                              ? Colors.blue[800]
+                              : Colors.blue,
+                          onTap: () {
+                            setState(() {
+                              bottom.updateAll((key, value) => false);
+                              bottom['All Course'] = true;
+                            });
+                            locator<NavigationService>().navigateTo(
+                                '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                            print(valueController.courseType.value);
+                            valueController.courseType.value = 'All Course';
 
-                      print('tap');
-                    },
-                  ),
-                ],
-              ),
-            );
+                            print('tap');
+                          },
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox();
           } else {
             return SizedBox();
           }
@@ -173,9 +177,6 @@ class _MainLayoutState extends State<MainLayout> {
                               ),
                             ),
                             onDismissed: (deirection) {
-                              // setState(() {
-                              //   isWebinar = false;
-                              // });
                               valueController.isFlashNotification.value = false;
                             },
                           )
