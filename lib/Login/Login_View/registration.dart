@@ -5,11 +5,14 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Login/Login_View/otp.dart';
 
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/contry_states.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/date_picker.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/gender_dropdoen_field.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/input_text_field.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -55,8 +58,7 @@ class _RegistrationState extends State<Registration> {
   final _eMail = TextEditingController();
   final _companyOrSchool = TextEditingController();
   final _dgree = TextEditingController();
-  final _phoneNumber =
-      TextEditingController(text: LoginResponsive.registerNumber);
+  final _phoneNumber = TextEditingController(text: OTP.userID);
 
   List inputFormatte({@required String regExp, int length}) {
     List<TextInputFormatter> formater = [
@@ -68,10 +70,9 @@ class _RegistrationState extends State<Registration> {
 
   session() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('login', 1);
-    await prefs.setString('user', LoginResponsive.registerNumber);
-    // print("${MenuBar.stayUser}MenuBar.stayUser");
-    print("${LoginResponsive.registerNumber}LogIn.registerNumber");
+    await prefs.setString('user', OTP.userID);
+    print("${OTP.userID} ssssssssssssss");
+    print('Otp Submited');
   }
 
   Uint8List uploadFile;
@@ -92,9 +93,11 @@ class _RegistrationState extends State<Registration> {
       print(i['states']);
       country.add(i['country']);
       countryState.addAll({i['country']: i['states']});
+      // _phoneNumber.text = LoginResponsive.registerNumber;
     }
   }
 
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -416,22 +419,11 @@ class _RegistrationState extends State<Registration> {
 
                               fireStoreAdd();
                               textFieldClear();
-                              session();
-                              locator<NavigationService>()
-                                  .navigateTo(testRoute);
-                              print("${profilePictureLink}profilePictureLink");
-                              // Provider.of<Routing>(context, listen: false)
-                              //     .updateRouting(widget: CoursesView());
-                              // Provider.of<MenuBar>(context, listen: false)
-                              //     .updateMenu(
-                              //         widget: AppBarWidget(
-                              //   userProfile: profilePictureLink,
-                              // ));
+                              await session();
+                              locator<NavigationService>().navigateTo(
+                                  '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=My%20Course');
                             } else {
-                              // Provider.of<Routing>(context, listen: false)
-                              //     .updateRouting(widget: Registration());
-                              // Provider.of<MenuBar>(context, listen: false)
-                              //     .updateMenu(widget: NavbarRouting());
+                              print('fill again');
                             }
 
                             // fireStoreAdd();

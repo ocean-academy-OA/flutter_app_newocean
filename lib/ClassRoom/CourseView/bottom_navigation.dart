@@ -28,7 +28,6 @@ class _ClassRoomBottomNavigationBarState
   void initState() {
     // TODO: implement initState
     super.initState();
-    valueController.navebars.value = 'Login';
   }
 
   @override

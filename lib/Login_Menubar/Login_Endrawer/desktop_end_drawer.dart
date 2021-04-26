@@ -37,7 +37,7 @@ class _DesktopEndDrawerState extends State<DesktopEndDrawer> {
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: valueController.isFlashNotification.value ? 165 : 100),
-      width: 300,
+      width: 450,
       color: Colors.transparent,
       child: Column(
         children: [

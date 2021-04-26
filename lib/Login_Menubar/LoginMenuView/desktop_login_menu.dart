@@ -232,36 +232,6 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                             ],
                           ),
                         ),
-                        IconButton(
-                            icon: Icon(Icons.settings),
-                            onPressed: () async {
-                              SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-
-                              await prefs.setString('user', null);
-                              LoginResponsive.registerNumber = null;
-                              locator<NavigationService>()
-                                  .navigateTo(HomeRoute);
-                              valueController.navebars.value = 'Home';
-                            }),
-                        IconButton(
-                            icon: Icon(Icons.person_add),
-                            onPressed: () {
-                              locator<NavigationService>().navigateTo(
-                                  "/Profile?id=${LoginResponsive.registerNumber}");
-                            }),
-                        IconButton(
-                            icon: Icon(Icons.cast_for_education_sharp),
-                            onPressed: () {
-                              locator<NavigationService>().navigateTo(
-                                  "/Certificate?id=${LoginResponsive.registerNumber}");
-                            }),
-                        IconButton(
-                            icon: Icon(Icons.pest_control_rodent_outlined),
-                            onPressed: () {
-                              locator<NavigationService>().navigateTo(
-                                  "/Purchase?id=${LoginResponsive.registerNumber}");
-                            }),
                         StreamBuilder<QuerySnapshot>(
                           stream:
                               _firestore.collection('new users').snapshots(),
@@ -277,7 +247,8 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
                                 // var id = valueController.userNumber.value != null
                                 //     ? MenuBar.stayUser
                                 //     : LogIn.registerNumber;
-                                if (message.id == '+91 1234567890') {
+                                if (message.id ==
+                                    LoginResponsive.registerNumber) {
                                   final profileImage =
                                       message.data()['Profile Picture'];
 
@@ -285,21 +256,6 @@ class _DesktopLoginMenuState extends State<DesktopLoginMenu> {
 
                                   final pictures = ProfilePictureDb(
                                     profilePicture: profileImage,
-                                    // onpress: () {
-                                    //   // setState(() {
-                                    //   //   ContentWidget.isShow =
-                                    //   //       !ContentWidget.isShow;
-                                    //   //
-                                    //   //   ContentWidget.isVisible = false;
-                                    //   // });
-                                    //   // Provider.of<Routing>(context,
-                                    //   //         listen: false)
-                                    //   //     .updateRouting(widget: CoursesView());
-                                    //   //
-                                    //   // Provider.of<UserProfiles>(context,
-                                    //   //         listen: false)
-                                    //   //     .updateUser(routing: User_Profile());
-                                    // },
                                   );
                                   profile.add(pictures);
                                 }
@@ -375,79 +331,11 @@ class ProfilePictureDb extends StatefulWidget {
 }
 
 class _ProfilePictureDbState extends State<ProfilePictureDb> {
-  GlobalKey menuButtonKey = GlobalKey();
-
-  void onClickMenu(MenuItemProvider item) async {
-    print('selected menu -> ${item.menuTitle}');
-    if (item.menuTitle == 'Certificates') {
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: Certificate());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: AppBarWidget());
-    }
-    if (item.menuTitle == 'My profile') {
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: EditProfile());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: AppBarWidget());
-    }
-    if (item.menuTitle == 'Purchase') {
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: Purchase());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: AppBarWidget());
-    }
-    if (item.menuTitle == 'Log Out') {
-      // SharedPreferences prefs = await SharedPreferences.getInstance();
-      // // await prefs.setInt('login', 0);
-      // await prefs.setString('user', null);
-      // LogIn.registerNumber = null;
-      // OTP.userID = null;
-      // MenuBar.stayUser = null;
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: Home());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: NavbarRouting());
-    }
-  }
-
-  void popupMenuButton() {
-    PopupMenu menu = PopupMenu(
-      maxColumn: 1,
-      incrementWidth: 80,
-      incrementHeight: 50,
-      backgroundColor: Colors.grey[700],
-      lineColor: Colors.blue,
-      shadow: false,
-      onClickMenu: onClickMenu,
-      // highlightColor: Colors.red,
-      items: [
-        MenuItem(
-            title: 'Certificates',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'My profile',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'Purchase',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'Log Out',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-      ],
-    );
-    menu.show(widgetKey: menuButtonKey);
-  }
-
   @override
   Widget build(BuildContext context) {
-    print("picture${widget.profilePicture}");
-    PopupMenu.context = context;
-
     return MaterialButton(
       padding: EdgeInsets.all(10.0),
       minWidth: 10.0,
-      key: menuButtonKey,
       hoverColor: Colors.white10,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(600.0))),
