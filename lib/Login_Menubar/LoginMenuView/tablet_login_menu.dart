@@ -307,78 +307,11 @@ class ProfilePictureDb extends StatefulWidget {
 }
 
 class _ProfilePictureDbState extends State<ProfilePictureDb> {
-  GlobalKey menuButtonKey = GlobalKey();
-
-  void onClickMenu(MenuItemProvider item) async {
-    print('selected menu -> ${item.menuTitle}');
-    if (item.menuTitle == 'Certificates') {
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: Certificate());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: AppBarWidget());
-    }
-    if (item.menuTitle == 'My profile') {
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: EditProfile());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: AppBarWidget());
-    }
-    if (item.menuTitle == 'Purchase') {
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: Purchase());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: AppBarWidget());
-    }
-    if (item.menuTitle == 'Log Out') {
-      // SharedPreferences prefs = await SharedPreferences.getInstance();
-      // // await prefs.setInt('login', 0);
-      // await prefs.setString('user', null);
-      // LogIn.registerNumber = null;
-      // OTP.userID = null;
-      // MenuBar.stayUser = null;
-      // Provider.of<Routing>(context, listen: false)
-      //     .updateRouting(widget: Home());
-      // Provider.of<MenuBar>(context, listen: false)
-      //     .updateMenu(widget: NavbarRouting());
-    }
-  }
-
-  void popupMenuButton() {
-    PopupMenu menu = PopupMenu(
-      maxColumn: 1,
-      incrementWidth: 80,
-      incrementHeight: 50,
-      backgroundColor: Colors.grey[700],
-      lineColor: Colors.blue,
-      shadow: false,
-      onClickMenu: onClickMenu,
-      // highlightColor: Colors.red,
-      items: [
-        MenuItem(
-            title: 'Certificates',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'My profile',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'Purchase',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-        MenuItem(
-            title: 'Log Out',
-            textStyle: TextStyle(fontSize: 15, color: Colors.white)),
-      ],
-    );
-    menu.show(widgetKey: menuButtonKey);
-  }
-
   @override
   Widget build(BuildContext context) {
-    PopupMenu.context = context;
-
     return MaterialButton(
       padding: EdgeInsets.all(15.0),
       minWidth: 10.0,
-      key: menuButtonKey,
       hoverColor: Colors.white10,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
