@@ -8,6 +8,7 @@ import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
 
 // ignore: must_be_immutable
 class CourseDescription extends StatelessWidget {
@@ -267,6 +268,7 @@ class _CourseCardState extends State<CourseCard> {
                 color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 20),
             borderColor: Colors.blue,
             borderWidth: 2,
+            hoverColor: Colors.blue[50],
             buttonHeight: 60,
             borderRadius: 6,
             onPressed: () {
@@ -278,7 +280,9 @@ class _CourseCardState extends State<CourseCard> {
               print("course${widget.batchid}");
               print("course${widget.courseName}");
             },
-          )
+          ).moveUpOnHover
+
+          ///hover effect
         ],
       ),
     );
