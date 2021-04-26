@@ -70,13 +70,15 @@ class _MyAppState extends State<MyApp> {
         child: GetMaterialApp(
           title: 'Ocean Academy',
           builder: (context, child) => MainLayout(
-            menubar: Obx(
-              () => valueController.navebars.value == 'Login'
-                  ? ResponsiveLoginMenu()
-                  : valueController.navebars.value == 'Webinar'
-                      ? ResponsiveWbinarMenubar()
-                      : ResponsiveMenu(),
-            ),
+            menubar: Obx(() {
+              if (valueController.navebars.value == 'Login') {
+                return ResponsiveLoginMenu();
+              } else if (valueController.navebars.value == 'Webinar') {
+                return ResponsiveWbinarMenubar();
+              } else {
+                return ResponsiveMenu();
+              }
+            }),
             child: child,
           ),
           showPerformanceOverlay: false,

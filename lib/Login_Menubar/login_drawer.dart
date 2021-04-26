@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Landing/Home_view.dart';
+import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
@@ -101,7 +101,7 @@ class _LoginDrawerState extends State<LoginDrawer> {
         .collection('new users')
 
         ///todo LogIn.registerNumber
-        .where("Phone Number", isEqualTo: "+91 1234567890")
+        .where("Phone Number", isEqualTo: MyApp.session)
         .snapshots(includeMetadataChanges: true)) {
       for (var message in snapshot.docs) {
         LoginDrawer.courseMenuDrawer = message.data()['batchid'];
@@ -182,7 +182,7 @@ class _LoginDrawerState extends State<LoginDrawer> {
 
                     for (var message in messages) {
                       ///todo seesion id to messege.id
-                      if (message.id == "+91 1234567890") {
+                      if (message.id == MyApp.session) {
                         final messageSender = message.data()['Courses'];
 
                         final batch = message.data()['batchid'];

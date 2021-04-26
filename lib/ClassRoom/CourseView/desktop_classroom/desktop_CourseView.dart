@@ -167,7 +167,6 @@ class _CoursesViewState extends State<CoursesView> {
   @override
   void initState() {
     getSession();
-    batch_id();
 
     // TODO: implement initState
     super.initState();
@@ -773,7 +772,7 @@ class _CourseListState extends State<CourseList> {
 
                       for (var message in messages) {
                         ///todo LogIn.registerNumber
-                        if (message.id == "+91 1234567890") {
+                        if (message.id == LoginResponsive.registerNumber) {
                           final messageSender = message.data()['Courses'];
                           final batch = message.data()['batchid'];
                           for (var i in messageSender) {

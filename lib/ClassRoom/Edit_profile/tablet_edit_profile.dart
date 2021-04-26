@@ -9,6 +9,7 @@ import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/contry_s
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/date_picker.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/gender_dropdoen_field.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/input_text_field.dart';
+import 'package:flutter_app_newocean/main.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -65,7 +66,7 @@ class _TabletEditProfileState extends State<TabletEditProfile> {
         .collection('new users')
 
         /// MenuBar.stayUser != null ? MenuBar.stayUser : LogIn.registerNumber
-        .doc("+91 1234567890")
+        .doc(MyApp.session)
         .get(); // 8015122373 insted of  LogIn.userNum
     var detailsData = details.data();
 

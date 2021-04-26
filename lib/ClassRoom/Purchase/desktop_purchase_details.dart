@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/main.dart';
 
 class DesktopPurchaseDetails extends StatelessWidget {
   final _firestore = FirebaseFirestore.instance;
@@ -122,7 +123,7 @@ class DesktopPurchaseDetails extends StatelessWidget {
                     ///todo update doc
                     stream: _firestore
                         .collection('new users')
-                        .doc("+91 1234567890")
+                        .doc(MyApp.session)
                         .collection("payment")
                         .snapshots(),
                     // ignore: missing_return

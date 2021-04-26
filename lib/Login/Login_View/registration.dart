@@ -422,6 +422,8 @@ class _RegistrationState extends State<Registration> {
                               await session();
                               locator<NavigationService>().navigateTo(
                                   '/ClassRoom?userNumber=${OTP.userID}&typeOfCourse=My%20Course');
+                              valueController.navebars.value = 'Login';
+                              valueController.userNumber.value = OTP.userID;
                             } else {
                               print('fill again');
                             }

@@ -1,7 +1,7 @@
+import 'package:flutter_app_newocean/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class TabletPurchaseDetails extends StatefulWidget {
   @override
@@ -55,7 +55,7 @@ class _TabletPurchaseDetailsState extends State<TabletPurchaseDetails> {
                     StreamBuilder<QuerySnapshot>(
                       stream: _firestore
                           .collection('new users')
-                          .doc("+91 1234567890")
+                          .doc(MyApp.session)
                           .collection("payment")
                           .snapshots(),
                       // ignore: missing_return

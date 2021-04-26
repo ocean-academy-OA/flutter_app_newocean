@@ -1,3 +1,4 @@
+import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
@@ -83,7 +84,7 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc("+91 1234567890")
+                              .doc(MyApp.session)
                               .collection("specificnotification")
                               .snapshots(),
                           // ignore: missing_return
@@ -115,7 +116,7 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc("+91 1234567890")
+                              .doc(MyApp.session)
                               .collection("notification")
                               .snapshots(),
                           // ignore: missing_return
@@ -147,7 +148,7 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc("+91 1234567890")
+                              .doc(MyApp.session)
                               .collection("Subject Notification")
                               .snapshots(),
                           // ignore: missing_return

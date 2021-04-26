@@ -11,6 +11,7 @@ import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/gender_d
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/input_text_field.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
+import 'package:flutter_app_newocean/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class MobileEditProfile extends StatefulWidget {
@@ -65,7 +66,7 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
         .collection('new users')
 
         ///MenuBar.stayUser != null ? MenuBar.stayUser : LogIn.registerNumber
-        .doc("+91 1234567890")
+        .doc(MyApp.session)
         .get(); // 8015122373 insted of  LogIn.userNum
     var detailsData = details.data();
 

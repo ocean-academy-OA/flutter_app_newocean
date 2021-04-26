@@ -5,6 +5,7 @@ import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
@@ -155,11 +156,6 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                       ],
                     ),
                   ),
-                  IconButton(
-                      icon: Icon(Icons.settings),
-                      onPressed: () {
-                        valueController.navebars.value = 'Home';
-                      }),
                   Container(
                     child: Row(
                       children: [
@@ -178,7 +174,7 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                                 // var id = valueController.userNumber.value != null
                                 //     ? MenuBar.stayUser
                                 //     : LogIn.registerNumber;
-                                if (message.id == '+91 1234567890') {
+                                if (message.id == MyApp.session) {
                                   final profileImage =
                                       message.data()['Profile Picture'];
 
@@ -404,7 +400,7 @@ class _ProfilePictureDbState extends State<ProfilePictureDb> {
             )
           : Icon(
               FontAwesomeIcons.solidUserCircle,
-              size: 60,
+              size: 50,
               color: Colors.white,
             ),
     );
