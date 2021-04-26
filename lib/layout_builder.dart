@@ -54,9 +54,6 @@ class _MainLayoutState extends State<MainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    getSession();
-    print('layout1 ${valueController.navebars.value}');
-
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
         key: scaffoldKey,
