@@ -8,7 +8,7 @@ class LoginEndDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
       mobile: TabAndMobileEndDrawer(),
-      desktop: DesktopEndDrawer(),
+      desktop: TabAndMobileEndDrawer(),
       tablet: TabAndMobileEndDrawer(),
     );
   }

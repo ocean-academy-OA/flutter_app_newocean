@@ -185,7 +185,7 @@ class _CoursesViewState extends State<CoursesView> {
         .get();
     CoursesView.courseEnroll = course.data()["First Name"];
     CoursesView.studentemail = course.data()["E Mail"];
-    print('${CoursesView.courseEnroll}CoursesView.courseEnroll');
+    print('${CoursesView.courseEnroll} CoursesView.courseEnroll');
   }
 
   final valueController = Get.find<ValueListener>();
