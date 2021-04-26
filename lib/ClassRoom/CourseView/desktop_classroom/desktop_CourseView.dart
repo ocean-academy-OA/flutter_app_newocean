@@ -77,7 +77,7 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                         .updateAll((key, value) => widget.menu[key] = false);
                     widget.menu[index] = true;
                   });
-                  scaffoldKey.currentState.openEndDrawer();
+
                   locator<NavigationService>().navigateTo(
                       '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}');
                   // Provider.of<SyllabusView>(context, listen: false)

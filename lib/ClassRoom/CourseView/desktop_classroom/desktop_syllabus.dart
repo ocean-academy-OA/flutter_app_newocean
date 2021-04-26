@@ -38,299 +38,287 @@ class SyllabusList extends StatefulWidget {
 class _SyllabusListState extends State<SyllabusList> {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      // ignore: missing_return
-      builder: (context, contraints) {
-        if (contraints.maxWidth > 1300) {
-          return Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 5,
-                )
-              ],
-            ),
-            height: 200,
-            width: 1300,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 200,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: FractionalOffset.topLeft,
-                      end: FractionalOffset.bottomRight,
-                      colors: [widget.mainColor, widget.secondaryColor],
-                    ),
+    return LayoutBuilder(builder: (context, screenSize) {
+      if (screenSize.minWidth > 951) {
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 5,
+              )
+            ],
+          ),
+          height: 200,
+          width: MediaQuery.of(context).size.width / 1.2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 200,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: FractionalOffset.topLeft,
+                    end: FractionalOffset.bottomRight,
+                    colors: [widget.mainColor, widget.secondaryColor],
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text(
-                          '${widget.hourFormat}:${widget.minuteFormat} ${widget.timing}',
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Text(
+                        '${widget.hourFormat}:${widget.minuteFormat} ${widget.timing}',
+                        style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          '${widget.dayFormat}',
                           style: TextStyle(
-                              fontSize: 22,
+                              height: 0.8,
+                              fontSize: 80,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
                         ),
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            '${widget.dayFormat}',
-                            style: TextStyle(
-                                height: 0.8,
-                                fontSize: 80,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          Text(
-                            '${widget.monthFormatString}',
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 1000,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 800,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Text(
-                              '${widget.title}',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontFamily: 'Roboto',
-                                  inherit: false,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.grey[700]),
-                            ),
-                            Text(
-                              '${widget.subTitle}',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Roboto',
-                                  inherit: false,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey[500]),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Text(
-                                '${widget.duration} Minutes',
-                                style:
-                                    TextStyle(fontSize: 20, color: Colors.grey),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 200,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.video_call_sharp),
-                              iconSize: 50,
-                              color: widget.mainColor,
-                              onPressed: widget.onPressed,
-                            ),
-                            Text(
-                              widget.status,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: widget.mainColor,
-                                  height: 1),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 20,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                    begin: FractionalOffset.topLeft,
-                    end: FractionalOffset.bottomRight,
-                    colors: [widget.secondaryColor, widget.mainColor],
-                  )),
-                ),
-              ],
-            ),
-          );
-        } else if (contraints.maxWidth > 950 && contraints.maxWidth < 1301) {
-          return Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 5,
-                )
-              ],
-            ),
-            height: 200,
-            width: 1100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 180,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: FractionalOffset.topLeft,
-                      end: FractionalOffset.bottomRight,
-                      colors: [widget.mainColor, widget.secondaryColor],
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Text(
-                          '${widget.hourFormat}:${widget.minuteFormat} ${widget.timing}',
+                        Text(
+                          '${widget.monthFormatString}',
                           style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 25,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
-                        ),
-                      ),
-                      Column(
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.8,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      // width: 800,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            '${widget.dayFormat}',
-                            style: TextStyle(
-                                height: 0.8,
-                                fontSize: 80,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
+                          SizedBox(
+                            height: 25,
                           ),
                           Text(
-                            '${widget.monthFormatString}',
+                            '${widget.title}',
                             style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
+                                fontSize: 30,
+                                fontFamily: 'Roboto',
+                                inherit: false,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.grey[700]),
+                          ),
+                          Text(
+                            '${widget.subTitle}',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Roboto',
+                                inherit: false,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey[500]),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Text(
+                              '${widget.duration} Minutes',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.grey),
+                            ),
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: 20,
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 800,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 600,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Text(
-                              '${widget.title}',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontFamily: 'Roboto',
-                                  inherit: false,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.grey[700]),
-                            ),
-                            Text(
-                              '${widget.subTitle}',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Roboto',
-                                  inherit: false,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey[500]),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Text(
-                                '${widget.duration} Minutes',
-                                style:
-                                    TextStyle(fontSize: 20, color: Colors.grey),
-                              ),
-                            )
-                          ],
-                        ),
+                    ),
+                    Container(
+                      // width: 200,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.video_call_sharp),
+                            iconSize: 50,
+                            color: widget.mainColor,
+                            onPressed: widget.onPressed,
+                          ),
+                          Text(
+                            widget.status,
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: widget.mainColor,
+                                height: 1),
+                          )
+                        ],
                       ),
-                      Container(
-                        width: 200,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.video_call_sharp),
-                              iconSize: 50,
-                              color: widget.mainColor,
-                              onPressed: widget.onPressed,
-                            ),
-                            Text(
-                              widget.status,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: widget.mainColor,
-                                  height: 1),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-                Container(
-                  width: 20,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
+              ),
+              Container(
+                width: 20,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  begin: FractionalOffset.topLeft,
+                  end: FractionalOffset.bottomRight,
+                  colors: [widget.secondaryColor, widget.mainColor],
+                )),
+              ),
+            ],
+          ),
+        );
+      } else {
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 5,
+              )
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.all(15),
+                height: 70,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
                     begin: FractionalOffset.topLeft,
                     end: FractionalOffset.bottomRight,
-                    colors: [widget.secondaryColor, widget.mainColor],
-                  )),
+                    colors: [widget.mainColor, widget.secondaryColor],
+                  ),
                 ),
-              ],
-            ),
-          );
-        }
-      },
-    );
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${widget.dayFormat}',
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      '${widget.monthFormatString}',
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Text(
+                      '${widget.hourFormat}:${widget.minuteFormat} ${widget.timing}',
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    Spacer(),
+                    Text(
+                      '${widget.duration} Minutes',
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.8,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      // width: 800,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Text(
+                            '${widget.title}',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontFamily: 'Roboto',
+                                inherit: false,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.grey[700]),
+                          ),
+                          Text(
+                            '${widget.subTitle}',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Roboto',
+                                inherit: false,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey[500]),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      // width: 200,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.video_call_sharp),
+                            iconSize: 50,
+                            color: widget.mainColor,
+                            onPressed: widget.onPressed,
+                          ),
+                          Text(
+                            widget.status,
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: widget.mainColor,
+                                height: 1),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 20,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  begin: FractionalOffset.topLeft,
+                  end: FractionalOffset.bottomRight,
+                  colors: [widget.secondaryColor, widget.mainColor],
+                )),
+              ),
+            ],
+          ),
+        );
+      }
+    });
   }
 }
