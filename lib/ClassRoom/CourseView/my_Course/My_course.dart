@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:get/get.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -16,7 +18,7 @@ class MyCourse extends StatefulWidget {
 
 class _MyCourseState extends State<MyCourse> {
   List<String> subjects = [];
-
+  final valueController = Get.find<ValueListener>();
   @override
   void initState() {
     // TODO: implement initState

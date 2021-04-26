@@ -71,58 +71,64 @@ class _MainLayoutState extends State<MainLayout> {
                   locator<NavigationService>().navigateTo(UpcomingWebinarRoute);
                 },
               ),
-        endDrawer: AllEndDrawer(),
+        endDrawer: valueController.navebars.value == 'Login'
+            ? AllEndDrawer()
+            : SizedBox(),
         extendBodyBehindAppBar: true,
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.desktop
             ? MediaQuery.of(context).size.width < 1240
                 ? AllDrawer()
                 : null
             : AllDrawer(),
-        bottomNavigationBar: MediaQuery.of(context).size.width < 1240 &&
-                valueController.navebars.value == 'Login'
-            ? Container(
-                height: 50,
-                color: Colors.grey,
-                child: Row(
-                  children: [
-                    ClassRoomBottomNavigationBar(
-                      iconName: 'My Course',
-                      icon: Icons.add,
-                      color:
-                          bottom['My Course'] ? Colors.blue[800] : Colors.blue,
-                      onTap: () {
-                        setState(() {
-                          bottom.updateAll((key, value) => false);
-                          bottom['My Course'] = true;
-                        });
-                        locator<NavigationService>().navigateTo(
-                            '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
-                        print(valueController.courseType.value);
-                        valueController.courseType.value = 'My Course';
-                      },
-                    ),
-                    ClassRoomBottomNavigationBar(
-                      iconName: 'All Course',
-                      icon: Icons.add,
-                      color:
-                          bottom['All Course'] ? Colors.blue[800] : Colors.blue,
-                      onTap: () {
-                        setState(() {
-                          bottom.updateAll((key, value) => false);
-                          bottom['All Course'] = true;
-                        });
-                        locator<NavigationService>().navigateTo(
-                            '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
-                        print(valueController.courseType.value);
-                        valueController.courseType.value = 'All Course';
+        bottomNavigationBar: Obx(() {
+          return MediaQuery.of(context).size.width < 1240 &&
+                  valueController.navebars.value == 'Login'
+              ? Container(
+                  height: 50,
+                  color: Colors.grey,
+                  child: Row(
+                    children: [
+                      ClassRoomBottomNavigationBar(
+                        iconName: 'My Course',
+                        icon: Icons.add,
+                        color: bottom['My Course']
+                            ? Colors.blue[800]
+                            : Colors.blue,
+                        onTap: () {
+                          setState(() {
+                            bottom.updateAll((key, value) => false);
+                            bottom['My Course'] = true;
+                          });
+                          locator<NavigationService>().navigateTo(
+                              '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                          print(valueController.courseType.value);
+                          valueController.courseType.value = 'My Course';
+                        },
+                      ),
+                      ClassRoomBottomNavigationBar(
+                        iconName: 'All Course',
+                        icon: Icons.add,
+                        color: bottom['All Course']
+                            ? Colors.blue[800]
+                            : Colors.blue,
+                        onTap: () {
+                          setState(() {
+                            bottom.updateAll((key, value) => false);
+                            bottom['All Course'] = true;
+                          });
+                          locator<NavigationService>().navigateTo(
+                              '/ClassRoom?userNumber=${LoginResponsive.registerNumber}&typeOfCourse=${valueController.courseType.value}');
+                          print(valueController.courseType.value);
+                          valueController.courseType.value = 'All Course';
 
-                        print('tap');
-                      },
-                    ),
-                  ],
-                ),
-              )
-            : SizedBox(),
+                          print('tap');
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              : SizedBox();
+        }),
         body: SafeArea(
           child: Container(
             height: MediaQuery.of(context).size.height,

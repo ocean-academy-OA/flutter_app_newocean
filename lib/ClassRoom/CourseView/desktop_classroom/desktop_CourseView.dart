@@ -7,6 +7,7 @@ import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/my_Course/My_course.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
@@ -76,6 +77,7 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                         .updateAll((key, value) => widget.menu[key] = false);
                     widget.menu[index] = true;
                   });
+                  scaffoldKey.currentState.openEndDrawer();
                   locator<NavigationService>().navigateTo(
                       '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}');
                   // Provider.of<SyllabusView>(context, listen: false)

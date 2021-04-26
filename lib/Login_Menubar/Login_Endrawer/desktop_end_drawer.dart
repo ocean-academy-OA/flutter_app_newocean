@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
+import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Login_Menubar/Login_Endrawer/profile_items.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
@@ -47,34 +49,47 @@ class _DesktopEndDrawerState extends State<DesktopEndDrawer> {
             //height: 300,
             width: 200,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ProfileItems(
+                  textColor: Colors.grey[600],
+                  iconColor: Colors.grey[600],
                   topRadius: 10,
                   icon: Icons.palette,
                   label: 'Edit Profile',
                   onPressed: () {
+                    scaffoldKey.currentState.openDrawer();
                     locator<NavigationService>().navigateTo(
                         "/Profile?id=${LoginResponsive.registerNumber}");
                   },
                 ),
                 ProfileItems(
+                  textColor: Colors.grey[600],
+                  iconColor: Colors.grey[600],
                   icon: Icons.palette,
                   label: 'Certificate',
                   onPressed: () {
+                    scaffoldKey.currentState.openDrawer();
                     locator<NavigationService>().navigateTo(
                         "/Certificate?id=${LoginResponsive.registerNumber}");
                   },
                 ),
                 ProfileItems(
+                  textColor: Colors.grey[600],
+                  iconColor: Colors.grey[600],
                   icon: Icons.palette,
                   label: 'Purchase',
                   onPressed: () {
+                    scaffoldKey.currentState.openDrawer();
                     locator<NavigationService>().navigateTo(
                         "/Purchase?id=${LoginResponsive.registerNumber}");
                   },
                 ),
                 ProfileItems(
+                  textColor: Colors.grey[600],
+                  iconColor: Colors.grey[600],
                   icon: Icons.palette,
+                  bottonRadius: 10,
                   label: 'LogOut',
                   onPressed: () async {
                     SharedPreferences prefs =
@@ -82,6 +97,7 @@ class _DesktopEndDrawerState extends State<DesktopEndDrawer> {
 
                     await prefs.setString('user', null);
                     LoginResponsive.registerNumber = null;
+                    scaffoldKey.currentState.openDrawer();
                     locator<NavigationService>().navigateTo(HomeRoute);
                     valueController.navebars.value = 'Home';
                   },
@@ -91,46 +107,6 @@ class _DesktopEndDrawerState extends State<DesktopEndDrawer> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ProfileItems extends StatelessWidget {
-  double bottonRadius;
-  double topRadius;
-  Function onPressed;
-  IconData icon;
-  String label;
-  ProfileItems(
-      {this.topRadius = 0,
-      this.bottonRadius = 0,
-      this.onPressed,
-      this.icon,
-      this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(
-            top: Radius.circular(topRadius),
-            bottom: Radius.circular(bottonRadius)),
-        color: Colors.white,
-      ),
-      // width: 50,
-      // height: 50,
-      child: FlatButton(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon),
-              SizedBox(width: 10),
-              Text('$label'),
-            ],
-          ),
-          onPressed: onPressed),
     );
   }
 }
