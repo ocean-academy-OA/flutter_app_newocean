@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/contry_states.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/date_picker.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/gender_dropdoen_field.dart';
@@ -66,7 +67,7 @@ class _TabletEditProfileState extends State<TabletEditProfile> {
         .collection('new users')
 
         /// MenuBar.stayUser != null ? MenuBar.stayUser : LogIn.registerNumber
-        .doc(MyApp.session)
+        .doc(LoginResponsive.registerNumber)
         .get(); // 8015122373 insted of  LogIn.userNum
     var detailsData = details.data();
 

@@ -12,14 +12,12 @@ class _AllEndDrawerState extends State<AllEndDrawer> {
   final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      if (valueController.navebars.value == 'Login') {
-        return LoginEndDrawer();
-      } else if (valueController.navebars.value == 'Webinar') {
-        return LoginEndDrawer();
-      } else {
-        return LoginEndDrawer();
-      }
-    });
+    if (valueController.navebars.value == 'Login') {
+      return LoginEndDrawer();
+    } else if (valueController.navebars.value == 'Webinar') {
+      return LoginEndDrawer();
+    } else {
+      return LoginEndDrawer();
+    }
   }
 }

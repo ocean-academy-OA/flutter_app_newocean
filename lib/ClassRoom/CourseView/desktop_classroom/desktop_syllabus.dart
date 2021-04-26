@@ -39,7 +39,7 @@ class _SyllabusListState extends State<SyllabusList> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, screenSize) {
-      if (screenSize.minWidth > 951) {
+      if (screenSize.maxWidth > 951) {
         return Container(
           margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
@@ -183,7 +183,7 @@ class _SyllabusListState extends State<SyllabusList> {
             ],
           ),
         );
-      } else if (screenSize.minWidth > 601) {
+      } else if (screenSize.maxWidth > 601) {
         return Container(
           margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(

@@ -1,3 +1,4 @@
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,7 +62,7 @@ class _MobilePurchaseDetailsState extends State<MobilePurchaseDetails> {
                       ///todo update doc
                       stream: _firestore
                           .collection('new users')
-                          .doc(MyApp.session)
+                          .doc(LoginResponsive.registerNumber)
                           .collection("payment")
                           .snapshots(),
                       // ignore: missing_return

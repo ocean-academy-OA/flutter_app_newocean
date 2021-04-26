@@ -4,6 +4,7 @@ import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Login/Login_View/otp.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
@@ -55,12 +56,7 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
           style: TextStyle(fontSize: 25, color: Colors.white),
         ),
         backgroundColor: Colors.blue,
-        onPressed: () {
-          // Provider.of<Routing>(context, listen: false)
-          //     .updateRouting(widget: User());
-          // Provider.of<MenuBar>(context, listen: false)
-          //     .updateMenu(widget: AppBarWidget());
-        }));
+        onPressed: () {}));
   }
 
   List<FocusedMenuItem> notificationItem = [];
@@ -174,7 +170,8 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                                 // var id = valueController.userNumber.value != null
                                 //     ? MenuBar.stayUser
                                 //     : LogIn.registerNumber;
-                                if (message.id == MyApp.session) {
+                                if (message.id ==
+                                    LoginResponsive.registerNumber) {
                                   final profileImage =
                                       message.data()['Profile Picture'];
 

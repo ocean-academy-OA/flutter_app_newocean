@@ -84,7 +84,7 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc(MyApp.session)
+                              .doc(LoginResponsive.registerNumber)
                               .collection("specificnotification")
                               .snapshots(),
                           // ignore: missing_return
@@ -116,7 +116,7 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc(MyApp.session)
+                              .doc(LoginResponsive.registerNumber)
                               .collection("notification")
                               .snapshots(),
                           // ignore: missing_return
@@ -148,7 +148,7 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc(MyApp.session)
+                              .doc(LoginResponsive.registerNumber)
                               .collection("Subject Notification")
                               .snapshots(),
                           // ignore: missing_return

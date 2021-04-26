@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/main.dart';
 
 class DesktopPurchaseDetails extends StatelessWidget {
@@ -123,7 +124,7 @@ class DesktopPurchaseDetails extends StatelessWidget {
                     ///todo update doc
                     stream: _firestore
                         .collection('new users')
-                        .doc(MyApp.session)
+                        .doc(LoginResponsive.registerNumber)
                         .collection("payment")
                         .snapshots(),
                     // ignore: missing_return

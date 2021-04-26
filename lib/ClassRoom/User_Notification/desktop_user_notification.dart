@@ -85,7 +85,7 @@ class _DesktopUserNotificationState extends State<DesktopUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc(MyApp.session)
+                              .doc(LoginResponsive.registerNumber)
                               .collection("specificnotification")
                               .snapshots(),
                           // ignore: missing_return
@@ -117,7 +117,7 @@ class _DesktopUserNotificationState extends State<DesktopUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc(MyApp.session)
+                              .doc(LoginResponsive.registerNumber)
                               .collection("notification")
                               .snapshots(),
                           // ignore: missing_return
@@ -149,7 +149,7 @@ class _DesktopUserNotificationState extends State<DesktopUserNotification> {
                               .collection('new users')
 
                               ///LogIn.registerNumber
-                              .doc(MyApp.session)
+                              .doc(LoginResponsive.registerNumber)
                               .collection("Subject Notification")
                               .snapshots(),
                           // ignore: missing_return

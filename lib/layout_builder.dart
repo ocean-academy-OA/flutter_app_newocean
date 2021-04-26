@@ -63,9 +63,13 @@ class _MainLayoutState extends State<MainLayout> {
                   locator<NavigationService>().navigateTo(UpcomingWebinarRoute);
                 },
               ),
-        endDrawer: valueController.navebars.value == 'Login'
-            ? AllEndDrawer()
-            : SizedBox(),
+        endDrawer: Obx(() {
+          if (valueController.navebars.value == 'Login') {
+            return AllEndDrawer();
+          } else {
+            return SizedBox();
+          }
+        }),
         extendBodyBehindAppBar: true,
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.desktop
             ? MediaQuery.of(context).size.width < 1240

@@ -83,14 +83,35 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
                   icon: Icons.bar_chart,
                   text: 'Career',
                   naviagationPath: CareerRoute),
-              TextButton(
-                child: Text('Login'),
-                onPressed: () {
-                  locator<NavigationService>().navigateTo(LoginRoute);
-                  valueController.navebars.value = "Login";
-                  scaffoldKey.currentState.openEndDrawer();
-                },
-              )
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.login,
+                          color: Colors.blue,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    locator<NavigationService>().navigateTo(LoginRoute);
+
+                    ///todo named parameter routing
+                  },
+                ),
+              ),
             ],
           )),
           // Expanded(
@@ -158,25 +179,4 @@ class _MenuBarDrawerState extends State<MenuBarDrawer>
       ),
     );
   }
-
-  // GestureDetector menuItem({text, Widget widget}) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       setState(() {
-  //         menu.updateAll((key, value) => menu[key] = false);
-  //         menu[text] = true;
-  //       });
-  //     },
-  //     child: Text(
-  //       text,
-  //       style: TextStyle(
-  //         color: menu[text] == true ? Colors.blue : Color(0xFF155575),
-  //         //color: Colors.red,
-  //         fontSize: 15.0,
-  //         fontWeight: FontWeight.bold,
-  //         //fontFamily: kfontname
-  //       ),
-  //     ),
-  //   );
-  // }
 }

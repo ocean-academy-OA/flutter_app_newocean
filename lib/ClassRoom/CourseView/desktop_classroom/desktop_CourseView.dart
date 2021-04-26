@@ -357,7 +357,8 @@ class _ContentWidgetState extends State<ContentWidget> {
         // alignment: Alignment.centerLeft,
         //margin: const EdgeInsets.all(15.0),
         padding: EdgeInsets.only(top: 0, left: 40, right: 40),
-        width: 1300,
+        width: MediaQuery.of(context).size.width,
+
         height: MediaQuery.of(context).size.height,
 
         child: SingleChildScrollView(
@@ -371,21 +372,15 @@ class _ContentWidgetState extends State<ContentWidget> {
                   SizedBox(
                     height: 30.0,
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        FontAwesomeIcons.smileBeam,
-                        color: Colors.yellow[900],
-                        size: 30,
-                      ),
-                      Text(
-                        " Hi ${CoursesView.courseEnroll},you are enroll in ${widget.course} course",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      "Hi ${CoursesView.courseEnroll},you are enroll in ${widget.course} course",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   SizedBox(
                     height: 30.0,

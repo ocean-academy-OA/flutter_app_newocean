@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
@@ -84,7 +82,7 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
           ProfileItems(
             textColor: Colors.grey[600],
             iconColor: Colors.grey[600],
-            icon: Icons.palette,
+            icon: Icons.book_rounded,
             label: 'Certificate',
             onPressed: () {
               scaffoldKey.currentState.openDrawer();
@@ -95,7 +93,7 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
           ProfileItems(
             textColor: Colors.grey[600],
             iconColor: Colors.grey[600],
-            icon: Icons.palette,
+            icon: Icons.badge,
             label: 'Purchase',
             onPressed: () {
               scaffoldKey.currentState.openDrawer();
@@ -106,7 +104,7 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
           ProfileItems(
             textColor: Colors.grey[600],
             iconColor: Colors.grey[600],
-            icon: Icons.palette,
+            icon: Icons.logout,
             label: 'LogOut',
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
