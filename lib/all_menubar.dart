@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login_Menubar/login_drawer.dart';
 import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
+import 'package:flutter_app_newocean/Webinar/wbinar_end_drawer.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +17,8 @@ class _AllDrawerState extends State<AllDrawer> {
     if (valueController.navebars.value == 'Login') {
       return LoginDrawer();
     } else if (valueController.navebars.value == 'Home') {
+      return MenuBarDrawer();
+    } else if (valueController.navebars.value == 'Webinar') {
       return MenuBarDrawer();
     }
   }

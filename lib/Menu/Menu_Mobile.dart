@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
+import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import '../route/navigation_locator.dart';
 import '../route/navigation_service.dart';
 import '../route/routeNames.dart';
@@ -12,6 +13,7 @@ class MenuBarMobile extends StatefulWidget {
 class _MenuBarMobileState extends State<MenuBarMobile> {
   @override
   Widget build(BuildContext context) {
+    final state = RootDrawer.of(context);
     return AppBar(
       backgroundColor: Color(0xFFECF5FF),
       leading: IconButton(
@@ -21,7 +23,7 @@ class _MenuBarMobileState extends State<MenuBarMobile> {
         ),
         // key: widget.scaffoldKey,
         onPressed: () {
-          scaffoldKey.currentState.openDrawer();
+          RootScaffold.openDrawer(context);
         },
       ),
       centerTitle: true,

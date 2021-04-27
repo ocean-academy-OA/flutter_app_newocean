@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login_Menubar/Login_Endrawer/profile_items.dart';
+import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
@@ -33,6 +34,7 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final state = RootDrawer.of(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(0),
@@ -74,9 +76,9 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
             icon: Icons.palette,
             label: 'Edit Profile',
             onPressed: () {
-              scaffoldKey.currentState.openDrawer();
               locator<NavigationService>()
                   .navigateTo("/Profile?id=${LoginResponsive.registerNumber}");
+              state.close();
             },
           ),
           ProfileItems(
@@ -85,9 +87,9 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
             icon: Icons.book_rounded,
             label: 'Certificate',
             onPressed: () {
-              scaffoldKey.currentState.openDrawer();
               locator<NavigationService>().navigateTo(
                   "/Certificate?id=${LoginResponsive.registerNumber}");
+              state.close();
             },
           ),
           ProfileItems(
@@ -96,9 +98,9 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
             icon: Icons.badge,
             label: 'Purchase',
             onPressed: () {
-              scaffoldKey.currentState.openDrawer();
               locator<NavigationService>()
                   .navigateTo("/Purchase?id=${LoginResponsive.registerNumber}");
+              state.close();
             },
           ),
           ProfileItems(
@@ -111,9 +113,10 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
 
               await prefs.setString('user', null);
               LoginResponsive.registerNumber = null;
-              scaffoldKey.currentState.openDrawer();
+
               locator<NavigationService>().navigateTo(HomeRoute);
               valueController.navebars.value = 'Home';
+              state.close();
             },
           ),
         ],

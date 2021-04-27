@@ -2,10 +2,13 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -17,23 +20,10 @@ class MobileWebinarCard extends StatefulWidget {
 }
 
 class _MobileWebinarCardState extends State<MobileWebinarCard> {
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Upcoming Webinars'),
-        leading: BackButton(),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.home),
-              color: Colors.white,
-              onPressed: () {
-                // Navigator.push(
-                //     context, MaterialPageRoute(builder: (context) => Home()));
-              })
-        ],
-      ),
       body: SingleChildScrollView(
         child: StreamBuilder<QuerySnapshot>(
           stream: _firestore.collection('Webinar').snapshots(),
@@ -146,8 +136,15 @@ class _MobileWebinarCardState extends State<MobileWebinarCard> {
                   mainTitle: mainTitle,
                   time: timing.toString(),
                   onPressed: () {
-                    locator<NavigationService>()
-                        .navigateTo('MobileWebinarJoin?id=$courseName');
+                    valueController.navebars.value = 'Webinar';
+                    valueController.isFlashNotification.value = false;
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResponsiveWebinar(
+                                  topic: courseName,
+                                )));
                     // Navigator.push(
                     //     context,
                     //     MaterialPageRoute(

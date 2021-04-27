@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
@@ -33,6 +34,7 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final state = RootDrawer.of(context);
     return ListView.builder(
         shrinkWrap: true,
         itemCount: widget.courseList.length,
@@ -67,6 +69,7 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                   });
                   locator<NavigationService>().navigateTo(
                       '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}');
+                  state.close();
                 },
               ),
             ),
@@ -122,7 +125,7 @@ class _LoginDrawerState extends State<LoginDrawer> {
   @override
   Widget build(BuildContext context) {
     Map menu = {};
-
+    final state = RootDrawer.of(context);
     Map<String, String> courses_icon = {};
     return Container(
       width: 250,

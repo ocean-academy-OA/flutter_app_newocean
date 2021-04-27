@@ -3,6 +3,7 @@ import 'package:flutter_app_newocean/ClassRoom/CourseView/bottom_navigation.dart
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login_Menubar/loginEndDrawer.dart';
+import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import 'package:flutter_app_newocean/Webinar/flash_notification.dart';
 import 'package:flutter_app_newocean/all_end_drawer.dart';
 import 'package:flutter_app_newocean/all_menubar.dart';
@@ -71,6 +72,7 @@ class _MainLayoutState extends State<MainLayout> {
           }
         }),
         extendBodyBehindAppBar: true,
+        // drawer: MenuBarDrawer(),
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.desktop
             ? MediaQuery.of(context).size.width < 1240
                 ? AllDrawer()
@@ -149,8 +151,9 @@ class _MainLayoutState extends State<MainLayout> {
                 // ResponsiveLoginMenu(),
                 sizingInformation.deviceScreenType == DeviceScreenType.desktop
                     ? SizedBox()
-                    : valueController.isFlashNotification.value
-                        ? Dismissible(
+                    : Obx(() {
+                        if (valueController.isFlashNotification.value) {
+                          return Dismissible(
                             key: Key('webinar'),
                             background: Container(
                               color: Colors.blue,
@@ -171,6 +174,8 @@ class _MainLayoutState extends State<MainLayout> {
                                 icon: Icon(Icons.video_collection_outlined),
                                 color: Colors.red,
                                 onPressed: () {
+                                  valueController.isFlashNotification.value =
+                                      false;
                                   locator<NavigationService>()
                                       .navigateTo(UpcomingWebinarRoute);
                                 },
@@ -183,8 +188,12 @@ class _MainLayoutState extends State<MainLayout> {
                             onDismissed: (deirection) {
                               valueController.isFlashNotification.value = false;
                             },
-                          )
-                        : SizedBox(),
+                          );
+                        } else {
+                          return SizedBox();
+                        }
+                      }),
+
                 Expanded(child: widget.child),
               ],
             ),

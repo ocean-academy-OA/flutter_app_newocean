@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
@@ -142,6 +143,7 @@ class _WebinarCardState extends State<WebinarCard> {
                         date: date.toString(),
                         time: timing.toString(),
                         onPressed: () {
+                          valueController.isFlashNotification.value = false;
                           valueController.navebars.value = 'Webinar';
                           locator<NavigationService>()
                               .navigateTo('MobileWebinarJoin?id=$courseName');
@@ -180,7 +182,7 @@ class _WebinarCardState extends State<WebinarCard> {
                     );
                   }
                 },
-              ),
+              )
             ],
           ),
         ),

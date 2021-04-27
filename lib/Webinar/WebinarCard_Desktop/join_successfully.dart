@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class JoinSuccessfully extends StatefulWidget {
@@ -14,6 +16,7 @@ class JoinSuccessfully extends StatefulWidget {
 }
 
 class _JoinSuccessfullyState extends State<JoinSuccessfully> {
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +68,7 @@ class _JoinSuccessfullyState extends State<JoinSuccessfully> {
                       borderRadius: BorderRadius.circular(100),
                       side: BorderSide(width: 2, color: Colors.white)),
                   onPressed: () {
+                    valueController.isFlashNotification.value = true;
                     locator<NavigationService>().navigateTo(LoginRoute);
                   },
                 ),
@@ -132,6 +136,8 @@ class _JoinSuccessfullyState extends State<JoinSuccessfully> {
                         ),
                         color: Colors.white,
                         onPressed: () {
+                          valueController.navebars.value = 'Home';
+                          valueController.isFlashNotification.value = true;
                           locator<NavigationService>().navigateTo(HomeRoute);
 
                           // Provider.of<MenuBar>(context, listen: false)

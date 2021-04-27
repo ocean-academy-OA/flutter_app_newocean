@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login_Menubar/loginEndDrawer.dart';
+import 'package:flutter_app_newocean/Webinar/wbinar_end_drawer.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
 
@@ -15,9 +16,9 @@ class _AllEndDrawerState extends State<AllEndDrawer> {
     if (valueController.navebars.value == 'Login') {
       return LoginEndDrawer();
     } else if (valueController.navebars.value == 'Webinar') {
-      return LoginEndDrawer();
+      return WebinarEndDrawer();
     } else {
-      return LoginEndDrawer();
+      return SizedBox();
     }
   }
 }

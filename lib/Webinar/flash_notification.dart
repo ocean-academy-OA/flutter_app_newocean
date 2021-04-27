@@ -388,9 +388,7 @@ class _FlashDbState extends State<FlashDb> {
             height: 40,
             color: Colors.white,
             onPressed: () {
-              setState(() {
-                // Navbar.isNotification = false;
-              });
+              valueController.isFlashNotification.value = false;
               valueController.navebars.value = 'Webinar';
 
               locator<NavigationService>()

@@ -77,15 +77,6 @@ class _MobileSingleWebinarScreenState extends State<MobileSingleWebinarScreen> {
   }
 
   @override
-  final valueController = Get.find<ValueListener>();
-
-  void initState() {
-    // TODO: implement initState
-    valueController.navebars.value = 'Webinar';
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
       child: SingleChildScrollView(
@@ -415,8 +406,8 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
 
   @override
   void initState() {
+    super.initState();
     print('${widget.webinarTime} jjjjjjjjjjjjjjjjjjj');
-
     year = MobileWebinarCard.timing[widget.course]['Year'];
     day = MobileWebinarCard.timing[widget.course]['Day'];
     hours = MobileWebinarCard.timing[widget.course]['Hours'];
@@ -426,8 +417,6 @@ class _SingleWebinarDBState extends State<SingleWebinarDB> {
     month = MobileWebinarCard.timing[widget.course]['Month'];
     dayFormat = MobileWebinarCard.timing[widget.course]['DayFormat'];
     toDayFormat = MobileWebinarCard.timing[widget.course]['To DayFormat'];
-    // TODO: implement initState
-    super.initState();
     widget._videoController =
         VideoPlayerController.network(widget.webinarVideo);
     widget._initializeVideoPlayerFuture = widget._videoController.initialize();
