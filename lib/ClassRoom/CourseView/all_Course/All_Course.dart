@@ -207,7 +207,8 @@ class _AllCourseDbState extends State<AllCourseDb> {
                     "${widget.coursename} full package course | ${widget.trainername} | Ocean Academy",
                     style: TextStyle(
                       fontSize: 17.0,
-                      color: Colors.black87,
+                      color: Colors.black54,
+                      fontFamily: "Gilroy",
                     ),
                   ),
                 ),

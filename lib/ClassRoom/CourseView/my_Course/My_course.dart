@@ -184,7 +184,7 @@ class _MyCourseDbState extends State<MyCourseDb> {
                     "${widget.coursename} full package course | ${widget.trainername} | Ocean Academy",
                     style: TextStyle(
                       fontSize: 17.0,
-                      color: Colors.black87,
+                      color: Colors.black54,
                       fontFamily: "Gilroy",
                     ),
                   ),
@@ -302,7 +302,7 @@ class _MyCourseDbState extends State<MyCourseDb> {
                           'MORE INFO',
                           style: TextStyle(
                             color: Colors.blue,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w400,
                             fontFamily: "Gilroy",
                           ),
                         ))
