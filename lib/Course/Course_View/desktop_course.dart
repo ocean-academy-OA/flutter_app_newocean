@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/switch_button.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/offline_course_card.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:intl/intl.dart';
@@ -17,160 +18,176 @@ class DesktopCourse extends StatefulWidget {
 class _DesktopCourseState extends State<DesktopCourse> {
   bool isOnline = false;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    menu.updateAll((key, value) => menu[key] = false);
+    menu['Courses'] = true;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SwitchButton(
-                closeChild: Container(
-                  width: 275,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Online',
-                        style: TextStyle(fontSize: 30, color: Colors.white),
-                      ),
-                    ],
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/oa_bg.png'),
+                repeat: ImageRepeat.repeatY)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SwitchButton(
+                  closeChild: Container(
+                    width: 275,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Online',
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                openChild: Container(
-                  width: 300,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Offline',
-                        style: TextStyle(fontSize: 30, color: Colors.white),
-                      ),
-                    ],
+                  openChild: Container(
+                    width: 300,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Offline',
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                sliderChild: isOnline
-                    ? Icon(
-                        Icons.arrow_left,
-                        size: 45,
-                      )
-                    : Icon(
-                        Icons.arrow_right,
-                        size: 45,
-                      ),
-                open: isOnline,
-                onChanged: (value) {
-                  setState(() {
-                    isOnline = value;
-                  });
-                },
-              ),
-            ],
-          ),
-          !isOnline
-              ? StreamBuilder<QuerySnapshot>(
-                  stream: _firestore.collection('course').snapshots(),
-                  // ignore: missing_return
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Text("Loading...");
-                    } else {
-                      final messages = snapshot.data.docs;
-
-                      List<OnlineCourseCard> messageBubbles = [];
-                      for (var message in messages) {
-                        final messageText = message.data()['trainername'];
-                        final messageSender = message.data()['coursename'];
-                        final messageDuration = message.data()['duration'];
-                        // final messageTime = message.data()['time'];
-                        // final messageDate = message.data()['date'];
-                        final messageImage = message.data()['img'];
-                        final messageDescription =
-                            message.data()['coursedescription'];
-                        final messageBatchid = message.data()['batchid'];
-                        final timeStamp = message.data()['date1'];
-
-                        String monthFormat;
-                        String dayTime;
-                        int dayFormat;
-                        int hourFormat;
-                        int minuteFormat;
-
-                        var month = DateFormat('MMMM');
-                        var day = DateFormat('d');
-                        var hour = DateFormat('hh');
-                        var minute = DateFormat('mm');
-                        var daytime = DateFormat('a');
-
-                        monthFormat = month.format(timeStamp.toDate());
-                        dayFormat = int.parse(day.format(timeStamp.toDate()));
-                        hourFormat = int.parse(hour.format(timeStamp.toDate()));
-                        minuteFormat =
-                            int.parse(minute.format(timeStamp.toDate()));
-                        dayTime = daytime.format(timeStamp.toDate());
-
-                        final messageBubble = OnlineCourseCard(
-                          trainername: messageText,
-                          coursename: messageSender,
-                          duration: messageDuration,
-                          time: '$hourFormat:$minuteFormat $dayTime',
-                          date: '$dayFormat $monthFormat',
-                          image: messageImage,
-                          description: messageDescription,
-                          batchid: messageBatchid,
-                          onPressed: () {
-                            setState(() {
-                              OnlineCourseCard.visiblity = true;
-                            });
-                            print(messageSender);
-                            locator<NavigationService>().navigateTo(
-                                'CourseDetails?online=$messageSender&batchID=$messageBatchid&trainer=$messageText&description=$messageDescription');
-                          },
-                        );
-                        // Text('$messageText from $messageSender');
-                        messageBubbles.add(messageBubble);
-                      }
-
-                      return Wrap(
-                        alignment: WrapAlignment.center,
-                        children: messageBubbles,
-                      );
-                    }
-                  },
-                )
-              : StreamBuilder<QuerySnapshot>(
-                  stream: _firestore.collection('offline_course').snapshots(),
-                  // ignore: missing_return
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Text("Loading...");
-                    } else {
-                      final messages = snapshot.data.docs;
-
-                      List<OfflineCourseCard> offlineCourse = [];
-                      for (var message in messages) {
-                        final messageSender = message.data()['coursename'];
-                        final messagePdflink = message.data()['pdflink'];
-                        final messageImage = message.data()['img'];
-
-                        final messageCourse = OfflineCourseCard(
-                          coursename: messageSender,
-                          pdfLink: messagePdflink,
-                          image: messageImage,
-                        );
-                        // Text('$messageText from $messageSender');
-                        offlineCourse.add(messageCourse);
-                      }
-
-                      return Wrap(
-                        alignment: WrapAlignment.center,
-                        children: offlineCourse,
-                      );
-                    }
+                  sliderChild: isOnline
+                      ? Icon(
+                          Icons.arrow_left,
+                          size: 45,
+                        )
+                      : Icon(
+                          Icons.arrow_right,
+                          size: 45,
+                        ),
+                  open: isOnline,
+                  onChanged: (value) {
+                    setState(() {
+                      isOnline = value;
+                    });
                   },
                 ),
-        ],
+              ],
+            ),
+            !isOnline
+                ? StreamBuilder<QuerySnapshot>(
+                    stream: _firestore.collection('course').snapshots(),
+                    // ignore: missing_return
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Text("Loading...");
+                      } else {
+                        final messages = snapshot.data.docs;
+
+                        List<OnlineCourseCard> messageBubbles = [];
+                        for (var message in messages) {
+                          final messageText = message.data()['trainername'];
+                          final messageSender = message.data()['coursename'];
+                          final messageDuration = message.data()['duration'];
+                          // final messageTime = message.data()['time'];
+                          // final messageDate = message.data()['date'];
+                          final messageImage = message.data()['img'];
+                          final messageDescription =
+                              message.data()['coursedescription'];
+                          final messageBatchid = message.data()['batchid'];
+                          final timeStamp = message.data()['date1'];
+
+                          String monthFormat;
+                          String dayTime;
+                          int dayFormat;
+                          int hourFormat;
+                          int minuteFormat;
+
+                          var month = DateFormat('MMMM');
+                          var day = DateFormat('d');
+                          var hour = DateFormat('hh');
+                          var minute = DateFormat('mm');
+                          var daytime = DateFormat('a');
+
+                          monthFormat = month.format(timeStamp.toDate());
+                          dayFormat = int.parse(day.format(timeStamp.toDate()));
+                          hourFormat =
+                              int.parse(hour.format(timeStamp.toDate()));
+                          minuteFormat =
+                              int.parse(minute.format(timeStamp.toDate()));
+                          dayTime = daytime.format(timeStamp.toDate());
+
+                          final messageBubble = OnlineCourseCard(
+                            trainername: messageText,
+                            coursename: messageSender,
+                            duration: messageDuration,
+                            time: '$hourFormat:$minuteFormat $dayTime',
+                            date: '$dayFormat $monthFormat',
+                            image: messageImage,
+                            description: messageDescription,
+                            batchid: messageBatchid,
+                            onPressed: () {
+                              setState(() {
+                                OnlineCourseCard.visiblity = true;
+                              });
+                              print(messageSender);
+                              locator<NavigationService>().navigateTo(
+                                  'CourseDetails?online=$messageSender&batchID=$messageBatchid&trainer=$messageText&description=$messageDescription');
+                            },
+                          );
+                          // Text('$messageText from $messageSender');
+                          messageBubbles.add(messageBubble);
+                        }
+
+                        return Wrap(
+                          alignment: WrapAlignment.center,
+                          children: messageBubbles,
+                        );
+                      }
+                    },
+                  )
+                : StreamBuilder<QuerySnapshot>(
+                    stream: _firestore.collection('offline_course').snapshots(),
+                    // ignore: missing_return
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Text("Loading...");
+                      } else {
+                        final messages = snapshot.data.docs;
+
+                        List<OfflineCourseCard> offlineCourse = [];
+                        for (var message in messages) {
+                          final messageSender = message.data()['coursename'];
+                          final messagePdflink = message.data()['pdflink'];
+                          final messageImage = message.data()['img'];
+
+                          final messageCourse = OfflineCourseCard(
+                            coursename: messageSender,
+                            pdfLink: messagePdflink,
+                            image: messageImage,
+                          );
+                          // Text('$messageText from $messageSender');
+                          offlineCourse.add(messageCourse);
+                        }
+
+                        return Wrap(
+                          alignment: WrapAlignment.center,
+                          children: offlineCourse,
+                        );
+                      }
+                    },
+                  ),
+          ],
+        ),
       ),
     );
   }

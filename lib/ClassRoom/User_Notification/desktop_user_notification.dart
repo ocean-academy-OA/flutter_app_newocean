@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 
 class DesktopUserNotification extends StatefulWidget {
   @override
@@ -59,6 +60,7 @@ class _DesktopUserNotificationState extends State<DesktopUserNotification> {
                         });
 
                         ///todo Navigation
+                        Get.back();
                         // Provider.of<Routing>(context, listen: false)
                         //     .updateRouting(widget: CoursesView());
                       },

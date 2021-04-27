@@ -309,138 +309,154 @@ class _SyllabusListState extends State<SyllabusList> {
           ),
         );
       } else {
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 5,
-              )
-            ],
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.all(15),
-                height: 70,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: FractionalOffset.topLeft,
-                    end: FractionalOffset.bottomRight,
-                    colors: [widget.mainColor, widget.secondaryColor],
+        return Column(
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 40),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 5,
+                  )
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(15),
+                    height: 70,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: FractionalOffset.topLeft,
+                        end: FractionalOffset.bottomRight,
+                        colors: [widget.mainColor, widget.secondaryColor],
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${widget.dayFormat}',
+                          style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '${widget.monthFormatString}',
+                          style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        Text(
+                          '  |  ',
+                          style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        Text(
+                          '${widget.hourFormat}:${widget.minuteFormat} ${widget.timing}',
+                          style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${widget.title}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 23,
+                                  fontFamily: 'Roboto',
+                                  inherit: false,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.grey[700]),
+                            ),
+                            Text(
+                              '${widget.subTitle}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Roboto',
+                                  inherit: false,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.grey[500]),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.video_call_sharp),
+                              iconSize: 40,
+                              color: widget.mainColor,
+                              onPressed: widget.onPressed,
+                            ),
+                            Text(
+                              widget.status,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: widget.mainColor,
+                                  height: 1),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                      begin: FractionalOffset.topLeft,
+                      end: FractionalOffset.bottomRight,
+                      colors: [widget.secondaryColor, widget.mainColor],
+                    )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${widget.duration} Minutes',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey[400],
+                    width: 0.8,
                   ),
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${widget.dayFormat}',
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      '${widget.monthFormatString}',
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    Text(
-                      '  |  ',
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    Text(
-                      '${widget.hourFormat}:${widget.minuteFormat} ${widget.timing}',
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ],
-                ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${widget.title}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontFamily: 'Roboto',
-                              inherit: false,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.grey[700]),
-                        ),
-                        Text(
-                          '${widget.subTitle}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Roboto',
-                              inherit: false,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.grey[500]),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.video_call_sharp),
-                          iconSize: 40,
-                          color: widget.mainColor,
-                          onPressed: widget.onPressed,
-                        ),
-                        Text(
-                          widget.status,
-                          style: TextStyle(
-                              fontSize: 20, color: widget.mainColor, height: 1),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  begin: FractionalOffset.topLeft,
-                  end: FractionalOffset.bottomRight,
-                  colors: [widget.secondaryColor, widget.mainColor],
-                )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${widget.duration} Minutes',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            )
+          ],
         );
       }
     });

@@ -232,35 +232,6 @@ class _TabletLoginMenuState extends State<TabletLoginMenu> {
                             ),
                           ),
                         ),
-                        // MaterialButton(
-                        //   padding: EdgeInsets.all(10.0),
-                        //   child: Icon(
-                        //     Icons.notifications_none_outlined,
-                        //     color: Colors.white,
-                        //     size: 50.0,
-                        //   ),
-                        //   minWidth: 10.0,
-                        //   hoverColor: Colors.white10,
-                        //   key: notificationKey,
-                        //   shape: RoundedRectangleBorder(
-                        //       borderRadius:
-                        //           BorderRadius.all(Radius.circular(600.0))),
-                        //   onPressed: true
-                        //       ? popupMenuButton
-                        //       : () {
-                        //           setState(() {
-                        //             ContentWidget.isVisible =
-                        //                 !ContentWidget.isVisible;
-                        //             ContentWidget.isShow = false;
-                        //           });
-                        //           Provider.of<Routing>(context, listen: false)
-                        //               .updateRouting(widget: CoursesView());
-                        //           Provider.of<UserProfiles>(context,
-                        //                   listen: false)
-                        //               .updateUser(
-                        //                   routing: Notification_onclick());
-                        //         },
-                        // ),
                       ],
                     ),
                   ),

@@ -91,7 +91,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                     '${widget.course} Certificate Development Course',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -113,7 +113,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -124,7 +124,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                             Icon(
                               Icons.access_time_outlined,
                               color: Colors.white,
-                              size: 25.0,
+                              size: 23.0,
                             ),
                             SizedBox(
                               width: 5.0,
@@ -164,7 +164,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                             Icon(
                               FontAwesomeIcons.video,
                               color: Colors.white,
-                              size: 25.0,
+                              size: 23.0,
                             ),
                             SizedBox(
                               width: 5.0,
@@ -345,7 +345,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                                       child: Text(
                                         messageContent,
                                         style: TextStyle(
-                                          fontSize: 20.0,
+                                          fontSize: 18.0,
                                         ),
                                       ),
                                     ),

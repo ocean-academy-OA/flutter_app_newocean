@@ -187,9 +187,9 @@ class _MobileRazorPayState extends State<MobileRazorPay> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: EdgeInsets.symmetric(horizontal: 10),
               height: MediaQuery.of(context).size.height / 1.4,
-              width: MediaQuery.of(context).size.width / 1.5,
+              width: MediaQuery.of(context).size.width / 1.2,
               decoration: BoxDecoration(color: Colors.white, boxShadow: [
                 BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6),
               ]),

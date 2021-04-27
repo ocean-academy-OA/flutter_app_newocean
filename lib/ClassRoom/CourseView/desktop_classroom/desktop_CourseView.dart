@@ -326,14 +326,14 @@ class ContentWidget extends StatefulWidget {
 }
 
 class _ContentWidgetState extends State<ContentWidget> {
-  String description;
-  String trainername;
+  // String description;
+  // String trainername;
 
   userCoursesName() async {
     var course =
         await _firestore.collection("course").doc(widget.batchid).get();
-    description = course.data()["coursedescription"];
-    trainername = course.data()["trainername"];
+    widget.description = course.data()["coursedescription"];
+    widget.trainername = course.data()["trainername"];
   }
 
   var time;
@@ -412,7 +412,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                               ],
                             ),
                             padding: EdgeInsets.symmetric(
-                                horizontal: 35.0, vertical: 17.0),
+                                horizontal: 20.0, vertical: 17.0),
                             color: Colors.lightBlue,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
@@ -420,6 +420,9 @@ class _ContentWidgetState extends State<ContentWidget> {
                             elevation: 0,
                             onPressed: () {
                               setState(() {
+                                print('course ${widget.course}');
+                                print('course ${widget.description}');
+                                print('course ${widget.trainername}');
                                 OnlineCourseCard.visiblity = false;
                               });
                               locator<NavigationService>().navigateTo(

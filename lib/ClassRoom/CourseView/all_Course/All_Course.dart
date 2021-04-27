@@ -164,7 +164,7 @@ class _AllCourseDbState extends State<AllCourseDb> {
       child: Container(
         margin: EdgeInsets.all(35.0),
         //padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-        height: 350.0,
+        height: 300.0,
         width: 343.0,
         decoration: BoxDecoration(
             color: Colors.white,
@@ -179,14 +179,14 @@ class _AllCourseDbState extends State<AllCourseDb> {
             borderRadius: BorderRadius.circular(15.0)),
         child: Column(
           children: [
-            SizedBox(
-              height: 5,
-            ),
+            // SizedBox(
+            //   height: 5,
+            // ),
             MouseRegion(
               //cursor: SystemMouseCursors.click,
               child: Container(
-                width: 330,
-                height: 200,
+                width: 300,
+                height: 160,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Image(
@@ -202,23 +202,23 @@ class _AllCourseDbState extends State<AllCourseDb> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Text(
                     "${widget.coursename} full package course | ${widget.trainername} | Ocean Academy",
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 17.0,
                       color: Colors.black87,
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FlatButton(
                         hoverColor: Colors.blue[50],
                         height: 45,
-                        minWidth: 300,
+                        minWidth: 250,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1),
                           side: BorderSide(color: Colors.blue, width: 1),
@@ -239,10 +239,12 @@ class _AllCourseDbState extends State<AllCourseDb> {
                               'CourseDetails?online=${widget.coursename}&batchID=${widget.batchid}&trainer=${widget.trainername}&description=${widget.description}');
                         },
                         child: Text(
-                          'MORE INFO',
+                          'BUY NOW',
                           style: TextStyle(
-                            color: Colors.black,
+                            letterSpacing: 1,
+                            color: Colors.blue,
                             fontWeight: FontWeight.w400,
+                            fontFamily: "Gilroy",
                           ),
                         ))
 

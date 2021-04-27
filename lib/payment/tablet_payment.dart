@@ -187,8 +187,8 @@ class _TabletRazorPayState extends State<TabletRazorPay> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            height: MediaQuery.of(context).size.height / 1.8,
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            height: MediaQuery.of(context).size.height / 1.4,
             width: 400,
             decoration: BoxDecoration(color: Colors.white, boxShadow: [
               BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6),
