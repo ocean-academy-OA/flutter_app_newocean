@@ -207,7 +207,7 @@ class _MobileLoginState extends State<MobileLogin> {
                   RawMaterialButton(
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Color(0xff014965),
+                            color: Colors.blue,
                             borderRadius: BorderRadius.circular(5.0)),
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(vertical: 15.0),
