@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
@@ -36,12 +37,54 @@ class _MobileWebinarMenubarState extends State<MobileWebinarMenubar> {
           ),
           Row(
             children: [
-              IconButton(
-                  icon: Icon(Icons.phone),
-                  color: Colors.blue,
-                  onPressed: () {
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () {
+                    valueController.isFlashNotification.value = true;
                     locator<NavigationService>().navigateTo(ContactUsRoute);
-                  })
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.phone,
+                          color: Colors.blue,
+                        ),
+                        Text(
+                          'Contact',
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () {
+                    valueController.isFlashNotification.value = true;
+                    locator<NavigationService>().navigateTo(LoginRoute);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.login,
+                          color: Colors.blue,
+                        ),
+                        Text(
+                          'Login',
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           )
         ],
