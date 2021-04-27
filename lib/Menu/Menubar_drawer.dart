@@ -169,6 +169,7 @@ class _MenuBarDrawerState extends State<MenuBarDrawer> {
           ///todo named parameter routing
           print(text);
           // Navigator.of(context).pop();
+          valueController.isFlashNotification.value = true;
           state.close();
           // scaffoldKey.currentState.openEndDrawer();
         },
