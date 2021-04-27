@@ -1,7 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/route/Provider/provider_routing.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:flutter_app_newocean/vedio_player/vedio_player.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
@@ -31,9 +35,7 @@ class _SliderWidgetState extends State<SliderWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    setState(() {
-      getData();
-    });
+    getData();
   }
 
   @override
@@ -83,7 +85,11 @@ class _SliderWidgetState extends State<SliderWidget> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      menu.updateAll((key, value) => menu[key] = false);
+                      menu['Courses'] = true;
+                      locator<NavigationService>().navigateTo(CourseRoute);
+                    },
                     color: Colors.white,
                     textColor: textColor,
                     child: Container(

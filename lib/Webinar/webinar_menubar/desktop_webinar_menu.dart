@@ -31,17 +31,7 @@ class DesktopWebinarMenubar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    // setState(() {
-                    //   NavbarRouting.menu.updateAll(
-                    //           (key, value) => NavbarRouting.menu[key] = false);
-                    //   NavbarRouting.menu["Home"] = true;
-                    // });
-                    // Provider.of<Routing>(context, listen: false)
-                    //     .updateRouting(widget: Home());
-                    // Provider.of<MenuBar>(context, listen: false)
-                    //     .updateMenu(widget: NavbarRouting());
-                  },
+                  onTap: () {},
                   child: Icon(
                     Ocean.oa,
                     size: 60,
@@ -92,17 +82,6 @@ class DesktopWebinarMenubar extends StatelessWidget {
                     onTap: () {
                       valueController.navebars.value = 'Home';
                       locator<NavigationService>().navigateTo(LoginRoute);
-                      // setState(() {
-                      //   NavbarRouting.menu.updateAll(
-                      //           (key, value) => NavbarRouting.menu[key] = false);
-                      // });
-                      // Provider.of<Routing>(context, listen: false).updateRouting(
-                      //     widget:
-                      //     MenuBar.stayUser == null ? LogIn() : CoursesView());
-                      // Provider.of<MenuBar>(context, listen: false).updateMenu(
-                      //     widget: MenuBar.stayUser == null
-                      //         ? NavbarRouting()
-                      //         : AppBarWidget());
                     },
                     child: Container(
                       padding:
