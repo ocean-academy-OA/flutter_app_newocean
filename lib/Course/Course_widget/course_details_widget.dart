@@ -74,12 +74,15 @@ class CourseDetailsHeadingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        title,
-        style: TextStyle(
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[600]),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Text(
+          title,
+          style: TextStyle(
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[600]),
+        ),
       ),
     );
   }
@@ -179,7 +182,7 @@ class _CourseCardState extends State<CourseCard> {
                           child: Text(
                             '${widget.batchTime}',
                             style: TextStyle(
-                                fontSize: 18, color: Colors.grey[500]),
+                                fontSize: 17, color: Colors.grey[500]),
                           ),
                         ),
                       ],
@@ -199,7 +202,7 @@ class _CourseCardState extends State<CourseCard> {
                           child: Text(
                             '${widget.batchDate}',
                             style: TextStyle(
-                                fontSize: 18, color: Colors.grey[500]),
+                                fontSize: 17, color: Colors.grey[500]),
                           ),
                         ),
                       ],
@@ -219,7 +222,7 @@ class _CourseCardState extends State<CourseCard> {
                           child: Text(
                             '${widget.duration} Hrs',
                             style: TextStyle(
-                                fontSize: 18, color: Colors.grey[500]),
+                                fontSize: 17, color: Colors.grey[500]),
                           ),
                         ),
                       ],
@@ -236,7 +239,7 @@ class _CourseCardState extends State<CourseCard> {
                       Text(
                         '$fullRate',
                         style: TextStyle(
-                            fontSize: 25.0,
+                            fontSize: 20.0,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.lineThrough),
                       )

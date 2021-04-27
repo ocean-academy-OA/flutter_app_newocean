@@ -183,8 +183,9 @@ class _MyCourseDbState extends State<MyCourseDb> {
                   child: Text(
                     "${widget.coursename} full package course | ${widget.trainername} | Ocean Academy",
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 17.0,
                       color: Colors.black87,
+                      fontFamily: "Gilroy",
                     ),
                   ),
                 ),
@@ -268,7 +269,7 @@ class _MyCourseDbState extends State<MyCourseDb> {
                     FlatButton(
                         hoverColor: Colors.blue[50],
                         height: 45,
-                        minWidth: 280,
+                        minWidth: 262,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(1),
                           side: BorderSide(color: Colors.blue, width: 1),
@@ -300,8 +301,9 @@ class _MyCourseDbState extends State<MyCourseDb> {
                         child: Text(
                           'MORE INFO',
                           style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Gilroy",
                           ),
                         ))
 
