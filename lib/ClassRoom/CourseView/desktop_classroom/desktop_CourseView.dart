@@ -412,7 +412,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                               ],
                             ),
                             padding: EdgeInsets.symmetric(
-                                horizontal: 35.0, vertical: 17.0),
+                                horizontal: 20.0, vertical: 17.0),
                             color: Colors.lightBlue,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
