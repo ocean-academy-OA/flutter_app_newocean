@@ -142,7 +142,7 @@ class _MyCourseDbState extends State<MyCourseDb> {
         margin: EdgeInsets.all(35.0),
         //padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
         height: 300.0,
-        width: 343.0,
+        width: 300.0,
         decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [

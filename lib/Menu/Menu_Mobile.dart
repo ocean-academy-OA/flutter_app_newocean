@@ -29,7 +29,7 @@ class _MenuBarMobileState extends State<MenuBarMobile> {
       centerTitle: true,
       title: Image.asset(
         'images/OA.png',
-        width: 200,
+        width: 180,
       ),
       actions: [
         IconButton(

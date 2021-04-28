@@ -19,20 +19,23 @@ class _TabletCertificateState extends State<TabletCertificate> {
         child: Column(
           children: [
             SizedBox(height: 10),
-            Row(
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      ///Navigation to back screen
-                      Get.back();
-                      // Provider.of<Routing>(context, listen: false)
-                      //     .updateRouting(widget: CoursesView());
-                    },
-                    child:
-                        Icon(Icons.chevron_left, size: 70, color: Colors.blue)),
-                Text('Certificates',
-                    style: TextStyle(fontSize: 27, color: Colors.blue)),
-              ],
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              child: Row(
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        ///Navigation to back screen
+                        Get.back();
+                        // Provider.of<Routing>(context, listen: false)
+                        //     .updateRouting(widget: CoursesView());
+                      },
+                      child: Icon(Icons.chevron_left,
+                          size: 50, color: Colors.blue)),
+                  Text('Certificates',
+                      style: TextStyle(fontSize: 27, color: Colors.blue)),
+                ],
+              ),
             ),
             SizedBox(height: 80),
             StreamBuilder<QuerySnapshot>(

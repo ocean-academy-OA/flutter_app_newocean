@@ -138,7 +138,7 @@ class TabletPurchaseDB extends StatelessWidget {
                 blurRadius: 10.0,
                 spreadRadius: 10),
           ]),
-          padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+          padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
           child: ExpansionTile(
             collapsedBackgroundColor: Colors.grey[100],
             backgroundColor: Colors.grey[150],
@@ -156,26 +156,42 @@ class TabletPurchaseDB extends StatelessWidget {
                               width: 120,
                               child: Text(
                                 "Course Name",
-                                style: TextStyle(fontWeight: FontWeight.w700),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "Gilroy",
+                                ),
                               ),
                             ),
                             SizedBox(height: 5),
                             Container(
                               width: 120,
-                              child: Text(course),
+                              child: Text(
+                                course,
+                                style: TextStyle(
+                                  fontFamily: "Gilroy",
+                                ),
+                              ),
                             ),
                             SizedBox(height: 15),
                             Container(
                               width: 120,
                               child: Text(
                                 "Paid Via",
-                                style: TextStyle(fontWeight: FontWeight.w700),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "Gilroy",
+                                ),
                               ),
                             ),
                             SizedBox(height: 5),
                             Container(
                               width: 120,
-                              child: Text(paidvia),
+                              child: Text(
+                                paidvia,
+                                style: TextStyle(
+                                  fontFamily: "Gilroy",
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -185,20 +201,31 @@ class TabletPurchaseDB extends StatelessWidget {
                               width: 120,
                               child: Text(
                                 "Purchased Date",
-                                style: TextStyle(fontWeight: FontWeight.w700),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "Gilroy",
+                                ),
                               ),
                             ),
                             SizedBox(height: 5),
                             Container(
                               width: 120,
-                              child: Text(purchaseddate),
+                              child: Text(
+                                purchaseddate,
+                                style: TextStyle(
+                                  fontFamily: "Gilroy",
+                                ),
+                              ),
                             ),
                             SizedBox(height: 15),
                             Container(
                               width: 120,
                               child: Text(
                                 "Status",
-                                style: TextStyle(fontWeight: FontWeight.w700),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "Gilroy",
+                                ),
                               ),
                             ),
                             SizedBox(height: 5),
@@ -208,6 +235,7 @@ class TabletPurchaseDB extends StatelessWidget {
                                 status,
                                 style: TextStyle(
                                     color: Colors.green,
+                                    fontFamily: "Gilroy",
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -226,12 +254,20 @@ class TabletPurchaseDB extends StatelessWidget {
                             width: 100,
                             child: Text(
                               "Total Amount",
-                              style: TextStyle(fontWeight: FontWeight.w500),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Gilroy",
+                              ),
                             ),
                           ),
                           Container(
                             width: 100,
-                            child: Text("₹ $totalamount"),
+                            child: Text(
+                              "₹ $totalamount",
+                              style: TextStyle(
+                                fontFamily: "Gilroy",
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -245,17 +281,18 @@ class TabletPurchaseDB extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Image(
-                    height: 50,
-                    width: 50,
+                    height: 60,
+                    width: 100,
                     image: NetworkImage(thumbnail),
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 SizedBox(width: 20),
                 Text(
                   course,
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 18.0,
+                    fontFamily: "Gilroy",
                   ),
                 ),
               ],

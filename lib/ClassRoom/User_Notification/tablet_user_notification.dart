@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 
 class TabletUserNotification extends StatefulWidget {
   @override
@@ -32,45 +33,39 @@ class _TabletUserNotificationState extends State<TabletUserNotification> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MaterialButton(
-              onPressed: () {},
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              splashColor: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(),
-                width: 213,
-                child: Row(
-                  children: [
-                    IconButton(
-                      tooltip: 'Go back',
-                      icon: Icon(
-                        Icons.chevron_left,
-                      ),
-                      color: Colors.blue,
-                      iconSize: 50,
-                      splashRadius: 30,
-                      onPressed: () {
-                        setState(() {
-                          // ignore: unnecessary_statements
-                          // ContentWidget.isVisible != ContentWidget.isVisible;
-                        });
+            Container(
+              decoration: BoxDecoration(),
+              width: 213,
+              child: Row(
+                children: [
+                  IconButton(
+                    tooltip: 'Go back',
+                    icon: Icon(
+                      Icons.chevron_left,
+                    ),
+                    color: Colors.blue,
+                    iconSize: 50,
+                    splashRadius: 30,
+                    onPressed: () {
+                      setState(() {
+                        // ignore: unnecessary_statements
+                        // ContentWidget.isVisible != ContentWidget.isVisible;
+                      });
 
-                        ///todo navigation
-                        // Provider.of<Routing>(context, listen: false)
-                        //     .updateRouting(widget: CoursesView());
-                      },
+                      ///todo navigation
+                      Get.back();
+                      // Provider.of<Routing>(context, listen: false)
+                      //     .updateRouting(widget: CoursesView());
+                    },
+                  ),
+                  Text(
+                    'Notification',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 25,
                     ),
-                    Text(
-                      'Notification',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Column(
@@ -199,44 +194,38 @@ class NotifyDB extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(20.0),
-              padding: EdgeInsets.all(5.0),
-              //height: 300.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.withOpacity(0.7)),
-                  borderRadius: BorderRadius.circular(2)),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      // height: 100,
-                      // width: 100,
-                      child: Image.asset(
-                        "images/alert.png",
-                        width: 150,
-                      ),
-                    ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          padding: EdgeInsets.all(5.0),
+          //height: 300.0,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey.withOpacity(0.4)),
+              borderRadius: BorderRadius.circular(2)),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  // height: 100,
+                  // width: 100,
+                  child: Image.asset(
+                    "images/alert.png",
+                    width: 150,
                   ),
-                  SizedBox(width: 50),
-                  Expanded(
-                    flex: 10,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child:
-                          Text("$description", style: TextStyle(fontSize: 15)),
-                    ),
-                  )
-                ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(width: 50),
+              Expanded(
+                flex: 10,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text("$description", style: TextStyle(fontSize: 15)),
+                ),
+              )
+            ],
+          ),
         ),
       ],
     );
