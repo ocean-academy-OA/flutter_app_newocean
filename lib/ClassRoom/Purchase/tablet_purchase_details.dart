@@ -3,6 +3,7 @@ import 'package:flutter_app_newocean/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TabletPurchaseDetails extends StatefulWidget {
   @override
@@ -34,6 +35,7 @@ class _TabletPurchaseDetailsState extends State<TabletPurchaseDetails> {
                       splashRadius: 30,
                       onPressed: () {
                         /// go back navigation with getX
+                        Get.back();
                         // Provider.of<Routing>(context, listen: false)
                         //     .updateRouting(widget: CoursesView());
                       },
@@ -50,7 +52,7 @@ class _TabletPurchaseDetailsState extends State<TabletPurchaseDetails> {
               ),
               SizedBox(height: 10),
               Padding(
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
                   children: [
                     StreamBuilder<QuerySnapshot>(
@@ -124,21 +126,21 @@ class TabletPurchaseDB extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 50.0),
+        SizedBox(height: 25.0),
         Container(
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
-                color: Colors.grey.withOpacity(0.1),
-                blurRadius: 10.0,
-                spreadRadius: 10),
+                color: Colors.grey.withOpacity(0.2),
+                blurRadius: 20.0,
+                spreadRadius: 5),
           ]),
-          padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
           child: ExpansionTile(
-            collapsedBackgroundColor: Colors.grey[100],
-            backgroundColor: Colors.grey[150],
+            collapsedBackgroundColor: Colors.grey[50],
+            backgroundColor: Colors.grey[100],
             children: [
               Container(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(25),
                 child: Column(
                   children: [
                     Row(
@@ -256,6 +258,7 @@ class TabletPurchaseDB extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 25.0),
       ],
     );
   }

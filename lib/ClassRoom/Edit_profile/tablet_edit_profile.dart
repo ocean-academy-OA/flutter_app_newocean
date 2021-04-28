@@ -14,6 +14,7 @@ import 'package:flutter_app_newocean/main.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:get/get.dart';
 
 class TabletEditProfile extends StatefulWidget {
   static bool readOnly = false;
@@ -145,6 +146,7 @@ class _TabletEditProfileState extends State<TabletEditProfile> {
                           splashRadius: 30,
                           onPressed: () {
                             ///todo navigation
+                            Get.back();
                             // Provider.of<Routing>(context, listen: false)
                             //     .updateRouting(widget: CoursesView());
                           },
