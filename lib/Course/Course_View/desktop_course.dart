@@ -29,7 +29,6 @@ class _DesktopCourseState extends State<DesktopCourse> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('images/oa_bg.png'),
