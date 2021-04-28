@@ -2,10 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class MobileJoinSuccessfully extends StatefulWidget {
@@ -16,6 +19,7 @@ class MobileJoinSuccessfully extends StatefulWidget {
 }
 
 class _MobileJoinSuccessfullyState extends State<MobileJoinSuccessfully> {
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +84,15 @@ class _MobileJoinSuccessfullyState extends State<MobileJoinSuccessfully> {
                   ),
                   color: Colors.white,
                   onPressed: () {
-                    locator<NavigationService>().navigateTo(HomeRoute);
+                    LoginResponsive.registerNumber != null
+                        ? valueController.navebars.value = 'Login'
+                        : valueController.navebars.value = 'Home';
+                    locator<NavigationService>().navigateTo(LoginResponsive
+                                .registerNumber !=
+                            null
+                        ? '/ClassRoom?userNumber=${LoginResponsive.registerNumber}typeOfCourse=My%20Course'
+                        : LoginRoute);
+
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (context) => Home()));
                   },

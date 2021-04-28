@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
@@ -69,7 +70,14 @@ class _JoinSuccessfullyState extends State<JoinSuccessfully> {
                       side: BorderSide(width: 2, color: Colors.white)),
                   onPressed: () {
                     valueController.isFlashNotification.value = true;
-                    locator<NavigationService>().navigateTo(LoginRoute);
+                    LoginResponsive.registerNumber != null
+                        ? valueController.navebars.value = 'Login'
+                        : valueController.navebars.value = 'Home';
+                    locator<NavigationService>().navigateTo(LoginResponsive
+                                .registerNumber !=
+                            null
+                        ? '/ClassRoom?userNumber=${LoginResponsive.registerNumber}typeOfCourse=My%20Course'
+                        : LoginRoute);
                   },
                 ),
                 Spacer(),
@@ -136,9 +144,15 @@ class _JoinSuccessfullyState extends State<JoinSuccessfully> {
                         ),
                         color: Colors.white,
                         onPressed: () {
-                          valueController.navebars.value = 'Home';
                           valueController.isFlashNotification.value = true;
-                          locator<NavigationService>().navigateTo(HomeRoute);
+                          LoginResponsive.registerNumber != null
+                              ? valueController.navebars.value = 'Login'
+                              : valueController.navebars.value = 'Home';
+                          locator<NavigationService>().navigateTo(LoginResponsive
+                                      .registerNumber !=
+                                  null
+                              ? '/ClassRoom?userNumber=${LoginResponsive.registerNumber}typeOfCourse=My%20Course'
+                              : LoginRoute);
 
                           // Provider.of<MenuBar>(context, listen: false)
                           //     .updateMenu(widget: NavbarRouting());

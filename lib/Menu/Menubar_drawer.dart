@@ -170,6 +170,7 @@ class _MenuBarDrawerState extends State<MenuBarDrawer> {
           print(text);
           // Navigator.of(context).pop();
           valueController.isFlashNotification.value = true;
+          valueController.navebars.value = 'Home';
           state.close();
           // scaffoldKey.currentState.openEndDrawer();
         },

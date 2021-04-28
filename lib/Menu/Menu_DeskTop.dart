@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Extension/Hover_Extension.dart';
+import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Menu/Menu_Tablet.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
+import 'package:get/get.dart';
 import '../ocean_icon/ocean_icons.dart';
 import '../route/routeNames.dart';
 
@@ -112,7 +115,7 @@ class _NavbarRoutingState extends State<NavbarRouting>
   }
 
   String _chosenValue;
-
+  final valueController = Get.find<ValueListener>();
   @override
   Widget build(BuildContext context) {
     _scale = 1 - _controller.value;
@@ -202,21 +205,18 @@ class _NavbarRoutingState extends State<NavbarRouting>
                   child:
                       Transform.scale(scale: _scale, child: _animatedButtonUI),
                   onTap: () {
-                    locator<NavigationService>().navigateTo(LoginRoute);
+                    LoginResponsive.registerNumber != null
+                        ? valueController.navebars.value = 'Login'
+                        : valueController.navebars.value = 'Home';
+                    locator<NavigationService>().navigateTo(LoginResponsive
+                                .registerNumber !=
+                            null
+                        ? '/ClassRoom?userNumber=${LoginResponsive.registerNumber}typeOfCourse=My%20Course'
+                        : LoginRoute);
 
                     setState(() {
                       menu.updateAll((key, value) => menu[key] = false);
                     });
-
-                    ///todo:instead of resiter login will come
-                    ///
-                    // Provider.of<Routing>(context, listen: false).updateRouting(
-                    //     widget:
-                    //     MenuBar.stayUser == null ? LogIn() : CoursesView());
-                    // Provider.of<MenuBar>(context, listen: false).updateMenu(
-                    //     widget: MenuBar.stayUser == null
-                    //         ? NavbarRouting()
-                    //         : AppBarWidget());
                   },
                 ),
               ],

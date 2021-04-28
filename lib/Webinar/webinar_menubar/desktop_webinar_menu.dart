@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/Webinar/WebinarCard_Desktop/webinar_const.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
@@ -30,6 +31,7 @@ class DesktopWebinarMenubar extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 valueController.isFlashNotification.value = true;
+                valueController.navebars.value = 'Home';
                 locator<NavigationService>().navigateTo(HomeRoute);
               },
               child: Row(
@@ -65,6 +67,7 @@ class DesktopWebinarMenubar extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
                       valueController.isFlashNotification.value = true;
+
                       valueController.navebars.value = 'Home';
                       locator<NavigationService>().navigateTo(ContactUsRoute);
                     },
