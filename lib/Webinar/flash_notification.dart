@@ -188,12 +188,14 @@ class _FlashNotificationState extends State<FlashNotification> {
                     WebinarCard.timing = timingMap;
                     if (currentWebinar.isEmpty && courseList.isEmpty) {
                       // valueController.isFlashNotification.value = false;
-                      isUpcomingWebinar = false;
 
                       comingSoon = 'Webinar Coming soon';
 
                       print('$currentWebinar $courseList');
+
+                      isUpcomingWebinar = false;
                     }
+
                     return Container(
                       child: Column(
                         children: [
