@@ -233,19 +233,19 @@ class _CourseCardState extends State<CourseCard> {
               Spacer(),
               Column(
                 children: [
-                  Row(
-                    children: [
-                      Icon(FontAwesomeIcons.rupeeSign),
-                      Text(
-                        '$fullRate',
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.lineThrough),
-                      )
-                    ],
-                  ),
-                  Text('$dis %'),
+                  // Row(
+                  //   children: [
+                  //     Icon(FontAwesomeIcons.rupeeSign),
+                  //     Text(
+                  //       '$fullRate',
+                  //       style: TextStyle(
+                  //           fontSize: 20.0,
+                  //           fontWeight: FontWeight.bold,
+                  //           decoration: TextDecoration.lineThrough),
+                  //     )
+                  //   ],
+                  // ),
+                  // Text('$dis %'),
                   Row(
                     children: [
                       Icon(FontAwesomeIcons.rupeeSign),

@@ -215,7 +215,7 @@ class _MobileCourseDetailsState extends State<MobileCourseDetails> {
                           final courseBatchid = message.data()['batchid'];
                           // final time = message.data()['time'];
                           // final date = message.data()['date'];
-                          Timestamp timeStamp = message.data()['date1'];
+                          Timestamp timeStamp = message.data()['date'];
 
                           final dutation = message.data()['duration'];
                           String monthFormat;

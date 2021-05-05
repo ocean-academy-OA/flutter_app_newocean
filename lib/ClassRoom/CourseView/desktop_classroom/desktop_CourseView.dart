@@ -533,7 +533,9 @@ class _ContentWidgetState extends State<ContentWidget> {
                         onPressed: courseIDCount == 'Join Now'
                             ? () {
                                 locator<NavigationService>().navigateTo(
-                                    '/zoomlink?zoomLink= https://brindakarthik.github.io/zoom/?meetingNumber=$zoomLink&username=abc&password=$zoomPassword}');
+                                    '/zoomlink?zoomLink= https://brindakarthik.github.io/zoom/?meetingNumber=$zoomLink&username=abc&password=$zoomPassword');
+                                //  '/zoomlink?zoomLink= https://brindakarthik.github.io/zoom/?meetingNumber=$zoomLink&username=abc&password=$zoomPassword'
+
                                 // Navigator.push(
                                 //     context,
                                 //     MaterialPageRoute(
