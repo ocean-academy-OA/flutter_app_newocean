@@ -127,11 +127,14 @@ Route<dynamic> generateRoute(
   }
   if (settings.name.contains("zoomlink")) {
     String zoomLink = Uri.parse(settings.name).queryParameters["zoomLink"];
+    String password = Uri.parse(settings.name).queryParameters["password"];
 
     print("$zoomLink ZoomIntegration");
+    String newLink = '$zoomLink&username=abc&password=$password';
+    print('?????????????????????????????????? $newLink');
     return _getPageRoute(
         ResponsiveZoomLink(
-          zoomLink: zoomLink,
+          zoomLink: newLink,
         ),
         settings);
   }

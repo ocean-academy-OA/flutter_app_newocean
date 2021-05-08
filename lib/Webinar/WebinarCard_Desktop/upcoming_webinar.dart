@@ -9,8 +9,13 @@ class UpcomingWebinar extends StatefulWidget {
 class _UpcomingWebinarState extends State<UpcomingWebinar> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: WebinarCard(),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Center(
+        child: WebinarCard(),
+      ),
     );
   }
 }

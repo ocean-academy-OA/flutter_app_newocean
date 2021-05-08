@@ -157,38 +157,6 @@ class _NavbarRoutingState extends State<NavbarRouting>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // DropdownButton<String>(
-                      //   focusColor: Colors.white,
-                      //   value: _chosenValue,
-                      //   //elevation: 5,
-                      //   style: TextStyle(color: Colors.white),
-                      //   iconEnabledColor: Colors.black,
-                      //   items: <String>[
-                      //     'Android',
-                      //     'IOS',
-                      //     'Flutter',
-                      //   ].map<DropdownMenuItem<String>>((String value) {
-                      //     return DropdownMenuItem<String>(
-                      //       value: value,
-                      //       child: Text(
-                      //         value,
-                      //         style: TextStyle(color: Colors.black),
-                      //       ),
-                      //     );
-                      //   }).toList(),
-                      //   hint: Text(
-                      //     "Please choose a langauage",
-                      //     style: TextStyle(
-                      //         color: Colors.black,
-                      //         fontSize: 14,
-                      //         fontWeight: FontWeight.w500),
-                      //   ),
-                      //   onChanged: (String value) {
-                      //     setState(() {
-                      //       _chosenValue = value;
-                      //     });
-                      //   },
-                      // ),
                       menuItem(text: 'Home', naviagationPath: HomeRoute),
                       menuItem(text: 'About Us', naviagationPath: AboutRoute),
                       menuItem(text: 'Services', naviagationPath: ServiceRoute),
