@@ -32,10 +32,11 @@ class _MyCourseState extends State<MyCourse> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('images/oa_bg.png'),
-                repeat: ImageRepeat.repeatY)),
+                repeat: ImageRepeat.repeatX)),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

@@ -67,10 +67,12 @@ class _DesktopCourseState extends State<DesktopCourse> {
                   sliderChild: isOnline
                       ? Icon(
                           Icons.arrow_left,
+                          color: Colors.blue[800],
                           size: 45,
                         )
                       : Icon(
                           Icons.arrow_right,
+                          color: Colors.blue,
                           size: 45,
                         ),
                   open: isOnline,
@@ -103,7 +105,7 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           final messageDescription =
                               message.data()['coursedescription'];
                           final messageBatchid = message.data()['batchid'];
-                          final timeStamp = message.data()['date1'];
+                          final timeStamp = message.data()['date'];
 
                           String monthFormat;
                           String dayTime;
