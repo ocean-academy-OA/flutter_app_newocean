@@ -99,13 +99,11 @@ class _DesktopCourseState extends State<DesktopCourse> {
                           final messageText = message.data()['trainername'];
                           final messageSender = message.data()['coursename'];
                           final messageDuration = message.data()['duration'];
-                          // final messageTime = message.data()['time'];
-                          // final messageDate = message.data()['date'];
                           final messageImage = message.data()['img'];
                           final messageDescription =
                               message.data()['coursedescription'];
                           final messageBatchid = message.data()['batchid'];
-                          final timeStamp = message.data()['date'];
+                          final timeStamp = message.data()['date1'];
 
                           String monthFormat;
                           String dayTime;

@@ -5,8 +5,9 @@
   "targets": {
     "ocean-live-project-ea2e7": {
       "hosting": {
-        "newocean": [
-          "admin19a00"
+
+        "user": [
+          "ocean-live-project-ea2e7"
         ]
       }
     }

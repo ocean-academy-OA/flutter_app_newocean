@@ -129,7 +129,7 @@ class _RazorPayWebState extends State<RazorPayWeb> {
 
        var options = {
          "key": "rzp_live_yI4lHyiI5FRJWt",
-          "amount": "${1 * 100}", "currency": "INR",
+          "amount": "${int.parse(widget.amount) * 100}", "currency": "INR",
           "name": "${CoursesView.courseEnroll}",
           "description": "Online Payment Transaction",
           "image": "https://example.com/your_logo",

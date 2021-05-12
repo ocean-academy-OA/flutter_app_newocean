@@ -22,7 +22,7 @@ class _LogInState extends State<LogIn> {
   bool isNumValid = false;
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController _phoneNumberController = TextEditingController();
-  String countryCode;
+  String countryCode = '+91';
   List<Map<String, String>> contri = codes;
   bool rememberMe = false;
   String phoneNumber;
@@ -142,7 +142,10 @@ class _LogInState extends State<LogIn> {
                                       borderRadius: BorderRadius.circular(3.0)),
                                   child: CountryCodePicker(
                                     backgroundColor: Colors.transparent,
-                                    onChanged: print,
+                                    onChanged: (object) {
+                                      print('object $object');
+                                      countryCode = object.toString();
+                                    },
                                     // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                                     initialSelection: getContryCode()[
                                         getContryCode().indexOf('IN')],
@@ -151,12 +154,13 @@ class _LogInState extends State<LogIn> {
                                     showDropDownButton: true,
                                     dialogBackgroundColor: Colors.white,
 
-                                    hideSearch: true,
+                                    hideSearch: false,
                                     dialogSize: Size(300.0, 550.0),
                                     onInit: (code) {
-                                      countryCode = '+91';
+                                      // countryCode = code.toString();
+
                                       print(
-                                          '${countryCode.toString()}countryCode.toString()');
+                                          '${countryCode.toString()} countryCode.toString()');
                                     },
 
                                     dialogTextStyle:
@@ -239,7 +243,7 @@ class _LogInState extends State<LogIn> {
                                     elevation: 0.0,
                                     onPressed: () async {
                                       print(
-                                          "${_phoneNumberController.text}_phoneNumberController.text");
+                                          "${countryCode.toString()} ${_phoneNumberController.text}_phoneNumberController.text");
                                       setState(() {
                                         //Navbar.visiblity = false;
                                         OTP.userID =
@@ -247,8 +251,8 @@ class _LogInState extends State<LogIn> {
                                         // MenuBar.stayUser = OTP.userID;
                                       });
 
-                                      if (_phoneNumberController.text.length >=
-                                          10) {
+                                      if (_phoneNumberController.text.length >
+                                          1) {
                                         //getData();
 
                                         ///todo remove the hide get otp

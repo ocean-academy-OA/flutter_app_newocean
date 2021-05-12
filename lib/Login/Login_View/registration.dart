@@ -317,7 +317,7 @@ class _RegistrationState extends State<Registration> {
                                       fontWeight: FontWeight.bold,
                                       color: Colors.grey[700]),
                                   enabled: true,
-                                  strict: false,
+                                  strict: true,
                                   required: isCountry,
                                   itemsVisibleInDropdown: 3,
                                   items: country,
@@ -347,38 +347,38 @@ class _RegistrationState extends State<Registration> {
                                 height: 9,
                               ),
                               Container(
-                                alignment: Alignment.center,
-                                width: 300,
-                                padding: EdgeInsets.symmetric(vertical: 5),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white,
-                                ),
-                                child: DropDownField(
-                                  controller: stateContrller,
-                                  hintText: 'Select State',
-                                  hintStyle: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey[500]),
-                                  textStyle: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey[700]),
-                                  enabled:
-                                      selectedCountry.length > 1 ? true : false,
-                                  strict: false,
-                                  required: isState,
-                                  itemsVisibleInDropdown: 3,
-                                  items: countryState[selectedCountry],
-                                  onValueChanged: (value) {
-                                    setState(() {
-                                      selectedState = value;
-                                      print(selectedState);
-                                    });
-                                  },
-                                ),
-                              ),
+                                  alignment: Alignment.center,
+                                  width: 300,
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white,
+                                  ),
+                                  child: DropDownField(
+                                    controller: stateContrller,
+                                    hintText: 'Select State',
+                                    hintStyle: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[500]),
+                                    textStyle: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[700]),
+                                    enabled: selectedCountry.length > 1
+                                        ? true
+                                        : false,
+                                    strict: true,
+                                    required: true,
+                                    itemsVisibleInDropdown: 3,
+                                    items: countryState[selectedCountry],
+                                    onValueChanged: (value) {
+                                      setState(() {
+                                        selectedState = value;
+                                        print(selectedState);
+                                      });
+                                    },
+                                  )),
                             ],
                           ),
                         ),
@@ -549,19 +549,7 @@ class _RegistrationState extends State<Registration> {
         elseRFV = isFirstName;
       });
     }
-    //last name
-    // if (!nameValidation(_lastName.text) || _lastName.text.length < 3) {
-    //   setState(() {
-    //     isLastName = true;
-    //     ifRFV = isLastName;
-    //   });
-    // } else {
-    //   setState(() {
-    //     isLastName = false;
-    //     elseRFV = isLastName;
-    //   });
-    // }
-    // gender
+
     if (GenderDropdownField.gendVal == null) {
       setState(() {
         isGender = true;

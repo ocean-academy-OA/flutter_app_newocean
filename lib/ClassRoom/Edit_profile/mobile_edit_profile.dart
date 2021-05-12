@@ -379,7 +379,7 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
                                       textAlign: TextAlign.center,
                                     ),
                                     Text(
-                                      '28',
+                                      '1',
                                       style: TextStyle(
                                           fontSize: 35,
                                           color: Colors.blue,
@@ -414,7 +414,7 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
                                       textAlign: TextAlign.center,
                                     ),
                                     Text(
-                                      '02',
+                                      '0',
                                       style: TextStyle(
                                           fontSize: 35,
                                           color: Colors.blue,
@@ -532,109 +532,133 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
                             controller: _dgree,
                             onChanged: (value) {},
                           ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Country',
-                                  style: TextStyle(
-                                      fontSize: 18.0, color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: 9,
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 300,
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.white,
-                                  ),
-                                  child: DropDownField(
-                                    controller: countryContrller,
-                                    hintText: 'Select Country',
-                                    hintStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[500]),
-                                    textStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[700]),
-                                    enabled: true,
-                                    value: selectedCountry,
-                                    required: isCountry,
-                                    itemsVisibleInDropdown: listCount,
-                                    items: country,
-                                    onValueChanged: (value) {
-                                      setState(() {
-                                        selectedCountry = value;
-                                        stateContrller.clear();
-                                        print(selectedCountry);
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
+                          LableWithTextField(
+                            color: Colors.black,
+                            lableText: 'Country',
+                            errorText: 'Enter your Country Name',
+                            rReadOnly: MobileEditProfile.readOnly == false
+                                ? false
+                                : true,
+                            width: 300.0,
+                            visible: isCountry,
+                            controller: countryContrller,
+                            onChanged: (value) {},
                           ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'State',
-                                  style: TextStyle(
-                                      fontSize: 18.0, color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: 9,
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 300,
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.white,
-                                  ),
-                                  child: DropDownField(
-                                    controller: stateContrller,
-                                    hintText: 'Select State',
-                                    hintStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[500]),
-                                    textStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[700]),
-                                    enabled: true,
-                                    //selectedCountry.length > 1 ? true : false,
-                                    strict: false,
-                                    required: isState,
-
-                                    itemsVisibleInDropdown: listCount,
-                                    items: CountryState[selectedCountry] == null
-                                        ? <String>[selectedState]
-                                        : CountryState[selectedCountry],
-                                    onValueChanged: (value) {
-                                      setState(() {
-                                        selectedState = value;
-                                        print(selectedState);
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
+                          LableWithTextField(
+                            color: Colors.black,
+                            lableText: 'State',
+                            errorText: 'Enter your Stare Name',
+                            rReadOnly: MobileEditProfile.readOnly == false
+                                ? false
+                                : true,
+                            width: 300.0,
+                            visible: isState,
+                            controller: stateContrller,
+                            onChanged: (value) {},
                           ),
+                          // Container(
+                          //   margin: EdgeInsets.symmetric(
+                          //       horizontal: 20, vertical: 10),
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: [
+                          //       Text(
+                          //         'Country',
+                          //         style: TextStyle(
+                          //             fontSize: 18.0, color: Colors.black),
+                          //       ),
+                          //       SizedBox(
+                          //         height: 9,
+                          //       ),
+                          //       Container(
+                          //         alignment: Alignment.center,
+                          //         width: 300,
+                          //         padding: EdgeInsets.symmetric(vertical: 5),
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(5),
+                          //           color: Colors.white,
+                          //         ),
+                          //         child: DropDownField(
+                          //           controller: countryContrller,
+                          //           hintText: 'Select Country',
+                          //           hintStyle: TextStyle(
+                          //               fontSize: 18.0,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Colors.grey[500]),
+                          //           textStyle: TextStyle(
+                          //               fontSize: 18.0,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Colors.grey[700]),
+                          //           enabled: true,
+                          //           value: selectedCountry,
+                          //           required: isCountry,
+                          //           itemsVisibleInDropdown: listCount,
+                          //           items: country,
+                          //           onValueChanged: (value) {
+                          //             setState(() {
+                          //               selectedCountry = value;
+                          //               stateContrller.clear();
+                          //               print(selectedCountry);
+                          //             });
+                          //           },
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Container(
+                          //   margin: EdgeInsets.symmetric(
+                          //       horizontal: 20, vertical: 10),
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: [
+                          //       Text(
+                          //         'State',
+                          //         style: TextStyle(
+                          //             fontSize: 18.0, color: Colors.black),
+                          //       ),
+                          //       SizedBox(
+                          //         height: 9,
+                          //       ),
+                          //       Container(
+                          //         alignment: Alignment.center,
+                          //         width: 300,
+                          //         padding: EdgeInsets.symmetric(vertical: 5),
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(5),
+                          //           color: Colors.white,
+                          //         ),
+                          //         child: DropDownField(
+                          //           controller: stateContrller,
+                          //           hintText: 'Select State',
+                          //           hintStyle: TextStyle(
+                          //               fontSize: 18.0,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Colors.grey[500]),
+                          //           textStyle: TextStyle(
+                          //               fontSize: 18.0,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Colors.grey[700]),
+                          //           enabled: true,
+                          //           //selectedCountry.length > 1 ? true : false,
+                          //           strict: false,
+                          //           required: isState,
+                          //
+                          //           itemsVisibleInDropdown: listCount,
+                          //           items: CountryState[selectedCountry] == null
+                          //               ? <String>[selectedState]
+                          //               : CountryState[selectedCountry],
+                          //           onValueChanged: (value) {
+                          //             setState(() {
+                          //               selectedState = value;
+                          //               print(selectedState);
+                          //             });
+                          //           },
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                           LableWithTextField(
                             color: Colors.black,
                             lableText: 'Phone Number',
@@ -706,8 +730,8 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
       'E Mail': _eMail.text,
       'Company or School': _companyOrSchool.text,
       'Degree': _dgree.text,
-      'Country': selectedCountry,
-      'State': selectedState,
+      'Country': countryContrller.text,
+      'State': stateContrller.text,
       'Phone Number': _phoneNumber.text,
     });
   }
@@ -838,7 +862,7 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
       });
     }
     //Country
-    if (selectedCountry == null || selectedCountry.length < 1) {
+    if (countryContrller.text.length < 2) {
       setState(() {
         isCountry = true;
         ifRFV = isCountry;
@@ -850,7 +874,7 @@ class _MobileEditProfileState extends State<MobileEditProfile> {
       });
     }
     //state
-    if (selectedState == null || selectedState.length < 1) {
+    if (stateContrller.text.length < 2) {
       setState(() {
         isState = true;
         ifRFV = isState;

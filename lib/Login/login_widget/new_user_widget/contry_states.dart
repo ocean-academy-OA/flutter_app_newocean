@@ -203,7 +203,20 @@ Map contryState = {
         "Yerevan"
       ]
     },
-    {"country": "Australia", "states": []},
+    {
+      "country": "Australia",
+      "states": [
+        'Other',
+        'New South Wales',
+        'Queensland',
+        'Victoria',
+        'Tasmania',
+        'South Australia',
+        'Western Australia',
+        'Northern Territory',
+        'Australian Capital Territory'
+      ]
+    },
     {
       "country": "Austria",
       "states": [
