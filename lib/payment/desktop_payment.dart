@@ -16,8 +16,9 @@ class RazorPayWeb extends StatefulWidget {
   String courseName;
   String amount;
   List course;
-  String courseImage;
   List batchid;
+  String courseImage;
+
   String studentname;
   String studentemail;
 

@@ -576,7 +576,7 @@ class _MobileContactUsState extends State<MobileContactUs> {
                                   'Query': query,
                                   'Phone_Number': phoneNumber
                                 });
-                                // getData();
+                                getData();
                                 print("$date < Date Time >");
                                 setState(() {
                                   print(

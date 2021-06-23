@@ -432,7 +432,10 @@ class _DesktopFooterLgState extends State<DesktopFooterLg> {
         ));
   }
 
-  MouseRegion footerMouseRegion({text, widget}) {
+  MouseRegion footerMouseRegion({
+    text,
+    widget,
+  }) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
