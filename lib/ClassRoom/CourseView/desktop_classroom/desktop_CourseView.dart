@@ -27,7 +27,13 @@ class HorizontalMenu extends StatefulWidget {
   Map menu = {};
   List<String> batchId = [];
   List<String> courseIcon = [];
-  HorizontalMenu({this.courseList, this.menu, this.batchId, this.courseIcon});
+  String userName;
+  HorizontalMenu(
+      {this.courseList,
+      this.menu,
+      this.batchId,
+      this.courseIcon,
+      this.userName});
   @override
   _HorizontalMenuState createState() => _HorizontalMenuState();
 }
@@ -39,6 +45,26 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
     super.initState();
     print('${widget.courseList} widget.courseList ');
     //HorizontalMenu.customWidget = EnrollNew();
+    getSession();
+  }
+
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+    userCourses();
+    print("${CoursesView.batchId}CoursesView.batchId");
+  }
+
+  userCourses() async {
+    var course = await _firestore
+        .collection("new users")
+
+        ///todo LogIn.registerNumber
+        .doc(LoginResponsive.registerNumber)
+        .get();
+    CoursesView.courseEnroll = course.data()["First Name"];
+    CoursesView.studentemail = course.data()["E Mail"];
+    print('${CoursesView.courseEnroll} CoursesView.courseEnroll');
   }
 
   @override
@@ -69,6 +95,7 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                   ),
                 ),
                 onTap: () {
+                  print('check ${widget.userName}');
                   print("welcome batchid ${widget.batchId[index]}");
                   setState(() {
                     widget.menu
@@ -77,15 +104,7 @@ class _HorizontalMenuState extends State<HorizontalMenu> {
                   });
 
                   locator<NavigationService>().navigateTo(
-                      '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}');
-                  // Provider.of<SyllabusView>(context, listen: false)
-                  //     .updateCourseSyllabus(
-                  //   routing: ContentWidget(
-                  //     course: widget.courseList[index],
-                  //     batchid: widget.batchId[index],
-                  //     //batchid: "OCNBK08",
-                  //   ),
-                  // );
+                      '/ViewSchedule?courseName=${widget.courseList[index]}&batchID=${widget.batchId[index]}&userName=${CoursesView.courseEnroll}');
                 },
               ),
             ),
@@ -190,10 +209,6 @@ class _CoursesViewState extends State<CoursesView> {
   Widget build(BuildContext context) {
     Map menu = {};
     return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: Size.fromHeight(100),
-      //   child: AppBarWidget(),
-      // ),
       body: Stack(
         children: [
           Row(
@@ -209,7 +224,6 @@ class _CoursesViewState extends State<CoursesView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              //color: Color(0xff006793).withOpacity(0.5),
                               child: Column(
                                 children: [
                                   Text(
@@ -264,6 +278,7 @@ class _CoursesViewState extends State<CoursesView> {
                                           menu: menu,
                                           batchId: batchId,
                                           courseIcon: courseIconList,
+                                          userName: CoursesView.courseEnroll,
                                         );
                                       }
                                     },
@@ -291,9 +306,6 @@ class _CoursesViewState extends State<CoursesView> {
                   )
             ],
           ),
-          // Consumer<UserProfiles>(builder: (context, routing, child) {
-          //   return routing.route;
-          // }),
         ],
       ),
     );
@@ -310,11 +322,13 @@ class ContentWidget extends StatefulWidget {
   String description;
   String duration;
   String startDate;
+  String userName;
 
   ContentWidget(
       {this.course,
       this.batchid,
       this.trainername,
+      this.userName,
       this.duration,
       this.description,
       this.startDate});
@@ -327,6 +341,17 @@ class _ContentWidgetState extends State<ContentWidget> {
   // String description;
   // String trainername;
 
+  userCourses() async {
+    var course = await _firestore
+        .collection("new users")
+
+        ///todo LogIn.registerNumber
+        .doc(LoginResponsive.registerNumber)
+        .get();
+    CoursesView.courseEnroll = course.data()["First Name"];
+    print('${CoursesView.courseEnroll} CoursesView.courseEnroll');
+  }
+
   userCoursesName() async {
     var course =
         await _firestore.collection("course").doc(widget.batchid).get();
@@ -338,6 +363,12 @@ class _ContentWidgetState extends State<ContentWidget> {
   var date;
   List timeCalculation = [];
   String resolve;
+  getSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    LoginResponsive.registerNumber = (prefs.getString('user') ?? null);
+    print("${CoursesView.batchId}CoursesView.batchId");
+    userCourses();
+  }
 
   launchURL(String urlLink) async {
     final url = '${urlLink}';
@@ -353,21 +384,20 @@ class _ContentWidgetState extends State<ContentWidget> {
     // TODO: implement initState
     super.initState();
     userCoursesName();
+    getSession();
     print("______________________________________");
   }
 
   @override
   Widget build(BuildContext context) {
     print("OA  batchid ${widget.batchid}");
+    getSession();
+    print("${CoursesView.courseEnroll}CoursesView.batchId inside build");
     return Scrollbar(
       child: Container(
-        // alignment: Alignment.centerLeft,
-        //margin: const EdgeInsets.all(15.0),
         padding: EdgeInsets.only(top: 0, left: 40, right: 40),
         width: MediaQuery.of(context).size.width,
-
         height: MediaQuery.of(context).size.height,
-
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -382,7 +412,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: Text(
-                      "Hi ${CoursesView.courseEnroll},you are enroll in ${widget.course} course",
+                      "Hi ${widget.userName},you are enroll in ${widget.course} course",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 20.0,
@@ -541,7 +571,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                         onPressed: courseIDCount == 'Join Now'
                             ? () {
                                 locator<NavigationService>().navigateTo(
-                                    '/zoomlink?zoomLink=https://brindakarthik.github.io/zoom/?meetingNumber=$zoomLink&username=abc&password=$zoomPassword');
+                                    '/zoomlink?zoomLink=https://brindakarthik.github.io/zoom/?meetingNumber=$zoomLink&username=${CoursesView.courseEnroll}&password=$zoomPassword');
                                 // Navigator.push(
                                 //     context,
                                 //     MaterialPageRoute(
@@ -632,7 +662,7 @@ class _CourseContentState extends State<CourseContent> {
   Widget build(BuildContext context) {
     String zoomLink =
         "https://brindakarthik.github.io/zoom/?meetingNumber=${widget.meeting}&username=abc&password=${widget.meetingPassword}";
-    print("${CoursesView.courseEnroll}CoursesView.courseEnroll");
+    print("${widget.name}CoursesView.courseEnroll");
     return Stack(
       children: [
         SingleChildScrollView(

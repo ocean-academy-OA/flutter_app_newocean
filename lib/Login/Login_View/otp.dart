@@ -151,9 +151,6 @@ class _OTPState extends State<OTP> {
   }
 
   var userSession;
-  getData() async {
-    print("${userSession.data() != null}userSession");
-  }
 
   @override
   Widget build(BuildContext context) {

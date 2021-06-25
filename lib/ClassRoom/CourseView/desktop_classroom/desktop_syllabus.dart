@@ -109,7 +109,7 @@ class _SyllabusListState extends State<SyllabusList> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      // width: 800,
+                      width: 500,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -148,7 +148,21 @@ class _SyllabusListState extends State<SyllabusList> {
                       ),
                     ),
                     Container(
-                      // width: 200,
+                      color: Colors.blue,
+                      child: RaisedButton(
+                        onPressed: () {},
+                        color: Colors.blue,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Download",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 200,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -586,7 +586,7 @@ class _TabletContactUsState extends State<TabletContactUs> {
                                   'Query': query,
                                   'Phone_Number': phoneNumber
                                 });
-                                // getData();
+                                getData();
                                 print("$date < Date Time >");
                                 setState(() {
                                   print(

@@ -68,11 +68,13 @@ Route<dynamic> generateRoute(
   if (settings.name.contains("ViewSchedule")) {
     String courseName = Uri.parse(settings.name).queryParameters["courseName"];
     String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+    String userName = Uri.parse(settings.name).queryParameters["userName"];
 
     return _getPageRoute(
       ContentWidget(
         course: courseName,
         batchid: batchID,
+        userName: userName,
       ),
       settings,
     );
@@ -127,9 +129,10 @@ Route<dynamic> generateRoute(
   if (settings.name.contains("zoomlink")) {
     String zoomLink = Uri.parse(settings.name).queryParameters["zoomLink"];
     String password = Uri.parse(settings.name).queryParameters["password"];
+    String userName = Uri.parse(settings.name).queryParameters["username"];
 
     print("$zoomLink ZoomIntegration");
-    String newLink = '$zoomLink&username=abc&password=$password';
+    String newLink = '$zoomLink&username=$userName&password=$password';
     print('?????????????????????????????????? $newLink');
     return _getPageRoute(
         ResponsiveZoomLink(
@@ -358,10 +361,12 @@ Route<dynamic> generateRoute(
       String courseName =
           Uri.parse(settings.name).queryParameters["courseName"];
       String batchID = Uri.parse(settings.name).queryParameters["batchID"];
+      String userName = Uri.parse(settings.name).queryParameters["userName"];
       return _getPageRoute(
         ContentWidget(
           course: courseName,
           batchid: batchID,
+          userName: userName,
         ),
         //ResponsiveContactUs(),
         settings,

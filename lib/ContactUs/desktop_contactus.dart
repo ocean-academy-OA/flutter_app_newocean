@@ -659,7 +659,7 @@ class _DesktopContactUsState extends State<DesktopContactUs> {
                                         'Query': query,
                                         'Phone_Number': phoneNumber
                                       });
-                                      // getData();
+                                      getData();
                                       print("$date < Date Time >");
                                       setState(() {
                                         print(
