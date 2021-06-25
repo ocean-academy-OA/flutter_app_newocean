@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/course_details_widget.dart';
-import 'package:flutter_app_newocean/route/navigation_locator.dart';
-import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';

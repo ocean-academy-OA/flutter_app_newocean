@@ -1,4 +1,3 @@
-import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
@@ -35,7 +34,9 @@ class _DesktopUserNotificationState extends State<DesktopUserNotification> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50),
               ),
@@ -45,26 +46,29 @@ class _DesktopUserNotificationState extends State<DesktopUserNotification> {
                 width: 213,
                 child: Row(
                   children: [
-                    IconButton(
-                      tooltip: 'Go back',
-                      icon: Icon(
-                        Icons.chevron_left,
-                      ),
+                    Icon(
+                      Icons.chevron_left,
                       color: Colors.blue,
-                      iconSize: 50,
-                      splashRadius: 30,
-                      onPressed: () {
-                        setState(() {
-                          // ignore: unnecessary_statements
-                          // ContentWidget.isVisible != ContentWidget.isVisible;
-                        });
-
-                        ///todo Navigation
-                        Get.back();
-                        // Provider.of<Routing>(context, listen: false)
-                        //     .updateRouting(widget: CoursesView());
-                      },
+                      size: 50,
                     ),
+                    // IconButton(
+                    //   tooltip: 'Go back',
+                    //   icon:
+                    //   color: Colors.blue,
+                    //   iconSize: 50,
+                    //   splashRadius: 30,
+                    //   onPressed: () {
+                    //     setState(() {
+                    //       // ignore: unnecessary_statements
+                    //       // ContentWidget.isVisible != ContentWidget.isVisible;
+                    //     });
+                    //
+                    //     ///todo Navigation
+                    //
+                    //     // Provider.of<Routing>(context, listen: false)
+                    //     //     .updateRouting(widget: CoursesView());
+                    //   },
+                    // ),
                     Text(
                       'Notification',
                       style: TextStyle(

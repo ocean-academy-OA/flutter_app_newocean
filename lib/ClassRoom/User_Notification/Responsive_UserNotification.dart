@@ -4,6 +4,7 @@ import 'package:flutter_app_newocean/ClassRoom/User_Notification/mobile_user_not
 import 'package:flutter_app_newocean/ClassRoom/User_Notification/tablet_user_notification.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+// ignore: must_be_immutable
 class ResponsiveUserNotification extends StatefulWidget {
   String userNumber;
   ResponsiveUserNotification({this.userNumber});

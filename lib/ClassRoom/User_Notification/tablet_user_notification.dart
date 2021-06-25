@@ -1,4 +1,3 @@
-import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
@@ -36,36 +35,34 @@ class _TabletUserNotificationState extends State<TabletUserNotification> {
             Container(
               decoration: BoxDecoration(),
               width: 213,
-              child: Row(
-                children: [
-                  IconButton(
-                    tooltip: 'Go back',
-                    icon: Icon(
-                      Icons.chevron_left,
-                    ),
-                    color: Colors.blue,
-                    iconSize: 50,
-                    splashRadius: 30,
-                    onPressed: () {
-                      setState(() {
-                        // ignore: unnecessary_statements
-                        // ContentWidget.isVisible != ContentWidget.isVisible;
-                      });
-
-                      ///todo navigation
-                      Get.back();
-                      // Provider.of<Routing>(context, listen: false)
-                      //     .updateRouting(widget: CoursesView());
-                    },
+              child: MaterialButton(
+                onPressed: () {
+                  Get.back();
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                splashColor: Colors.white,
+                child: Container(
+                  decoration: BoxDecoration(),
+                  width: 213,
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.chevron_left,
+                        color: Colors.blue,
+                        size: 50,
+                      ),
+                      Text(
+                        'Notification',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'Notification',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 25,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             Column(

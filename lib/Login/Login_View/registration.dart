@@ -4,7 +4,6 @@ import 'package:dropdownfield/dropdownfield.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Login/Login_View/otp.dart';
 
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/contry_states.dart';
@@ -12,16 +11,14 @@ import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/date_pic
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/gender_dropdoen_field.dart';
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/input_text_field.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../route/navigation_locator.dart';
-import '../../route/navigation_service.dart';
-import '../../route/routeNames.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -143,18 +140,20 @@ class _RegistrationState extends State<Registration> {
                     children: [
                       Text(
                         'Register Your Account',
-                        style: TextStyle(fontSize: 50.0, color: Colors.white),
+                        style: TextStyle(fontSize: 20.0, color: Colors.white),
                       ),
                     ],
                   ),
+                  SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
                         padding: EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(500.0),
+                            // color: Colors.white,
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(100.0),
                             boxShadow: [
                               BoxShadow(
                                   color: Colors.black.withOpacity(0.3),
@@ -181,16 +180,16 @@ class _RegistrationState extends State<Registration> {
                               borderRadius: BorderRadius.circular(500.0),
                               child: Container(
                                 color: Colors.white,
-                                width: 300.0,
-                                height: 300.0,
+                                width: 100.0,
+                                height: 100.0,
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: [
                                     profilePictureLink != null
                                         ? Image.network(
                                             profilePictureLink,
-                                            width: 500.0,
-                                            height: 500.0,
+                                            width: 250.0,
+                                            height: 250.0,
                                             fit: BoxFit.cover,
                                           )
                                         : Icon(
@@ -201,12 +200,13 @@ class _RegistrationState extends State<Registration> {
                                 ),
                               ),
                             ),
-                            radius: 50.0,
+                            radius: 45.0,
                           ),
                         ),
                       ),
                     ],
                   ),
+                  SizedBox(height: 40),
                   Form(
                     // key: formkey,
                     child: Wrap(

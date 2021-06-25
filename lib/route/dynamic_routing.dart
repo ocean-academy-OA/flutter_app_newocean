@@ -4,7 +4,6 @@ import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/Career/career/career_layout.dart';
 import 'package:flutter_app_newocean/ClassRoom/Certificates/responsives_certificate.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/Responsive_classroom_content.dart';
-import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_CourseView.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/navigateTest.dart';
 import 'package:flutter_app_newocean/ClassRoom/Edit_profile/Responsive_Profile.dart';
@@ -24,10 +23,10 @@ import 'package:flutter_app_newocean/Webinar/webinar_view/join_successfully.dart
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar_card.dart';
 import 'package:flutter_app_newocean/Zoom_integration/Responsive_Zoom.dart';
-import 'package:flutter_app_newocean/getx_controller.dart';
+
 import 'package:flutter_app_newocean/payment/responsive_payment.dart';
 import 'package:flutter_app_newocean/route/routeNames.dart';
-import 'package:get/get.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'routeNames.dart';
 import 'package:flutter_app_newocean/main.dart';

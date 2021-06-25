@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_newocean/payment/ui_payment.dart'
     if (dart.library.html) 'dart:ui' as ui;
 
+// ignore: must_be_immutable
 class RazorPayWeb extends StatefulWidget {
   String courseName;
   String amount;

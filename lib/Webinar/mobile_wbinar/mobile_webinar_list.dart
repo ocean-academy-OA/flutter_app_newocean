@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Webinar/webinar_view/responsive_webinar.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
-import 'package:flutter_app_newocean/route/navigation_locator.dart';
-import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

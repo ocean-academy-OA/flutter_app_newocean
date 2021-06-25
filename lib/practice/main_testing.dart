@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_newocean/Course/course_description/course_details.dart';
 import 'package:flutter_app_newocean/Login_Menubar/responsive_login_menu.dart';
-import 'package:flutter_app_newocean/Webinar/webinar_menubar/responsive_webinar_menubar.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
 

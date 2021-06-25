@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/my_Course/My_course.dart';
 
-import 'package:flutter_app_newocean/Landing/Home_view.dart';
-
 class NavigateTest extends StatefulWidget {
   @override
   _NavigateTestState createState() => _NavigateTestState();

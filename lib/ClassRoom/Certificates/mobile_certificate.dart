@@ -69,6 +69,7 @@ class _MobileCertificateState extends State<MobileCertificate> {
   }
 }
 
+// ignore: must_be_immutable
 class CertificateDb extends StatefulWidget {
   String image;
   String course;

@@ -2,6 +2,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
+// ignore: must_be_immutable
 class DesktopZoomIntegration extends StatelessWidget {
   String meetingNumber;
   String meetingPassword;
@@ -22,6 +23,7 @@ class DesktopZoomIntegration extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class IframeScreen extends StatefulWidget {
   double w;
   double h;

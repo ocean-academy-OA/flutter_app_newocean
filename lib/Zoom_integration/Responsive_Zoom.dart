@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Zoom_integration/Desktop_zoom.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+// ignore: must_be_immutable
 class ResponsiveZoomLink extends StatelessWidget {
   ResponsiveZoomLink({this.zoomLink});
   String zoomLink;

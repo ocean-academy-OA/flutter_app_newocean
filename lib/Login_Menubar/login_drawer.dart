@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
-import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
@@ -12,6 +11,7 @@ final _firestore = FirebaseFirestore.instance;
 
 ///drawer content
 
+// ignore: must_be_immutable
 class HorizontalMenu extends StatefulWidget {
   List<String> courseList = [];
   // static Widget customWidget;

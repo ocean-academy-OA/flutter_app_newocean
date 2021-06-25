@@ -4,9 +4,7 @@ import 'package:flutter_app_newocean/Buttons/pop_up_menu_botton_custamize.dart';
 import 'package:flutter_app_newocean/Buttons/popupMenu.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/Login/Login_View/otp.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
-import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
@@ -16,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
+// ignore: must_be_immutable
 class TabletLoginMenu extends StatefulWidget {
   TabletLoginMenu({this.userProfile});
   String userProfile;
@@ -265,6 +264,7 @@ class TraingleClipPath extends CustomClipper<Path> {
   }
 }
 
+// ignore: must_be_immutable
 class ProfilePictureDb extends StatefulWidget {
   String profilePicture;
   ProfilePictureDb({

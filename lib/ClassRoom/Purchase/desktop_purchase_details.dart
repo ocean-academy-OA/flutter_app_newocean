@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/main.dart';
 import 'package:get/get.dart';
 
 class DesktopPurchaseDetails extends StatelessWidget {
@@ -172,6 +171,7 @@ class DesktopPurchaseDetails extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class Purchasedatabase extends StatelessWidget {
   Purchasedatabase(
       {this.course,

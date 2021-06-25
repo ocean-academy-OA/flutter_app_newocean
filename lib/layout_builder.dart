@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/bottom_navigation.dart';
 import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/Login_Menubar/loginEndDrawer.dart';
-import 'package:flutter_app_newocean/Menu/Menubar_drawer.dart';
 import 'package:flutter_app_newocean/Webinar/flash_notification.dart';
 import 'package:flutter_app_newocean/all_end_drawer.dart';
 import 'package:flutter_app_newocean/all_menubar.dart';
@@ -50,20 +48,20 @@ class _MainLayoutState extends State<MainLayout> {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
         key: scaffoldKey,
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-        floatingActionButton: sizingInformation.deviceScreenType ==
-                DeviceScreenType.desktop
-            ? null
-            : FloatingActionButton(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.ondemand_video_rounded,
-                  color: Colors.red,
-                ),
-                onPressed: () {
-                  locator<NavigationService>().navigateTo(UpcomingWebinarRoute);
-                },
-              ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        // floatingActionButton: sizingInformation.deviceScreenType ==
+        //         DeviceScreenType.desktop
+        //     ? null
+        //     : FloatingActionButton(
+        //         backgroundColor: Colors.white,
+        //         child: Icon(
+        //           Icons.ondemand_video_rounded,
+        //           color: Colors.red,
+        //         ),
+        //         onPressed: () {
+        //           locator<NavigationService>().navigateTo(UpcomingWebinarRoute);
+        //         },
+        //       ),
         endDrawer: Obx(() {
           if (valueController.navebars.value == 'Login') {
             return AllEndDrawer();

@@ -13,7 +13,6 @@ import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/alert/alert_msg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_newocean/Home/Views/Tablet_home.dart';
-import 'package:smooth_scroll_web/smooth_scroll_web.dart';
 
 class DesktopHome extends StatefulWidget {
   @override

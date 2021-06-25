@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/otp_inpu
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -164,6 +167,7 @@ class _OTPState extends State<OTP> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Container DesktopOtp(BuildContext context) {
     return Container(
       color: Color(0xff2B9DD1),
@@ -359,16 +363,25 @@ class _OTPState extends State<OTP> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Container MobileOtp(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      // padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      // decoration: BoxDecoration(
+      //   color: Color(0xff006793),
+      // ),
       decoration: BoxDecoration(
         color: Color(0xff006793),
+        image: DecorationImage(
+          image: AssetImage('images/login_bg2.png'),
+          fit: BoxFit.cover,
+          alignment: Alignment.bottomCenter,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             'Welcome Back',
@@ -376,6 +389,9 @@ class _OTPState extends State<OTP> {
                 fontSize: 40.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Container(
             height: 350,
@@ -397,6 +413,8 @@ class _OTPState extends State<OTP> {
                         width: MediaQuery.of(context).size.width - 50,
                         textFieldAlignment: MainAxisAlignment.spaceAround,
                         fieldWidth: 30,
+                        fieldStyle: FieldStyle.underline,
+                        keyboardType: TextInputType.phone,
                         onChanged: (value) {
                           print(value);
                         },
@@ -448,7 +466,7 @@ class _OTPState extends State<OTP> {
                     RawMaterialButton(
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Color(0xff014965),
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(5.0)),
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -456,9 +474,9 @@ class _OTPState extends State<OTP> {
                         child: Text(
                           'NEXT',
                           style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.white,
-                          ),
+                              fontSize: 20.0,
+                              color: Color(0xff014965),
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                       elevation: 0.0,
@@ -486,13 +504,6 @@ class _OTPState extends State<OTP> {
                           borderRadius: BorderRadius.circular(70.0)),
                       onPressed: () {
                         locator<NavigationService>().navigateTo(LoginRoute);
-                        // Provider.of<Routing>(context,
-                        //         listen: false)
-                        //     .updateRouting(widget: LogIn());
-                        // Provider.of<MenuBar>(context,
-                        //         listen: false)
-                        //     .updateMenu(
-                        //         widget: NavbarRouting());
                       },
                     ),
                   ],
@@ -500,39 +511,8 @@ class _OTPState extends State<OTP> {
               ],
             ),
           ),
-          SizedBox(height: 10.0),
         ],
       ),
     );
   }
 }
-
-// Container(
-// alignment: Alignment.center,
-// margin: EdgeInsets.symmetric(vertical: 15.0),
-// width: 600,
-// padding: EdgeInsets.symmetric(vertical: 15),
-// decoration: BoxDecoration(
-// color: Color(0xff006793),
-// borderRadius: BorderRadius.circular(6.0)),
-// child: Row(
-// mainAxisAlignment: MainAxisAlignment.center,
-// children: [
-// Text(
-// 'Or ',
-// style: TextStyle(color: Colors.white, fontSize: 18.0),
-// ),
-// GestureDetector(
-// onTap: _clickHere,
-// child: Text(
-// 'click here',
-// style: TextStyle(color: Colors.cyanAccent, fontSize: 18.0),
-// ),
-// ),
-// Text(
-// ' to visit website',
-// style: TextStyle(color: Colors.white, fontSize: 18.0),
-// ),
-// ],
-// ),
-// ),

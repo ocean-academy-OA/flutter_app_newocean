@@ -14,8 +14,6 @@ import 'package:intl/intl.dart';
 import 'package:slide_countdown_clock/slide_countdown_clock.dart';
 import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
-import 'package:flutter_app_newocean/getx_controller.dart';
-import 'package:get/get.dart';
 
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

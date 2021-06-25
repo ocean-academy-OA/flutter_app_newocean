@@ -1,7 +1,7 @@
-import 'package:flutter_app_newocean/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MobileUserNotification extends StatefulWidget {
@@ -33,7 +33,9 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50),
               ),
@@ -43,24 +45,10 @@ class _MobileUserNotificationState extends State<MobileUserNotification> {
                 width: 213,
                 child: Row(
                   children: [
-                    IconButton(
-                      tooltip: 'Go back',
-                      icon: Icon(
-                        Icons.chevron_left,
-                      ),
+                    Icon(
+                      Icons.chevron_left,
                       color: Colors.blue,
-                      iconSize: 50,
-                      splashRadius: 30,
-                      onPressed: () {
-                        setState(() {
-                          // ignore: unnecessary_statements
-                          // ContentWidget.isVisible != ContentWidget.isVisible;
-                        });
-
-                        ///todo Navigation
-                        // Provider.of<Routing>(context, listen: false)
-                        //     .updateRouting(widget: CoursesView());
-                      },
+                      size: 50,
                     ),
                     Text(
                       'Notification',

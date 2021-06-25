@@ -69,6 +69,7 @@ class _DesktopCertificateState extends State<DesktopCertificate> {
   }
 }
 
+// ignore: must_be_immutable
 class CertificateDb extends StatefulWidget {
   String image;
   String course;

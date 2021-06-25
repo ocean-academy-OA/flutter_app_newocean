@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:ui' as ui;
 
 // ignore: camel_case_types

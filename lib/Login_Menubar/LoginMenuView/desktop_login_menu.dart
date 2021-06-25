@@ -8,14 +8,13 @@ import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/ocean_icon/ocean_icons.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
-import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
+// ignore: must_be_immutable
 class DesktopLoginMenu extends StatefulWidget {
   final navigatorKey = GlobalKey<NavigatorState>();
   DesktopLoginMenu({this.userProfile});
@@ -321,6 +320,7 @@ class TraingleClipPath extends CustomClipper<Path> {
   }
 }
 
+// ignore: must_be_immutable
 class ProfilePictureDb extends StatefulWidget {
   String profilePicture;
   ProfilePictureDb({

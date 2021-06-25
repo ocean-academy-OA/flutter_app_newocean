@@ -73,6 +73,7 @@ class _TabletCertificateState extends State<TabletCertificate> {
   }
 }
 
+// ignore: must_be_immutable
 class CertificateDb extends StatefulWidget {
   String image;
   String course;

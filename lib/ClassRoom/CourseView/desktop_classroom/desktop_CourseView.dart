@@ -7,17 +7,15 @@ import 'package:flutter_app_newocean/ClassRoom/CourseView/all_Course/All_Course.
 import 'package:flutter_app_newocean/ClassRoom/CourseView/desktop_classroom/desktop_syllabus.dart';
 import 'package:flutter_app_newocean/ClassRoom/CourseView/my_Course/My_course.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
-import 'package:flutter_app_newocean/Landing/Home_view.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
-import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/getx_controller.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
-import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Map<String, String> courses_icon = {};
 final _firestore = FirebaseFirestore.instance;
@@ -341,6 +339,15 @@ class _ContentWidgetState extends State<ContentWidget> {
   List timeCalculation = [];
   String resolve;
 
+  launchURL(String urlLink) async {
+    final url = '${urlLink}';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -461,6 +468,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                       String zoomPassword = i.data()['zoom_password'];
                       Timestamp timeStamp = i.data()['date'];
                       int duration = i.data()['duration'];
+                      String videoLink = i.data()['video_link'];
 
                       int yearFormat;
                       int monthFormat;
@@ -547,6 +555,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                             : courseIDCount == 'Completed'
                                 ? () {
                                     print('completed');
+                                    launchURL(videoLink);
                                   }
                                 : null,
                       );

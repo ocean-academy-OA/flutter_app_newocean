@@ -159,7 +159,7 @@ class _SyllabusListState extends State<SyllabusList> {
                             onPressed: widget.onPressed,
                           ),
                           Text(
-                            widget.status,
+                            '${widget.status}',
                             style: TextStyle(
                                 fontSize: 20,
                                 color: widget.mainColor,
@@ -209,7 +209,7 @@ class _SyllabusListState extends State<SyllabusList> {
                   ),
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -265,6 +265,9 @@ class _SyllabusListState extends State<SyllabusList> {
                               inherit: false,
                               fontWeight: FontWeight.w800,
                               color: Colors.grey[700]),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Text(
                           '${widget.subTitle}',
@@ -336,7 +339,7 @@ class _SyllabusListState extends State<SyllabusList> {
                       ),
                     ),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -370,6 +373,11 @@ class _SyllabusListState extends State<SyllabusList> {
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
                         ),
+                        Spacer(),
+                        Text(
+                          '${widget.duration} Min',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
                       ],
                     ),
                   ),
@@ -382,6 +390,7 @@ class _SyllabusListState extends State<SyllabusList> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            SizedBox(height: 15),
                             Text(
                               '${widget.title}',
                               textAlign: TextAlign.center,
@@ -392,6 +401,7 @@ class _SyllabusListState extends State<SyllabusList> {
                                   fontWeight: FontWeight.w800,
                                   color: Colors.grey[700]),
                             ),
+                            SizedBox(height: 20),
                             Text(
                               '${widget.subTitle}',
                               textAlign: TextAlign.center,
@@ -402,46 +412,47 @@ class _SyllabusListState extends State<SyllabusList> {
                                   fontWeight: FontWeight.normal,
                                   color: Colors.grey[500]),
                             ),
+                            SizedBox(height: 15),
                           ],
                         ),
-                        Row(
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                          begin: FractionalOffset.topLeft,
+                          end: FractionalOffset.bottomRight,
+                          colors: [widget.secondaryColor, widget.mainColor],
+                        )),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            IconButton(
-                              icon: Icon(Icons.video_call_sharp),
-                              iconSize: 40,
-                              color: widget.mainColor,
-                              onPressed: widget.onPressed,
+                            // IconButton(
+                            //   icon: Icon(Icons.video_call_sharp),
+                            //   iconSize: 40,
+                            //   color: Colors.white,
+                            //   onPressed: widget.onPressed,
+                            // ),
+                            Icon(
+                              Icons.video_call_sharp,
+                              size: 35,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
                             ),
                             Text(
                               widget.status,
                               style: TextStyle(
-                                  fontSize: 20,
-                                  color: widget.mainColor,
-                                  height: 1),
+                                  fontSize: 20, color: Colors.white, height: 1),
                             ),
                           ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 40,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                      begin: FractionalOffset.topLeft,
-                      end: FractionalOffset.bottomRight,
-                      colors: [widget.secondaryColor, widget.mainColor],
-                    )),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${widget.duration} Minutes',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      ],
-                    ),
+                        )),
+                    onTap: widget.onPressed,
                   ),
                 ],
               ),

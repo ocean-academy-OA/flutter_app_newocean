@@ -37,7 +37,7 @@ class LableWithTextField extends StatelessWidget {
             margin: EdgeInsets.only(left: 10.0),
             child: Text(
               lableText,
-              style: TextStyle(fontSize: 20.0, color: color),
+              style: TextStyle(fontSize: 18.0, color: color),
             ),
           ),
           Container(
