@@ -56,14 +56,16 @@ class _TabServiceState extends State<TabService> {
                   icon: 'images/counseling.png',
                 ),
                 ContainerServiceWidget(
-                  title: "Title",
-                  content: "Subtitle",
-                  icon: '',
+                  title: "Free Webinars",
+                  content:
+                      "The easiest way to host a webinar for free is to use a live streaming platform like Facebook Live or YouTube Live. The benefits include easy use, nearly unlimited participant counts, and simple event marketing",
+                  icon: 'images/wbinar.png',
                 ),
                 ContainerServiceWidget(
-                  title: "Title",
-                  content: "Subtitle",
-                  icon: '',
+                  title: "Free Webinars",
+                  content:
+                      "The easiest way to host a webinar for free is to use a live streaming platform like Facebook Live or YouTube Live. The benefits include easy use, nearly unlimited participant counts, and simple event marketing",
+                  icon: 'images/wbinar.png',
                 ),
                 SizedBox(
                   height: 50.0,

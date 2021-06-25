@@ -67,13 +67,15 @@ class _DesktopServiceState extends State<DesktopService> {
                   ),
                   ContainerServiceWidget(
                     title: "Free Webinars",
-                    content: "Subtitle",
+                    content:
+                        "The easiest way to host a webinar for free is to use a live streaming platform like Facebook Live or YouTube Live. The benefits include easy use, nearly unlimited participant counts, and simple event marketing",
                     icon: 'images/wbinar.png',
                   ),
                   ContainerServiceWidget(
-                    title: "Title",
-                    content: "Subtitle",
-                    icon: '',
+                    title: "Free Webinars",
+                    content:
+                        "The easiest way to host a webinar for free is to use a live streaming platform like Facebook Live or YouTube Live. The benefits include easy use, nearly unlimited participant counts, and simple event marketing",
+                    icon: 'images/wbinar.png',
                   ),
                 ],
               ),
