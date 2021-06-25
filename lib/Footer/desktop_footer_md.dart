@@ -2,11 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
+import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/material_button.dart';
+import 'package:flutter_app_newocean/getx_controller.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 final _firestore = FirebaseFirestore.instance;
@@ -171,17 +177,8 @@ class _DesktopFooterMdState extends State<DesktopFooterMd> {
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
                             onTap: () {
-                              // setState(() {
-                              //   NavbarRouting.menu.updateAll((key, value) =>
-                              //       NavbarRouting.menu[key] = false);
-                              //   NavbarRouting.menu["Contact Us"] = true;
-                              // });
-                              // Provider.of<Routing>(context, listen: false)
-                              //     .updateRouting(widget: ContactUs());
-                              // Provider.of<MenuBar>(context, listen: false)
-                              //     .updateMenu(widget: NavbarRouting()
-                              //         // color: text ? Colors.blue : Color(0xFF155575),
-                              //         );
+                              locator<NavigationService>()
+                                  .navigateTo(ContactUsRoute);
                             },
                             child: Container(
                                 child: Text(
@@ -197,15 +194,8 @@ class _DesktopFooterMdState extends State<DesktopFooterMd> {
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
                             onTap: () {
-                              // setState(() {
-                              //   NavbarRouting.menu.updateAll((key, value) =>
-                              //       NavbarRouting.menu[key] = false);
-                              //   NavbarRouting.menu["Services"] = true;
-                              // });
-                              // Provider.of<Routing>(context, listen: false)
-                              //     .updateRouting(widget: Service());
-                              // Provider.of<MenuBar>(context, listen: false)
-                              //     .updateMenu(widget: NavbarRouting());
+                              locator<NavigationService>()
+                                  .navigateTo(ServiceRoute);
                             },
                             child: Container(
                                 child: Text(
@@ -221,17 +211,8 @@ class _DesktopFooterMdState extends State<DesktopFooterMd> {
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
                             onTap: () {
-                              // setState(() {
-                              //   NavbarRouting.menu.updateAll((key, value) =>
-                              //       NavbarRouting.menu[key] = false);
-                              //   NavbarRouting.menu["Course"] = true;
-                              // });
-                              // Provider.of<Routing>(context, listen: false)
-                              //     .updateRouting(widget: Course());
-                              // Provider.of<MenuBar>(context, listen: false)
-                              //     .updateMenu(widget: NavbarRouting()
-                              //         // color: text ? Colors.blue : Color(0xFF155575),
-                              //         );
+                              locator<NavigationService>()
+                                  .navigateTo(CourseRoute);
                             },
                             child: Container(
                                 child: Text(
@@ -274,7 +255,10 @@ class _DesktopFooterMdState extends State<DesktopFooterMd> {
                                 alignment: Alignment.center,
                                 child: footerMouseRegion(
                                     text: "ABOUT US",
-                                    widget: ResponsiveAboutUs())),
+                                    onTap: () {
+                                      locator<NavigationService>()
+                                          .navigateTo(AboutRoute);
+                                    })),
                             SizedBox(height: 20.0),
                             Container(
                                 width: 180,
@@ -450,24 +434,11 @@ class _DesktopFooterMdState extends State<DesktopFooterMd> {
         ));
   }
 
-  MouseRegion footerMouseRegion({text, widget}) {
+  MouseRegion footerMouseRegion({text, onTap}) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () {
-          // setState(() {
-          //   NavbarRouting.menu
-          //       .updateAll((key, value) => NavbarRouting.menu[key] = false);
-          //   NavbarRouting.menu[text] = true;
-          //   print(text);
-          // });
-          // Provider.of<Routing>(context, listen: false)
-          //     .updateRouting(widget: widget);
-          // Provider.of<MenuBar>(context, listen: false)
-          //     .updateMenu(widget: NavbarRouting()
-          //         // color: text ? Colors.blue : Color(0xFF155575),
-          //         );
-        },
+        onTap: onTap,
         child: Container(
             alignment: Alignment.center,
             child: Text(

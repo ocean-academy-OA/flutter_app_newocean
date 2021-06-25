@@ -6,6 +6,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/AboutUs/ViewsAbout/Responsive_about.dart';
 import 'package:flutter_app_newocean/common/constants.dart';
 import 'package:flutter_app_newocean/common/material_button.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
@@ -166,17 +169,8 @@ class _TabletFooterState extends State<TabletFooter> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            // setState(() {
-                            //   NavbarRouting.menu.updateAll((key, value) =>
-                            //       NavbarRouting.menu[key] = false);
-                            //   NavbarRouting.menu["Contact Us"] = true;
-                            // });
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: ContactUs());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: NavbarRouting()
-                            //         // color: text ? Colors.blue : Color(0xFF155575),
-                            //         );
+                            locator<NavigationService>()
+                                .navigateTo(ContactUsRoute);
                           },
                           child: Container(
                               child: Text(
@@ -190,15 +184,8 @@ class _TabletFooterState extends State<TabletFooter> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            // setState(() {
-                            //   NavbarRouting.menu.updateAll((key, value) =>
-                            //       NavbarRouting.menu[key] = false);
-                            //   NavbarRouting.menu["Services"] = true;
-                            // });
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: Service());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: NavbarRouting());
+                            locator<NavigationService>()
+                                .navigateTo(ServiceRoute);
                           },
                           child: Container(
                               child: Text(
@@ -212,17 +199,8 @@ class _TabletFooterState extends State<TabletFooter> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            // setState(() {
-                            //   NavbarRouting.menu.updateAll((key, value) =>
-                            //       NavbarRouting.menu[key] = false);
-                            //   NavbarRouting.menu["Course"] = true;
-                            // });
-                            // Provider.of<Routing>(context, listen: false)
-                            //     .updateRouting(widget: Course());
-                            // Provider.of<MenuBar>(context, listen: false)
-                            //     .updateMenu(widget: NavbarRouting()
-                            //         // color: text ? Colors.blue : Color(0xFF155575),
-                            //         );
+                            locator<NavigationService>()
+                                .navigateTo(CourseRoute);
                           },
                           child: Container(
                               child: Text(
@@ -234,13 +212,14 @@ class _TabletFooterState extends State<TabletFooter> {
                       SizedBox(height: 20.0),
                       GestureDetector(
                           child: footerMouseRegion(
-                              text: "ABOUT US", widget: ResponsiveAboutUs())),
+                              text: "ABOUT US",
+                              onTap: () {
+                                locator<NavigationService>()
+                                    .navigateTo(AboutRoute);
+                              })),
                       SizedBox(height: 20.0),
-                      Container(
-                          child: Text(
-                        'HELP',
-                        style: kbottom,
-                      )),
+                      GestureDetector(
+                          child: footerMouseRegion(text: "HELP", onTap: () {})),
                     ],
                   ),
                 ),
@@ -256,26 +235,24 @@ class _TabletFooterState extends State<TabletFooter> {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
-                      Container(
-                        alignment: Alignment.center,
-                        child: Text("FAQ", style: kbottom),
-                      ),
+                      GestureDetector(
+                          child: footerMouseRegion(text: "FAQ", onTap: () {})),
                       SizedBox(height: 17.0),
-                      Container(
-                          alignment: Alignment.center,
-                          child: footerMouseRegion(text: "WORK WITH US")),
+                      GestureDetector(
+                          child: footerMouseRegion(
+                              text: "WORK WITH US", onTap: () {})),
                       SizedBox(height: 17.0),
-                      Container(
-                          alignment: Alignment.center,
-                          child: footerMouseRegion(text: "PRIVATE POLICIES")),
+                      GestureDetector(
+                          child: footerMouseRegion(
+                              text: "PRIVATE POLICIES", onTap: () {})),
                       SizedBox(height: 17.0),
-                      Container(
-                          alignment: Alignment.center,
-                          child: footerMouseRegion(text: "PRESS ENQUIRES")),
+                      GestureDetector(
+                          child: footerMouseRegion(
+                              text: "PRESS ENQUIRES", onTap: () {})),
                       SizedBox(height: 17.0),
-                      Container(
-                          alignment: Alignment.center,
-                          child: footerMouseRegion(text: "TERMS & CONDITIONS")),
+                      GestureDetector(
+                          child: footerMouseRegion(
+                              text: "TERMS & CONDITIONS", onTap: () {})),
                     ],
                   ),
                 ),
@@ -416,24 +393,11 @@ class _TabletFooterState extends State<TabletFooter> {
         ));
   }
 
-  MouseRegion footerMouseRegion({text, widget}) {
+  MouseRegion footerMouseRegion({text, onTap}) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () {
-          // setState(() {
-          //   NavbarRouting.menu
-          //       .updateAll((key, value) => NavbarRouting.menu[key] = false);
-          //   NavbarRouting.menu[text] = true;
-          //   print(text);
-          // });
-          // Provider.of<Routing>(context, listen: false)
-          //     .updateRouting(widget: widget);
-          // Provider.of<MenuBar>(context, listen: false)
-          //     .updateMenu(widget: NavbarRouting()
-          //         // color: text ? Colors.blue : Color(0xFF155575),
-          //         );
-        },
+        onTap: onTap,
         child: Container(
             alignment: Alignment.center,
             child: Text(

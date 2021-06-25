@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_app_newocean/Login/Login_View/Login_responsive.dart';
 
 import 'package:flutter_app_newocean/Login/login_widget/new_user_widget/otp_inputs.dart';
@@ -37,7 +38,7 @@ class _OTPState extends State<OTP> {
   bool isLogin = false;
   _clickHere() async {
     try {
-      const url = 'https://flutter.dev';
+      const url = 'https://oceanacademy.in';
       if (await canLaunch(url)) {
         await launch(url);
       } else {
@@ -66,57 +67,6 @@ class _OTPState extends State<OTP> {
     print('Otp Submited');
   }
 
-  // _verifyPhone() async {
-  //   print('/////////////////////////////// 72 OTP');
-  //   print(widget.confirmationResult.toString());
-  //   try {
-  //     setState(() {
-  //       // Navbar.visiblity = false;
-  //     });
-  //     userCredential = await widget.confirmationResult.confirm(_otp.text);
-  //
-  //     // OTP.userID = LogIn.confirmationResult.toString();
-  //     // OTP.userID = LogIn.registerNumber;
-  //
-  //     print('${OTP.userID} OTP.userID');
-  //     userSession =
-  //         await _firestore.collection('new users').doc(OTP.userID).get();
-  //
-  //     if (userSession.data() != null) {
-  //       setState(() {
-  //         isLogin = true;
-  //       });
-  //       // MenuBar.stayUser = OTP.userID;
-  //       // Provider.of<MenuBar>(context, listen: false)
-  //       //     .updateMenu(widget: AppBarWidget());
-  //       // Provider.of<Routing>(context, listen: false)
-  //       //     .updateRouting(widget: CoursesView());
-  //       // session();
-  //
-  //       print('Otp.................got');
-  //
-  //       //CoursesView() insted of Home,
-  //
-  //     } else {
-  //       // Provider.of<Routing>(context, listen: false)
-  //       //     .updateRouting(widget: Registration());
-  //       // Provider.of<MenuBar>(context, listen: false)
-  //       //     .updateMenu(widget: NavbarRouting());
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         content: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Text(
-  //           'OTP Invalid',
-  //           style: TextStyle(fontSize: 30.0),
-  //         ),
-  //       ],
-  //     )));
-  //   }
-  // }
   final valueController = Get.find<ValueListener>();
   _verifyOtp() async {
     try {
@@ -266,7 +216,6 @@ class _OTPState extends State<OTP> {
                               RawMaterialButton(
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: Color(0xff014965),
                                       borderRadius: BorderRadius.circular(5.0)),
                                   alignment: Alignment.center,
                                   padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -280,6 +229,8 @@ class _OTPState extends State<OTP> {
                                   ),
                                 ),
                                 elevation: 0.0,
+                                fillColor: Color(0xff014965),
+                                hoverColor: Color(0xff013245),
                                 onPressed: () async {
                                   _verifyOtp();
                                   //_verifyPhone();
@@ -338,12 +289,15 @@ class _OTPState extends State<OTP> {
                       'Or ',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
-                    GestureDetector(
-                      onTap: _clickHere,
-                      child: Text(
-                        'click here',
-                        style:
-                            TextStyle(color: Colors.cyanAccent, fontSize: 18.0),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: _clickHere,
+                        child: Text(
+                          'click here',
+                          style: TextStyle(
+                              color: Colors.cyanAccent, fontSize: 18.0),
+                        ),
                       ),
                     ),
                     Text(
@@ -463,7 +417,6 @@ class _OTPState extends State<OTP> {
                     RawMaterialButton(
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
                             borderRadius: BorderRadius.circular(5.0)),
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -476,7 +429,10 @@ class _OTPState extends State<OTP> {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      elevation: 0.0,
+                      elevation: 1,
+                      hoverElevation: 0,
+                      hoverColor: Colors.grey[200],
+                      fillColor: Colors.white,
                       onPressed: () async {
                         _verifyOtp();
                         //_verifyPhone();

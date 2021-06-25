@@ -225,7 +225,6 @@ class _LogInState extends State<LogIn> {
                                 RawMaterialButton(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color: Color(0xff014965),
                                           borderRadius:
                                               BorderRadius.circular(5.0)),
                                       alignment: Alignment.center,
@@ -240,6 +239,8 @@ class _LogInState extends State<LogIn> {
                                         ),
                                       ),
                                     ),
+                                    hoverColor: Color(0xff023e57),
+                                    fillColor: Color(0xff014965),
                                     elevation: 0.0,
                                     onPressed: () async {
                                       print(

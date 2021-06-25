@@ -228,9 +228,8 @@ class _MobileLoginState extends State<MobileLogin> {
             children: [
               RawMaterialButton(
                   child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5.0)),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(vertical: 15.0),
                     width: MediaQuery.of(context).size.width - 50,
@@ -242,7 +241,10 @@ class _MobileLoginState extends State<MobileLogin> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  elevation: 0.0,
+                  elevation: 1,
+                  hoverElevation: 0,
+                  hoverColor: Colors.grey[200],
+                  fillColor: Colors.white,
                   onPressed: () async {
                     print(
                         "${_phoneNumberController.text}_phoneNumberController.text");

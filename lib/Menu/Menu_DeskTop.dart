@@ -20,6 +20,11 @@ Map menu = {
   'Career': false,
 };
 
+menuFunction(String menuTitle) {
+  menu.updateAll((key, value) => menu[key] = false);
+  menu['$menuTitle'] = true;
+}
+
 // ignore: must_be_immutable
 class MenuBarDesktop extends StatefulWidget {
   MenuBarDesktop({this.child});
@@ -61,37 +66,6 @@ class _NavbarRoutingState extends State<NavbarRouting>
   double _scale;
   AnimationController _controller;
   @override
-
-//overlay variable
-//   GlobalKey dropdownKey;
-//   bool isDropdown = false;
-//   double height, width, xPosition, yPosition;
-//   OverlayEntry floatingDropdown;
-//
-//   findDropdownData() {
-//     RenderBox renderBox = dropdownKey.currentContext.findRenderObject();
-//     height = renderBox.size.height;
-//     width = renderBox.size.width;
-//     Offset offset = renderBox.localToGlobal(Offset.zero);
-//     xPosition = offset.dx;
-//     yPosition = offset.dy;
-//   }
-//
-//   OverlayEntry createFloatingDropdown() {
-//     return OverlayEntry(builder: (context) {
-//       return Positioned(
-//           left: xPosition,
-//           width: width,
-//           top: height + xPosition + 5,
-//           height: courseList.length * height,
-//           child: Container(
-//             height: 100,
-//             width: 100,
-//             color: Colors.red,
-//           ));
-//     });
-//   }
-//overlay variable
   @override
   void initState() {
     // TODO: implement initState

@@ -94,17 +94,6 @@ class _TabAndMobileEndDrawerState extends State<TabAndMobileEndDrawer> {
           ProfileItems(
             textColor: Colors.grey[600],
             iconColor: Colors.grey[600],
-            icon: Icons.notifications_active,
-            label: 'Notification',
-            onPressed: () {
-              locator<NavigationService>().navigateTo(
-                  "/UserNotification?id=${LoginResponsive.registerNumber}");
-              state.close();
-            },
-          ),
-          ProfileItems(
-            textColor: Colors.grey[600],
-            iconColor: Colors.grey[600],
             icon: Icons.book_rounded,
             label: 'Certificate',
             onPressed: () {

@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/Buttons/switch_button.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/offline_course_card.dart';
 import 'package:flutter_app_newocean/Course/Course_widget/online_course_card.dart';
+import 'package:flutter_app_newocean/Footer/mobile_footer.dart';
+import 'package:flutter_app_newocean/Footer/tablet_footer.dart';
+import 'package:flutter_app_newocean/Footer/widgets/layout_builder.dart';
 import 'package:flutter_app_newocean/Menu/Menu_DeskTop.dart';
 import 'package:flutter_app_newocean/route/navigation_locator.dart';
 import 'package:flutter_app_newocean/route/navigation_service.dart';
 import 'package:intl/intl.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -185,6 +189,11 @@ class _DesktopCourseState extends State<DesktopCourse> {
                       }
                     },
                   ),
+            ScreenTypeLayout(
+              desktop: DesktopFooterLayout(),
+              tablet: TabletFooter(),
+              mobile: Footer(),
+            ),
           ],
         ),
       ),

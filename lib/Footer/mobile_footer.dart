@@ -4,6 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_newocean/common/material_button.dart';
 import 'package:flutter_app_newocean/common/mobile_constents.dart';
+import 'package:flutter_app_newocean/route/navigation_locator.dart';
+import 'package:flutter_app_newocean/route/navigation_service.dart';
+import 'package:flutter_app_newocean/route/routeNames.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
@@ -150,37 +153,59 @@ class Footer extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      "HOME",
-                      style: kbottom,
+                    TextButton(
+                      child: Text(
+                        "HOME",
+                        style: kbottom,
+                      ),
+                      onPressed: () {
+                        locator<NavigationService>().navigateTo(HomeRoute);
+                      },
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text(
-                      "ABOUT US",
-                      style: kbottom,
+                    TextButton(
+                      child: Text(
+                        "ABOUT US",
+                        style: kbottom,
+                      ),
+                      onPressed: () {
+                        locator<NavigationService>().navigateTo(AboutRoute);
+                      },
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text(
-                      "SERVICE",
-                      style: kbottom,
+                    TextButton(
+                      child: Text(
+                        "SERVICE",
+                        style: kbottom,
+                      ),
+                      onPressed: () {
+                        locator<NavigationService>().navigateTo(ServiceRoute);
+                      },
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text(
-                      "COURSES",
-                      style: kbottom,
+                    TextButton(
+                      child: Text("COURSES", style: kbottom),
+                      onPressed: () {
+                        locator<NavigationService>().navigateTo(CourseRoute);
+                      },
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text(
-                      "CONTACT US",
-                      style: kbottom,
+                    TextButton(
+                      child: Text(
+                        "CONTACT US",
+                        style: kbottom,
+                      ),
+                      onPressed: () {
+                        locator<NavigationService>().navigateTo(ContactUsRoute);
+                      },
                     ),
                     SizedBox(
                       height: 20.0,

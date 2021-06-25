@@ -35,33 +35,42 @@ class _TabletUserNotificationState extends State<TabletUserNotification> {
             Container(
               decoration: BoxDecoration(),
               width: 213,
-              child: MaterialButton(
-                onPressed: () {
-                  Get.back();
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                splashColor: Colors.white,
-                child: Container(
-                  decoration: BoxDecoration(),
-                  width: 213,
-                  child: Row(
-                    children: [
-                      Icon(
+              child: Container(
+                decoration: BoxDecoration(),
+                width: 213,
+                child: Row(
+                  children: [
+                    IconButton(
+                      tooltip: 'Go back',
+                      icon: Icon(
                         Icons.chevron_left,
                         color: Colors.blue,
                         size: 50,
                       ),
-                      Text(
-                        'Notification',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 25,
-                        ),
+                      color: Colors.blue,
+                      iconSize: 50,
+                      splashRadius: 30,
+                      onPressed: () {
+                        setState(() {
+                          // ignore: unnecessary_statements
+                          // ContentWidget.isVisible != ContentWidget.isVisible;
+                        });
+                        Get.back();
+
+                        ///todo Navigation
+
+                        // Provider.of<Routing>(context, listen: false)
+                        //     .updateRouting(widget: CoursesView());
+                      },
+                    ),
+                    Text(
+                      'Notification',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 25,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
