@@ -49,19 +49,14 @@ class _MobileLoginState extends State<MobileLogin> {
       decoration: BoxDecoration(
         color: Color(0xff006793),
         image: DecorationImage(
-          image: AssetImage('images/login_bg2.png'),
+          image: AssetImage('images/login_bg3.png'),
           fit: BoxFit.cover,
           alignment: Alignment.bottomCenter,
-          colorFilter:
-              ColorFilter.mode(Colors.blue.withOpacity(0.5), BlendMode.dstATop),
         ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(
-            flex: 5,
-          ),
           Text(
             'Welcome Back',
             style: TextStyle(
@@ -307,9 +302,6 @@ class _MobileLoginState extends State<MobileLogin> {
           //         )),
           //   ),
           // )
-          Spacer(
-            flex: 1,
-          )
         ],
       ),
     );

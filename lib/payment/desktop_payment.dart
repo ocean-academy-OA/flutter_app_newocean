@@ -23,12 +23,13 @@ class RazorPayWeb extends StatefulWidget {
   String studentname;
   String studentemail;
 
-  RazorPayWeb(
-      {this.amount,
-      this.course,
-      this.courseName,
-      this.courseImage,
-      this.batchid});
+  RazorPayWeb({
+    this.amount,
+    this.course,
+    this.courseName,
+    this.courseImage,
+    this.batchid,
+  });
   @override
   _RazorPayWebState createState() => _RazorPayWebState();
 }

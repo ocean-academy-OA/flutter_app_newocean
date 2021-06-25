@@ -325,7 +325,7 @@ class _OTPState extends State<OTP> {
       decoration: BoxDecoration(
         color: Color(0xff006793),
         image: DecorationImage(
-          image: AssetImage('images/login_bg2.png'),
+          image: AssetImage('images/login_bg3.png'),
           fit: BoxFit.cover,
           alignment: Alignment.bottomCenter,
         ),
@@ -342,7 +342,7 @@ class _OTPState extends State<OTP> {
                 fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Container(
             height: 350,
